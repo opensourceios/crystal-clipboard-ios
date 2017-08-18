@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.5.0)
+  - Keys (1.0.0)
   - Moya/Core (8.0.5):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
@@ -11,14 +12,20 @@ PODS:
   - Result (3.2.3)
 
 DEPENDENCIES:
+  - Keys (from `Pods/CocoaPodsKeys`)
   - Moya/ReactiveSwift (~> 8.0)
+
+EXTERNAL SOURCES:
+  Keys:
+    :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
   Moya: c37eec09a098ba9991b5a963b291fc5704bdb9ef
   ReactiveSwift: 3fea31f8fc49f112d2dc613282c5d395c4d167bb
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
 
-PODFILE CHECKSUM: fe99b515cbbc3ad1d13091e94786b8d1c7f3cb8b
+PODFILE CHECKSUM: d42dc93a1aa6edd11840ac2e10683ee2f4c177b1
 
 COCOAPODS: 1.3.1
