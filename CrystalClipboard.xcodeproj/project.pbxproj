@@ -420,7 +420,7 @@
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = CrystalClipboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jzzocc.CrystalClipboard;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jzzocc.crystal-clipboard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -433,7 +433,7 @@
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = CrystalClipboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jzzocc.CrystalClipboard;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jzzocc.crystal-clipboard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -516,6 +516,7 @@
 				D0B0CE111F4671E8006201CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0B0CE121F4671E8006201CE /* Build configuration list for PBXNativeTarget "CrystalClipboardTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +525,7 @@
 				D0B0CE141F4671E8006201CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0B0CE151F4671E8006201CE /* Build configuration list for PBXNativeTarget "CrystalClipboardUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +534,7 @@
 				D0B0CE171F4671E8006201CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
