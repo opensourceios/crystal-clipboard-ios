@@ -74,6 +74,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D035A2C31F46921000B6887B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D0B0CDF61F4671E8006201CE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D035A2C41F46923E00B6887B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D0B0CDF31F4671E8006201CE /* LaunchScreen.storyboard */,
+				D0B0CDEE1F4671E8006201CE /* Main.storyboard */,
+			);
+			name = Storyboards;
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D035A2C51F46928600B6887B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D0B0CDEC1F4671E8006201CE /* ViewController.swift */,
+			);
+			name = Controllers;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D035A2C61F46929A00B6887B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D0B0CE0C1F4671E8006201CE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D035A2C71F4692A800B6887B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D0B0CE011F4671E8006201CE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		D0B0CDDE1F4671E8006201CE = {
 			isa = PBXGroup;
 			children = (
@@ -97,12 +143,11 @@
 		D0B0CDE91F4671E8006201CE /* CrystalClipboard */ = {
 			isa = PBXGroup;
 			children = (
+				D035A2C51F46928600B6887B /* Controllers */,
+				D035A2C41F46923E00B6887B /* Storyboards */,
+				D035A2C31F46921000B6887B /* Supporting Files */,
 				D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */,
-				D0B0CDEC1F4671E8006201CE /* ViewController.swift */,
-				D0B0CDEE1F4671E8006201CE /* Main.storyboard */,
 				D0B0CDF11F4671E8006201CE /* Assets.xcassets */,
-				D0B0CDF31F4671E8006201CE /* LaunchScreen.storyboard */,
-				D0B0CDF61F4671E8006201CE /* Info.plist */,
 			);
 			path = CrystalClipboard;
 			sourceTree = "<group>";
@@ -110,8 +155,8 @@
 		D0B0CDFE1F4671E8006201CE /* CrystalClipboardTests */ = {
 			isa = PBXGroup;
 			children = (
+				D035A2C71F4692A800B6887B /* Supporting Files */,
 				D0B0CDFF1F4671E8006201CE /* CrystalClipboardTests.swift */,
-				D0B0CE011F4671E8006201CE /* Info.plist */,
 			);
 			path = CrystalClipboardTests;
 			sourceTree = "<group>";
@@ -119,8 +164,8 @@
 		D0B0CE091F4671E8006201CE /* CrystalClipboardUITests */ = {
 			isa = PBXGroup;
 			children = (
+				D035A2C61F46929A00B6887B /* Supporting Files */,
 				D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */,
-				D0B0CE0C1F4671E8006201CE /* Info.plist */,
 			);
 			path = CrystalClipboardUITests;
 			sourceTree = "<group>";
@@ -305,6 +350,7 @@
 				D0B0CDEF1F4671E8006201CE /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		D0B0CDF31F4671E8006201CE /* LaunchScreen.storyboard */ = {
@@ -313,6 +359,7 @@
 				D0B0CDF41F4671E8006201CE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -418,7 +465,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
-				INFOPLIST_FILE = CrystalClipboard/Info.plist;
+				INFOPLIST_FILE = "CrystalClipboard/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jzzocc.crystal-clipboard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -431,7 +478,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
-				INFOPLIST_FILE = CrystalClipboard/Info.plist;
+				INFOPLIST_FILE = "CrystalClipboard/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jzzocc.crystal-clipboard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -445,7 +492,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
-				INFOPLIST_FILE = CrystalClipboardTests/Info.plist;
+				INFOPLIST_FILE = "CrystalClipboardTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jzzocc.CrystalClipboardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -460,7 +507,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
-				INFOPLIST_FILE = CrystalClipboardTests/Info.plist;
+				INFOPLIST_FILE = "CrystalClipboardTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jzzocc.CrystalClipboardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -474,7 +521,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
-				INFOPLIST_FILE = CrystalClipboardUITests/Info.plist;
+				INFOPLIST_FILE = "CrystalClipboardUITests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jzzocc.CrystalClipboardUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -488,7 +535,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
-				INFOPLIST_FILE = CrystalClipboardUITests/Info.plist;
+				INFOPLIST_FILE = "CrystalClipboardUITests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jzzocc.CrystalClipboardUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
