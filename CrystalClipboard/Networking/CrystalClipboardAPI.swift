@@ -6,7 +6,6 @@
 //  Copyright © 2017 Justin Mazzocchi. All rights reserved.
 //
 
-import Foundation
 import Moya
 
 protocol CrystalClipboardAPI {}
