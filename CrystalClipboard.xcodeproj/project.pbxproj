@@ -11,9 +11,6 @@
 		5139455BEAD1A38DFBEC3EFE /* Pods_CrystalClipboard_CrystalClipboardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB6D1252A5CFB8E0A71638C /* Pods_CrystalClipboard_CrystalClipboardUITests.framework */; };
 		AC34E29D5531A22239EC7F0A /* Pods_CrystalClipboard_CrystalClipboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6AEB327ECEAE3823D0BFB96 /* Pods_CrystalClipboard_CrystalClipboardTests.framework */; };
 		D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */; };
-		D04C145B1F46A34D0068AEA0 /* SignIn.json in Resources */ = {isa = PBXBuildFile; fileRef = D04C145A1F46A34D0068AEA0 /* SignIn.json */; };
-		D04C145D1F46A3E30068AEA0 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C145C1F46A3E30068AEA0 /* TestHelpers.swift */; };
-		D04C145F1F46AAD30068AEA0 /* SignIn.json in Resources */ = {isa = PBXBuildFile; fileRef = D04C145A1F46A34D0068AEA0 /* SignIn.json */; };
 		D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */; };
 		D0B0CDED1F4671E8006201CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CDEC1F4671E8006201CE /* ViewController.swift */; };
 		D0B0CDF01F4671E8006201CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDEE1F4671E8006201CE /* Main.storyboard */; };
@@ -21,6 +18,7 @@
 		D0B0CDF51F4671E8006201CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDF31F4671E8006201CE /* LaunchScreen.storyboard */; };
 		D0B0CE001F4671E8006201CE /* CrystalClipboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CDFF1F4671E8006201CE /* CrystalClipboardTests.swift */; };
 		D0B0CE0B1F4671E8006201CE /* CrystalClipboardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */; };
+		D0D59B6C1F4A01DA00200ABD /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D59B6B1F4A01DA00200ABD /* SampleData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +51,6 @@
 		C526E4CC18C0F90CF02AF061 /* Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig"; sourceTree = "<group>"; };
 		C6AEB327ECEAE3823D0BFB96 /* Pods_CrystalClipboard_CrystalClipboardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrystalClipboard_CrystalClipboardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrystalClipboardAPI.swift; path = Networking/CrystalClipboardAPI.swift; sourceTree = "<group>"; };
-		D04C145A1F46A34D0068AEA0 /* SignIn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = SignIn.json; path = "Stubbed Responses/SignIn.json"; sourceTree = "<group>"; };
-		D04C145C1F46A3E30068AEA0 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		D0B0CDE71F4671E8006201CE /* CrystalClipboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrystalClipboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B0CDEC1F4671E8006201CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +64,7 @@
 		D0B0CE061F4671E8006201CE /* CrystalClipboardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrystalClipboardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrystalClipboardUITests.swift; sourceTree = "<group>"; };
 		D0B0CE0C1F4671E8006201CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0D59B6B1F4A01DA00200ABD /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		D22B5B8698FE83A31D24280D /* Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; sourceTree = "<group>"; };
 		DD3162C9717AFAFB194112F5 /* Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardUITests/Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DE6B83F86CF51E1C918D30E6 /* Pods-CrystalClipboard-CrystalClipboardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -166,16 +163,9 @@
 			isa = PBXGroup;
 			children = (
 				D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */,
+				D0D59B6B1F4A01DA00200ABD /* SampleData.swift */,
 			);
 			name = Networking;
-			sourceTree = "<group>";
-		};
-		D04C14591F46A2820068AEA0 /* Stubbed Responses */ = {
-			isa = PBXGroup;
-			children = (
-				D04C145A1F46A34D0068AEA0 /* SignIn.json */,
-			);
-			name = "Stubbed Responses";
 			sourceTree = "<group>";
 		};
 		D0B0CDDE1F4671E8006201CE = {
@@ -217,9 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				D0B0CDFF1F4671E8006201CE /* CrystalClipboardTests.swift */,
-				D04C14591F46A2820068AEA0 /* Stubbed Responses */,
 				D035A2C71F4692A800B6887B /* Supporting Files */,
-				D04C145C1F46A3E30068AEA0 /* TestHelpers.swift */,
 			);
 			path = CrystalClipboardTests;
 			sourceTree = "<group>";
@@ -365,7 +353,6 @@
 				D0B0CDF51F4671E8006201CE /* LaunchScreen.storyboard in Resources */,
 				D0B0CDF21F4671E8006201CE /* Assets.xcassets in Resources */,
 				D0B0CDF01F4671E8006201CE /* Main.storyboard in Resources */,
-				D04C145F1F46AAD30068AEA0 /* SignIn.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +360,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D04C145B1F46A34D0068AEA0 /* SignIn.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +560,7 @@
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
 				D0B0CDED1F4671E8006201CE /* ViewController.swift in Sources */,
 				D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */,
+				D0D59B6C1F4A01DA00200ABD /* SampleData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,7 +569,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0B0CE001F4671E8006201CE /* CrystalClipboardTests.swift in Sources */,
-				D04C145D1F46A3E30068AEA0 /* TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

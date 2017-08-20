@@ -69,12 +69,6 @@ extension CrystalClipboardUnauthenticatedAPI: TargetType {
             ]
         }
     }
-    
-    var sampleData: Data {
-        switch self {
-        case .signIn: return stubbedResponse("SignIn")
-        }
-    }
 }
 
 extension CrystalClipboardAuthenticatedAPI: TargetType {
@@ -118,16 +112,6 @@ extension CrystalClipboardAuthenticatedAPI: TargetType {
         default: return nil
         }
     }
-    
-    var sampleData: Data {
-        switch self {
-        case .me: fatalError("TODO")
-        case .listClips: fatalError("TODO")
-        case .createClip: fatalError("TODO")
-        case .deleteClip: return Data()
-        case .signOut: return Data()
-        }
-    }
 }
 
 extension CrystalClipboardAdminAPI: TargetType {
@@ -167,18 +151,4 @@ extension CrystalClipboardAdminAPI: TargetType {
             ]
         }
     }
-    
-    var sampleData: Data {
-        switch self {
-        case .createUser: fatalError("TODO")
-        case .resetPassword: return Data()
-        }
-    }
-}
-
-fileprivate func stubbedResponse(_ filename: String) -> Data! {
-    @objc class ClassInTestBundle: NSObject {}
-    let bundle = Bundle(for: ClassInTestBundle.self)
-    let path = bundle.path(forResource: filename, ofType: "json")
-    return (try? Data(contentsOf: URL(fileURLWithPath: path!)))
 }
