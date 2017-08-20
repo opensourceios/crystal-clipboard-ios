@@ -622,6 +622,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				API_BASE_URL = "https://staging.crystalclipboard.com/api/v1";
+				CABLE_URL = "https://staging.crystalclipboard.com/cable";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -687,7 +688,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D22B5B8698FE83A31D24280D /* Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = "CrystalClipboardTests/Supporting Files/Info.plist";
@@ -703,7 +704,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A17C59FE1324900FFB22280F /* Pods-CrystalClipboard-CrystalClipboardUITests.staging.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = "CrystalClipboardUITests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -719,6 +720,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				API_BASE_URL = "https://www.crystalclipboard.com/api/v1";
+				CABLE_URL = "https://www.crystalclipboard.com/cable";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -777,7 +779,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C526E4CC18C0F90CF02AF061 /* Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = "CrystalClipboardTests/Supporting Files/Info.plist";
@@ -793,7 +795,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1F8E08AE67B4CCC73144131C /* Pods-CrystalClipboard-CrystalClipboardUITests.production.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = "CrystalClipboardUITests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -809,6 +811,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				API_BASE_URL = "https://staging.crystalclipboard.com/api/v1";
+				CABLE_URL = "https://staging.crystalclipboard.com/cable";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -861,6 +864,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				API_BASE_URL = "https://www.crystalclipboard.com/api/v1";
+				CABLE_URL = "https://www.crystalclipboard.com/cable";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -933,7 +937,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DE6B83F86CF51E1C918D30E6 /* Pods-CrystalClipboard-CrystalClipboardTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = "CrystalClipboardTests/Supporting Files/Info.plist";
@@ -949,7 +953,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 049571459341AB9B7512531E /* Pods-CrystalClipboard-CrystalClipboardTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = "CrystalClipboardTests/Supporting Files/Info.plist";
@@ -965,7 +969,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 45FB058D9BD0827705930D3E /* Pods-CrystalClipboard-CrystalClipboardUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = "CrystalClipboardUITests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -980,7 +984,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DD3162C9717AFAFB194112F5 /* Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = "CrystalClipboardUITests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
