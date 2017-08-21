@@ -13,7 +13,6 @@
 		D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0112B7F1F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld */; };
 		D0112B851F4A7E8400999761 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0112B841F4A7E8400999761 /* Clip.swift */; };
 		D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */; };
-		D05335F71F4A82520077B1F9 /* NSManagedObjectContext+CrystalClipboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335F61F4A82520077B1F9 /* NSManagedObjectContext+CrystalClipboardExtensions.swift */; };
 		D05335FC1F4A861A0077B1F9 /* ClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FB1F4A861A0077B1F9 /* ClipTests.swift */; };
 		D05335FE1F4A87DA0077B1F9 /* CoreDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FD1F4A87DA0077B1F9 /* CoreDataTestCase.swift */; };
 		D05336051F4A9E700077B1F9 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05336041F4A9E700077B1F9 /* DateParser.swift */; };
@@ -66,7 +65,6 @@
 		D0112B801F4A7BAE00999761 /* CrystalClipboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CrystalClipboard.xcdatamodel; sourceTree = "<group>"; };
 		D0112B841F4A7E8400999761 /* Clip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clip.swift; path = Model/Clip.swift; sourceTree = "<group>"; };
 		D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrystalClipboardAPI.swift; path = Networking/CrystalClipboardAPI.swift; sourceTree = "<group>"; };
-		D05335F61F4A82520077B1F9 /* NSManagedObjectContext+CrystalClipboardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+CrystalClipboardExtensions.swift"; path = "Extensions/NSManagedObjectContext+CrystalClipboardExtensions.swift"; sourceTree = "<group>"; };
 		D05335FB1F4A861A0077B1F9 /* ClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTests.swift; path = Model/ClipTests.swift; sourceTree = "<group>"; };
 		D05335FD1F4A87DA0077B1F9 /* CoreDataTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestCase.swift; sourceTree = "<group>"; };
 		D05336041F4A9E700077B1F9 /* DateParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateParser.swift; path = Utilities/DateParser.swift; sourceTree = "<group>"; };
@@ -206,14 +204,6 @@
 			name = Networking;
 			sourceTree = "<group>";
 		};
-		D05335F51F4A82110077B1F9 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				D05335F61F4A82520077B1F9 /* NSManagedObjectContext+CrystalClipboardExtensions.swift */,
-			);
-			name = Extensions;
-			sourceTree = "<group>";
-		};
 		D05335FA1F4A85FA0077B1F9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,7 +265,6 @@
 				D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */,
 				D0B0CDF11F4671E8006201CE /* Assets.xcassets */,
 				D035A2C51F46928600B6887B /* Controllers */,
-				D05335F51F4A82110077B1F9 /* Extensions */,
 				D0112B7E1F4A7B5200999761 /* Model */,
 				D04C144C1F46975E0068AEA0 /* Networking */,
 				D035A2C41F46923E00B6887B /* Storyboards */,
@@ -664,7 +653,6 @@
 			files = (
 				D0979B631F4B306100B8407F /* RootViewController.swift in Sources */,
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
-				D05335F71F4A82520077B1F9 /* NSManagedObjectContext+CrystalClipboardExtensions.swift in Sources */,
 				D0112B851F4A7E8400999761 /* Clip.swift in Sources */,
 				D0979B671F4B31EB00B8407F /* SignUpViewController.swift in Sources */,
 				D05336051F4A9E700077B1F9 /* DateParser.swift in Sources */,

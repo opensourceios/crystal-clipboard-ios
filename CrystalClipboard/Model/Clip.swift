@@ -15,16 +15,15 @@ class Clip: NSManagedObject {
     @NSManaged fileprivate(set) var createdAt: Date
     
     @discardableResult
-    static func insert(into context: NSManagedObjectContext, id: Int, text: String, createdAt: Date) -> Clip {
-        let clip: Clip = context.insertObject()
-        clip.id = id
-        clip.text = text
-        clip.createdAt = createdAt
-        return clip
+    convenience init(context: NSManagedObjectContext, id: Int, text: String, createdAt: Date) {
+        self.init(context: context)
+        self.id = id
+        self.text = text
+        self.createdAt = createdAt
     }
     
     @discardableResult
-    static func insert(into context: NSManagedObjectContext, json: [String: Any]) -> Clip? {
+    convenience init?(context: NSManagedObjectContext, json: [String: Any]) {
         let swiftyJSON = JSON(json)
         guard
             let idString = swiftyJSON["data"]["id"].string,
@@ -34,6 +33,6 @@ class Clip: NSManagedObject {
             let date = DateParser.date(from: dateString) else {
                 return nil
         }
-        return insert(into: context, id: id, text: text, createdAt: date)
+        self.init(context: context, id: id, text: text, createdAt: date)
     }
 }

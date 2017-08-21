@@ -14,10 +14,9 @@ import SwiftyJSON
 class ClipTests: CoreDataTestCase {
     func testInsert() {
         let now = Date()
-        managedObjectContext.performChangesAndWait {
-            Clip.insert(into: self.managedObjectContext, id: 1, text: "hi", createdAt: now)
-        }
-        let fetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
+        Clip(context: self.managedObjectContext, id: 1, text: "hi", createdAt: now)
+        try! managedObjectContext.save()
+        let fetchRequest = Clip.fetchRequest() as! NSFetchRequest<Clip>
         let clip = try! managedObjectContext.fetch(fetchRequest).first!
         XCTAssertEqual(clip.id, 1)
         XCTAssertEqual(clip.text, "hi")
@@ -25,25 +24,20 @@ class ClipTests: CoreDataTestCase {
     }
     
     func testUniqueId() {
-        managedObjectContext.performChangesAndWait {
-            Clip.insert(into: self.managedObjectContext, id: 1, text: "hi", createdAt: Date())
-            Clip.insert(into: self.managedObjectContext, id: 2, text: "yo", createdAt: Date())
-            Clip.insert(into: self.managedObjectContext, id: 1, text: "there can only be one", createdAt: Date())
-        }
-        let fetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Clip.text), ascending: true)]
+        Clip(context: self.managedObjectContext, id: 1, text: "hi", createdAt: Date())
+        Clip(context: self.managedObjectContext, id: 2, text: "yo", createdAt: Date())
+        Clip(context: self.managedObjectContext, id: 1, text: "there can only be one", createdAt: Date())
+        try! managedObjectContext.save()
+        let fetchRequest = Clip.fetchRequest() as! NSFetchRequest<Clip>
         XCTAssertEqual(try! managedObjectContext.count(for: fetchRequest), 2)
-        let clip = try! managedObjectContext.fetch(fetchRequest).first!
-        XCTAssertEqual(clip.text, "hi")
     }
     
     func testDeserialization() {
         let jsonData = CrystalClipboardAuthenticatedAPI.createClip(text: "test").sampleData
         let json = try! JSONSerialization.jsonObject(with: jsonData) as! [String: Any]
-        managedObjectContext.performChangesAndWait {
-            Clip.insert(into: self.managedObjectContext, json: json)
-        }
-        let fetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
+        Clip(context: self.managedObjectContext, json: json)
+        try! managedObjectContext.save()
+        let fetchRequest = Clip.fetchRequest() as! NSFetchRequest<Clip>
         let clip = try! managedObjectContext.fetch(fetchRequest).first!
         XCTAssertEqual(clip.id, 5659)
         XCTAssertEqual(clip.text, "test")

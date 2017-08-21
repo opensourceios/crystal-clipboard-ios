@@ -16,10 +16,12 @@ class CoreDataTestCase: XCTestCase {
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
         container.persistentStoreDescriptions = [description]
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            guard error == nil else { fatalError("Could not load store: %@") }
-        })
         container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        container.loadPersistentStores { storeDescription, error in
+            if let error = error {
+                fatalError("Could not load store: \(error)")
+            }
+        }
         return container
     }()
     
