@@ -19,6 +19,7 @@
 		D0B0CE001F4671E8006201CE /* CrystalClipboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CDFF1F4671E8006201CE /* CrystalClipboardTests.swift */; };
 		D0B0CE0B1F4671E8006201CE /* CrystalClipboardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */; };
 		D0D59B6C1F4A01DA00200ABD /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D59B6B1F4A01DA00200ABD /* SampleData.swift */; };
+		D0D59B701F4A0A0100200ABD /* Cable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D59B6F1F4A0A0100200ABD /* Cable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrystalClipboardUITests.swift; sourceTree = "<group>"; };
 		D0B0CE0C1F4671E8006201CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0D59B6B1F4A01DA00200ABD /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		D0D59B6F1F4A0A0100200ABD /* Cable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cable.swift; path = Networking/Cable.swift; sourceTree = "<group>"; };
 		D22B5B8698FE83A31D24280D /* Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; sourceTree = "<group>"; };
 		DD3162C9717AFAFB194112F5 /* Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardUITests/Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DE6B83F86CF51E1C918D30E6 /* Pods-CrystalClipboard-CrystalClipboardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		D04C144C1F46975E0068AEA0 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				D0D59B6F1F4A0A0100200ABD /* Cable.swift */,
 				D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */,
 				D0D59B6B1F4A01DA00200ABD /* SampleData.swift */,
 			);
@@ -566,6 +569,7 @@
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
 				D0B0CDED1F4671E8006201CE /* ViewController.swift in Sources */,
 				D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */,
+				D0D59B701F4A0A0100200ABD /* Cable.swift in Sources */,
 				D0D59B6C1F4A01DA00200ABD /* SampleData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -681,6 +685,8 @@
 			baseConfigurationReference = 98AC7623A1F6DE69C6EFFEC0 /* Pods-CrystalClipboard.staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CABLE_ORIGIN = "https://staging.crystalclipboard.com";
+				CABLE_URL = "wss://staging.crystalclipboard.com/cable";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = "CrystalClipboard/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -772,6 +778,8 @@
 			baseConfigurationReference = 036FB4EE4B70B036D66AEB84 /* Pods-CrystalClipboard.production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CABLE_ORIGIN = "https://www.crystalclipboard.com";
+				CABLE_URL = "wss://www.crystalclipboard.com/cable";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = "CrystalClipboard/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -916,6 +924,8 @@
 			baseConfigurationReference = E68A0DE5861D5A1DDBC176A1 /* Pods-CrystalClipboard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CABLE_ORIGIN = "https://staging.crystalclipboard.com";
+				CABLE_URL = "wss://staging.crystalclipboard.com/cable";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = "CrystalClipboard/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -930,6 +940,8 @@
 			baseConfigurationReference = 2DDB744BC89EB2A5AAB315A0 /* Pods-CrystalClipboard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CABLE_ORIGIN = "https://www.crystalclipboard.com";
+				CABLE_URL = "wss://www.crystalclipboard.com/cable";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = "CrystalClipboard/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
