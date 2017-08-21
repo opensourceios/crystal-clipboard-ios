@@ -10,7 +10,12 @@
 		071DD13392D6F63A9C9E6577 /* Pods_CrystalClipboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD82DAABCF3EFB0DB952AD3 /* Pods_CrystalClipboard.framework */; };
 		5139455BEAD1A38DFBEC3EFE /* Pods_CrystalClipboard_CrystalClipboardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB6D1252A5CFB8E0A71638C /* Pods_CrystalClipboard_CrystalClipboardUITests.framework */; };
 		AC34E29D5531A22239EC7F0A /* Pods_CrystalClipboard_CrystalClipboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6AEB327ECEAE3823D0BFB96 /* Pods_CrystalClipboard_CrystalClipboardTests.framework */; };
+		D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0112B7F1F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld */; };
+		D0112B851F4A7E8400999761 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0112B841F4A7E8400999761 /* Clip.swift */; };
 		D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */; };
+		D05335F71F4A82520077B1F9 /* NSManagedObjectContext+CrystalClipboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335F61F4A82520077B1F9 /* NSManagedObjectContext+CrystalClipboardExtensions.swift */; };
+		D05335FC1F4A861A0077B1F9 /* ClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FB1F4A861A0077B1F9 /* ClipTests.swift */; };
+		D05335FE1F4A87DA0077B1F9 /* CoreDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FD1F4A87DA0077B1F9 /* CoreDataTestCase.swift */; };
 		D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */; };
 		D0B0CDED1F4671E8006201CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CDEC1F4671E8006201CE /* ViewController.swift */; };
 		D0B0CDF01F4671E8006201CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDEE1F4671E8006201CE /* Main.storyboard */; };
@@ -51,7 +56,12 @@
 		AAB6D1252A5CFB8E0A71638C /* Pods_CrystalClipboard_CrystalClipboardUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrystalClipboard_CrystalClipboardUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C526E4CC18C0F90CF02AF061 /* Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig"; sourceTree = "<group>"; };
 		C6AEB327ECEAE3823D0BFB96 /* Pods_CrystalClipboard_CrystalClipboardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrystalClipboard_CrystalClipboardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0112B801F4A7BAE00999761 /* CrystalClipboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CrystalClipboard.xcdatamodel; sourceTree = "<group>"; };
+		D0112B841F4A7E8400999761 /* Clip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clip.swift; path = Model/Clip.swift; sourceTree = "<group>"; };
 		D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrystalClipboardAPI.swift; path = Networking/CrystalClipboardAPI.swift; sourceTree = "<group>"; };
+		D05335F61F4A82520077B1F9 /* NSManagedObjectContext+CrystalClipboardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+CrystalClipboardExtensions.swift"; path = "Extensions/NSManagedObjectContext+CrystalClipboardExtensions.swift"; sourceTree = "<group>"; };
+		D05335FB1F4A861A0077B1F9 /* ClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTests.swift; path = Model/ClipTests.swift; sourceTree = "<group>"; };
+		D05335FD1F4A87DA0077B1F9 /* CoreDataTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestCase.swift; sourceTree = "<group>"; };
 		D0B0CDE71F4671E8006201CE /* CrystalClipboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrystalClipboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B0CDEC1F4671E8006201CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +130,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D0112B7E1F4A7B5200999761 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D0112B841F4A7E8400999761 /* Clip.swift */,
+				D0112B7F1F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		D035A2C31F46921000B6887B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +190,22 @@
 			name = Networking;
 			sourceTree = "<group>";
 		};
+		D05335F51F4A82110077B1F9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D05335F61F4A82520077B1F9 /* NSManagedObjectContext+CrystalClipboardExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		D05335FA1F4A85FA0077B1F9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D05335FB1F4A861A0077B1F9 /* ClipTests.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		D0B0CDDE1F4671E8006201CE = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +234,8 @@
 				D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */,
 				D0B0CDF11F4671E8006201CE /* Assets.xcassets */,
 				D035A2C51F46928600B6887B /* Controllers */,
+				D05335F51F4A82110077B1F9 /* Extensions */,
+				D0112B7E1F4A7B5200999761 /* Model */,
 				D04C144C1F46975E0068AEA0 /* Networking */,
 				D035A2C41F46923E00B6887B /* Storyboards */,
 				D035A2C31F46921000B6887B /* Supporting Files */,
@@ -209,7 +246,9 @@
 		D0B0CDFE1F4671E8006201CE /* CrystalClipboardTests */ = {
 			isa = PBXGroup;
 			children = (
+				D05335FD1F4A87DA0077B1F9 /* CoreDataTestCase.swift */,
 				D0B0CDFF1F4671E8006201CE /* CrystalClipboardTests.swift */,
+				D05335FA1F4A85FA0077B1F9 /* Model */,
 				D035A2C71F4692A800B6887B /* Supporting Files */,
 			);
 			path = CrystalClipboardTests;
@@ -567,6 +606,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
+				D05335F71F4A82520077B1F9 /* NSManagedObjectContext+CrystalClipboardExtensions.swift in Sources */,
+				D0112B851F4A7E8400999761 /* Clip.swift in Sources */,
+				D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */,
 				D0B0CDED1F4671E8006201CE /* ViewController.swift in Sources */,
 				D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */,
 				D0D59B701F4A0A0100200ABD /* Cable.swift in Sources */,
@@ -579,6 +621,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0B0CE001F4671E8006201CE /* CrystalClipboardTests.swift in Sources */,
+				D05335FE1F4A87DA0077B1F9 /* CoreDataTestCase.swift in Sources */,
+				D05335FC1F4A861A0077B1F9 /* ClipTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1061,6 +1105,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D0112B7F1F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D0112B801F4A7BAE00999761 /* CrystalClipboard.xcdatamodel */,
+			);
+			currentVersion = D0112B801F4A7BAE00999761 /* CrystalClipboard.xcdatamodel */;
+			name = CrystalClipboard.xcdatamodeld;
+			path = Model/CrystalClipboard.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D0B0CDDF1F4671E8006201CE /* Project object */;
 }
