@@ -8,6 +8,7 @@
 
 import XCTest
 import CoreData
+import SwiftyJSON
 @testable import CrystalClipboard
 
 class ClipTests: CoreDataTestCase {
@@ -34,5 +35,20 @@ class ClipTests: CoreDataTestCase {
         XCTAssertEqual(try! managedObjectContext.count(for: fetchRequest), 2)
         let clip = try! managedObjectContext.fetch(fetchRequest).first!
         XCTAssertEqual(clip.text, "hi")
+    }
+    
+    func testDeserialization() {
+        let jsonData = CrystalClipboardAuthenticatedAPI.createClip(text: "test").sampleData
+        let json = try! JSONSerialization.jsonObject(with: jsonData) as! [String: Any]
+        managedObjectContext.performChangesAndWait {
+            Clip.insert(into: self.managedObjectContext, json: json)
+        }
+        let fetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
+        let clip = try! managedObjectContext.fetch(fetchRequest).first!
+        XCTAssertEqual(clip.id, 5659)
+        XCTAssertEqual(clip.text, "test")
+        let createdAtString = JSON(json)["data"]["attributes"]["created-at"].stringValue
+        let createdAt = DateParser.date(from: createdAtString)
+        XCTAssertEqual(clip.createdAt, createdAt!)
     }
 }

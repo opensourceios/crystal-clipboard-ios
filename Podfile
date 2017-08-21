@@ -15,6 +15,7 @@ plugin 'cocoapods-keys', {
 target 'CrystalClipboard' do
   pod 'Moya/ReactiveSwift', '~> 8.0'
   pod 'Starscream', '~> 2.1'
+  pod 'SwiftyJSON', '~> 3.1'
   target 'CrystalClipboardTests'
   target 'CrystalClipboardUITests'
 end

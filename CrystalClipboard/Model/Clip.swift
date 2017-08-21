@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import SwiftyJSON
 
 class Clip: NSManagedObject {
     @NSManaged fileprivate(set) var id: Int
@@ -20,5 +21,19 @@ class Clip: NSManagedObject {
         clip.text = text
         clip.createdAt = createdAt
         return clip
+    }
+    
+    @discardableResult
+    static func insert(into context: NSManagedObjectContext, json: [String: Any]) -> Clip? {
+        let swiftyJSON = JSON(json)
+        guard
+            let idString = swiftyJSON["data"]["id"].string,
+            let id = Int(idString),
+            let text = swiftyJSON["data"]["attributes"]["text"].string,
+            let dateString = swiftyJSON["data"]["attributes"]["created-at"].string,
+            let date = DateParser.date(from: dateString) else {
+                return nil
+        }
+        return insert(into: context, id: id, text: text, createdAt: date)
     }
 }
