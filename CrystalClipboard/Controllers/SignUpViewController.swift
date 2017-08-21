@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveSwift
+import ReactiveCocoa
 
 class SignUpViewController: UIViewController {
     let viewModel: SignUpViewModelType = SignUpViewModel()
@@ -17,11 +18,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.viewModel.outputs.signUpButtonEnabled
-            .observe(on: UIScheduler())
-            .observeValues { [weak self] enabled in self?.signUpButton.isEnabled = enabled }
-
-        viewModel.inputs.viewDidLoad()
+        self.signUpButton.reactive.isEnabled <~ self.viewModel.outputs.signUpButtonEnabled
     }
 
 }
