@@ -98,7 +98,9 @@ class Cable {
     }
     
     func unsubscribe(channelIdentifier: String) {
-        self.command(.unsubscribe(channelIdentifier: channelIdentifier))
+        self.queue.async { [unowned self] in
+            self.command(.unsubscribe(channelIdentifier: channelIdentifier))
+        }
     }
     
     private func command(_ command: Command) {
