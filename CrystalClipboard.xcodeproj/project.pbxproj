@@ -17,8 +17,14 @@
 		D05335FC1F4A861A0077B1F9 /* ClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FB1F4A861A0077B1F9 /* ClipTests.swift */; };
 		D05335FE1F4A87DA0077B1F9 /* CoreDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FD1F4A87DA0077B1F9 /* CoreDataTestCase.swift */; };
 		D05336051F4A9E700077B1F9 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05336041F4A9E700077B1F9 /* DateParser.swift */; };
+		D0979B631F4B306100B8407F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B621F4B306100B8407F /* RootViewController.swift */; };
+		D0979B671F4B31EB00B8407F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B661F4B31EB00B8407F /* SignUpViewController.swift */; };
+		D0979B691F4B325300B8407F /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B681F4B325300B8407F /* SignUpViewModel.swift */; };
+		D0979B6B1F4B33F300B8407F /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B6A1F4B33F300B8407F /* LandingViewController.swift */; };
+		D0979B6D1F4B341200B8407F /* LandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B6C1F4B341200B8407F /* LandingViewModel.swift */; };
+		D0979B801F4B495800B8407F /* SignUpViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B7F1F4B495800B8407F /* SignUpViewModelTests.swift */; };
+		D0979B821F4B580800B8407F /* TestObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B811F4B580800B8407F /* TestObserver.swift */; };
 		D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */; };
-		D0B0CDED1F4671E8006201CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CDEC1F4671E8006201CE /* ViewController.swift */; };
 		D0B0CDF01F4671E8006201CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDEE1F4671E8006201CE /* Main.storyboard */; };
 		D0B0CDF21F4671E8006201CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDF11F4671E8006201CE /* Assets.xcassets */; };
 		D0B0CDF51F4671E8006201CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDF31F4671E8006201CE /* LaunchScreen.storyboard */; };
@@ -64,9 +70,15 @@
 		D05335FB1F4A861A0077B1F9 /* ClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTests.swift; path = Model/ClipTests.swift; sourceTree = "<group>"; };
 		D05335FD1F4A87DA0077B1F9 /* CoreDataTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestCase.swift; sourceTree = "<group>"; };
 		D05336041F4A9E700077B1F9 /* DateParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateParser.swift; path = Utilities/DateParser.swift; sourceTree = "<group>"; };
+		D0979B621F4B306100B8407F /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		D0979B661F4B31EB00B8407F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		D0979B681F4B325300B8407F /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModel.swift; path = "View Models/SignUpViewModel.swift"; sourceTree = "<group>"; };
+		D0979B6A1F4B33F300B8407F /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		D0979B6C1F4B341200B8407F /* LandingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingViewModel.swift; path = "View Models/LandingViewModel.swift"; sourceTree = "<group>"; };
+		D0979B7F1F4B495800B8407F /* SignUpViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModelTests.swift; path = "View Models/SignUpViewModelTests.swift"; sourceTree = "<group>"; };
+		D0979B811F4B580800B8407F /* TestObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestObserver.swift; sourceTree = "<group>"; };
 		D0B0CDE71F4671E8006201CE /* CrystalClipboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrystalClipboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D0B0CDEC1F4671E8006201CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D0B0CDEF1F4671E8006201CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D0B0CDF11F4671E8006201CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0B0CDF41F4671E8006201CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -161,7 +173,9 @@
 		D035A2C51F46928600B6887B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D0B0CDEC1F4671E8006201CE /* ViewController.swift */,
+				D0979B621F4B306100B8407F /* RootViewController.swift */,
+				D0979B661F4B31EB00B8407F /* SignUpViewController.swift */,
+				D0979B6A1F4B33F300B8407F /* LandingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -216,6 +230,23 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		D0979B651F4B31B200B8407F /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				D0979B681F4B325300B8407F /* SignUpViewModel.swift */,
+				D0979B6C1F4B341200B8407F /* LandingViewModel.swift */,
+			);
+			name = "View Models";
+			sourceTree = "<group>";
+		};
+		D0979B7E1F4B491100B8407F /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				D0979B7F1F4B495800B8407F /* SignUpViewModelTests.swift */,
+			);
+			name = "View Models";
+			sourceTree = "<group>";
+		};
 		D0B0CDDE1F4671E8006201CE = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +281,7 @@
 				D035A2C41F46923E00B6887B /* Storyboards */,
 				D035A2C31F46921000B6887B /* Supporting Files */,
 				D05336031F4A9E240077B1F9 /* Utilities */,
+				D0979B651F4B31B200B8407F /* View Models */,
 			);
 			path = CrystalClipboard;
 			sourceTree = "<group>";
@@ -261,6 +293,8 @@
 				D0B0CDFF1F4671E8006201CE /* CrystalClipboardTests.swift */,
 				D05335FA1F4A85FA0077B1F9 /* Model */,
 				D035A2C71F4692A800B6887B /* Supporting Files */,
+				D0979B811F4B580800B8407F /* TestObserver.swift */,
+				D0979B7E1F4B491100B8407F /* View Models */,
 			);
 			path = CrystalClipboardTests;
 			sourceTree = "<group>";
@@ -622,14 +656,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0979B631F4B306100B8407F /* RootViewController.swift in Sources */,
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
 				D05335F71F4A82520077B1F9 /* NSManagedObjectContext+CrystalClipboardExtensions.swift in Sources */,
 				D0112B851F4A7E8400999761 /* Clip.swift in Sources */,
+				D0979B671F4B31EB00B8407F /* SignUpViewController.swift in Sources */,
 				D05336051F4A9E700077B1F9 /* DateParser.swift in Sources */,
 				D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */,
-				D0B0CDED1F4671E8006201CE /* ViewController.swift in Sources */,
 				D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */,
 				D0D59B701F4A0A0100200ABD /* Cable.swift in Sources */,
+				D0979B691F4B325300B8407F /* SignUpViewModel.swift in Sources */,
+				D0979B6D1F4B341200B8407F /* LandingViewModel.swift in Sources */,
+				D0979B6B1F4B33F300B8407F /* LandingViewController.swift in Sources */,
 				D0D59B6C1F4A01DA00200ABD /* SampleData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,7 +678,9 @@
 			files = (
 				D0B0CE001F4671E8006201CE /* CrystalClipboardTests.swift in Sources */,
 				D05335FE1F4A87DA0077B1F9 /* CoreDataTestCase.swift in Sources */,
+				D0979B801F4B495800B8407F /* SignUpViewModelTests.swift in Sources */,
 				D05335FC1F4A861A0077B1F9 /* ClipTests.swift in Sources */,
+				D0979B821F4B580800B8407F /* TestObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
