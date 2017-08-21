@@ -8,7 +8,7 @@
 import XCTest
 import ReactiveSwift
 
-extension Event {
+extension Signal.Event {
     var isValue: Bool {
         if case .value = self {
             return true
@@ -68,14 +68,14 @@ public func XCTAssertEqual <T: ReactiveSwift.OptionalProtocol>
 
 internal final class TestObserver <Value, Error: Swift.Error> {
     
-    internal private(set) var events: [Event<Value, Error>] = []
-    internal private(set) var observer: Observer<Value, Error>!
+    internal private(set) var events: [Signal<Value, Error>.Event] = []
+    internal private(set) var observer: Signal<Value, Error>.Observer!
     
     internal init() {
-        self.observer = Observer<Value, Error>(action)
+        self.observer = Signal<Value, Error>.Observer(action)
     }
     
-    private func action(_ event: Event<Value, Error>) {
+    private func action(_ event: Signal<Value, Error>.Event) {
         self.events.append(event)
     }
     

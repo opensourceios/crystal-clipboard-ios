@@ -16,8 +16,8 @@ enum ChannelError: Error {
 
 typealias CableSignal = Signal<Cable.Event, NSError>
 typealias ChannelSignal = Signal<Cable.Event.Channel, ChannelError>
-typealias CableObserver = Observer<Cable.Event, NSError>
-typealias ChannelObserver = Observer<Cable.Event.Channel, ChannelError>
+typealias CableObserver = Signal<Cable.Event, NSError>.Observer
+typealias ChannelObserver = Signal<Cable.Event.Channel, ChannelError>.Observer
 
 class Cable {
     enum Event {

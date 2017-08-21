@@ -40,6 +40,10 @@ extension CrystalClipboardAPI where Self: TargetType {
     var parameterEncoding: ParameterEncoding {
         return JSONEncoding.default
     }
+    
+    var headers: [String : String]? {
+        return nil
+    }
 }
 
 extension CrystalClipboardUnauthenticatedAPI: TargetType {
