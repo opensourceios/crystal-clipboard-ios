@@ -124,6 +124,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sign Up" id="jEo-57-kPv"/>
                     <connections>
+                        <outlet property="emailTextField" destination="iGX-mV-Hd2" id="ecY-ou-qBo"/>
+                        <outlet property="passwordTextField" destination="JeF-Ob-s1d" id="BZJ-AN-Ysz"/>
                         <outlet property="signUpButton" destination="Jsg-2e-xrH" id="IYS-r3-e0y"/>
                     </connections>
                 </viewController>

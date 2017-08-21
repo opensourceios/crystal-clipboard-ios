@@ -11,14 +11,22 @@ import ReactiveSwift
 import ReactiveCocoa
 
 class SignUpViewController: UIViewController {
-    let viewModel: SignUpViewModelType = SignUpViewModel()
+    private let viewModel = SignUpViewModel()
 
-    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var signUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.signUpButton.reactive.isEnabled <~ self.viewModel.outputs.signUpButtonEnabled
+        self.emailTextField.text = self.viewModel.email.value
+        self.passwordTextField.text = self.viewModel.password.value
+        
+        self.viewModel.email <~ self.emailTextField.reactive.continuousTextValues.skipNil()
+        self.viewModel.password <~ self.passwordTextField.reactive.continuousTextValues.skipNil()
+        
+        self.signUpButton.reactive.isEnabled <~ self.viewModel.signUpButtonEnabled
     }
 
 }

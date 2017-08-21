@@ -9,40 +9,34 @@
 import ReactiveSwift
 import Result
 
-protocol SignUpViewModelInputs {
-    func viewDidLoad()
-}
-
-protocol SignUpViewModelOutputs {
-    var signUpButtonEnabled: Signal<Bool, NoError> { get }
-}
-
-protocol SignUpViewModelType {
-    var inputs: SignUpViewModelInputs { get }
-    var outputs: SignUpViewModelOutputs { get }
-}
-
-class SignUpViewModel: SignUpViewModelInputs, SignUpViewModelOutputs {
-    init() {
-        self.signUpButtonEnabled = Signal.merge(
-            self.viewDidLoadProperty.signal.map { _ in false }
-        )
+class SignUpViewModel {
+    enum SignUpFormError: Error {
+        case invalidEmail
+        case invalidPassword
     }
+    
+    static let minimumPasswordLength = 6
     
     // MARK: Inputs
     
-    let viewDidLoadProperty = MutableProperty()
-    
-    func viewDidLoad() {
-        self.viewDidLoadProperty.value = ()
-    }
+    let email: ValidatingProperty<String, SignUpFormError>
+    let password: ValidatingProperty<String, SignUpFormError>
     
     // MARK: Outputs
     
-    let signUpButtonEnabled: Signal<Bool, NoError>
-}
-
-extension SignUpViewModel: SignUpViewModelType {
-    var inputs: SignUpViewModelInputs { return self }
-    var outputs: SignUpViewModelOutputs { return self }
+    let signUpButtonEnabled: Property<Bool>
+    
+    // MARK: Initialization
+    
+    init() {
+        self.email = ValidatingProperty("") { input in
+            return input.characters.count > 0 ? .valid : .invalid(.invalidEmail)
+        }
+        self.password = ValidatingProperty("") { input in
+            return input.characters.count >= SignUpViewModel.minimumPasswordLength ? .valid : .invalid(.invalidPassword)
+        }
+        self.signUpButtonEnabled = Property
+            .combineLatest(email.result, password.result)
+            .map { email, password in !email.isInvalid && !password.isInvalid }
+    }
 }

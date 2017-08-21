@@ -12,17 +12,15 @@ import Result
 @testable import CrystalClipboard
 
 class SignUpViewModelTests: XCTestCase {
-    let viewModel: SignUpViewModelType = SignUpViewModel()
-    let signUpButtonEnabled = TestObserver<Bool, NoError>()
-    
-    override func setUp() {
-        super.setUp()
-        
-        self.viewModel.outputs.signUpButtonEnabled.observe(self.signUpButtonEnabled.observer)
-    }
+    let viewModel = SignUpViewModel()
     
     func testSignUpButtonEnabled() {
-        self.viewModel.inputs.viewDidLoad()
-        self.signUpButtonEnabled.assertValues([false])
+        XCTAssertFalse(viewModel.signUpButtonEnabled.value)
+        viewModel.email.value = "user@domain.com"
+        XCTAssertFalse(viewModel.signUpButtonEnabled.value)
+        viewModel.password.value = "123"
+        XCTAssertFalse(viewModel.signUpButtonEnabled.value)
+        viewModel.password.value = "123456"
+        XCTAssertTrue(viewModel.signUpButtonEnabled.value)
     }
 }
