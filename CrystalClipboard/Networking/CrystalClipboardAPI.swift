@@ -48,7 +48,7 @@ extension CrystalClipboardAPI: TargetType {
         case .resetPassword: return "/users/password"
         case .me: return "/me"
         case .listClips, .createClip: return "/me/clips"
-        case .deleteClip(let id): return "/me/clips/\(id)"
+        case let .deleteClip(id): return "/me/clips/\(id)"
         }
     }
     
@@ -62,46 +62,16 @@ extension CrystalClipboardAPI: TargetType {
     
     var parameters: [String : Any]? {
         switch self {
-        case .createUser(let email, let password):
-            return [
-                "data": [
-                    "type": "users",
-                    "attributes": [
-                        "email": email,
-                        "password": password
-                    ]
-                ]
-            ]
-        case .signIn(let email, let password):
-            return [
-                "data": [
-                    "type": "authentications",
-                    "attributes": [
-                        "email": email,
-                        "password": password
-                    ]
-                ]
-            ]
-        case .resetPassword(let email):
-            return [
-                "data": [
-                    "type": "password-resets",
-                    "attributes": [
-                        "email": email
-                    ]
-                ]
-            ]
-        case .listClips(let page, let pageSize):
+        case let .createUser(email, password):
+            return ["data": ["type": "users", "attributes": ["email": email, "password": password]]]
+        case let .signIn(email, password):
+            return ["data": ["type": "authentications", "attributes": ["email": email, "password": password]]]
+        case let .resetPassword(email):
+            return ["data": ["type": "password-resets", "attributes": ["email": email]]]
+        case let .listClips(page, pageSize):
             return ["page[number]": page, "page[size]": pageSize]
-        case .createClip(let text):
-            return [
-                "data": [
-                    "type": "clips",
-                    "attributes": [
-                        "text": text
-                    ]
-                ]
-            ]
+        case let .createClip(text):
+            return ["data": ["type": "clips", "attributes": ["text": text]]]
         default: return nil
         }
     }
