@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import Moya
 
 struct ResponseError: Error {
     let detail: String?
@@ -32,5 +33,15 @@ struct ResponseError: Error {
             let specificPointer = pointer.components(separatedBy: "/").last
             else { return nil }
         return "\(specificPointer.capitalized) \(detail)"
+    }
+}
+
+extension Response {
+    var errors: [ResponseError] {
+        if let json = (try? self.mapJSON()) as? [String: Any], let errors = ResponseError.deserializeErrors(json: json) {
+            return errors
+        }
+        
+        return []
     }
 }

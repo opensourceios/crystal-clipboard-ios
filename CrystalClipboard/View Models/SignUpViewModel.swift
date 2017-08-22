@@ -61,10 +61,8 @@ class SignUpViewModel {
             case let .value(response):
                 if let success = try? response.filterSuccessfulStatusCodes() {
                     // TODO: Save auth token
-                } else if
-                    let json = (try? response.mapJSON()) as? [String: Any],
-                    let errors = ResponseError.deserializeErrors(json: json) {
-                    let messages = errors.flatMap { $0.message }.joined(separator: "\n")
+                } else {
+                    let messages = response.errors.flatMap { $0.message }.joined(separator: "\n")
                     if messages.characters.count > 0 {
                         self?.alertMessageObserver.send(value: messages)
                     }
