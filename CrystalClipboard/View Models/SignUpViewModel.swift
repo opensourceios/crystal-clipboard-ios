@@ -9,6 +9,7 @@
 import ReactiveSwift
 import Result
 import Moya
+import SwiftyJSON
 
 class SignUpViewModel {
     enum SignUpFormError: Error {
@@ -58,7 +59,16 @@ class SignUpViewModel {
         self.signUp.values.observe { [weak self] event in
             switch event {
             case let .value(response):
-                print(response)
+                if let success = try? response.filterSuccessfulStatusCodes() {
+                    // TODO: Save auth token
+                } else if
+                    let json = (try? response.mapJSON()) as? [String: Any],
+                    let errors = ResponseError.deserializeErrors(json: json) {
+                    let messages = errors.flatMap { $0.message }.joined(separator: "\n")
+                    if messages.characters.count > 0 {
+                        self?.alertMessageObserver.send(value: messages)
+                    }
+                }
             case .failed(_):
                 let message = NSLocalizedString("You could not be signed up at this time", comment: "")
                 self?.alertMessageObserver.send(value: message)
