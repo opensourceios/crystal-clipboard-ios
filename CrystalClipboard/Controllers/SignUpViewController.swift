@@ -13,7 +13,7 @@ import Moya
 import Keys
 
 class SignUpViewController: UIViewController {
-    private let viewModel = SignUpViewModel(provider: MoyaProvider<CrystalClipboardAdminAPI>(plugins: [AccessTokenPlugin(token: CrystalClipboardKeys().crystalClipboardStagingAdminAuthToken)]))
+    private let viewModel = SignUpViewModel(provider: MoyaProvider<CrystalClipboardAPI>(plugins: [AccessTokenPlugin(token: CrystalClipboardKeys().crystalClipboardStagingAdminAuthToken)]))
 
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!

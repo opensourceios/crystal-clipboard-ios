@@ -33,7 +33,7 @@ class ClipTests: CoreDataTestCase {
     }
     
     func testDeserialization() {
-        let jsonData = CrystalClipboardAuthenticatedAPI.createClip(text: "test").sampleData
+        let jsonData = CrystalClipboardAPI.createClip(text: "test").sampleData
         let json = try! JSONSerialization.jsonObject(with: jsonData) as! [String: Any]
         Clip(context: managedObjectContext, json: json)
         try! managedObjectContext.save()

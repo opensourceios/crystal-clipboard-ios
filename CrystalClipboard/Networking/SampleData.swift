@@ -8,18 +8,38 @@
 
 import Moya
 
-extension CrystalClipboardUnauthenticatedAPI {
-    var sampleData: Data {
+extension CrystalClipboardAPI {
+    static func testingProvider() -> MoyaProvider<CrystalClipboardAPI> {
+        let endpointClosure = { (target: CrystalClipboardAPI) -> Endpoint<CrystalClipboardAPI> in
+            return Endpoint<CrystalClipboardAPI>(
+                url: URL(target: target).absoluteString,
+                sampleResponseClosure: { .networkResponse(target.sampleStatusCode, target.sampleData) }
+            )
+        }
+        return MoyaProvider<CrystalClipboardAPI>(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub)
+    }
+    
+    var sampleStatusCode: Int {
         switch self {
-        case .signIn:
-            return "{\"data\":{\"id\":\"999\",\"type\":\"auth-tokens\",\"attributes\":{\"token\":\"Vy5KbYX116Y1him376FvAhkw\"},\"relationships\":{\"user\":{\"data\":{\"id\":\"666\",\"type\":\"users\"}}}},\"included\":[{\"id\":\"666\",\"type\":\"users\",\"attributes\":{\"email\":\"satan@hell.org\"}}]}".data(using: .utf8)!
+        case .createUser(let email, _):
+            return email == "satan@hell.org" ? 422 : 201
+        case .signIn, .me, .listClips: return 200
+        case .signOut, .resetPassword, .deleteClip: return 204
+        case .createClip: return 201
         }
     }
-}
-
-extension CrystalClipboardAuthenticatedAPI {
+    
     var sampleData: Data {
         switch self {
+        case .signOut, .resetPassword, .deleteClip: return Data()
+        case .createUser(let email, _):
+            if email == "satan@hell.org" {
+                return "{\"errors\":[{\"source\":{\"pointer\":\"/data/attributes/email\"},\"detail\":\"has already been taken\"}]}".data(using: .utf8)!
+            } else {
+                return "{\"data\":{\"id\":\"\(arc4random_uniform(999) + 1)\",\"type\":\"users\",\"attributes\":{\"email\":\"\(email)\",\"token\":\"SE1QxtRifunhqeF75XVe7GBC\"}}}".data(using: .utf8)!
+            }
+        case .signIn:
+            return "{\"data\":{\"id\":\"999\",\"type\":\"auth-tokens\",\"attributes\":{\"token\":\"Vy5KbYX116Y1him376FvAhkw\"},\"relationships\":{\"user\":{\"data\":{\"id\":\"666\",\"type\":\"users\"}}}},\"included\":[{\"id\":\"666\",\"type\":\"users\",\"attributes\":{\"email\":\"satan@hell.org\"}}]}".data(using: .utf8)!
         case .me:
             return "{\"data\":{\"id\":\"666\",\"type\":\"users\",\"attributes\":{\"email\":\"satan@hell.org\"}}}".data(using: .utf8)!
         case .listClips(let page, let pageSize):
@@ -37,18 +57,6 @@ extension CrystalClipboardAuthenticatedAPI {
             }
         case .createClip(let text):
             return "{\"data\":{\"id\":\"5659\",\"type\":\"clips\",\"attributes\":{\"text\":\"\(text)\",\"created-at\":\"2017-08-20T16:33:52.100Z\"},\"relationships\":{\"user\":{\"data\":{\"id\":\"666\",\"type\":\"users\"}}}}}".data(using: .utf8)!
-        case .deleteClip: return Data()
-        case .signOut: return Data()
-        }
-    }
-}
-
-extension CrystalClipboardAdminAPI {
-    var sampleData: Data {
-        switch self {
-        case .createUser(let email, _):
-            return "{\"data\":{\"id\":\"666\",\"type\":\"users\",\"attributes\":{\"email\":\"\(email)\",\"token\":\"SE1QxtRifunhqeF75XVe7GBC\"}}}".data(using: .utf8)!
-        case .resetPassword: return Data()
         }
     }
 }

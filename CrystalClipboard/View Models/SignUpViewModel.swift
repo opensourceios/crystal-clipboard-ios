@@ -19,7 +19,7 @@ class SignUpViewModel {
     
     private static let minimumPasswordLength = 6
     
-    private let provider: MoyaProvider<CrystalClipboardAdminAPI>
+    private let provider: MoyaProvider<CrystalClipboardAPI>
     private let alertMessageObserver: Signal<String, NoError>.Observer
     
     // MARK: Inputs
@@ -41,7 +41,7 @@ class SignUpViewModel {
     
     // MARK: Initialization
     
-    init(provider: MoyaProvider<CrystalClipboardAdminAPI>) {
+    init(provider: MoyaProvider<CrystalClipboardAPI>) {
         // Property initialization
         
         self.provider = provider

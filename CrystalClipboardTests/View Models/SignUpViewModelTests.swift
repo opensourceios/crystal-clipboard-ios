@@ -13,8 +13,14 @@ import Moya
 @testable import CrystalClipboard
 
 class SignUpViewModelTests: XCTestCase {
-    static let provider = MoyaProvider<CrystalClipboardAdminAPI>(stubClosure: MoyaProvider.immediatelyStub)
+    static let provider = CrystalClipboardAPI.testingProvider()
     let viewModel = SignUpViewModel(provider: provider)
+    let alertMessage = TestObserver<String, NoError>()
+    
+    override func setUp() {
+        super.setUp()
+        viewModel.alertMessage.observe(alertMessage.observer)
+    }
     
     func testSignUpButtonEnabled() {
         XCTAssertFalse(viewModel.signUpButtonEnabled.value)
@@ -28,5 +34,13 @@ class SignUpViewModelTests: XCTestCase {
     
     func testSignUp() {
         viewModel.signUp.apply(("satan@hell.org", "password")).start()
+        // TODO
+    }
+    
+    func testSignUpEmailTaken() {
+        viewModel.signUp.apply(("satan@hell.org", "password")).start()
+        alertMessage.assertValues(["Email has already been taken"])
+        viewModel.signUp.apply(("satan+2@hell.org", "password")).start()
+        alertMessage.assertValues(["Email has already been taken"])
     }
 }
