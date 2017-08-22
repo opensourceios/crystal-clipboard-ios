@@ -74,22 +74,22 @@ class Cable {
     init(authToken: String) {
         let cableURLString = Bundle.main.infoDictionary!["com.jzzocc.crystal-clipboard.cable-url"] as! String
         let cableURL = URL(string: cableURLString)!
-        self.socket = WebSocket(url: cableURL)
-        self.socket.headers["Authorization"] = "Bearer \(authToken)"
-        self.socket.origin = Bundle.main.infoDictionary!["com.jzzocc.crystal-clipboard.cable-origin"] as? String
-        self.socket.delegate = self
-        self.socket.callbackQueue = self.queue
+        socket = WebSocket(url: cableURL)
+        socket.headers["Authorization"] = "Bearer \(authToken)"
+        socket.origin = Bundle.main.infoDictionary!["com.jzzocc.crystal-clipboard.cable-origin"] as? String
+        socket.delegate = self
+        socket.callbackQueue = queue
     }
     
     func connect() -> CableSignal {
-        self.socket.connect()
+        socket.connect()
         let (signal, observer) = CableSignal.pipe()
         self.observer = observer
         return signal
     }
     
     func subscribe(channelIdentifier: String) -> ChannelSignal {
-        self.queue.async { [unowned self] in
+        queue.async { [unowned self] in
             self.command(.subscribe(channelIdentifier: channelIdentifier))
         }
         let (channel, observer) = ChannelSignal.pipe()
@@ -98,7 +98,7 @@ class Cable {
     }
     
     func unsubscribe(channelIdentifier: String) {
-        self.queue.async { [unowned self] in
+        queue.async { [unowned self] in
             self.command(.unsubscribe(channelIdentifier: channelIdentifier))
         }
     }
@@ -114,7 +114,7 @@ class Cable {
         guard let data = try? JSONSerialization.data(withJSONObject: commandObject) else { fatalError("Command should be serializable to JSON") }
         guard let string = String(data: data, encoding: .utf8) else { fatalError("JSON data should be a string") }
         
-        self.socket.write(string: string) { [unowned self] in
+        socket.write(string: string) { [unowned self] in
             switch command {
             case .unsubscribe(let channelIdentifier):
                 self.channelObservers[channelIdentifier]?.sendCompleted()
@@ -126,7 +126,7 @@ class Cable {
 
 extension Cable: WebSocketDelegate {
     func websocketDidConnect(socket: WebSocket) {
-        self.observer?.send(value: .connected)
+        observer?.send(value: .connected)
     }
     
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
@@ -134,9 +134,9 @@ extension Cable: WebSocketDelegate {
             for channelObserver in channelObservers.values {
                 channelObserver.send(error: ChannelError.cableDisconnected)
             }
-            self.observer?.send(error: error)
+            observer?.send(error: error)
         } else {
-            self.observer?.sendCompleted()
+            observer?.sendCompleted()
         }
     }
     
@@ -153,7 +153,7 @@ extension Cable: WebSocketDelegate {
             }
         } else {
             if let event = Event(json: message) {
-                self.observer?.send(value: event)
+                observer?.send(value: event)
             } else {
                 print(message)
             }

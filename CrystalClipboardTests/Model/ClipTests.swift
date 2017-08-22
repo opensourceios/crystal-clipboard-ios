@@ -14,7 +14,7 @@ import SwiftyJSON
 class ClipTests: CoreDataTestCase {
     func testInsert() {
         let now = Date()
-        Clip(context: self.managedObjectContext, id: 1, text: "hi", createdAt: now)
+        Clip(context: managedObjectContext, id: 1, text: "hi", createdAt: now)
         try! managedObjectContext.save()
         let fetchRequest = Clip.fetchRequest() as! NSFetchRequest<Clip>
         let clip = try! managedObjectContext.fetch(fetchRequest).first!
@@ -24,9 +24,9 @@ class ClipTests: CoreDataTestCase {
     }
     
     func testUniqueId() {
-        Clip(context: self.managedObjectContext, id: 1, text: "hi", createdAt: Date())
-        Clip(context: self.managedObjectContext, id: 2, text: "yo", createdAt: Date())
-        Clip(context: self.managedObjectContext, id: 1, text: "there can only be one", createdAt: Date())
+        Clip(context: managedObjectContext, id: 1, text: "hi", createdAt: Date())
+        Clip(context: managedObjectContext, id: 2, text: "yo", createdAt: Date())
+        Clip(context: managedObjectContext, id: 1, text: "there can only be one", createdAt: Date())
         try! managedObjectContext.save()
         let fetchRequest = Clip.fetchRequest() as! NSFetchRequest<Clip>
         XCTAssertEqual(try! managedObjectContext.count(for: fetchRequest), 2)
@@ -35,7 +35,7 @@ class ClipTests: CoreDataTestCase {
     func testDeserialization() {
         let jsonData = CrystalClipboardAuthenticatedAPI.createClip(text: "test").sampleData
         let json = try! JSONSerialization.jsonObject(with: jsonData) as! [String: Any]
-        Clip(context: self.managedObjectContext, json: json)
+        Clip(context: managedObjectContext, json: json)
         try! managedObjectContext.save()
         let fetchRequest = Clip.fetchRequest() as! NSFetchRequest<Clip>
         let clip = try! managedObjectContext.fetch(fetchRequest).first!
