@@ -41,22 +41,22 @@ class SignUpViewModel {
     
     init(provider: MoyaProvider<CrystalClipboardAdminAPI>) {
         self.provider = provider
-        self.email = ValidatingProperty("") { input in
+        email = ValidatingProperty("") { input in
             return input.characters.count > 0 ? .valid : .invalid(.invalidEmail)
         }
-        self.password = ValidatingProperty("") { input in
+        password = ValidatingProperty("") { input in
             return input.characters.count >= SignUpViewModel.minimumPasswordLength ? .valid : .invalid(.invalidPassword)
         }
-        self.signUp = Action<(String, String), Response, MoyaError> { email, password in
+        signUp = Action<(String, String), Response, MoyaError> { email, password in
             return provider.reactive.request(.createUser(email: email, password: password))
         }
-        self.signUpButtonEnabled = Property
-            .combineLatest(self.email.result, self.password.result)
+        signUpButtonEnabled = Property
+            .combineLatest(email.result, password.result)
             .map { email, password in !email.isInvalid && !password.isInvalid }
         let (alertMessage, alertMessageObserver) = Signal<String, NoError>.pipe()
         self.alertMessage = alertMessage
         self.alertMessageObserver = alertMessageObserver
-        self.signUp.values.observe { [weak self] event in
+        signUp.values.observe { [weak self] event in
             switch event {
             case let .value(response):
                 if let success = try? response.filterSuccessfulStatusCodes() {

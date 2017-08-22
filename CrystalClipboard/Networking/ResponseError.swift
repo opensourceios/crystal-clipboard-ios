@@ -22,14 +22,14 @@ struct ResponseError: Error {
     
     init?(json: [String: Any]) {
         let swiftyJSON = JSON(json)
-        self.detail = swiftyJSON["detail"].string
-        self.pointer = swiftyJSON["source"]["pointer"].string
+        detail = swiftyJSON["detail"].string
+        pointer = swiftyJSON["source"]["pointer"].string
     }
     
     var message: String? {
         guard
-            let detail = self.detail,
-            let pointer = self.pointer,
+            let detail = detail,
+            let pointer = pointer,
             let specificPointer = pointer.components(separatedBy: "/").last
             else { return nil }
         return "\(specificPointer.capitalized) \(detail)"
@@ -38,7 +38,7 @@ struct ResponseError: Error {
 
 extension Response {
     var errors: [ResponseError] {
-        if let json = (try? self.mapJSON()) as? [String: Any], let errors = ResponseError.deserializeErrors(json: json) {
+        if let json = (try? mapJSON()) as? [String: Any], let errors = ResponseError.deserializeErrors(json: json) {
             return errors
         }
         
