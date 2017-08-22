@@ -22,22 +22,27 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailTextField.text = viewModel.email.value
-        passwordTextField.text = viewModel.password.value
+        // View model inputs
         
         viewModel.email <~ emailTextField.reactive.continuousTextValues.skipNil()
         viewModel.password <~ passwordTextField.reactive.continuousTextValues.skipNil()
-        
         signUpButton.reactive.pressed = CocoaAction(viewModel.signUp) { [unowned self] _ in
             return (self.viewModel.email.value, self.viewModel.password.value)
         }
+        
+        // View model outputs
+        
         signUpButton.reactive.isEnabled <~ viewModel.signUpButtonEnabled
         viewModel.alertMessage.observeValues { [weak self] message in
-            guard let me = self else { return }
-            let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-            alertController.addAction(.init(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
-            me.present(alertController, animated: true, completion: nil)
+            self?.displayAlert(message: message)
         }
     }
-
+    
+    // MARK: Private
+    
+    private func displayAlert(message: String) {
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alertController.addAction(.init(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
 }
