@@ -9,10 +9,12 @@
 import XCTest
 import ReactiveSwift
 import Result
+import Moya
 @testable import CrystalClipboard
 
 class SignUpViewModelTests: XCTestCase {
-    let viewModel = SignUpViewModel()
+    static let provider = MoyaProvider<CrystalClipboardAdminAPI>(stubClosure: MoyaProvider.immediatelyStub)
+    let viewModel = SignUpViewModel(provider: provider)
     
     func testSignUpButtonEnabled() {
         XCTAssertFalse(viewModel.signUpButtonEnabled.value)
@@ -22,5 +24,9 @@ class SignUpViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.signUpButtonEnabled.value)
         viewModel.password.value = "123456"
         XCTAssertTrue(viewModel.signUpButtonEnabled.value)
+    }
+    
+    func testSignUp() {
+        viewModel.signUp.apply(("satan@hell.org", "password")).start()
     }
 }

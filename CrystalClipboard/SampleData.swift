@@ -46,8 +46,8 @@ extension CrystalClipboardAuthenticatedAPI {
 extension CrystalClipboardAdminAPI {
     var sampleData: Data {
         switch self {
-        case .createUser:
-            return "{\"data\":{\"id\":\"666\",\"type\":\"users\",\"attributes\":{\"email\":\"satan@hell.org\",\"token\":\"SE1QxtRifunhqeF75XVe7GBC\"}}}".data(using: .utf8)!
+        case .createUser(let email, _):
+            return "{\"data\":{\"id\":\"666\",\"type\":\"users\",\"attributes\":{\"email\":\"\(email)\",\"token\":\"SE1QxtRifunhqeF75XVe7GBC\"}}}".data(using: .utf8)!
         case .resetPassword: return Data()
         }
     }
