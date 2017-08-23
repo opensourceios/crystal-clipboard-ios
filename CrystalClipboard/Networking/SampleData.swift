@@ -32,12 +32,15 @@ extension CrystalClipboardAPI {
     var sampleData: Data {
         switch self {
         case .signOut, .resetPassword, .deleteClip: return Data()
-        case .createUser(let email, _):
+        case let .createUser(email, password):
+            var errors = [[String: Any]]()
             if email == "satan@hell.org" {
-                return "{\"errors\":[{\"source\":{\"pointer\":\"/data/attributes/email\"},\"detail\":\"has already been taken\"}]}".data(using: .utf8)!
-            } else {
-                return "{\"data\":{\"id\":\"\(arc4random_uniform(999) + 1)\",\"type\":\"users\",\"attributes\":{\"email\":\"\(email)\"},\"relationships\":{\"auth-token\":{\"data\":{\"id\":\"1256\",\"type\":\"auth-tokens\"}}}},\"included\":[{\"id\":\"1256\",\"type\":\"auth-tokens\",\"attributes\":{\"token\":\"qz6oF9nHysGnkVYZccFJGZuz\"}}]}".data(using: .utf8)!
+                errors.append(["source": ["pointer": "/data/attributes/email"], "detail": "has already been taken"])
             }
+            if password.characters.count < 6 {
+                errors.append(["source": ["pointer": "/data/attributes/password"], "detail": "is too short (minimum is 6 characters)"])
+            }
+            return errors.count > 0 ? try! JSONSerialization.data(withJSONObject: ["errors": errors]) : "{\"data\":{\"id\":\"\(arc4random_uniform(999) + 1)\",\"type\":\"users\",\"attributes\":{\"email\":\"\(email)\"},\"relationships\":{\"auth-token\":{\"data\":{\"id\":\"1256\",\"type\":\"auth-tokens\"}}}},\"included\":[{\"id\":\"1256\",\"type\":\"auth-tokens\",\"attributes\":{\"token\":\"qz6oF9nHysGnkVYZccFJGZuz\"}}]}".data(using: .utf8)!
         case .signIn:
             return "{\"data\":{\"id\":\"999\",\"type\":\"auth-tokens\",\"attributes\":{\"token\":\"Vy5KbYX116Y1him376FvAhkw\"},\"relationships\":{\"user\":{\"data\":{\"id\":\"666\",\"type\":\"users\"}}}},\"included\":[{\"id\":\"666\",\"type\":\"users\",\"attributes\":{\"email\":\"satan@hell.org\"}}]}".data(using: .utf8)!
         case .me:
