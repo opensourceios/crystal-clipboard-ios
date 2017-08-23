@@ -22,7 +22,7 @@ class SignUpViewModelTests: XCTestCase {
         viewModel.alertMessage.observe(alertMessage.observer)
     }
     
-    func testSignUpButtonEnabled() {
+    func testSignUpEnabled() {
         XCTAssertFalse(viewModel.signUp.isEnabled.value)
         viewModel.email.value = "user@domain.com"
         XCTAssertFalse(viewModel.signUp.isEnabled.value)

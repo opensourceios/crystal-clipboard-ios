@@ -20,12 +20,12 @@ class SignUpViewModel {
     
     // MARK: Inputs
     
-    let email = ValidatingProperty<String, SignUpFormError>("") { input in
-        return input.characters.count > 0 ? .valid : .invalid(.invalidEmail)
+    let email = ValidatingProperty<String, SignUpFormError>("") {
+        $0.characters.count > 0 ? .valid : .invalid(.invalidEmail)
     }
     
-    let password = ValidatingProperty<String, SignUpFormError>("") { input in
-        return input.characters.count > 0 ? .valid : .invalid(.invalidPassword)
+    let password = ValidatingProperty<String, SignUpFormError>("") {
+        $0.characters.count > 0 ? .valid : .invalid(.invalidPassword)
     }
     
     lazy var signUp: Action<Void, String, MoyaError> = Action(enabledIf: self.signUpEnabled) { [unowned self] _ in
