@@ -9,11 +9,22 @@
 import Moya
 
 extension CrystalClipboardAPI {
-    static func testingProvider() -> MoyaProvider<CrystalClipboardAPI> {
+    static func testingProvider(online: Bool = true) -> MoyaProvider<CrystalClipboardAPI> {
         let endpointClosure = { (target: CrystalClipboardAPI) -> Endpoint<CrystalClipboardAPI> in
             return Endpoint<CrystalClipboardAPI>(
                 url: URL(target: target).absoluteString,
-                sampleResponseClosure: { .networkResponse(target.sampleStatusCode, target.sampleData) }
+                sampleResponseClosure: {
+                    if online {
+                        return .networkResponse(target.sampleStatusCode, target.sampleData)
+                    } else {
+                        let error = NSError(
+                            domain: NSURLErrorDomain,
+                            code: -1009,
+                            userInfo: ["NSLocalizedDescription": "The Internet connection appears to be offline."]
+                        )
+                        return .networkError(error)
+                    }
+                }
             )
         }
         return MoyaProvider<CrystalClipboardAPI>(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub)

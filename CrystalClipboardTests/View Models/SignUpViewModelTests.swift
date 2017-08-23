@@ -52,4 +52,15 @@ class SignUpViewModelTests: XCTestCase {
             "Email has already been taken"
         ])
     }
+    
+    func testAlertsNetworkError() {
+        let offlineProvider = CrystalClipboardAPI.testingProvider(online: false)
+        let offlineViewModel = SignUpViewModel(provider: offlineProvider)
+        let offlineAlertMessage = TestObserver<String, NoError>()
+        offlineViewModel.alertMessage.observe(offlineAlertMessage.observer)
+        offlineViewModel.email.value = "user@domain.com"
+        offlineViewModel.password.value = "password"
+        offlineViewModel.signUp.apply().start()
+        offlineAlertMessage.assertValues(["sign-up.could-not".localized])
+    }
 }
