@@ -39,12 +39,12 @@ class SignUpViewModelTests: XCTestCase {
     func testSignUpEmailTaken() {
         viewModel.email.value = "satan@hell.org"
         viewModel.password.value = "password"
-        viewModel.signUpTapped.apply().start()
+        viewModel.signUp.apply().start()
         alertMessage.assertValues(["Email has already been taken"])
-        viewModel.signUpTapped.apply().start()
+        viewModel.signUp.apply().start()
         alertMessage.assertValues(["Email has already been taken", "Email has already been taken"])
         viewModel.email.value = "satan+2@hell.org"
-        viewModel.signUpTapped.apply().start()
+        viewModel.signUp.apply().start()
         alertMessage.assertValues(["Email has already been taken", "Email has already been taken"])
     }
 }

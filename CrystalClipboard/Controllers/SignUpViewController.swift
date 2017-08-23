@@ -26,7 +26,7 @@ class SignUpViewController: UIViewController {
         
         viewModel.email <~ emailTextField.reactive.continuousTextValues.skipNil()
         viewModel.password <~ passwordTextField.reactive.continuousTextValues.skipNil()
-        signUpButton.reactive.pressed = CocoaAction(viewModel.signUpTapped)
+        signUpButton.reactive.pressed = CocoaAction(viewModel.signUp)
         
         // View model outputs
         
