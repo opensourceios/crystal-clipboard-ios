@@ -47,11 +47,7 @@ class SignUpViewModel {
         .map { email, password in !email.isInvalid && !password.isInvalid }
 
     lazy var alertMessage: Signal<String, NoError> = self.signUp.errors.map { error in
-        if let messages = error.response?.errors.flatMap({ $0.message }).joined(separator: "\n"), messages.characters.count > 0 {
-            return messages
-        } else {
-            return NSLocalizedString("You could not be signed up at this time", comment: "")
-        }
+        return error.response?.combinedErrorDescription ?? NSLocalizedString("You could not be signed up at this time", comment: "")
     }
     
     // MARK: Initialization
