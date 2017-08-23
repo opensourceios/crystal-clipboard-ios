@@ -23,13 +23,11 @@ class SignUpViewModelTests: XCTestCase {
     }
     
     func testSignUpButtonEnabled() {
-        XCTAssertFalse(viewModel.signUpButtonEnabled.value)
+        XCTAssertFalse(viewModel.signUp.isEnabled.value)
         viewModel.email.value = "user@domain.com"
-        XCTAssertFalse(viewModel.signUpButtonEnabled.value)
-        viewModel.password.value = "123"
-        XCTAssertFalse(viewModel.signUpButtonEnabled.value)
-        viewModel.password.value = "123456"
-        XCTAssertTrue(viewModel.signUpButtonEnabled.value)
+        XCTAssertFalse(viewModel.signUp.isEnabled.value)
+        viewModel.password.value = "password"
+        XCTAssertTrue(viewModel.signUp.isEnabled.value)
     }
     
     func testSignUp() {

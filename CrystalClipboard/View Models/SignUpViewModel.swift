@@ -16,8 +16,6 @@ class SignUpViewModel {
         case invalidPassword
     }
     
-    private static let minimumPasswordLength = 6
-    
     private let provider: MoyaProvider<CrystalClipboardAPI>
     
     // MARK: Inputs
@@ -27,24 +25,21 @@ class SignUpViewModel {
     }
     
     let password = ValidatingProperty<String, SignUpFormError>("") { input in
-        return input.characters.count >= SignUpViewModel.minimumPasswordLength ? .valid : .invalid(.invalidPassword)
+        return input.characters.count > 0 ? .valid : .invalid(.invalidPassword)
     }
     
-    lazy var signUp: Action<Void, String, MoyaError> = Action { [unowned self] _ in
+    lazy var signUp: Action<Void, String, MoyaError> = Action(enabledIf: self.signUpEnabled) { [unowned self] _ in
         return self.provider.reactive.request(.createUser(email: self.email.value, password: self.password.value))
             .filterSuccessfulStatusCodes()
             .mapJSON()
             .map { json in
                 // TODO
-                fatalError("coming soon")
+                return ""
+//                fatalError("coming soon")
         }
     }
     
     // MARK: Outputs
-    
-    lazy var signUpButtonEnabled: Property<Bool> = Property
-        .combineLatest(self.email.result, self.password.result)
-        .map { email, password in !email.isInvalid && !password.isInvalid }
 
     lazy var alertMessage: Signal<String, NoError> = self.signUp.errors.map {
         $0.response?.combinedErrorDescription ?? "sign-up.could-not".localized
@@ -55,4 +50,10 @@ class SignUpViewModel {
     init(provider: MoyaProvider<CrystalClipboardAPI>) {
         self.provider = provider
     }
+    
+    // MARK: Private
+    
+    private lazy var signUpEnabled: Property<Bool> = Property
+        .combineLatest(self.email.result, self.password.result)
+        .map { email, password in !email.isInvalid && !password.isInvalid }
 }
