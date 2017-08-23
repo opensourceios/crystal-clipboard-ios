@@ -22,6 +22,11 @@
 		D085FAF41F4BF6AD0022C806 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085FAF31F4BF6AD0022C806 /* ResponseError.swift */; };
 		D0909B6D1F4D2513000F584B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0909B6C1F4D2513000F584B /* Localizable.strings */; };
 		D0909B701F4D282C000F584B /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0909B6F1F4D282C000F584B /* String+Localized.swift */; };
+		D095D8C21F4E260800D15CE4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095D8C11F4E260800D15CE4 /* User.swift */; };
+		D095D8C41F4E261A00D15CE4 /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095D8C31F4E261A00D15CE4 /* AuthToken.swift */; };
+		D095D8C91F4E26E700D15CE4 /* JSONDeserializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095D8C81F4E26E700D15CE4 /* JSONDeserializable.swift */; };
+		D095D8CD1F4E2E9300D15CE4 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095D8CC1F4E2E9300D15CE4 /* UserTests.swift */; };
+		D095D8CF1F4E2EB500D15CE4 /* AuthTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095D8CE1F4E2EB500D15CE4 /* AuthTokenTests.swift */; };
 		D0979B631F4B306100B8407F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B621F4B306100B8407F /* RootViewController.swift */; };
 		D0979B671F4B31EB00B8407F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B661F4B31EB00B8407F /* SignUpViewController.swift */; };
 		D0979B691F4B325300B8407F /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B681F4B325300B8407F /* SignUpViewModel.swift */; };
@@ -35,6 +40,7 @@
 		D0B0CDF51F4671E8006201CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDF31F4671E8006201CE /* LaunchScreen.storyboard */; };
 		D0B0CE001F4671E8006201CE /* CrystalClipboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CDFF1F4671E8006201CE /* CrystalClipboardTests.swift */; };
 		D0B0CE0B1F4671E8006201CE /* CrystalClipboardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */; };
+		D0C70AED1F4E4454003C5C1B /* JSONDeserializableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C70AEC1F4E4454003C5C1B /* JSONDeserializableTests.swift */; };
 		D0D59B701F4A0A0100200ABD /* Cable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D59B6F1F4A0A0100200ABD /* Cable.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +86,11 @@
 		D0909B691F4D23B7000F584B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		D0909B6C1F4D2513000F584B /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		D0909B6F1F4D282C000F584B /* String+Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Localized.swift"; path = "Extensions/String+Localized.swift"; sourceTree = "<group>"; };
+		D095D8C11F4E260800D15CE4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
+		D095D8C31F4E261A00D15CE4 /* AuthToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthToken.swift; path = Model/AuthToken.swift; sourceTree = "<group>"; };
+		D095D8C81F4E26E700D15CE4 /* JSONDeserializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONDeserializable.swift; path = Protocols/JSONDeserializable.swift; sourceTree = "<group>"; };
+		D095D8CC1F4E2E9300D15CE4 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTests.swift; path = Model/UserTests.swift; sourceTree = "<group>"; };
+		D095D8CE1F4E2EB500D15CE4 /* AuthTokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthTokenTests.swift; path = Model/AuthTokenTests.swift; sourceTree = "<group>"; };
 		D0979B621F4B306100B8407F /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		D0979B661F4B31EB00B8407F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D0979B681F4B325300B8407F /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModel.swift; path = "View Models/SignUpViewModel.swift"; sourceTree = "<group>"; };
@@ -99,6 +110,7 @@
 		D0B0CE061F4671E8006201CE /* CrystalClipboardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrystalClipboardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrystalClipboardUITests.swift; sourceTree = "<group>"; };
 		D0B0CE0C1F4671E8006201CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0C70AEC1F4E4454003C5C1B /* JSONDeserializableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONDeserializableTests.swift; path = Protocols/JSONDeserializableTests.swift; sourceTree = "<group>"; };
 		D0D59B6F1F4A0A0100200ABD /* Cable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cable.swift; path = Networking/Cable.swift; sourceTree = "<group>"; };
 		D22B5B8698FE83A31D24280D /* Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; sourceTree = "<group>"; };
 		DD3162C9717AFAFB194112F5 /* Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardUITests/Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,8 +168,10 @@
 		D0112B7E1F4A7B5200999761 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D095D8C31F4E261A00D15CE4 /* AuthToken.swift */,
 				D0112B841F4A7E8400999761 /* Clip.swift */,
 				D0112B7F1F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld */,
+				D095D8C11F4E260800D15CE4 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -228,7 +242,9 @@
 		D05335FA1F4A85FA0077B1F9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D095D8CE1F4E2EB500D15CE4 /* AuthTokenTests.swift */,
 				D05335FB1F4A861A0077B1F9 /* ClipTests.swift */,
+				D095D8CC1F4E2E9300D15CE4 /* UserTests.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -247,6 +263,14 @@
 				D0909B6F1F4D282C000F584B /* String+Localized.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		D095D8C51F4E268700D15CE4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D095D8C81F4E26E700D15CE4 /* JSONDeserializable.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		D0979B651F4B31B200B8407F /* View Models */ = {
@@ -298,6 +322,7 @@
 				D0909B6E1F4D27C0000F584B /* Extensions */,
 				D0112B7E1F4A7B5200999761 /* Model */,
 				D04C144C1F46975E0068AEA0 /* Networking */,
+				D095D8C51F4E268700D15CE4 /* Protocols */,
 				D035A2C41F46923E00B6887B /* Storyboards */,
 				D035A2C31F46921000B6887B /* Supporting Files */,
 				D05336031F4A9E240077B1F9 /* Utilities */,
@@ -313,6 +338,7 @@
 				D0B0CDFF1F4671E8006201CE /* CrystalClipboardTests.swift */,
 				D05335FA1F4A85FA0077B1F9 /* Model */,
 				D031F62D1F4BF9AC00530226 /* Networking */,
+				D0C70AEB1F4E4405003C5C1B /* Protocols */,
 				D035A2C71F4692A800B6887B /* Supporting Files */,
 				D0979B811F4B580800B8407F /* TestObserver.swift */,
 				D0979B7E1F4B491100B8407F /* View Models */,
@@ -327,6 +353,14 @@
 				D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */,
 			);
 			path = CrystalClipboardUITests;
+			sourceTree = "<group>";
+		};
+		D0C70AEB1F4E4405003C5C1B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D0C70AEC1F4E4454003C5C1B /* JSONDeserializableTests.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		F1B40374E4D5B68ECE5498FB /* Frameworks */ = {
@@ -688,10 +722,13 @@
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
 				D0112B851F4A7E8400999761 /* Clip.swift in Sources */,
 				D0979B671F4B31EB00B8407F /* SignUpViewController.swift in Sources */,
+				D095D8C21F4E260800D15CE4 /* User.swift in Sources */,
+				D095D8C91F4E26E700D15CE4 /* JSONDeserializable.swift in Sources */,
 				D0909B701F4D282C000F584B /* String+Localized.swift in Sources */,
 				D05336051F4A9E700077B1F9 /* DateParser.swift in Sources */,
 				D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */,
 				D03ABD3E1F4D37F000A7D473 /* Constants.swift in Sources */,
+				D095D8C41F4E261A00D15CE4 /* AuthToken.swift in Sources */,
 				D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */,
 				D04DBF8F1F4C8466002B5A02 /* SampleData.swift in Sources */,
 				D085FAF41F4BF6AD0022C806 /* ResponseError.swift in Sources */,
@@ -710,8 +747,11 @@
 				D05335FE1F4A87DA0077B1F9 /* CoreDataTestCase.swift in Sources */,
 				D0979B801F4B495800B8407F /* SignUpViewModelTests.swift in Sources */,
 				D031F6321F4BFA1600530226 /* ResponseErrorTests.swift in Sources */,
+				D095D8CD1F4E2E9300D15CE4 /* UserTests.swift in Sources */,
+				D095D8CF1F4E2EB500D15CE4 /* AuthTokenTests.swift in Sources */,
 				D05335FC1F4A861A0077B1F9 /* ClipTests.swift in Sources */,
 				D0979B821F4B580800B8407F /* TestObserver.swift in Sources */,
+				D0C70AED1F4E4454003C5C1B /* JSONDeserializableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
