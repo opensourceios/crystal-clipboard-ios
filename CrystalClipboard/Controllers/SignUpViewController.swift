@@ -40,7 +40,7 @@ class SignUpViewController: UIViewController {
     
     private func displayAlert(message: String) {
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alertController.addAction(.init(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
+        alertController.addAction(.init(title: NSLocalizedString("ok", comment: ""), style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
 }

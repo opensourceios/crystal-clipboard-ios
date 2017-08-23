@@ -1,0 +1,15 @@
+
+/* Class = "UIButton"; normalTitle = "Sign up"; ObjectID = "Jsg-2e-xrH"; */
+"Jsg-2e-xrH.normalTitle" = "Sign up";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "T6T-at-IaT"; */
+"T6T-at-IaT.normalTitle" = "Sign Up";
+
+/* Class = "UINavigationItem"; title = "Sign Up"; ObjectID = "jEo-57-kPv"; */
+"jEo-57-kPv.title" = "Sign Up";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "mym-lI-Iex"; */
+"mym-lI-Iex.text" = "Password";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "rJh-GM-1Rq"; */
+"rJh-GM-1Rq.text" = "Email";
