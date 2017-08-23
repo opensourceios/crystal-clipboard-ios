@@ -863,8 +863,6 @@
 			baseConfigurationReference = E68A0DE5861D5A1DDBC176A1 /* Pods-CrystalClipboard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CABLE_ORIGIN = "https://staging.crystalclipboard.com";
-				CABLE_URL = "wss://staging.crystalclipboard.com/cable";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = "CrystalClipboard/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -879,8 +877,6 @@
 			baseConfigurationReference = 2DDB744BC89EB2A5AAB315A0 /* Pods-CrystalClipboard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CABLE_ORIGIN = "https://www.crystalclipboard.com";
-				CABLE_URL = "wss://www.crystalclipboard.com/cable";
 				DEVELOPMENT_TEAM = 9YXHY5F5AA;
 				INFOPLIST_FILE = "CrystalClipboard/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
