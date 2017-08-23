@@ -17,7 +17,7 @@ enum Environment: String {
     var host: String {
         switch self {
         case .staging: return "staging.crystalclipboard.com"
-        case .production: return "www.crystalclipboard.com"
+        case .production: return "crystalclipboard.com"
         }
     }
     
