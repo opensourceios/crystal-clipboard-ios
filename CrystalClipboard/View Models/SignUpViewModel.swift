@@ -42,7 +42,7 @@ class SignUpViewModel {
     // MARK: Outputs
 
     lazy var alertMessage: Signal<String, NoError> = self.signUp.errors.map {
-        $0.response?.combinedErrorDescription ?? "sign-up.could-not".localized
+        $0.response?.combinedErrorMessages ?? "sign-up.could-not".localized
     }
     
     // MARK: Initialization
