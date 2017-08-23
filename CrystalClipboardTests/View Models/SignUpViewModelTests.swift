@@ -39,17 +39,17 @@ class SignUpViewModelTests: XCTestCase {
         viewModel.password.value = "p"
         viewModel.signUp.apply().start()
         alertMessage.assertValues(["Email has already been taken\n\nPassword is too short (minimum is 6 characters)"])
-        viewModel.password.value = "password"
-        viewModel.signUp.apply().start()
-        alertMessage.assertValues([
-            "Email has already been taken\n\nPassword is too short (minimum is 6 characters)",
-            "Email has already been taken"
-        ])
         viewModel.email.value = "satan+2@hell.org"
         viewModel.signUp.apply().start()
         alertMessage.assertValues([
             "Email has already been taken\n\nPassword is too short (minimum is 6 characters)",
-            "Email has already been taken"
+            "Password is too short (minimum is 6 characters)"
+        ])
+        viewModel.password.value = "password"
+        viewModel.signUp.apply().start()
+        alertMessage.assertValues([
+            "Email has already been taken\n\nPassword is too short (minimum is 6 characters)",
+            "Password is too short (minimum is 6 characters)"
         ])
     }
     
