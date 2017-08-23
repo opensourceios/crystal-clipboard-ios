@@ -41,8 +41,12 @@ class SignUpViewModel {
     
     // MARK: Outputs
 
-    lazy var alertMessage: Signal<String, NoError> = self.signUp.errors.map {
-        $0.response?.combinedErrorMessages ?? "sign-up.could-not".localized
+    lazy var alertMessage: Signal<String, NoError> = self.signUp.errors.map { error in
+        if let messages = error.response?.errors.flatMap({ $0.message }), messages.count > 0 {
+            return messages.joined(separator: "\n\n")
+        }
+        
+        return "sign-up.could-not".localized
     }
     
     // MARK: Initialization

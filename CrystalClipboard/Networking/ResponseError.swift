@@ -44,9 +44,4 @@ extension Response {
         
         return []
     }
-    
-    var combinedErrorMessages: String? {
-        let combined = errors.flatMap { $0.message }.joined(separator: "\n")
-        return combined.characters.count > 0 ? combined : nil
-    }
 }

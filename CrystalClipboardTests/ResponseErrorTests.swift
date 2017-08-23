@@ -40,24 +40,4 @@ class ResponseErrorTests: XCTestCase {
             }
         }
     }
-    
-    func testCombinedErrorMessagesProperty() {
-        CrystalClipboardAPI.testingProvider().request(.createUser(email: "satan@hell.org", password: "p")) { result in
-            switch result {
-            case let .success(response):
-                XCTAssertEqual(response.combinedErrorMessages!, "Email has already been taken\nPassword is too short (minimum is 6 characters)")
-            case .failure: XCTFail("Should be a response with unsuccessful status code and errors")
-            }
-        }
-    }
-    
-    func testCombinedErrorMessagesPropertyIsNilOnSuccess() {
-        CrystalClipboardAPI.testingProvider().request(.createUser(email: "satan+2@hell.org", password: "password")) { result in
-            switch result {
-            case let .success(response):
-                XCTAssertNil(response.combinedErrorMessages)
-            case .failure: XCTFail("Should be a successful response")
-            }
-        }
-    }
 }
