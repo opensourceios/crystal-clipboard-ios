@@ -17,7 +17,7 @@ struct ResponseError: Error {
     static func deserializeErrors(json: [String: Any]) -> [ResponseError]? {
         let swiftyJSON = JSON(json)
         guard let errors = swiftyJSON["errors"].arrayObject as? [[String: Any]] else { return nil }
-        return errors.flatMap { ResponseError(json: $0 ) }
+        return errors.flatMap { ResponseError(json: $0) }
     }
     
     init?(json: [String: Any]) {
