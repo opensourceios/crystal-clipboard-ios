@@ -34,15 +34,22 @@ class SignUpViewModelTests: XCTestCase {
         // TODO
     }
     
-    func testSignUpEmailTaken() {
+    func testAlertsRemoteErrors() {
         viewModel.email.value = "satan@hell.org"
+        viewModel.password.value = "p"
+        viewModel.signUp.apply().start()
+        alertMessage.assertValues(["Email has already been taken\n\nPassword is too short (minimum is 6 characters)"])
         viewModel.password.value = "password"
         viewModel.signUp.apply().start()
-        alertMessage.assertValues(["Email has already been taken"])
-        viewModel.signUp.apply().start()
-        alertMessage.assertValues(["Email has already been taken", "Email has already been taken"])
+        alertMessage.assertValues([
+            "Email has already been taken\n\nPassword is too short (minimum is 6 characters)",
+            "Email has already been taken"
+        ])
         viewModel.email.value = "satan+2@hell.org"
         viewModel.signUp.apply().start()
-        alertMessage.assertValues(["Email has already been taken", "Email has already been taken"])
+        alertMessage.assertValues([
+            "Email has already been taken\n\nPassword is too short (minimum is 6 characters)",
+            "Email has already been taken"
+        ])
     }
 }
