@@ -20,6 +20,7 @@
 		D05336051F4A9E700077B1F9 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05336041F4A9E700077B1F9 /* DateParser.swift */; };
 		D085FAF41F4BF6AD0022C806 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085FAF31F4BF6AD0022C806 /* ResponseError.swift */; };
 		D0909B6D1F4D2513000F584B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0909B6C1F4D2513000F584B /* Localizable.strings */; };
+		D0909B701F4D282C000F584B /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0909B6F1F4D282C000F584B /* String+Localized.swift */; };
 		D0979B631F4B306100B8407F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B621F4B306100B8407F /* RootViewController.swift */; };
 		D0979B671F4B31EB00B8407F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B661F4B31EB00B8407F /* SignUpViewController.swift */; };
 		D0979B691F4B325300B8407F /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B681F4B325300B8407F /* SignUpViewModel.swift */; };
@@ -76,6 +77,7 @@
 		D085FAF31F4BF6AD0022C806 /* ResponseError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseError.swift; path = Networking/ResponseError.swift; sourceTree = "<group>"; };
 		D0909B691F4D23B7000F584B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		D0909B6C1F4D2513000F584B /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		D0909B6F1F4D282C000F584B /* String+Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Localized.swift"; path = "Extensions/String+Localized.swift"; sourceTree = "<group>"; };
 		D0979B621F4B306100B8407F /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		D0979B661F4B31EB00B8407F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D0979B681F4B325300B8407F /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModel.swift; path = "View Models/SignUpViewModel.swift"; sourceTree = "<group>"; };
@@ -237,6 +239,14 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		D0909B6E1F4D27C0000F584B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D0909B6F1F4D282C000F584B /* String+Localized.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		D0979B651F4B31B200B8407F /* View Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +292,7 @@
 				D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */,
 				D0B0CDF11F4671E8006201CE /* Assets.xcassets */,
 				D035A2C51F46928600B6887B /* Controllers */,
+				D0909B6E1F4D27C0000F584B /* Extensions */,
 				D0112B7E1F4A7B5200999761 /* Model */,
 				D04C144C1F46975E0068AEA0 /* Networking */,
 				D035A2C41F46923E00B6887B /* Storyboards */,
@@ -674,6 +685,7 @@
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
 				D0112B851F4A7E8400999761 /* Clip.swift in Sources */,
 				D0979B671F4B31EB00B8407F /* SignUpViewController.swift in Sources */,
+				D0909B701F4D282C000F584B /* String+Localized.swift in Sources */,
 				D05336051F4A9E700077B1F9 /* DateParser.swift in Sources */,
 				D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */,
 				D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */,

@@ -46,8 +46,8 @@ class SignUpViewModel {
         .combineLatest(self.email.result, self.password.result)
         .map { email, password in !email.isInvalid && !password.isInvalid }
 
-    lazy var alertMessage: Signal<String, NoError> = self.signUp.errors.map { error in
-        return error.response?.combinedErrorDescription ?? NSLocalizedString("sign-up.could-not", comment: "")
+    lazy var alertMessage: Signal<String, NoError> = self.signUp.errors.map {
+        $0.response?.combinedErrorDescription ?? "sign-up.could-not".localized
     }
     
     // MARK: Initialization
