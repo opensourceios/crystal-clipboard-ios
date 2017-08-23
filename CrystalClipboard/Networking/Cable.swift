@@ -72,11 +72,9 @@ class Cable {
     fileprivate let queue = DispatchQueue(label: "com.jzzocc.crystal-clipboard.cable-queue", attributes: .concurrent)
     
     init(authToken: String) {
-        let cableURLString = Bundle.main.infoDictionary!["com.jzzocc.crystal-clipboard.cable-url"] as! String
-        let cableURL = URL(string: cableURLString)!
-        socket = WebSocket(url: cableURL)
+        socket = WebSocket(url: Constants.environment.cableURL)
         socket.headers["Authorization"] = "Bearer \(authToken)"
-        socket.origin = Bundle.main.infoDictionary!["com.jzzocc.crystal-clipboard.cable-origin"] as? String
+        socket.origin = Constants.environment.baseURL.absoluteString
         socket.delegate = self
         socket.callbackQueue = queue
     }

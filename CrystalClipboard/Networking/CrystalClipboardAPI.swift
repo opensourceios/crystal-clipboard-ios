@@ -21,8 +21,7 @@ enum CrystalClipboardAPI {
 
 extension CrystalClipboardAPI: TargetType {
     var baseURL: URL {
-        let base = Bundle.main.infoDictionary!["com.jzzocc.crystal-clipboard.api-base-url"] as! String
-        return URL(string: base)!
+        return Constants.environment.apiURL
     }
 
     var task: Task {

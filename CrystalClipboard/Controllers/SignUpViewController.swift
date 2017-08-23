@@ -10,10 +10,13 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 import Moya
-import Keys
 
 class SignUpViewController: UIViewController {
-    private let viewModel = SignUpViewModel(provider: MoyaProvider<CrystalClipboardAPI>(plugins: [AccessTokenPlugin(token: CrystalClipboardKeys().crystalClipboardStagingAdminAuthToken)]))
+    private let viewModel = SignUpViewModel(
+        provider: MoyaProvider<CrystalClipboardAPI>(
+            plugins: [AccessTokenPlugin(token: Constants.environment.adminAuthToken)]
+        )
+    )
 
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!

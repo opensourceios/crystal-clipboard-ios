@@ -13,6 +13,7 @@
 		D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0112B7F1F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld */; };
 		D0112B851F4A7E8400999761 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0112B841F4A7E8400999761 /* Clip.swift */; };
 		D031F6321F4BFA1600530226 /* ResponseErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031F6311F4BFA1600530226 /* ResponseErrorTests.swift */; };
+		D03ABD3E1F4D37F000A7D473 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3D1F4D37F000A7D473 /* Constants.swift */; };
 		D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */; };
 		D04DBF8F1F4C8466002B5A02 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04DBF8E1F4C8466002B5A02 /* SampleData.swift */; };
 		D05335FC1F4A861A0077B1F9 /* ClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FB1F4A861A0077B1F9 /* ClipTests.swift */; };
@@ -69,6 +70,7 @@
 		D0112B801F4A7BAE00999761 /* CrystalClipboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CrystalClipboard.xcdatamodel; sourceTree = "<group>"; };
 		D0112B841F4A7E8400999761 /* Clip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clip.swift; path = Model/Clip.swift; sourceTree = "<group>"; };
 		D031F6311F4BFA1600530226 /* ResponseErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseErrorTests.swift; sourceTree = "<group>"; };
+		D03ABD3D1F4D37F000A7D473 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrystalClipboardAPI.swift; path = Networking/CrystalClipboardAPI.swift; sourceTree = "<group>"; };
 		D04DBF8E1F4C8466002B5A02 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleData.swift; path = Networking/SampleData.swift; sourceTree = "<group>"; };
 		D05335FB1F4A861A0077B1F9 /* ClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTests.swift; path = Model/ClipTests.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 			children = (
 				D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */,
 				D0B0CDF11F4671E8006201CE /* Assets.xcassets */,
+				D03ABD3D1F4D37F000A7D473 /* Constants.swift */,
 				D035A2C51F46928600B6887B /* Controllers */,
 				D0909B6E1F4D27C0000F584B /* Extensions */,
 				D0112B7E1F4A7B5200999761 /* Model */,
@@ -688,6 +691,7 @@
 				D0909B701F4D282C000F584B /* String+Localized.swift in Sources */,
 				D05336051F4A9E700077B1F9 /* DateParser.swift in Sources */,
 				D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */,
+				D03ABD3E1F4D37F000A7D473 /* Constants.swift in Sources */,
 				D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */,
 				D04DBF8F1F4C8466002B5A02 /* SampleData.swift in Sources */,
 				D085FAF41F4BF6AD0022C806 /* ResponseError.swift in Sources */,
@@ -757,205 +761,11 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		D04C14511F469B740068AEA0 /* Staging */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				API_BASE_URL = "https://staging.crystalclipboard.com/api/v1";
-				CABLE_URL = "https://staging.crystalclipboard.com/cable";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Staging;
-		};
-		D04C14521F469B740068AEA0 /* Staging */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98AC7623A1F6DE69C6EFFEC0 /* Pods-CrystalClipboard.staging.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CABLE_ORIGIN = "https://staging.crystalclipboard.com";
-				CABLE_URL = "wss://staging.crystalclipboard.com/cable";
-				DEVELOPMENT_TEAM = 9YXHY5F5AA;
-				INFOPLIST_FILE = "CrystalClipboard/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jzzocc.crystal-clipboard";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Staging;
-		};
-		D04C14531F469B740068AEA0 /* Staging */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D22B5B8698FE83A31D24280D /* Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 9YXHY5F5AA;
-				INFOPLIST_FILE = "CrystalClipboardTests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jzzocc.CrystalClipboardTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CrystalClipboard.app/CrystalClipboard";
-			};
-			name = Staging;
-		};
-		D04C14541F469B740068AEA0 /* Staging */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A17C59FE1324900FFB22280F /* Pods-CrystalClipboard-CrystalClipboardUITests.staging.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				DEVELOPMENT_TEAM = 9YXHY5F5AA;
-				INFOPLIST_FILE = "CrystalClipboardUITests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jzzocc.CrystalClipboardUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = CrystalClipboard;
-			};
-			name = Staging;
-		};
-		D04C14551F469B910068AEA0 /* Production */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				API_BASE_URL = "https://www.crystalclipboard.com/api/v1";
-				CABLE_URL = "https://www.crystalclipboard.com/cable";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Production;
-		};
-		D04C14561F469B910068AEA0 /* Production */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 036FB4EE4B70B036D66AEB84 /* Pods-CrystalClipboard.production.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CABLE_ORIGIN = "https://www.crystalclipboard.com";
-				CABLE_URL = "wss://www.crystalclipboard.com/cable";
-				DEVELOPMENT_TEAM = 9YXHY5F5AA;
-				INFOPLIST_FILE = "CrystalClipboard/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jzzocc.crystal-clipboard";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Production;
-		};
-		D04C14571F469B910068AEA0 /* Production */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C526E4CC18C0F90CF02AF061 /* Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 9YXHY5F5AA;
-				INFOPLIST_FILE = "CrystalClipboardTests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jzzocc.CrystalClipboardTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CrystalClipboard.app/CrystalClipboard";
-			};
-			name = Production;
-		};
-		D04C14581F469B910068AEA0 /* Production */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F8E08AE67B4CCC73144131C /* Pods-CrystalClipboard-CrystalClipboardUITests.production.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				DEVELOPMENT_TEAM = 9YXHY5F5AA;
-				INFOPLIST_FILE = "CrystalClipboardUITests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jzzocc.CrystalClipboardUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = CrystalClipboard;
-			};
-			name = Production;
-		};
 		D0B0CE0D1F4671E8006201CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				API_BASE_URL = "https://staging.crystalclipboard.com/api/v1";
-				CABLE_URL = "https://staging.crystalclipboard.com/cable";
+				API_ENVIRONMENT = staging;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1007,8 +817,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				API_BASE_URL = "https://www.crystalclipboard.com/api/v1";
-				CABLE_URL = "https://www.crystalclipboard.com/cable";
+				API_ENVIRONMENT = production;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1150,9 +959,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0B0CE0D1F4671E8006201CE /* Debug */,
-				D04C14511F469B740068AEA0 /* Staging */,
 				D0B0CE0E1F4671E8006201CE /* Release */,
-				D04C14551F469B910068AEA0 /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1161,9 +968,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0B0CE101F4671E8006201CE /* Debug */,
-				D04C14521F469B740068AEA0 /* Staging */,
 				D0B0CE111F4671E8006201CE /* Release */,
-				D04C14561F469B910068AEA0 /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1172,9 +977,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0B0CE131F4671E8006201CE /* Debug */,
-				D04C14531F469B740068AEA0 /* Staging */,
 				D0B0CE141F4671E8006201CE /* Release */,
-				D04C14571F469B910068AEA0 /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1183,9 +986,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0B0CE161F4671E8006201CE /* Debug */,
-				D04C14541F469B740068AEA0 /* Staging */,
 				D0B0CE171F4671E8006201CE /* Release */,
-				D04C14581F469B910068AEA0 /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
