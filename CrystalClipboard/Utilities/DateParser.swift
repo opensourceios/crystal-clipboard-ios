@@ -8,14 +8,12 @@
 
 import Foundation
 
-class DateParser {
+struct DateParser {
     private static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         return dateFormatter
     }()
-    
-    private init() {}
     
     static func date(from: String) -> Date? {
         return DateParser.dateFormatter.date(from: from)
