@@ -6,8 +6,6 @@
 //  Copyright © 2017 Justin Mazzocchi. All rights reserved.
 //
 
-import SwiftyJSON
-
 struct AuthToken {
     let token: String
     
@@ -20,10 +18,9 @@ extension AuthToken: JSONDeserializable {
     static var dataType = "auth-tokens"
 
     static func from(JSON: [String : Any]) throws -> AuthToken {
-        let json = SwiftyJSON.JSON(JSON)
-        guard let token = json["attributes"]["token"].string else {
-            throw JSONDeserializationError.attributeMissing(name: "token")
-        }
+        guard let attributes = JSON["attributes"] as? [String: Any] else { throw JSONDeserializationError.attributesMissing }
+        guard let presentToken = attributes["token"] else { throw JSONDeserializationError.attributeMissing(name: "token") }
+        guard let token = presentToken as? String else { throw JSONDeserializationError.wrongAttributeType(name: "token", expected: String.self, given: type(of: presentToken)) }
         
         return AuthToken(token: token)
     }

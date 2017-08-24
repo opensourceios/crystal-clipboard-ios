@@ -8,7 +8,11 @@
 
 enum JSONDeserializationError: Error {
     case dataMissing
+    case idMissing
+    case idInvalid
+    case attributesMissing
     case attributeMissing(name: String)
+    case wrongAttributeType(name: String, expected: Any.Type, given: Any.Type)
     case typeMissing
     case wrongType(expected: String, given: String)
 }
