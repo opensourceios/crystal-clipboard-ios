@@ -17,44 +17,11 @@ class JSONDeserializableTests: XCTestCase {
         XCTAssertEqual(user.email, "satan@hell.org")
     }
     
-    func testDataMissing() {
+    func testInvalidStructure() {
         do {
             _ = try User.in(JSON: ["id": "666", "type": "users", "attributes": ["email": "satan@hell.org"]])
             XCTFail("Data should be missing")
-        } catch JSONDeserializationError.dataMissing {
-            // correct
-        } catch {
-            XCTFail("Wrong error type")
-        }
-    }
-    
-    func testIdMissing() {
-        do {
-            _ = try User.in(JSON: ["data": ["type": "users", "attributes": ["email": "satan@hell.org"]]])
-            XCTFail("id should be missing")
-        } catch JSONDeserializationError.idMissing {
-            // correct
-        } catch {
-            XCTFail("Wrong error type")
-        }
-    }
-    
-    func testIdInvalid() {
-        do {
-            _ = try User.in(JSON: ["data": ["id": "sixsixsix", "type": "users", "attributes": ["email": "satan@hell.org"]]])
-            XCTFail("id should be invalid")
-        } catch JSONDeserializationError.idInvalid {
-            // correct
-        } catch {
-            XCTFail("Wrong error type")
-        }
-    }
-    
-    func testTypeMissing() {
-        do {
-            _ = try User.in(JSON: ["data": ["id": "666", "attributes": ["email": "satan@hell.org"]]])
-            XCTFail("Type should be missing")
-        } catch JSONDeserializationError.typeMissing {
+        } catch JSONDeserializationError.invalidStructure {
             // correct
         } catch {
             XCTFail("Wrong error type")
@@ -63,45 +30,21 @@ class JSONDeserializableTests: XCTestCase {
     
     func testWrongType() {
         do {
-            _ = try User.in(JSON: ["data": ["id": "666", "type": "user", "attributes": ["email": "satan@hell.org"]]])
+            _ = try User.in(JSON: ["data": ["id": "666", "type": "wrong", "attributes": ["email": "satan@hell.org"]]])
             XCTFail("Type should be wrong")
-        } catch let JSONDeserializationError.wrongType(expected, given) {
-            XCTAssertEqual(expected, "users")
-            XCTAssertEqual(given, "user")
-        } catch {
-            XCTFail("Wrong error type")
-        }
-    }
-    
-    func testAttributesMissing() {
-        do {
-            _ = try User.in(JSON: ["data": ["id": "666", "type": "users"]])
-            XCTFail("Attributes should be missing")
-        } catch JSONDeserializationError.attributesMissing {
+        } catch JSONDeserializationError.invalidType {
             // correct
         } catch {
             XCTFail("Wrong error type")
         }
     }
     
-    func testAttributeMissing() {
+    func testInvalidAttributes() {
         do {
             _ = try User.in(JSON: ["data": ["id": "666", "type": "users", "attributes": ["something": "else"]]])
             XCTFail("Attributes should be missing")
-        } catch let JSONDeserializationError.attributeMissing(name) {
-            XCTAssertEqual(name, "email")
-        } catch {
-            XCTFail("Wrong error type")
-        }
-    }
-    
-    func testWrongAttributeType() {
-        do {
-            _ = try User.in(JSON: ["data": ["id": "666", "type": "users", "attributes": ["email": 666]]])
-        } catch let JSONDeserializationError.wrongAttributeType(name, expected, given) {
-            XCTAssertEqual(name, "email")
-            XCTAssertTrue(expected == String.self)
-            XCTAssertTrue(given == Int.self)
+        } catch JSONDeserializationError.invalidAttributes {
+            // correct
         } catch {
             XCTFail("Wrong error type")
         }

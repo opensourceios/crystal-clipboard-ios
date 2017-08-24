@@ -18,9 +18,10 @@ extension AuthToken: JSONDeserializable {
     static var dataType = "auth-tokens"
 
     static func from(JSON: [String : Any]) throws -> AuthToken {
-        guard let attributes = JSON["attributes"] as? [String: Any] else { throw JSONDeserializationError.attributesMissing }
-        guard let presentToken = attributes["token"] else { throw JSONDeserializationError.attributeMissing(name: "token") }
-        guard let token = presentToken as? String else { throw JSONDeserializationError.wrongAttributeType(name: "token", expected: String.self, given: type(of: presentToken)) }
+        guard
+            let attributes = JSON["attributes"] as? [String: Any],
+            let token = attributes["token"] as? String
+            else { throw JSONDeserializationError.invalidAttributes }
         
         return AuthToken(token: token)
     }

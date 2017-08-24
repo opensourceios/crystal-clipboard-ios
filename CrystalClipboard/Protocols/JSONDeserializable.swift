@@ -7,14 +7,9 @@
 //
 
 enum JSONDeserializationError: Error {
-    case dataMissing
-    case idMissing
-    case idInvalid
-    case attributesMissing
-    case attributeMissing(name: String)
-    case wrongAttributeType(name: String, expected: Any.Type, given: Any.Type)
-    case typeMissing
-    case wrongType(expected: String, given: String)
+    case invalidStructure
+    case invalidType
+    case invalidAttributes
 }
 
 protocol JSONDeserializable {
@@ -26,9 +21,8 @@ protocol JSONDeserializable {
 
 extension JSONDeserializable {
     static func `in`(JSON: [String: Any]) throws -> Self {
-        guard let data = JSON["data"] as? [String: Any] else { throw JSONDeserializationError.dataMissing }
-        guard let type = data["type"] as? String else { throw JSONDeserializationError.typeMissing }
-        guard type == Self.dataType else { throw JSONDeserializationError.wrongType(expected: Self.dataType, given: type) }
+        guard let data = JSON["data"] as? [String: Any] else { throw JSONDeserializationError.invalidStructure }
+        guard let type = data["type"] as? String, type == Self.dataType else { throw JSONDeserializationError.invalidType }
         
         return try Self.from(JSON: data)
     }

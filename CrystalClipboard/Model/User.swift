@@ -20,11 +20,12 @@ extension User: JSONDeserializable {
     static var dataType = "users"
     
     static func from(JSON: [String : Any]) throws -> User {
-        guard let stringId = JSON["id"] as? String else { throw JSONDeserializationError.idMissing }
-        guard let id = Int(stringId) else { throw JSONDeserializationError.idInvalid }
-        guard let attributes = JSON["attributes"] as? [String: Any] else { throw JSONDeserializationError.attributesMissing }
-        guard let presentEmail = attributes["email"] else { throw JSONDeserializationError.attributeMissing(name: "email") }
-        guard let email = presentEmail as? String else { throw JSONDeserializationError.wrongAttributeType(name: "email", expected: String.self, given: type(of: presentEmail)) }
+        guard
+            let stringId = JSON["id"] as? String,
+            let id = Int(stringId),
+            let attributes = JSON["attributes"] as? [String: Any],
+            let email = attributes["email"] as? String
+            else { throw JSONDeserializationError.invalidAttributes }
         
         return User(id: id, email: email)
     }
