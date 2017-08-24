@@ -11,12 +11,12 @@
 		5139455BEAD1A38DFBEC3EFE /* Pods_CrystalClipboard_CrystalClipboardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB6D1252A5CFB8E0A71638C /* Pods_CrystalClipboard_CrystalClipboardUITests.framework */; };
 		AC34E29D5531A22239EC7F0A /* Pods_CrystalClipboard_CrystalClipboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6AEB327ECEAE3823D0BFB96 /* Pods_CrystalClipboard_CrystalClipboardTests.framework */; };
 		D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0112B7F1F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld */; };
-		D0112B851F4A7E8400999761 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0112B841F4A7E8400999761 /* Clip.swift */; };
+		D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0112B841F4A7E8400999761 /* ManagedClip.swift */; };
 		D031F6321F4BFA1600530226 /* ResponseErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031F6311F4BFA1600530226 /* ResponseErrorTests.swift */; };
 		D03ABD3E1F4D37F000A7D473 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3D1F4D37F000A7D473 /* Constants.swift */; };
 		D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */; };
 		D04DBF8F1F4C8466002B5A02 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04DBF8E1F4C8466002B5A02 /* SampleData.swift */; };
-		D05335FC1F4A861A0077B1F9 /* ClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FB1F4A861A0077B1F9 /* ClipTests.swift */; };
+		D05335FC1F4A861A0077B1F9 /* ManagedClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */; };
 		D05335FE1F4A87DA0077B1F9 /* CoreDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FD1F4A87DA0077B1F9 /* CoreDataTestCase.swift */; };
 		D05336051F4A9E700077B1F9 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05336041F4A9E700077B1F9 /* DateParser.swift */; };
 		D085FAF41F4BF6AD0022C806 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085FAF31F4BF6AD0022C806 /* ResponseError.swift */; };
@@ -74,12 +74,12 @@
 		C526E4CC18C0F90CF02AF061 /* Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig"; sourceTree = "<group>"; };
 		C6AEB327ECEAE3823D0BFB96 /* Pods_CrystalClipboard_CrystalClipboardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrystalClipboard_CrystalClipboardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0112B801F4A7BAE00999761 /* CrystalClipboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CrystalClipboard.xcdatamodel; sourceTree = "<group>"; };
-		D0112B841F4A7E8400999761 /* Clip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clip.swift; path = Model/Clip.swift; sourceTree = "<group>"; };
+		D0112B841F4A7E8400999761 /* ManagedClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedClip.swift; path = Model/ManagedClip.swift; sourceTree = "<group>"; };
 		D031F6311F4BFA1600530226 /* ResponseErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseErrorTests.swift; sourceTree = "<group>"; };
 		D03ABD3D1F4D37F000A7D473 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrystalClipboardAPI.swift; path = Networking/CrystalClipboardAPI.swift; sourceTree = "<group>"; };
 		D04DBF8E1F4C8466002B5A02 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleData.swift; path = Networking/SampleData.swift; sourceTree = "<group>"; };
-		D05335FB1F4A861A0077B1F9 /* ClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTests.swift; path = Model/ClipTests.swift; sourceTree = "<group>"; };
+		D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedClipTests.swift; path = Model/ManagedClipTests.swift; sourceTree = "<group>"; };
 		D05335FD1F4A87DA0077B1F9 /* CoreDataTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestCase.swift; sourceTree = "<group>"; };
 		D05336041F4A9E700077B1F9 /* DateParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateParser.swift; path = Utilities/DateParser.swift; sourceTree = "<group>"; };
 		D085FAF31F4BF6AD0022C806 /* ResponseError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseError.swift; path = Networking/ResponseError.swift; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				D095D8C31F4E261A00D15CE4 /* AuthToken.swift */,
-				D0112B841F4A7E8400999761 /* Clip.swift */,
+				D0112B841F4A7E8400999761 /* ManagedClip.swift */,
 				D0112B7F1F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld */,
 				D095D8C11F4E260800D15CE4 /* User.swift */,
 			);
@@ -243,7 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				D095D8CE1F4E2EB500D15CE4 /* AuthTokenTests.swift */,
-				D05335FB1F4A861A0077B1F9 /* ClipTests.swift */,
+				D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */,
 				D095D8CC1F4E2E9300D15CE4 /* UserTests.swift */,
 			);
 			name = Model;
@@ -720,7 +720,7 @@
 			files = (
 				D0979B631F4B306100B8407F /* RootViewController.swift in Sources */,
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
-				D0112B851F4A7E8400999761 /* Clip.swift in Sources */,
+				D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */,
 				D0979B671F4B31EB00B8407F /* SignUpViewController.swift in Sources */,
 				D095D8C21F4E260800D15CE4 /* User.swift in Sources */,
 				D095D8C91F4E26E700D15CE4 /* JSONDeserializable.swift in Sources */,
@@ -749,7 +749,7 @@
 				D031F6321F4BFA1600530226 /* ResponseErrorTests.swift in Sources */,
 				D095D8CD1F4E2E9300D15CE4 /* UserTests.swift in Sources */,
 				D095D8CF1F4E2EB500D15CE4 /* AuthTokenTests.swift in Sources */,
-				D05335FC1F4A861A0077B1F9 /* ClipTests.swift in Sources */,
+				D05335FC1F4A861A0077B1F9 /* ManagedClipTests.swift in Sources */,
 				D0979B821F4B580800B8407F /* TestObserver.swift in Sources */,
 				D0C70AED1F4E4454003C5C1B /* JSONDeserializableTests.swift in Sources */,
 			);
