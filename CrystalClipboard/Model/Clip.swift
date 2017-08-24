@@ -19,3 +19,20 @@ struct Clip {
         self.createdAt = createdAt
     }
 }
+
+extension Clip: JSONDeserializable {
+    static let dataType = "clips"
+    
+    static func from(JSON: [String : Any]) throws -> Clip {
+        guard
+            let idString = JSON["id"] as? String,
+            let id = Int(idString),
+            let attributes = JSON["attributes"] as? [String: Any],
+            let text = attributes["text"] as? String,
+            let createdAtString = attributes["created-at"] as? String,
+            let createdAt = DateParser.date(from: createdAtString)
+            else { throw JSONDeserializationError.invalidAttributes }
+        
+        return Clip(id: id, text: text, createdAt: createdAt)
+    }
+}
