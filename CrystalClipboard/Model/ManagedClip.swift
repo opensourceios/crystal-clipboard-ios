@@ -7,7 +7,6 @@
 //
 
 import CoreData
-import SwiftyJSON
 
 class ManagedClip: NSManagedObject {
     @NSManaged fileprivate(set) var id: Int
@@ -15,10 +14,10 @@ class ManagedClip: NSManagedObject {
     @NSManaged fileprivate(set) var createdAt: Date
     
     @discardableResult
-    convenience init(context: NSManagedObjectContext, id: Int, text: String, createdAt: Date) {
+    convenience init(from clip: Clip, context: NSManagedObjectContext) {
         self.init(context: context)
-        self.id = id
-        self.text = text
-        self.createdAt = createdAt
+        self.id = clip.id
+        self.text = clip.text
+        self.createdAt = clip.createdAt
     }
 }

@@ -14,7 +14,7 @@ import SwiftyJSON
 class ManagedClipTests: CoreDataTestCase {
     func testInsert() {
         let now = Date()
-        ManagedClip(context: managedObjectContext, id: 1, text: "hi", createdAt: now)
+        ManagedClip(from: Clip(id: 1, text: "hi", createdAt: now), context: managedObjectContext)
         try! managedObjectContext.save()
         let fetchRequest = ManagedClip.fetchRequest() as! NSFetchRequest<ManagedClip>
         let managedClip = try! managedObjectContext.fetch(fetchRequest).first!
@@ -24,9 +24,9 @@ class ManagedClipTests: CoreDataTestCase {
     }
     
     func testUniqueId() {
-        ManagedClip(context: managedObjectContext, id: 1, text: "hi", createdAt: Date())
-        ManagedClip(context: managedObjectContext, id: 2, text: "yo", createdAt: Date())
-        ManagedClip(context: managedObjectContext, id: 1, text: "there can only be one", createdAt: Date())
+        ManagedClip(from: Clip(id: 1, text: "hi", createdAt: Date()), context: managedObjectContext)
+        ManagedClip(from: Clip(id: 2, text: "yo", createdAt: Date()), context: managedObjectContext)
+        ManagedClip(from: Clip(id: 1, text: "there can only be one", createdAt: Date()), context: managedObjectContext)
         try! managedObjectContext.save()
         let fetchRequest = ManagedClip.fetchRequest() as! NSFetchRequest<ManagedClip>
         XCTAssertEqual(try! managedObjectContext.count(for: fetchRequest), 2)
