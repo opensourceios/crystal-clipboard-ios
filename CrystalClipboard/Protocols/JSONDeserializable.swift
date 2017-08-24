@@ -26,4 +26,14 @@ extension JSONDeserializable {
         
         return try Self.from(JSON: data)
     }
+    
+    static func manyIn(JSON: [String: Any]) -> [Self] {
+        guard let data = JSON["data"] as? [[String: Any]] else { return [] }
+        return data.filter { $0["type"] as? String == Self.dataType }.flatMap { try? Self.from(JSON: $0) }
+    }
+    
+    static func includedIn(JSON: [String: Any]) -> [Self] {
+        guard let included = JSON["included"] as? [[String: Any]] else { return [] }
+        return included.flatMap { try? Self.from(JSON: $0) }
+    }
 }
