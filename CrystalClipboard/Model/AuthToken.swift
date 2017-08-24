@@ -15,7 +15,7 @@ struct AuthToken {
 }
 
 extension AuthToken: JSONDeserializable {
-    static var dataType = "auth-tokens"
+    static var JSONType = "auth-tokens"
 
     static func from(JSON: [String : Any]) throws -> AuthToken {
         guard

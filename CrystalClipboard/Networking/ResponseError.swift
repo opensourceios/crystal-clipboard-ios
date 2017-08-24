@@ -37,7 +37,7 @@ struct ResponseError: Error {
 }
 
 extension ResponseError: JSONDeserializable {
-    static var dataType = "errors"
+    static var JSONType = "errors"
     
     static func `in`(JSON: [String: Any]) throws -> ResponseError {
         return try ResponseError.from(JSON: JSON)

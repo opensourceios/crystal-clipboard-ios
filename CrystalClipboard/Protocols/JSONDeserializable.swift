@@ -13,7 +13,7 @@ enum JSONDeserializationError: Error {
 }
 
 protocol JSONDeserializable {
-    static var dataType: String { get }
+    static var JSONType: String { get }
     static func from(JSON: [String: Any]) throws -> Self
     static func manyIn(JSON: [String: Any]) -> [Self]
     static func includedIn(JSON: [String: Any]) -> [Self]
@@ -22,14 +22,14 @@ protocol JSONDeserializable {
 extension JSONDeserializable {
     static func `in`(JSON: [String: Any]) throws -> Self {
         guard let data = JSON["data"] as? [String: Any] else { throw JSONDeserializationError.invalidStructure }
-        guard let type = data["type"] as? String, type == Self.dataType else { throw JSONDeserializationError.invalidType }
+        guard let type = data["type"] as? String, type == Self.JSONType else { throw JSONDeserializationError.invalidType }
         
         return try Self.from(JSON: data)
     }
     
     static func manyIn(JSON: [String: Any]) -> [Self] {
         guard let data = JSON["data"] as? [[String: Any]] else { return [] }
-        return data.filter { $0["type"] as? String == Self.dataType }.flatMap { try? Self.from(JSON: $0) }
+        return data.filter { $0["type"] as? String == Self.JSONType }.flatMap { try? Self.from(JSON: $0) }
     }
     
     static func includedIn(JSON: [String: Any]) -> [Self] {

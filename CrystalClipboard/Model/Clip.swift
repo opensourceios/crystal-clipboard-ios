@@ -21,7 +21,7 @@ struct Clip {
 }
 
 extension Clip: JSONDeserializable {
-    static let dataType = "clips"
+    static let JSONType = "clips"
     
     static func from(JSON: [String : Any]) throws -> Clip {
         guard

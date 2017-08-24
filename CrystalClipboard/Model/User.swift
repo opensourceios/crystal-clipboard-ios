@@ -17,7 +17,7 @@ struct User {
 }
 
 extension User: JSONDeserializable {
-    static var dataType = "users"
+    static var JSONType = "users"
     
     static func from(JSON: [String : Any]) throws -> User {
         guard
