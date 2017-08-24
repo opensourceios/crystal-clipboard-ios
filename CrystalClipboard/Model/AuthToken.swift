@@ -18,8 +18,7 @@ struct AuthToken {
 
 extension AuthToken: JSONDeserializable {
     static var dataType = "auth-tokens"
-    
-    
+
     static func from(JSON: [String : Any]) throws -> AuthToken {
         let json = SwiftyJSON.JSON(JSON)
         guard let token = json["attributes"]["token"].string else {
