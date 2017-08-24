@@ -68,6 +68,31 @@ class SignalProducer_JSONDeserializableTests: XCTestCase {
         }
     }
     
+    func testMapDeserializeJSONWithIncluded() {
+        var authTokensDeserialized = 0
+        var usersDeserialized = 0
+        
+        provider.reactive.request(.signIn(email: "satan@hell.org", password: "password"))
+            .mapJSON()
+            .mapDeserializeJSON(to: AuthToken.self, withIncluded: User.self)
+            .start { event in
+                switch event {
+                case let .value(value):
+                    let (authToken, users) = value
+                    XCTAssertEqual(authToken.token, "Vy5KbYX116Y1him376FvAhkw")
+                    authTokensDeserialized += 1
+                    let user = users.first!
+                    XCTAssertEqual(user.id, 666)
+                    usersDeserialized += users.count
+                case let .failed(error): XCTFail("Failed to deserialize auth token with user: \(error)")
+                case .completed:
+                    XCTAssertEqual(authTokensDeserialized, 1)
+                    XCTAssertEqual(usersDeserialized, 1)
+                case .interrupted: XCTFail("Should not be interrupted")
+                }
+        }
+    }
+    
     func testMapDeserializeJSONInvalidType() {
         provider.reactive.request(.createClip(text: "I'm a clip, not a user"))
             .mapJSON()
