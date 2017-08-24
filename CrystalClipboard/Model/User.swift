@@ -21,8 +21,8 @@ extension User: JSONDeserializable {
     
     static func from(JSON: [String : Any]) throws -> User {
         guard
-            let stringId = JSON["id"] as? String,
-            let id = Int(stringId),
+            let idString = JSON["id"] as? String,
+            let id = Int(idString),
             let attributes = JSON["attributes"] as? [String: Any],
             let email = attributes["email"] as? String
             else { throw JSONDeserializationError.invalidAttributes }
