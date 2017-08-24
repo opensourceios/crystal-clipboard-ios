@@ -7,23 +7,23 @@
 //
 
 import Foundation
-import SwiftyJSON
 import Moya
+
+extension Response {
+    var errors: [ResponseError] {
+        guard let JSON = (try? mapJSON()) as? [String: Any] else { return [] }
+        
+        return ResponseError.manyIn(JSON: JSON)
+    }
+}
 
 struct ResponseError: Error {
     let detail: String?
     let pointer: String?
     
-    static func deserializeErrors(json: [String: Any]) -> [ResponseError]? {
-        let swiftyJSON = JSON(json)
-        guard let errors = swiftyJSON["errors"].arrayObject as? [[String: Any]] else { return nil }
-        return errors.flatMap { ResponseError(json: $0) }
-    }
-    
-    init?(json: [String: Any]) {
-        let swiftyJSON = JSON(json)
-        detail = swiftyJSON["detail"].string
-        pointer = swiftyJSON["source"]["pointer"].string
+    init(detail: String?, pointer: String?) {
+        self.detail = detail
+        self.pointer = pointer
     }
     
     var message: String? {
@@ -36,12 +36,23 @@ struct ResponseError: Error {
     }
 }
 
-extension Response {
-    var errors: [ResponseError] {
-        if let json = (try? mapJSON()) as? [String: Any], let errors = ResponseError.deserializeErrors(json: json) {
-            return errors
-        }
+extension ResponseError: JSONDeserializable {
+    static var dataType = "errors"
+    
+    static func `in`(JSON: [String: Any]) throws -> ResponseError {
+        return try ResponseError.from(JSON: JSON)
+    }
+    
+    static func from(JSON: [String : Any]) throws -> ResponseError {
+        let detail = JSON["detail"] as? String
+        let pointer = (JSON["source"] as? [String: Any])?["pointer"] as? String
         
-        return []
+        return ResponseError(detail: detail, pointer: pointer)
+    }
+    
+    static func manyIn(JSON: [String: Any]) -> [ResponseError] {
+        guard let errors = JSON["errors"] as? [[String: Any]] else { return [] }
+        
+        return errors.flatMap { try? ResponseError.from(JSON: $0) }
     }
 }

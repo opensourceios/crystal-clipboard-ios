@@ -20,6 +20,8 @@ enum JSONDeserializationError: Error {
 protocol JSONDeserializable {
     static var dataType: String { get }
     static func from(JSON: [String: Any]) throws -> Self
+    static func manyIn(JSON: [String: Any]) -> [Self]
+    static func includedIn(JSON: [String: Any]) -> [Self]
 }
 
 extension JSONDeserializable {
