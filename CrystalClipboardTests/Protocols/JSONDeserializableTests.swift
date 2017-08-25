@@ -17,6 +17,13 @@ class JSONDeserializableTests: XCTestCase {
         XCTAssertEqual(user.email, "satan@hell.org")
     }
     
+    func testDeserializationWithRelationship() {
+        let data = CrystalClipboardAPI.createUser(email: "user@domain.com", password: "password").sampleData
+        let JSON = try! JSONSerialization.jsonObject(with: data) as! [String: Any]
+        let user = try! User.in(JSON: JSON)
+        XCTAssertEqual(user.authToken!.token, "qz6oF9nHysGnkVYZccFJGZuz")
+    }
+    
     func testInvalidStructure() {
         do {
             _ = try User.in(JSON: ["id": "666", "type": "users", "attributes": ["email": "satan@hell.org"]])

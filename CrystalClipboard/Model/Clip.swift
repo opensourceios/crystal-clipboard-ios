@@ -23,7 +23,7 @@ struct Clip {
 extension Clip: JSONDeserializable {
     static let JSONType = "clips"
     
-    static func from(JSON: [String : Any]) throws -> Clip {
+    static func from(JSON: [String: Any], included: [[String: Any]]?) throws -> Clip {
         guard
             let idString = JSON["id"] as? String,
             let id = Int(idString),
