@@ -9,19 +9,17 @@
 struct User {
     let id: Int
     let email: String
-    let authToken: AuthToken?
     
-    init(id: Int, email: String, authToken: AuthToken?) {
+    init(id: Int, email: String) {
         self.id = id
         self.email = email
-        self.authToken = authToken
     }
 }
 
 extension User: JSONDeserializable {
     static var JSONType = "users"
     
-    static func from(JSON: [String: Any], included: [[String: Any]]?) throws -> User {
+    static func from(JSON: [String : Any]) throws -> User {
         guard
             let idString = JSON["id"] as? String,
             let id = Int(idString),
@@ -29,8 +27,6 @@ extension User: JSONDeserializable {
             let email = attributes["email"] as? String
             else { throw JSONDeserializationError.invalidAttributes }
         
-        let authToken = included?.flatMap { try? AuthToken.from(JSON: $0, included: nil) }.first
-        
-        return User(id: id, email: email, authToken: authToken)
+        return User(id: id, email: email)
     }
 }

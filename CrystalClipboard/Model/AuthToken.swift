@@ -9,7 +9,7 @@
 struct AuthToken {
     let token: String
     
-    init(token: String/*, user: User?*/) {
+    init(token: String) {
         self.token = token
     }
 }
@@ -17,7 +17,7 @@ struct AuthToken {
 extension AuthToken: JSONDeserializable {
     static var JSONType = "auth-tokens"
 
-    static func from(JSON: [String: Any], included: [[String: Any]]?) throws -> AuthToken {
+    static func from(JSON: [String : Any]) throws -> AuthToken {
         guard
             let attributes = JSON["attributes"] as? [String: Any],
             let token = attributes["token"] as? String

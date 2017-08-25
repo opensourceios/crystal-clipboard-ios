@@ -40,10 +40,10 @@ extension ResponseErrorData: JSONDeserializable {
     static var JSONType = "errors"
     
     static func `in`(JSON: [String: Any]) throws -> ResponseErrorData {
-        return try ResponseErrorData.from(JSON: JSON, included: nil)
+        return try ResponseErrorData.from(JSON: JSON)
     }
     
-    static func from(JSON: [String: Any], included: [[String: Any]]?) throws -> ResponseErrorData {
+    static func from(JSON: [String : Any]) throws -> ResponseErrorData {
         let detail = JSON["detail"] as? String
         let pointer = (JSON["source"] as? [String: Any])?["pointer"] as? String
         
@@ -53,6 +53,6 @@ extension ResponseErrorData: JSONDeserializable {
     static func manyIn(JSON: [String: Any]) -> [ResponseErrorData] {
         guard let errors = JSON["errors"] as? [[String: Any]] else { return [] }
         
-        return errors.flatMap { try? ResponseErrorData.from(JSON: $0, included: nil) }
+        return errors.flatMap { try? ResponseErrorData.from(JSON: $0) }
     }
 }
