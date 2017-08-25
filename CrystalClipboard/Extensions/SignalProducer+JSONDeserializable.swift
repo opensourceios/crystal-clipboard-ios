@@ -22,10 +22,6 @@ extension SignalProducerProtocol where Value == Any, Error == MoyaError {
         return performDeserialization { D.includedIn(JSON: $0) }
     }
     
-    func mapDeserializeJSON<D: JSONDeserializable, I: JSONDeserializable>(to: D.Type, withIncluded: I.Type) -> SignalProducer<(D, [I]), MoyaError> {
-        return performDeserialization { (try D.in(JSON: $0), I.includedIn(JSON: $0)) }
-    }
-    
     private func performDeserialization<Z>(_ deserialization: @escaping ([String: Any]) throws -> Z) -> SignalProducer<Z, MoyaError> {
         return producer.flatMap(.latest) { any -> SignalProducer<Z, MoyaError> in
             do {
