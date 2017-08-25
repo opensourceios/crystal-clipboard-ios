@@ -18,20 +18,20 @@ protocol JSONDeserializable {
 }
 
 extension JSONDeserializable {
-    static func `in`(JSON: [String: Any]) throws -> Self {
-        guard let data = JSON["data"] as? [String: Any] else { throw JSONDeserializationError.invalidStructure }
+    static func `in`(JSON: Any) throws -> Self {
+        guard let data = (JSON as? [String: Any])?["data"] as? [String: Any] else { throw JSONDeserializationError.invalidStructure }
         guard let type = data["type"] as? String, type == Self.JSONType else { throw JSONDeserializationError.invalidType }
         
         return try Self.from(JSON: data)
     }
     
-    static func manyIn(JSON: [String: Any]) -> [Self] {
-        guard let data = JSON["data"] as? [[String: Any]] else { return [] }
+    static func manyIn(JSON: Any) -> [Self] {
+        guard let data = (JSON as? [String: Any])?["data"] as? [[String: Any]] else { return [] }
         return data.filter { $0["type"] as? String == Self.JSONType }.flatMap { try? Self.from(JSON: $0) }
     }
     
-    static func includedIn(JSON: [String: Any]) -> [Self] {
-        guard let included = JSON["included"] as? [[String: Any]] else { return [] }
+    static func includedIn(JSON: Any) -> [Self] {
+        guard let included = (JSON as? [String: Any])?["included"] as? [[String: Any]] else { return [] }
         return included.flatMap { try? Self.from(JSON: $0) }
     }
 }
