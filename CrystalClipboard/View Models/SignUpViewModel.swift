@@ -28,11 +28,15 @@ class SignUpViewModel {
         $0.characters.count > 0 ? .valid : .invalid(.invalidPassword)
     }
     
-    lazy var signUp: Action<Void, User, MoyaError> = Action(enabledIf: self.signUpEnabled) { [unowned self] _ in
+    lazy var signUp: Action<Void, String, MoyaError> = Action(enabledIf: self.signUpEnabled) { [unowned self] _ in
         return self.provider.reactive.request(.createUser(email: self.email.value, password: self.password.value))
             .filterSuccessfulStatusCodes()
             .mapJSON()
-            .mapDeserializeJSON(to: User.self)
+            .map { json in
+                // TODO
+                return ""
+//                fatalError("coming soon")
+        }
     }
     
     // MARK: Outputs
