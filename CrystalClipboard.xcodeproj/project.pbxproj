@@ -43,8 +43,6 @@
 		D0B0CE001F4671E8006201CE /* CrystalClipboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CDFF1F4671E8006201CE /* CrystalClipboardTests.swift */; };
 		D0B0CE0B1F4671E8006201CE /* CrystalClipboardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */; };
 		D0C70AED1F4E4454003C5C1B /* JSONDeserializableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C70AEC1F4E4454003C5C1B /* JSONDeserializableTests.swift */; };
-		D0C70AEF1F4F2A7C003C5C1B /* SignalProducer+JSONDeserializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C70AEE1F4F2A7C003C5C1B /* SignalProducer+JSONDeserializable.swift */; };
-		D0C70AF21F4F319C003C5C1B /* SignalProducer+JSONDeserializableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C70AF11F4F319C003C5C1B /* SignalProducer+JSONDeserializableTests.swift */; };
 		D0D59B701F4A0A0100200ABD /* Cable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D59B6F1F4A0A0100200ABD /* Cable.swift */; };
 /* End PBXBuildFile section */
 
@@ -117,8 +115,6 @@
 		D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrystalClipboardUITests.swift; sourceTree = "<group>"; };
 		D0B0CE0C1F4671E8006201CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0C70AEC1F4E4454003C5C1B /* JSONDeserializableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONDeserializableTests.swift; path = Protocols/JSONDeserializableTests.swift; sourceTree = "<group>"; };
-		D0C70AEE1F4F2A7C003C5C1B /* SignalProducer+JSONDeserializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SignalProducer+JSONDeserializable.swift"; path = "Extensions/SignalProducer+JSONDeserializable.swift"; sourceTree = "<group>"; };
-		D0C70AF11F4F319C003C5C1B /* SignalProducer+JSONDeserializableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SignalProducer+JSONDeserializableTests.swift"; path = "Extensions/SignalProducer+JSONDeserializableTests.swift"; sourceTree = "<group>"; };
 		D0D59B6F1F4A0A0100200ABD /* Cable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cable.swift; path = Networking/Cable.swift; sourceTree = "<group>"; };
 		D22B5B8698FE83A31D24280D /* Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; sourceTree = "<group>"; };
 		DD3162C9717AFAFB194112F5 /* Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardUITests/Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -270,7 +266,6 @@
 		D0909B6E1F4D27C0000F584B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D0C70AEE1F4F2A7C003C5C1B /* SignalProducer+JSONDeserializable.swift */,
 				D0909B6F1F4D282C000F584B /* String+Localized.swift */,
 			);
 			name = Extensions;
@@ -347,7 +342,6 @@
 			children = (
 				D05335FD1F4A87DA0077B1F9 /* CoreDataTestCase.swift */,
 				D0B0CDFF1F4671E8006201CE /* CrystalClipboardTests.swift */,
-				D0C70AF01F4F3158003C5C1B /* Extensions */,
 				D05335FA1F4A85FA0077B1F9 /* Model */,
 				D031F62D1F4BF9AC00530226 /* Networking */,
 				D0C70AEB1F4E4405003C5C1B /* Protocols */,
@@ -373,14 +367,6 @@
 				D0C70AEC1F4E4454003C5C1B /* JSONDeserializableTests.swift */,
 			);
 			name = Protocols;
-			sourceTree = "<group>";
-		};
-		D0C70AF01F4F3158003C5C1B /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				D0C70AF11F4F319C003C5C1B /* SignalProducer+JSONDeserializableTests.swift */,
-			);
-			name = Extensions;
 			sourceTree = "<group>";
 		};
 		F1B40374E4D5B68ECE5498FB /* Frameworks */ = {
@@ -733,7 +719,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0979B631F4B306100B8407F /* RootViewController.swift in Sources */,
-				D0C70AEF1F4F2A7C003C5C1B /* SignalProducer+JSONDeserializable.swift in Sources */,
 				D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */,
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
 				D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */,
@@ -760,7 +745,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0B0CE001F4671E8006201CE /* CrystalClipboardTests.swift in Sources */,
-				D0C70AF21F4F319C003C5C1B /* SignalProducer+JSONDeserializableTests.swift in Sources */,
 				D05335FE1F4A87DA0077B1F9 /* CoreDataTestCase.swift in Sources */,
 				D0979B801F4B495800B8407F /* SignUpViewModelTests.swift in Sources */,
 				D031F6321F4BFA1600530226 /* ResponseErrorDataTests.swift in Sources */,
