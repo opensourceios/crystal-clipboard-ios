@@ -19,19 +19,13 @@ extension SignalProducerProtocol where Value == Any, Error == MoyaError {
     }
     
     private func performDeserialization<Z>(_ deserialization: @escaping ([String: Any]) throws -> Z) -> SignalProducer<Z, MoyaError> {
-        return producer.flatMap(.latest) { any in
-            return unwrapThrowable {
-                guard let JSON = any as? [String: Any] else { throw JSONDeserializationError.invalidStructure }
-                return try deserialization(JSON)
+        return producer.flatMap(.latest) { any -> SignalProducer<Z, MoyaError> in
+            do {
+                guard let JSON = any as? [String: Any] else { throw MoyaError.underlying(JSONDeserializationError.invalidStructure, nil) }
+                return SignalProducer(value: try deserialization(JSON))
+            } catch {
+                return SignalProducer(error: MoyaError.underlying(error, nil))
             }
         }
-    }
-}
-
-private func unwrapThrowable<T>(throwable: () throws -> T) -> SignalProducer<T, MoyaError> {
-    do {
-        return SignalProducer(value: try throwable())
-    } catch {
-        return SignalProducer(error: MoyaError.underlying(error, nil))
     }
 }
