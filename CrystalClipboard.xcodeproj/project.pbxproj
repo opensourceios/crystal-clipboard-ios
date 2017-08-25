@@ -28,6 +28,7 @@
 		D095D8C41F4E261A00D15CE4 /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095D8C31F4E261A00D15CE4 /* AuthToken.swift */; };
 		D095D8C91F4E26E700D15CE4 /* JSONDeserializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095D8C81F4E26E700D15CE4 /* JSONDeserializable.swift */; };
 		D095D8CD1F4E2E9300D15CE4 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095D8CC1F4E2E9300D15CE4 /* UserTests.swift */; };
+		D095D8CF1F4E2EB500D15CE4 /* AuthTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095D8CE1F4E2EB500D15CE4 /* AuthTokenTests.swift */; };
 		D0979B631F4B306100B8407F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B621F4B306100B8407F /* RootViewController.swift */; };
 		D0979B671F4B31EB00B8407F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B661F4B31EB00B8407F /* SignUpViewController.swift */; };
 		D0979B691F4B325300B8407F /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B681F4B325300B8407F /* SignUpViewModel.swift */; };
@@ -95,6 +96,7 @@
 		D095D8C31F4E261A00D15CE4 /* AuthToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthToken.swift; path = Model/AuthToken.swift; sourceTree = "<group>"; };
 		D095D8C81F4E26E700D15CE4 /* JSONDeserializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONDeserializable.swift; path = Protocols/JSONDeserializable.swift; sourceTree = "<group>"; };
 		D095D8CC1F4E2E9300D15CE4 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTests.swift; path = Model/UserTests.swift; sourceTree = "<group>"; };
+		D095D8CE1F4E2EB500D15CE4 /* AuthTokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthTokenTests.swift; path = Model/AuthTokenTests.swift; sourceTree = "<group>"; };
 		D0979B621F4B306100B8407F /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		D0979B661F4B31EB00B8407F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D0979B681F4B325300B8407F /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModel.swift; path = "View Models/SignUpViewModel.swift"; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		D05335FA1F4A85FA0077B1F9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D095D8CE1F4E2EB500D15CE4 /* AuthTokenTests.swift */,
 				D03ABD411F4E902400A7D473 /* ClipTests.swift */,
 				D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */,
 				D095D8CC1F4E2E9300D15CE4 /* UserTests.swift */,
@@ -762,6 +765,7 @@
 				D0979B801F4B495800B8407F /* SignUpViewModelTests.swift in Sources */,
 				D031F6321F4BFA1600530226 /* ResponseErrorDataTests.swift in Sources */,
 				D095D8CD1F4E2E9300D15CE4 /* UserTests.swift in Sources */,
+				D095D8CF1F4E2EB500D15CE4 /* AuthTokenTests.swift in Sources */,
 				D05335FC1F4A861A0077B1F9 /* ManagedClipTests.swift in Sources */,
 				D0979B821F4B580800B8407F /* TestObserver.swift in Sources */,
 				D0C70AED1F4E4454003C5C1B /* JSONDeserializableTests.swift in Sources */,

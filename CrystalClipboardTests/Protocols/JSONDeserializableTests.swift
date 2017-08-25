@@ -70,4 +70,13 @@ class JSONDeserializableTests: XCTestCase {
         XCTAssertEqual(users.last!.id, 1098)
         XCTAssertEqual(users.last!.email, "baphomet@hell.org")
     }
+    
+    func testIncludedIn() {
+        let json = [
+            "data": ["id": "666", "type": "users", "attributes": ["email": "satan@hell.org"]],
+            "included": [["id": "1256", "type": "auth-tokens", "attributes": ["token": "qz6oF9nHysGnkVYZccFJGZuz"]]]
+        ] as [String: Any]
+        let authTokens = AuthToken.includedIn(JSON: json)
+        XCTAssertEqual(authTokens.first!.token, "qz6oF9nHysGnkVYZccFJGZuz")
+    }
 }
