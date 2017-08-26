@@ -28,15 +28,10 @@ class SignUpViewModel {
         $0.characters.count > 0 ? .valid : .invalid(.invalidPassword)
     }
     
-    lazy var signUp: Action<Void, String, MoyaError> = Action(enabledIf: self.signUpEnabled) { [unowned self] _ in
+    lazy var signUp: Action<Void, Any, MoyaError> = Action(enabledIf: self.signUpEnabled) { [unowned self] _ in
         return self.provider.reactive.request(.createUser(email: self.email.value, password: self.password.value))
             .filterSuccessfulStatusCodes()
             .mapJSON()
-            .map { json in
-                // TODO
-                return ""
-//                fatalError("coming soon")
-        }
     }
     
     // MARK: Outputs
@@ -60,4 +55,13 @@ class SignUpViewModel {
     private lazy var signUpEnabled: Property<Bool> = Property
         .combineLatest(self.email.result, self.password.result)
         .map { email, password in !email.isInvalid && !password.isInvalid }
+    
+    private lazy var user: Signal<User, AnyError> = self.signUp.values.attemptMap { try User.in(JSON: $0) }
+    private lazy var authToken: Signal<AuthToken, AnyError> = self.signUp.values.attemptMap {
+        if let authToken = AuthToken.includedIn(JSON: $0).first {
+            return authToken
+        } else {
+            throw NSError()
+        }
+    }
 }
