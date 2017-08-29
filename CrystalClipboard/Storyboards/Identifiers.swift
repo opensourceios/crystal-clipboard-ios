@@ -7,6 +7,7 @@ public enum StoryboardNames : String {
 }
 
 public enum ViewControllerStoryboardIdentifier : String {
+    case Clips
     case Landing
     case Root
     case SignUp

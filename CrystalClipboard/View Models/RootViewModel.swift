@@ -11,7 +11,11 @@ import ReactiveSwift
 class RootViewModel {
     // MARK: Outputs
     
-    let initialStoryboardName: Property<StoryboardNames> = Property(value: .SignedOut)
+    var initialStoryboardName: Property<StoryboardNames> {
+        return User.current == nil ? Property(value: .SignedOut) : Property(value: .Main)
+    }
     
-    let initialViewControllerIdentifier: Property<ViewControllerStoryboardIdentifier> = Property(value: .Landing)
+    var initialViewControllerIdentifier: Property<ViewControllerStoryboardIdentifier> {
+        return User.current == nil ? Property(value: .Landing) : Property(value: .Clips)
+    }
 }
