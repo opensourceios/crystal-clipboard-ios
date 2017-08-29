@@ -9,12 +9,15 @@
 import UIKit
 
 class RootViewController: UIViewController {
+    private let viewModel = RootViewModel()
+    
     @IBOutlet fileprivate weak var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let landingViewController = UIStoryboard.signedOut.instantiateViewController(withIdentifier: .Landing)
-        display(controller: landingViewController)
+        let storyboard = UIStoryboard(name: viewModel.initialStoryboardName.value)
+        let controller = storyboard.instantiateViewController(withIdentifier: viewModel.initialViewControllerIdentifier.value)
+        display(controller: controller)
     }
 }
 

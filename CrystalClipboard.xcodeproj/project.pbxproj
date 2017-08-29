@@ -13,6 +13,7 @@
 		D00D68371F55CAF80029BC79 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68361F55CAF80029BC79 /* Identifiers.swift */; };
 		D00D68421F55DA210029BC79 /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68411F55DA210029BC79 /* UIStoryboard+Extensions.swift */; };
 		D00D68441F55DEE60029BC79 /* SignedOut.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D00D68431F55DEE60029BC79 /* SignedOut.storyboard */; };
+		D00D68461F55E5140029BC79 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68451F55E5140029BC79 /* RootViewModel.swift */; };
 		D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0112B7F1F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld */; };
 		D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0112B841F4A7E8400999761 /* ManagedClip.swift */; };
 		D031F6321F4BFA1600530226 /* ResponseErrorDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031F6311F4BFA1600530226 /* ResponseErrorDataTests.swift */; };
@@ -81,6 +82,7 @@
 		D00D68361F55CAF80029BC79 /* Identifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		D00D68411F55DA210029BC79 /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Extensions.swift"; path = "Extensions/UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
 		D00D68431F55DEE60029BC79 /* SignedOut.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignedOut.storyboard; sourceTree = "<group>"; };
+		D00D68451F55E5140029BC79 /* RootViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewModel.swift; path = "View Models/RootViewModel.swift"; sourceTree = "<group>"; };
 		D0112B801F4A7BAE00999761 /* CrystalClipboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CrystalClipboard.xcdatamodel; sourceTree = "<group>"; };
 		D0112B841F4A7E8400999761 /* ManagedClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedClip.swift; path = Model/ManagedClip.swift; sourceTree = "<group>"; };
 		D031F6311F4BFA1600530226 /* ResponseErrorDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseErrorDataTests.swift; sourceTree = "<group>"; };
@@ -290,8 +292,9 @@
 		D0979B651F4B31B200B8407F /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				D0979B681F4B325300B8407F /* SignUpViewModel.swift */,
 				D0979B6C1F4B341200B8407F /* LandingViewModel.swift */,
+				D00D68451F55E5140029BC79 /* RootViewModel.swift */,
+				D0979B681F4B325300B8407F /* SignUpViewModel.swift */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";
@@ -741,6 +744,7 @@
 				D095D8C21F4E260800D15CE4 /* User.swift in Sources */,
 				D00D68421F55DA210029BC79 /* UIStoryboard+Extensions.swift in Sources */,
 				D095D8C91F4E26E700D15CE4 /* JSONDeserializable.swift in Sources */,
+				D00D68461F55E5140029BC79 /* RootViewModel.swift in Sources */,
 				D0909B701F4D282C000F584B /* String+Localized.swift in Sources */,
 				D05336051F4A9E700077B1F9 /* DateParser.swift in Sources */,
 				D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */,
