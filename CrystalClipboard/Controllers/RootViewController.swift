@@ -9,12 +9,18 @@
 import UIKit
 
 class RootViewController: UIViewController {
-    @IBOutlet private weak var containerView: UIView!
+    @IBOutlet fileprivate weak var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let landingViewController = UIStoryboard.signedOut.instantiateViewController(withIdentifier: .Landing)
-        let navigationController = UINavigationController(rootViewController: landingViewController)
+        display(controller: landingViewController)
+    }
+}
+
+fileprivate extension RootViewController {
+    func display(controller: UIViewController) {
+        let navigationController = UINavigationController(rootViewController: controller)
         addChildViewController(navigationController)
         navigationController.view.frame = containerView.bounds
         view.addSubview(navigationController.view)
