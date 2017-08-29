@@ -29,7 +29,8 @@ extension AuthToken {
             if let currentAuthToken = memoizedCurrentAuthToken {
                 return currentAuthToken
             } else if let token = Keychain(service: Constants.keychainService)[keychainItem] {
-                return AuthToken(token: token)
+                memoizedCurrentAuthToken = AuthToken(token: token)
+                return memoizedCurrentAuthToken
             } else {
                 return nil
             }

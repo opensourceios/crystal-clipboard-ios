@@ -43,7 +43,8 @@ extension User {
             if let currentUser = memoizedCurrentUser {
                 return currentUser
             } else if id != 0, let email = defaults.string(forKey: emailDefaultsKey) {
-                return User(id: id, email: email)
+                memoizedCurrentUser = User(id: id, email: email)
+                return memoizedCurrentUser
             } else {
                 return nil
             }
