@@ -9,7 +9,12 @@
 import UIKit
 
 extension UIStoryboard {
-    static let main: UIStoryboard = UIStoryboard(name: StoryboardNames.Main.rawValue, bundle: nil)
+    static let main: UIStoryboard = UIStoryboard(name: .Main)
+    static let signedOut: UIStoryboard = UIStoryboard(name: .SignedOut)
+    
+    convenience init(name: StoryboardNames) {
+        self.init(name: name.rawValue, bundle: nil)
+    }
     
     func instantiateViewController(withIdentifier identifier: ViewControllerStoryboardIdentifier) -> UIViewController {
         return self.instantiateViewController(withIdentifier: identifier.rawValue)

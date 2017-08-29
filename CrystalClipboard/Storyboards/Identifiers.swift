@@ -3,6 +3,7 @@
 public enum StoryboardNames : String {
     case LaunchScreen
     case Main
+    case SignedOut
 }
 
 public enum ViewControllerStoryboardIdentifier : String {

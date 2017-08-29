@@ -13,7 +13,7 @@ class RootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let landingViewController = UIStoryboard.main.instantiateViewController(withIdentifier: .Landing)
+        let landingViewController = UIStoryboard.signedOut.instantiateViewController(withIdentifier: .Landing)
         let navigationController = UINavigationController(rootViewController: landingViewController)
         addChildViewController(navigationController)
         navigationController.view.frame = containerView.bounds
