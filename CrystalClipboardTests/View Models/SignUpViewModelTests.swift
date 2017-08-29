@@ -13,7 +13,7 @@ import Moya
 @testable import CrystalClipboard
 
 class SignUpViewModelTests: XCTestCase {
-    static let provider = CrystalClipboardAPI.testingProvider()
+    static let provider = APIProvider.testingProvider()
     let viewModel = SignUpViewModel(provider: provider)
     let alertMessage = TestObserver<String, NoError>()
     let goToClips = TestObserver<Void, NoError>()
@@ -62,7 +62,7 @@ class SignUpViewModelTests: XCTestCase {
     }
     
     func testAlertsNetworkError() {
-        let offlineProvider = CrystalClipboardAPI.testingProvider(online: false)
+        let offlineProvider = APIProvider.testingProvider(online: false)
         let offlineViewModel = SignUpViewModel(provider: offlineProvider)
         let offlineAlertMessage = TestObserver<String, NoError>()
         offlineViewModel.alertMessage.observe(offlineAlertMessage.observer)

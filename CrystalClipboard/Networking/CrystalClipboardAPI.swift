@@ -8,6 +8,23 @@
 
 import Moya
 
+typealias APIProvider = MoyaProvider<CrystalClipboardAPI>
+
+extension MoyaProvider where Target == CrystalClipboardAPI {
+    convenience init(authToken: AuthToken) {
+        self.init(plugins: [AccessTokenPlugin(token: authToken.token)])
+    }
+    
+    static func adminProvider() -> APIProvider {
+        return APIProvider(authToken: AuthToken.admin)
+    }
+    
+    static func userProvider() -> APIProvider? {
+        guard let authToken = AuthToken.current else { return nil }
+        return APIProvider(authToken: authToken)
+    }
+}
+
 enum CrystalClipboardAPI {
     case createUser(email: String, password: String)
     case signIn(email: String, password: String)

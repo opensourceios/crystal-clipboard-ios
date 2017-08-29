@@ -16,7 +16,7 @@ class SignUpViewModel {
         case invalidPassword
     }
     
-    private let provider: MoyaProvider<CrystalClipboardAPI>
+    private let provider: APIProvider
     
     // MARK: Inputs
     
@@ -48,7 +48,7 @@ class SignUpViewModel {
     
     // MARK: Initialization
     
-    init(provider: MoyaProvider<CrystalClipboardAPI>) {
+    init(provider: APIProvider) {
         self.provider = provider
     }
     

@@ -8,8 +8,8 @@
 
 import Moya
 
-extension CrystalClipboardAPI {
-    static func testingProvider(online: Bool = true) -> MoyaProvider<CrystalClipboardAPI> {
+extension MoyaProvider where Target == CrystalClipboardAPI {
+    static func testingProvider(online: Bool = true) -> APIProvider {
         let endpointClosure = { (target: CrystalClipboardAPI) -> Endpoint<CrystalClipboardAPI> in
             return Endpoint<CrystalClipboardAPI>(
                 url: URL(target: target).absoluteString,
@@ -24,12 +24,14 @@ extension CrystalClipboardAPI {
                         )
                         return .networkError(error)
                     }
-                }
+            }
             )
         }
-        return MoyaProvider<CrystalClipboardAPI>(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub)
+        return APIProvider(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub)
     }
-    
+}
+
+extension CrystalClipboardAPI {
     // Required for TargetType, but we're preferring sampleResponse to always get a status code
     var sampleData: Data {
         guard case let .networkResponse(_, data) = sampleResponse else { fatalError("sampleResponse should always have data") }

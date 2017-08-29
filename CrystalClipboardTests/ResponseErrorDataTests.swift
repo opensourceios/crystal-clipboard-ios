@@ -16,7 +16,7 @@ class ResponseErrorDataTests: XCTestCase {
     }
     
     func testResponseErrorsProperty() {
-        CrystalClipboardAPI.testingProvider().request(.createUser(email: "satan@hell.org", password: "p")) { result in
+        APIProvider.testingProvider().request(.createUser(email: "satan@hell.org", password: "p")) { result in
             switch result {
             case let .success(response):
                 XCTAssertEqual(response.errorData.count, 2)

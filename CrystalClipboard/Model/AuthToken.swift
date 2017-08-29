@@ -37,6 +37,14 @@ extension AuthToken {
     }
 }
 
+extension AuthToken {
+    static var admin: AuthToken {
+        get {
+            return AuthToken(token: Constants.environment.adminToken)
+        }
+    }
+}
+
 extension AuthToken: JSONDeserializable {
     static var JSONType = "auth-tokens"
 

@@ -33,7 +33,7 @@ enum Environment: String {
         return URL(string: "wss://\(host)/cable")!
     }
     
-    var adminAuthToken: String {
+    var adminToken: String {
         switch self {
         case .staging: return keys.crystalClipboardStagingAdminAuthToken
         case .production: return keys.crystalClipboardProductionAdminAuthToken
