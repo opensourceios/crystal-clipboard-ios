@@ -10,6 +10,7 @@
 		071DD13392D6F63A9C9E6577 /* Pods_CrystalClipboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD82DAABCF3EFB0DB952AD3 /* Pods_CrystalClipboard.framework */; };
 		5139455BEAD1A38DFBEC3EFE /* Pods_CrystalClipboard_CrystalClipboardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB6D1252A5CFB8E0A71638C /* Pods_CrystalClipboard_CrystalClipboardUITests.framework */; };
 		AC34E29D5531A22239EC7F0A /* Pods_CrystalClipboard_CrystalClipboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6AEB327ECEAE3823D0BFB96 /* Pods_CrystalClipboard_CrystalClipboardTests.framework */; };
+		D00D68371F55CAF80029BC79 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68361F55CAF80029BC79 /* Identifiers.swift */; };
 		D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0112B7F1F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld */; };
 		D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0112B841F4A7E8400999761 /* ManagedClip.swift */; };
 		D031F6321F4BFA1600530226 /* ResponseErrorDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031F6311F4BFA1600530226 /* ResponseErrorDataTests.swift */; };
@@ -75,6 +76,7 @@
 		AAB6D1252A5CFB8E0A71638C /* Pods_CrystalClipboard_CrystalClipboardUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrystalClipboard_CrystalClipboardUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C526E4CC18C0F90CF02AF061 /* Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig"; sourceTree = "<group>"; };
 		C6AEB327ECEAE3823D0BFB96 /* Pods_CrystalClipboard_CrystalClipboardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrystalClipboard_CrystalClipboardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D00D68361F55CAF80029BC79 /* Identifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		D0112B801F4A7BAE00999761 /* CrystalClipboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CrystalClipboard.xcdatamodel; sourceTree = "<group>"; };
 		D0112B841F4A7E8400999761 /* ManagedClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedClip.swift; path = Model/ManagedClip.swift; sourceTree = "<group>"; };
 		D031F6311F4BFA1600530226 /* ResponseErrorDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseErrorDataTests.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			children = (
 				D0B0CDF31F4671E8006201CE /* LaunchScreen.storyboard */,
 				D0B0CDEE1F4671E8006201CE /* Main.storyboard */,
+				D00D68361F55CAF80029BC79 /* Identifiers.swift */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -742,6 +745,7 @@
 				D0D59B701F4A0A0100200ABD /* Cable.swift in Sources */,
 				D0979B691F4B325300B8407F /* SignUpViewModel.swift in Sources */,
 				D0979B6D1F4B341200B8407F /* LandingViewModel.swift in Sources */,
+				D00D68371F55CAF80029BC79 /* Identifiers.swift in Sources */,
 				D0979B6B1F4B33F300B8407F /* LandingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
