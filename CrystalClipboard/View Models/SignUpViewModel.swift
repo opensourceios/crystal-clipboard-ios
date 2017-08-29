@@ -56,7 +56,7 @@ class SignUpViewModel {
     
     private lazy var signUpEnabled: Property<Bool> = Property
         .combineLatest(self.email.result, self.password.result)
-        .map { email, password in !email.isInvalid && !password.isInvalid }
+        .map { !$0.isInvalid && !$1.isInvalid }
     
     private lazy var user: Signal<User, NoError> = self.signUp.values
         .map { try? User.in(JSON: $0) }
