@@ -39,9 +39,7 @@ extension AuthToken {
 
 extension AuthToken {
     static var admin: AuthToken {
-        get {
-            return AuthToken(token: Constants.environment.adminToken)
-        }
+        return AuthToken(token: Constants.environment.adminToken)
     }
 }
 
