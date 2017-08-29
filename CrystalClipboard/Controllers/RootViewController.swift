@@ -9,27 +9,15 @@
 import UIKit
 
 class RootViewController: UIViewController {
-
+    @IBOutlet private weak var containerView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let landingViewController = UIStoryboard.main.instantiateViewController(withIdentifier: .Landing)
+        let navigationController = UINavigationController(rootViewController: landingViewController)
+        addChildViewController(navigationController)
+        navigationController.view.frame = containerView.bounds
+        view.addSubview(navigationController.view)
+        navigationController.didMove(toParentViewController: self)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -10,26 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="ITx-4U-HCh">
-            <objects>
-                <navigationController id="fyo-Cj-3XH" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="H73-J3-I63">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="z7P-Ph-Zv5" kind="relationship" relationship="rootViewController" id="EKL-Lf-i3H"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M9H-4R-nKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="137" y="858"/>
-        </scene>
         <!--Root View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="RootViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Root" id="BYZ-38-t0r" customClass="RootViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -40,9 +24,6 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gi-9b-t9v">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <connections>
-                                    <segue destination="fyo-Cj-3XH" kind="embed" id="f52-n6-v2M"/>
-                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -53,6 +34,9 @@
                             <constraint firstAttribute="trailing" secondItem="2gi-9b-t9v" secondAttribute="trailing" id="nu2-Bs-Kiu"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="containerView" destination="2gi-9b-t9v" id="ndv-hX-JkQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,7 +45,7 @@
         <!--Sign Up-->
         <scene sceneID="0PU-4M-Le0">
             <objects>
-                <viewController id="zAm-3W-DbA" customClass="SignUpViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Sign Up" id="zAm-3W-DbA" customClass="SignUpViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Te-nu-YFl"/>
                         <viewControllerLayoutGuide type="bottom" id="c3p-Qs-KxO"/>
@@ -136,7 +120,7 @@
         <!--Landing View Controller-->
         <scene sceneID="JZJ-ak-btw">
             <objects>
-                <viewController id="z7P-Ph-Zv5" customClass="LandingViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Landing" id="z7P-Ph-Zv5" customClass="LandingViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GkL-1K-LxF"/>
                         <viewControllerLayoutGuide type="bottom" id="y78-aM-uu1"/>
