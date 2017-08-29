@@ -17,3 +17,6 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 Pods
+
+# Ignore RVM config
+.ruby-*
