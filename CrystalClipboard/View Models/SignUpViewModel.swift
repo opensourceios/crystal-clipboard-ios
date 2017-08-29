@@ -28,7 +28,7 @@ class SignUpViewModel {
         $0.characters.count > 0 ? .valid : .invalid(.invalidPassword)
     }
     
-    lazy var signUp: Action<Void, Any, MoyaError> = Action(enabledIf: self.signUpEnabled) { [unowned self] _ in
+    private(set) lazy var signUp: Action<Void, Any, MoyaError> = Action(enabledIf: self.signUpEnabled) { [unowned self] _ in
         return self.provider.reactive.request(.createUser(email: self.email.value, password: self.password.value))
             .filterSuccessfulStatusCodes()
             .mapJSON()
@@ -36,13 +36,15 @@ class SignUpViewModel {
     
     // MARK: Outputs
 
-    lazy var alertMessage: Signal<String, NoError> = self.signUp.errors.map { error in
+    private(set) lazy var alertMessage: Signal<String, NoError> = self.signUp.errors.map { error in
         if let messages = error.response?.errorData.flatMap({ $0.message }), messages.count > 0 {
             return messages.joined(separator: "\n\n")
         }
         
         return "sign-up.could-not".localized
     }
+    
+    private(set) lazy var goToClips: Signal<Void, NoError> = self.user.combineLatest(with: self.authToken).map { _, _ in }
     
     // MARK: Initialization
     
@@ -56,12 +58,13 @@ class SignUpViewModel {
         .combineLatest(self.email.result, self.password.result)
         .map { email, password in !email.isInvalid && !password.isInvalid }
     
-    private lazy var user: Signal<User, AnyError> = self.signUp.values.attemptMap { try User.in(JSON: $0) }
-    private lazy var authToken: Signal<AuthToken, AnyError> = self.signUp.values.attemptMap {
-        if let authToken = AuthToken.includedIn(JSON: $0).first {
-            return authToken
-        } else {
-            throw NSError()
-        }
-    }
+    private lazy var user: Signal<User, NoError> = self.signUp.values
+        .map { try? User.in(JSON: $0) }
+        .skipNil()
+        .on(value: { User.current = $0 })
+    
+    private lazy var authToken: Signal<AuthToken, NoError> = self.signUp.values
+        .map { AuthToken.includedIn(JSON: $0).first }
+        .skipNil()
+        .on(value: { AuthToken.current = $0 })
 }

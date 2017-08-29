@@ -19,7 +19,6 @@ class UserTests: XCTestCase {
     }
     
     func testUserDefaultsPersistence() {
-        XCTAssertNil(User.current)
         let user = User(id: 666, email: "satan@hell.org")
         User.current = user
         XCTAssertEqual(User.current!.id, user.id)

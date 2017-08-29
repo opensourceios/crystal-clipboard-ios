@@ -18,7 +18,6 @@ class AuthTokenTests: XCTestCase {
     }
     
     func testKeychainPersistence() {
-        XCTAssertNil(AuthToken.current)
         let authToken = AuthToken(token: "Vy5KbYX116Y1him376FvAhkw")
         AuthToken.current = authToken
         XCTAssertEqual(AuthToken.current!.token, authToken.token)
