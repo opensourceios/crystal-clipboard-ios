@@ -46,12 +46,6 @@ class SignUpViewModel {
     
     private(set) lazy var goToClips: Signal<Void, NoError> = self.user.combineLatest(with: self.authToken).map { _, _ in }
     
-    // MARK: Initialization
-    
-    init(provider: APIProvider) {
-        self.provider = provider
-    }
-    
     // MARK: Private
     
     private lazy var signUpEnabled: Property<Bool> = Property
@@ -67,4 +61,10 @@ class SignUpViewModel {
         .map { AuthToken.includedIn(JSON: $0).first }
         .skipNil()
         .on(value: { AuthToken.current = $0 })
+    
+    // MARK: Initialization
+    
+    init(provider: APIProvider) {
+        self.provider = provider
+    }
 }
