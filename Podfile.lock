@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.5.0)
+  - KeychainAccess (3.0.2)
   - Keys (1.0.0)
   - Moya/Core (9.0.0-alpha.1):
     - Alamofire (~> 4.1)
@@ -15,6 +16,7 @@ PODS:
   - Starscream (2.1.1)
 
 DEPENDENCIES:
+  - KeychainAccess (~> 3.0)
   - Keys (from `Pods/CocoaPodsKeys`)
   - Moya/ReactiveSwift (= 9.0.0-alpha1)
   - ReactiveCocoa (~> 6.0)
@@ -26,6 +28,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
   Moya: f2ce44cbd5e8be82b4761194420588b6b1aebf1e
   ReactiveCocoa: cf6595131c832c468fe3f84a2d7f74ed68eb3058
@@ -33,6 +36,6 @@ SPEC CHECKSUMS:
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   Starscream: 142bd8ef24592d985daee9fa48c936070b85b15f
 
-PODFILE CHECKSUM: e002fc8a65fe2bff14b0b47192cf176a7909d939
+PODFILE CHECKSUM: 4b0a37a77e491c5ff88e499379f06e0769936f9a
 
 COCOAPODS: 1.3.1

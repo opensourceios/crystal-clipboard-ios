@@ -43,4 +43,5 @@ enum Environment: String {
 
 struct Constants {
     static let environment = Environment(rawValue: Bundle.main.infoDictionary!["com.jzzocc.crystal-clipboard.environment"] as! String)!
+    static let keychainService = "com.jzzocc.crystal-clipboard"
 }

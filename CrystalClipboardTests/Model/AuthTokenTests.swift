@@ -16,4 +16,13 @@ class AuthTokenTests: XCTestCase {
         let authToken = try! AuthToken.in(JSON: json)
         XCTAssertEqual(authToken.token, "Vy5KbYX116Y1him376FvAhkw")
     }
+    
+    func testKeychainPersistence() {
+        XCTAssertNil(AuthToken.current)
+        let authToken = AuthToken(token: "Vy5KbYX116Y1him376FvAhkw")
+        AuthToken.current = authToken
+        XCTAssertEqual(AuthToken.current!.token, authToken.token)
+        AuthToken.current = nil
+        XCTAssertNil(AuthToken.current)
+    }
 }

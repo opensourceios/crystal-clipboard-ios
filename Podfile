@@ -13,6 +13,7 @@ plugin 'cocoapods-keys', {
 }
 
 target 'CrystalClipboard' do
+  pod 'KeychainAccess', '~> 3.0'
   pod 'Moya/ReactiveSwift', '9.0.0-alpha1'
   pod 'ReactiveCocoa', '~> 6.0'
   pod 'Starscream', '~> 2.1'

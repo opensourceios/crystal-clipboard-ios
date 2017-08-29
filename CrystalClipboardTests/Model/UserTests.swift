@@ -13,9 +13,18 @@ class UserTests: XCTestCase {
     func testJSONDeserialization() {
         let jsonData = CrystalClipboardAPI.me.sampleData
         let json = try! JSONSerialization.jsonObject(with: jsonData) as! [String: Any]
-        print(json)
         let user = try! User.in(JSON: json)
         XCTAssertEqual(user.id, 666)
         XCTAssertEqual(user.email, "satan@hell.org")
+    }
+    
+    func testUserDefaultsPersistence() {
+        XCTAssertNil(User.current)
+        let user = User(id: 666, email: "satan@hell.org")
+        User.current = user
+        XCTAssertEqual(User.current!.id, user.id)
+        XCTAssertEqual(User.current!.email, user.email)
+        User.current = nil
+        XCTAssertNil(User.current)
     }
 }
