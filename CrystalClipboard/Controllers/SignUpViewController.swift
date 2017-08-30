@@ -34,5 +34,9 @@ class SignUpViewController: UIViewController {
         signUpButton.reactive.isEnabled <~ viewModel.signUp.isEnabled
         viewModel.alertMessage.observeValues { [unowned self] in self.presentAlert(message: $0) }
         signUpAction.isExecuting.signal.observeValues { $0 ? HUD.show(.progress) : HUD.hide() }
+        
+        // Other setup
+        
+        emailTextField.becomeFirstResponder()
     }
 }
