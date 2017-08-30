@@ -32,17 +32,7 @@ class SignUpViewController: UIViewController {
         // View model outputs
         
         signUpButton.reactive.isEnabled <~ viewModel.signUp.isEnabled
-        viewModel.alertMessage.observeValues { [unowned self] in
-            self.displayAlert(message: $0)
-        }
+        viewModel.alertMessage.observeValues { [unowned self] in self.presentAlert(message: $0) }
         signUpAction.isExecuting.signal.observeValues { $0 ? HUD.show(.progress) : HUD.hide() }
-    }
-    
-    // MARK: Private
-    
-    private func displayAlert(message: String) {
-        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alertController.addAction(.init(title: "ok".localized, style: .default, handler: nil))
-        present(alertController, animated: true, completion: nil)
     }
 }
