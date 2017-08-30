@@ -29,8 +29,8 @@ class SignUpViewModel {
     
     // MARK: Outputs
 
-    private(set) lazy var alertMessage: Signal<String, NoError> = self.signUp.errors.map { error in
-        if let messages = error.response?.errorData.flatMap({ $0.message }), messages.count > 0 {
+    private(set) lazy var alertMessage: Signal<String, NoError> = self.signUp.errors.map {
+        if let messages = $0.response?.errorData.flatMap({ $0.message }), messages.count > 0 {
             return messages.joined(separator: "\n\n")
         }
         
