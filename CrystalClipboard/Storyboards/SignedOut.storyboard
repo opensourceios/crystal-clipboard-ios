@@ -38,7 +38,10 @@
                                                 <rect key="frame" x="0.0" y="20.5" width="343" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="NzU-ms-CNf" id="96r-LO-DZs"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -55,7 +58,10 @@
                                                 <rect key="frame" x="0.0" y="20.5" width="343" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="NzU-ms-CNf" id="5hN-nC-Lyn"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>

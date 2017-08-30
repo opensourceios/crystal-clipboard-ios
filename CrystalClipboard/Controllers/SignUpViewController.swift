@@ -12,11 +12,11 @@ import ReactiveCocoa
 import PKHUD
 
 class SignUpViewController: UIViewController {
-    private let viewModel = SignUpViewModel(provider: APIProvider.adminProvider())
+    fileprivate let viewModel = SignUpViewModel(provider: APIProvider.adminProvider())
 
-    @IBOutlet private weak var emailTextField: UITextField!
-    @IBOutlet private weak var passwordTextField: UITextField!
-    @IBOutlet private weak var signUpButton: UIButton!
+    @IBOutlet fileprivate weak var emailTextField: UITextField!
+    @IBOutlet fileprivate weak var passwordTextField: UITextField!
+    @IBOutlet fileprivate weak var signUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,5 +38,16 @@ class SignUpViewController: UIViewController {
         // Other setup
         
         emailTextField.becomeFirstResponder()
+    }
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case emailTextField: passwordTextField.becomeFirstResponder()
+        case passwordTextField: viewModel.signUp.apply().start()
+        default: break
+        }
+        return false
     }
 }
