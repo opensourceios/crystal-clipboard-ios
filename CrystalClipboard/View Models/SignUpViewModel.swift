@@ -11,22 +11,17 @@ import Result
 import Moya
 
 class SignUpViewModel {
-    enum SignUpFormError: Error {
-        case invalidEmail
-        case invalidPassword
+    enum FormError: Error {
+        case invalidEmail, invalidPassword
     }
     
     private let provider: APIProvider
     
     // MARK: Inputs
     
-    let email = ValidatingProperty<String, SignUpFormError>("") {
-        $0.characters.count > 0 ? .valid : .invalid(.invalidEmail)
-    }
+    let email = ValidatingProperty<String, FormError>("") { $0.characters.count > 0 ? .valid : .invalid(.invalidEmail) }
     
-    let password = ValidatingProperty<String, SignUpFormError>("") {
-        $0.characters.count > 0 ? .valid : .invalid(.invalidPassword)
-    }
+    let password = ValidatingProperty<String, FormError>("") { $0.characters.count > 0 ? .valid : .invalid(.invalidPassword) }
     
     private(set) lazy var signUp: Action<Void, Any, MoyaError> = Action(enabledIf: self.signUpEnabled) { [unowned self] _ in
         return self.provider.reactive.request(.createUser(email: self.email.value, password: self.password.value))
