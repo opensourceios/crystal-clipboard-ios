@@ -21,19 +21,19 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let signUpAction = CocoaAction<UIButton>(viewModel.signUp)
+        let submitAction = CocoaAction<UIButton>(viewModel.submit)
         
         // View model inputs
         
         viewModel.email <~ emailTextField.reactive.continuousTextValues.skipNil()
         viewModel.password <~ passwordTextField.reactive.continuousTextValues.skipNil()
-        signUpButton.reactive.pressed = signUpAction
+        signUpButton.reactive.pressed = submitAction
         
         // View model outputs
         
-        signUpButton.reactive.isEnabled <~ viewModel.signUp.isEnabled
+        signUpButton.reactive.isEnabled <~ viewModel.submit.isEnabled
         viewModel.alertMessage.observeValues { [unowned self] in self.presentAlert(message: $0) }
-        signUpAction.isExecuting.signal.observeValues { $0 ? HUD.show(.progress) : HUD.hide() }
+        submitAction.isExecuting.signal.observeValues { $0 ? HUD.show(.progress) : HUD.hide() }
         
         // Other setup
         
@@ -45,7 +45,7 @@ extension SignUpViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case emailTextField: passwordTextField.becomeFirstResponder()
-        case passwordTextField: viewModel.signUp.apply().start()
+        case passwordTextField: viewModel.submit.apply().start()
         default: break
         }
         return false

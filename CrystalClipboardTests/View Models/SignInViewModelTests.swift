@@ -23,31 +23,31 @@ class SignInViewModelTests: XCTestCase {
     }
     
     func testSignInEnabled() {
-        XCTAssertFalse(viewModel.signIn.isEnabled.value)
+        XCTAssertFalse(viewModel.submit.isEnabled.value)
         viewModel.email.value = "user@domain.com"
-        XCTAssertFalse(viewModel.signIn.isEnabled.value)
+        XCTAssertFalse(viewModel.submit.isEnabled.value)
         viewModel.password.value = "password"
-        XCTAssertTrue(viewModel.signIn.isEnabled.value)
+        XCTAssertTrue(viewModel.submit.isEnabled.value)
     }
     
     func testSignInSetsCurrentUser() {
         User.current = nil
         viewModel.email.value = "satan@hell.org"
         viewModel.password.value = "password"
-        viewModel.signIn.apply().start()
+        viewModel.submit.apply().start()
         XCTAssertEqual(User.current!.email, "satan@hell.org")
     }
     
     func testAlertsRemoteErrors() {
         viewModel.email.value = "satin@heck.org"
         viewModel.password.value = "p"
-        viewModel.signIn.apply().start()
+        viewModel.submit.apply().start()
         alertMessage.assertValues(["The email or password provided was incorrect"])
         viewModel.email.value = "satan@hell.org"
-        viewModel.signIn.apply().start()
+        viewModel.submit.apply().start()
         alertMessage.assertValues(["The email or password provided was incorrect", "The email or password provided was incorrect"])
         viewModel.password.value = "password"
-        viewModel.signIn.apply().start()
+        viewModel.submit.apply().start()
         alertMessage.assertValues(["The email or password provided was incorrect", "The email or password provided was incorrect"])
     }
     
@@ -58,7 +58,7 @@ class SignInViewModelTests: XCTestCase {
         offlineViewModel.alertMessage.observe(offlineAlertMessage.observer)
         offlineViewModel.email.value = "satan@hell.org"
         offlineViewModel.password.value = "password"
-        offlineViewModel.signIn.apply().start()
+        offlineViewModel.submit.apply().start()
         offlineAlertMessage.assertValues(["sign-in.could-not".localized])
     }
 }

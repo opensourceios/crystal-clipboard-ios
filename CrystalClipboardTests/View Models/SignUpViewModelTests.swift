@@ -23,34 +23,34 @@ class SignUpViewModelTests: XCTestCase {
     }
     
     func testSignUpEnabled() {
-        XCTAssertFalse(viewModel.signUp.isEnabled.value)
+        XCTAssertFalse(viewModel.submit.isEnabled.value)
         viewModel.email.value = "user@domain.com"
-        XCTAssertFalse(viewModel.signUp.isEnabled.value)
+        XCTAssertFalse(viewModel.submit.isEnabled.value)
         viewModel.password.value = "password"
-        XCTAssertTrue(viewModel.signUp.isEnabled.value)
+        XCTAssertTrue(viewModel.submit.isEnabled.value)
     }
     
     func testSignUpSetsCurrentUser() {
         User.current = nil
         viewModel.email.value = "user@domain.org"
         viewModel.password.value = "password"
-        viewModel.signUp.apply().start()
+        viewModel.submit.apply().start()
         XCTAssertEqual(User.current!.email, "user@domain.org")
     }
     
     func testAlertsRemoteErrors() {
         viewModel.email.value = "satan@hell.org"
         viewModel.password.value = "p"
-        viewModel.signUp.apply().start()
+        viewModel.submit.apply().start()
         alertMessage.assertValues(["Email has already been taken\n\nPassword is too short (minimum is 6 characters)"])
         viewModel.email.value = "satan+2@hell.org"
-        viewModel.signUp.apply().start()
+        viewModel.submit.apply().start()
         alertMessage.assertValues([
             "Email has already been taken\n\nPassword is too short (minimum is 6 characters)",
             "Password is too short (minimum is 6 characters)"
         ])
         viewModel.password.value = "password"
-        viewModel.signUp.apply().start()
+        viewModel.submit.apply().start()
         alertMessage.assertValues([
             "Email has already been taken\n\nPassword is too short (minimum is 6 characters)",
             "Password is too short (minimum is 6 characters)"
@@ -64,7 +64,7 @@ class SignUpViewModelTests: XCTestCase {
         offlineViewModel.alertMessage.observe(offlineAlertMessage.observer)
         offlineViewModel.email.value = "user@domain.com"
         offlineViewModel.password.value = "password"
-        offlineViewModel.signUp.apply().start()
+        offlineViewModel.submit.apply().start()
         offlineAlertMessage.assertValues(["sign-up.could-not".localized])
     }
 }

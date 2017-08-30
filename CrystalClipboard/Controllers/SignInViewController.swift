@@ -21,19 +21,19 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let signInAction = CocoaAction<UIButton>(viewModel.signIn)
+        let submitAction = CocoaAction<UIButton>(viewModel.submit)
         
         // View model inputs
         
         viewModel.email <~ emailTextField.reactive.continuousTextValues.skipNil()
         viewModel.password <~ passwordTextField.reactive.continuousTextValues.skipNil()
-        signInButton.reactive.pressed = signInAction
+        signInButton.reactive.pressed = submitAction
         
         // View model outputs
         
-        signInButton.reactive.isEnabled <~ viewModel.signIn.isEnabled
+        signInButton.reactive.isEnabled <~ viewModel.submit.isEnabled
         viewModel.alertMessage.observeValues { [unowned self] in self.presentAlert(message: $0) }
-        signInAction.isExecuting.signal.observeValues { $0 ? HUD.show(.progress) : HUD.hide() }
+        submitAction.isExecuting.signal.observeValues { $0 ? HUD.show(.progress) : HUD.hide() }
         
         // Other setup
         
@@ -45,7 +45,7 @@ extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case emailTextField: passwordTextField.becomeFirstResponder()
-        case passwordTextField: viewModel.signIn.apply().start()
+        case passwordTextField: viewModel.submit.apply().start()
         default: break
         }
         return false
