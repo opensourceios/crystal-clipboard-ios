@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
+import PKHUD
 
 class SignUpViewController: UIViewController {
     private let viewModel = SignUpViewModel(provider: APIProvider.adminProvider())
@@ -20,11 +21,13 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let signUpAction = CocoaAction<UIButton>(viewModel.signUp)
+        
         // View model inputs
         
         viewModel.email <~ emailTextField.reactive.continuousTextValues.skipNil()
         viewModel.password <~ passwordTextField.reactive.continuousTextValues.skipNil()
-        signUpButton.reactive.pressed = CocoaAction(viewModel.signUp)
+        signUpButton.reactive.pressed = signUpAction
         
         // View model outputs
         
@@ -32,6 +35,7 @@ class SignUpViewController: UIViewController {
         viewModel.alertMessage.observeValues { [unowned self] in
             self.displayAlert(message: $0)
         }
+        signUpAction.isExecuting.signal.observeValues { $0 ? HUD.show(.progress) : HUD.hide() }
     }
     
     // MARK: Private
