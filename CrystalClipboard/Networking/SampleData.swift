@@ -54,8 +54,13 @@ extension CrystalClipboardAPI {
             } else {
                 return .networkResponse(201, "{\"data\":{\"id\":\"\(arc4random_uniform(999) + 1)\",\"type\":\"users\",\"attributes\":{\"email\":\"\(email)\"},\"relationships\":{\"auth-token\":{\"data\":{\"id\":\"1256\",\"type\":\"auth-tokens\"}}}},\"included\":[{\"id\":\"1256\",\"type\":\"auth-tokens\",\"attributes\":{\"token\":\"qz6oF9nHysGnkVYZccFJGZuz\"}}]}".data(using: .utf8)!)
             }
-        case .signIn:
-            return .networkResponse(200, "{\"data\":{\"id\":\"999\",\"type\":\"auth-tokens\",\"attributes\":{\"token\":\"Vy5KbYX116Y1him376FvAhkw\"},\"relationships\":{\"user\":{\"data\":{\"id\":\"666\",\"type\":\"users\"}}}},\"included\":[{\"id\":\"666\",\"type\":\"users\",\"attributes\":{\"email\":\"satan@hell.org\"}}]}".data(using: .utf8)!)
+        case let .signIn(email, password):
+            switch (email, password) {
+            case ("satan@hell.org", "password"):
+                return .networkResponse(200, "{\"data\":{\"id\":\"999\",\"type\":\"auth-tokens\",\"attributes\":{\"token\":\"Vy5KbYX116Y1him376FvAhkw\"},\"relationships\":{\"user\":{\"data\":{\"id\":\"666\",\"type\":\"users\"}}}},\"included\":[{\"id\":\"666\",\"type\":\"users\",\"attributes\":{\"email\":\"satan@hell.org\"}}]}".data(using: .utf8)!)
+            default:
+                return .networkResponse(401, "{\"errors\":[{\"detail\":\"The email or password provided was incorrect\"}]}".data(using: .utf8)!)
+            }
         case .me:
             return .networkResponse(200, "{\"data\":{\"id\":\"666\",\"type\":\"users\",\"attributes\":{\"email\":\"satan@hell.org\"}}}".data(using: .utf8)!)
         case .listClips(let page, let pageSize):
