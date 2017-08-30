@@ -82,9 +82,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sign Up" id="9Ov-K6-oNw"/>
                     <connections>
-                        <outlet property="emailTextField" destination="ehT-yf-so7" id="WmU-yS-HJg"/>
-                        <outlet property="passwordTextField" destination="33g-4h-o8l" id="f0Y-Nb-cWc"/>
-                        <outlet property="signUpButton" destination="xKf-jv-CSh" id="PRj-iM-ie5"/>
+                        <outlet property="emailTextField" destination="ehT-yf-so7" id="veR-7V-KHq"/>
+                        <outlet property="passwordTextField" destination="33g-4h-o8l" id="X1K-m4-gW7"/>
+                        <outlet property="submitButton" destination="xKf-jv-CSh" id="G5o-Rk-M2L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BfK-JT-Txu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -163,9 +163,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sign In" id="8dJ-so-BV3"/>
                     <connections>
-                        <outlet property="emailTextField" destination="qil-kz-U4R" id="aiv-5G-IfC"/>
-                        <outlet property="passwordTextField" destination="Edp-ic-1VH" id="Uxs-PU-q6n"/>
-                        <outlet property="signInButton" destination="TUr-vX-oJR" id="bKu-f6-jbg"/>
+                        <outlet property="emailTextField" destination="qil-kz-U4R" id="gEU-YP-U7y"/>
+                        <outlet property="passwordTextField" destination="Edp-ic-1VH" id="y3k-sx-Yju"/>
+                        <outlet property="submitButton" destination="TUr-vX-oJR" id="znV-c5-fgM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BgP-nd-BTd" userLabel="First Responder" sceneMemberID="firstResponder"/>
