@@ -29,8 +29,8 @@ class SignUpViewController: UIViewController {
         // View model outputs
         
         signUpButton.reactive.isEnabled <~ viewModel.signUp.isEnabled
-        viewModel.alertMessage.observeValues { [weak self] in
-            self?.displayAlert(message: $0)
+        viewModel.alertMessage.observeValues { [unowned self] in
+            self.displayAlert(message: $0)
         }
     }
     
