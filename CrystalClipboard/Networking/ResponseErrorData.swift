@@ -27,12 +27,12 @@ struct ResponseErrorData: Error {
     }
     
     var message: String? {
-        guard
-            let detail = detail,
-            let pointer = pointer,
-            let specificPointer = pointer.components(separatedBy: "/").last
-            else { return nil }
-        return "\(specificPointer.capitalized) \(detail)"
+        guard let detail = detail else { return nil }
+        if let pointer = pointer, let specificPointer = pointer.components(separatedBy: "/").last {
+            return specificPointer.capitalized + " " + detail
+        } else {
+            return detail
+        }
     }
 }
 

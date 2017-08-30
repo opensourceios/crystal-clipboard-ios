@@ -9,5 +9,8 @@
 // General
 "ok" = "OK";
 
+// Sign In
+"sign-in.could-not" = "You could not be signed in at this time";
+
 // Sign Up
 "sign-up.could-not" = "You could not be signed up at this time";
