@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let transitionDuration: TimeInterval = 0.5
+
 class RootViewController: UIViewController {
     private let viewModel = RootViewModel()
     fileprivate var currentController: UIViewController!
@@ -33,8 +35,6 @@ class RootViewController: UIViewController {
 }
 
 fileprivate extension RootViewController {
-    private static let transitionDuration: TimeInterval = 0.5
-    
     func wrappingNavigation(forController: UIViewController) -> UINavigationController {
         let navigationController = UINavigationController(rootViewController: forController)
         navigationController.view.frame = containerView.bounds
@@ -46,7 +46,7 @@ fileprivate extension RootViewController {
         addChildViewController(toViewController)
         transition(from: fromViewController,
                    to: toViewController,
-                   duration: type(of: self).transitionDuration,
+                   duration: transitionDuration,
                    options: .transitionCrossDissolve,
                    animations: nil) { _ in
             fromViewController.removeFromParentViewController()
