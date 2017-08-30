@@ -12,12 +12,12 @@ import XCTest
 class RootViewModelTests: XCTestCase {
     let viewModel = RootViewModel()
     
-    func testInitialIdentifiers() {
-        User.current = User(id: 666, email: "satan@hell.org")
-        XCTAssertEqual(viewModel.initialStoryboardName.value, .Main)
-        XCTAssertEqual(viewModel.initialViewControllerIdentifier.value, .Clips)
+    func testTransitionTo() {
         User.current = nil
-        XCTAssertEqual(viewModel.initialStoryboardName.value, .SignedOut)
-        XCTAssertEqual(viewModel.initialViewControllerIdentifier.value, .Landing)
+        XCTAssertEqual(viewModel.transitionTo.value.storyboardName, .SignedOut)
+        XCTAssertEqual(viewModel.transitionTo.value.controllerIdentifier, .Landing)        
+        User.current = User(id: 666, email: "satan@hell.org")
+        XCTAssertEqual(viewModel.transitionTo.value.storyboardName, .Main)
+        XCTAssertEqual(viewModel.transitionTo.value.controllerIdentifier, .Clips)
     }
 }

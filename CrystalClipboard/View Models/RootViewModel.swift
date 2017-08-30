@@ -7,15 +7,54 @@
 //
 
 import ReactiveSwift
+import Result
+
+protocol TransitionType {
+    var storyboardName: StoryboardNames { get }
+    var controllerIdentifier: ViewControllerStoryboardIdentifier { get }
+}
+
+fileprivate enum Transition: TransitionType {
+    case signIn, signOut
+    var storyboardName: StoryboardNames {
+        switch self {
+        case .signIn: return .Main
+        case .signOut: return .SignedOut
+        }
+    }
+    
+    var controllerIdentifier: ViewControllerStoryboardIdentifier {
+        switch self {
+        case .signIn: return .Clips
+        case .signOut: return .Landing
+        }
+    }
+}
 
 class RootViewModel {
     // MARK: Outputs
     
-    var initialStoryboardName: Property<StoryboardNames> {
-        return User.current == nil ? Property(value: .SignedOut) : Property(value: .Main)
-    }
+    let transitionTo: Property<TransitionType>
     
-    var initialViewControllerIdentifier: Property<ViewControllerStoryboardIdentifier> {
-        return User.current == nil ? Property(value: .Landing) : Property(value: .Clips)
+    // MARK: Private
+    
+    private let (lifetime, token) = Lifetime.make()
+    
+    // MARK: Initialization
+    
+    init() {
+        let notificationCenter = NotificationCenter.default.reactive
+        let signInSignal = notificationCenter.notifications(forName: .userSignedIn).take(during: lifetime)
+        let signOutSignal = notificationCenter.notifications(forName: .userSignedOut).take(during: lifetime)
+        let notificationsSignal = SignalProducer(values: signInSignal, signOutSignal).flatten(.merge)
+        let then = notificationsSignal.map { notification -> TransitionType in
+            switch notification.name {
+            case Notification.Name.userSignedIn: return Transition.signIn
+            case Notification.Name.userSignedOut: return Transition.signOut
+            default: fatalError("Wrong notification observed")
+            }
+        }
+        let initial: Transition = User.current == nil ? .signOut : .signIn
+        transitionTo = Property<TransitionType>(initial: initial, then: then)
     }
 }

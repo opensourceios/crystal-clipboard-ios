@@ -44,27 +44,20 @@ class SignUpViewModel {
         return "sign-up.could-not".localized
     }
     
-    private(set) lazy var goToClips: Signal<Void, NoError> = self.user.combineLatest(with: self.authToken).map { _, _ in }
-    
     // MARK: Private
     
     private lazy var signUpEnabled: Property<Bool> = Property
         .combineLatest(self.email.result, self.password.result)
         .map { !$0.isInvalid && !$1.isInvalid }
     
-    private lazy var user: Signal<User, NoError> = self.signUp.values
-        .map { try? User.in(JSON: $0) }
-        .skipNil()
-        .on(value: { User.current = $0 })
-    
-    private lazy var authToken: Signal<AuthToken, NoError> = self.signUp.values
-        .map { AuthToken.includedIn(JSON: $0).first }
-        .skipNil()
-        .on(value: { AuthToken.current = $0 })
-    
     // MARK: Initialization
     
     init(provider: APIProvider) {
         self.provider = provider
+        
+        signUp.values.observeValues {
+            AuthToken.current = AuthToken.includedIn(JSON: $0).first
+            User.current = try? User.in(JSON: $0)
+        }
     }
 }

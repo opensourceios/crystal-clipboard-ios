@@ -8,6 +8,12 @@
 
 import Foundation
 
+extension Notification.Name {
+    static let userSignedIn = Notification.Name("com.jzzocc.crystal-clipboard.notifications.user-signed-in")
+    static let userSignedOut = Notification.Name("com.jzzocc.crystal-clipboard.notifications.user-signed-out")
+    static let userUpdated = Notification.Name("com.jzzocc.crystal-clipboard.notifications.user-updated")
+}
+
 struct User {
     let id: Int
     let email: String
@@ -26,15 +32,19 @@ extension User {
     static var current: User? {
         set {
             let defaults = UserDefaults.standard
+            let notificationName: Notification.Name
             if let user = newValue {
+                notificationName = User.current == nil ? .userSignedIn : .userUpdated
                 defaults.set(user.id, forKey: idDefaultsKey)
                 defaults.set(user.email, forKey: emailDefaultsKey)
             } else {
+                notificationName = .userSignedOut
                 defaults.removeObject(forKey: idDefaultsKey)
                 defaults.removeObject(forKey: emailDefaultsKey)
             }
             defaults.synchronize()
             memoizedCurrentUser = newValue
+            NotificationCenter.default.post(name: notificationName, object: newValue)
         }
         get {
             let defaults = UserDefaults.standard

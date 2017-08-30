@@ -10,6 +10,8 @@ import XCTest
 @testable import CrystalClipboard
 
 class UserTests: XCTestCase {
+    let user = User(id: 666, email: "satan@hell.org")
+    
     func testJSONDeserialization() {
         let jsonData = CrystalClipboardAPI.me.sampleData
         let json = try! JSONSerialization.jsonObject(with: jsonData) as! [String: Any]
@@ -19,11 +21,31 @@ class UserTests: XCTestCase {
     }
     
     func testUserDefaultsPersistence() {
-        let user = User(id: 666, email: "satan@hell.org")
         User.current = user
         XCTAssertEqual(User.current!.id, user.id)
         XCTAssertEqual(User.current!.email, user.email)
         User.current = nil
         XCTAssertNil(User.current)
+    }
+    
+    func testNotifiesSignIn() {
+        User.current = nil
+        expectation(forNotification: Notification.Name.userSignedIn.rawValue, object: nil, handler: nil)
+        User.current = user
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    func testNotifiesSignOut() {
+        User.current = user
+        expectation(forNotification: Notification.Name.userSignedOut.rawValue, object: nil, handler: nil)
+        User.current = nil
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    func testNotifiesUserUpdated() {
+        User.current = user
+        expectation(forNotification: Notification.Name.userUpdated.rawValue, object: nil, handler: nil)
+        User.current = User(id: 666, email: "satan@gmail.com")
+        waitForExpectations(timeout: 1, handler: nil)
     }
 }
