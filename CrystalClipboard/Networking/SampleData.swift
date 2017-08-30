@@ -40,7 +40,7 @@ extension CrystalClipboardAPI {
     
     var sampleResponse: EndpointSampleResponse {
         switch self {
-        case .signOut, .resetPassword, .deleteClip: return .networkResponse(204, Data())
+        case .signOut, .deleteClip: return .networkResponse(204, Data())
         case let .createUser(email, password):
             var errors = [[String: Any]]()
             if email == "satan@hell.org" {
@@ -60,6 +60,12 @@ extension CrystalClipboardAPI {
                 return .networkResponse(200, "{\"data\":{\"id\":\"999\",\"type\":\"auth-tokens\",\"attributes\":{\"token\":\"Vy5KbYX116Y1him376FvAhkw\"},\"relationships\":{\"user\":{\"data\":{\"id\":\"666\",\"type\":\"users\"}}}},\"included\":[{\"id\":\"666\",\"type\":\"users\",\"attributes\":{\"email\":\"satan@hell.org\"}}]}".data(using: .utf8)!)
             default:
                 return .networkResponse(401, "{\"errors\":[{\"detail\":\"The email or password provided was incorrect\"}]}".data(using: .utf8)!)
+            }
+        case let .resetPassword(email):
+            if email == "satan@hell.org" {
+                return .networkResponse(204, Data())
+            } else {
+                return .networkResponse(404, "{\"errors\":[{\"detail\":\"Record not found\"}]}".data(using: .utf8)!)
             }
         case .me:
             return .networkResponse(200, "{\"data\":{\"id\":\"666\",\"type\":\"users\",\"attributes\":{\"email\":\"satan@hell.org\"}}}".data(using: .utf8)!)

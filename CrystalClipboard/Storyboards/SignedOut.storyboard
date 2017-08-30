@@ -104,7 +104,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="9jI-cO-ig8">
-                                <rect key="frame" x="16" y="64" width="343" height="163"/>
+                                <rect key="frame" x="16" y="20" width="343" height="209"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="43z-cg-9lk">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50.5"/>
@@ -150,6 +150,13 @@
                                         <rect key="frame" x="0.0" y="133" width="343" height="30"/>
                                         <state key="normal" title="Sign In"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAe-cj-GsJ">
+                                        <rect key="frame" x="0.0" y="179" width="343" height="30"/>
+                                        <state key="normal" title="Forgot your password?"/>
+                                        <connections>
+                                            <segue destination="Vlb-LE-4I9" kind="show" id="DxW-YY-eaI"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -171,6 +178,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BgP-nd-BTd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2604" y="1187.8560719640182"/>
+        </scene>
+        <!--Reset Password-->
+        <scene sceneID="rka-9D-DMf">
+            <objects>
+                <viewController id="Vlb-LE-4I9" customClass="ResetPasswordViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l8i-dK-LPT"/>
+                        <viewControllerLayoutGuide type="bottom" id="dc1-dg-Dea"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uO5-Ts-fqE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6ja-01-cCo">
+                                <rect key="frame" x="16" y="20" width="343" height="96.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7tk-5T-yRc">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96D-Gk-mOW">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hzL-Au-no6">
+                                                <rect key="frame" x="0.0" y="20.5" width="343" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Vlb-LE-4I9" id="hEC-dS-OHn"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIi-Pw-Oie">
+                                        <rect key="frame" x="0.0" y="66.5" width="343" height="30"/>
+                                        <state key="normal" title="Reset Password"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6ja-01-cCo" firstAttribute="top" secondItem="l8i-dK-LPT" secondAttribute="bottom" id="8ff-tH-5HI"/>
+                            <constraint firstItem="6ja-01-cCo" firstAttribute="leading" secondItem="uO5-Ts-fqE" secondAttribute="leadingMargin" id="9gN-yv-Hjl"/>
+                            <constraint firstItem="6ja-01-cCo" firstAttribute="trailing" secondItem="uO5-Ts-fqE" secondAttribute="trailingMargin" id="XsD-Q3-7Od"/>
+                            <constraint firstItem="dc1-dg-Dea" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6ja-01-cCo" secondAttribute="bottom" id="who-24-yBb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Reset Password" id="s5h-N1-XMf"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="hzL-Au-no6" id="sfs-To-rgZ"/>
+                        <outlet property="submitButton" destination="KIi-Pw-Oie" id="ePP-UH-nqE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uOT-bW-4VG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3314.4000000000001" y="1187.8560719640182"/>
         </scene>
         <!--Landing View Controller-->
         <scene sceneID="MHj-IL-aqN">
