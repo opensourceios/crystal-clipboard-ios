@@ -33,6 +33,8 @@ class RootViewController: UIViewController {
 }
 
 fileprivate extension RootViewController {
+    private static let transitionDuration: TimeInterval = 0.5
+    
     func wrappingNavigation(forController: UIViewController) -> UINavigationController {
         let navigationController = UINavigationController(rootViewController: forController)
         navigationController.view.frame = containerView.bounds
@@ -42,7 +44,11 @@ fileprivate extension RootViewController {
     func performTransition(fromViewController: UIViewController, toViewController: UIViewController) {
         fromViewController.willMove(toParentViewController: nil)
         addChildViewController(toViewController)
-        transition(from: fromViewController, to: toViewController, duration: 0.5, options: .transitionCrossDissolve, animations: nil) { _ in
+        transition(from: fromViewController,
+                   to: toViewController,
+                   duration: type(of: self).transitionDuration,
+                   options: .transitionCrossDissolve,
+                   animations: nil) { _ in
             fromViewController.removeFromParentViewController()
             toViewController.didMove(toParentViewController: self)
             self.currentController = toViewController
