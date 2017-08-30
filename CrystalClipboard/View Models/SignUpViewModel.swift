@@ -15,8 +15,6 @@ class SignUpViewModel {
         case invalidEmail, invalidPassword
     }
     
-    private let provider: APIProvider
-    
     // MARK: Inputs
     
     let email = ValidatingProperty<String, FormError>("") { $0.characters.count > 0 ? .valid : .invalid(.invalidEmail) }
@@ -40,6 +38,8 @@ class SignUpViewModel {
     }
     
     // MARK: Private
+    
+    private let provider: APIProvider
     
     private lazy var signUpEnabled: Property<Bool> = Property
         .combineLatest(self.email.result, self.password.result)
