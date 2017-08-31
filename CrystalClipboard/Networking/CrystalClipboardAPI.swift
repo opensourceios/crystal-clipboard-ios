@@ -53,7 +53,7 @@ extension CrystalClipboardAPI: TargetType {
     }
     
     var headers: [String : String]? {
-        return nil
+        return ["Content-Type": "application/vnd.api+json"]
     }
     
     var path: String {
