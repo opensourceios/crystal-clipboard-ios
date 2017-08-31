@@ -6,6 +6,10 @@ public enum StoryboardNames : String {
     case SignedOut
 }
 
+public enum TableViewCellReuseIdentifier : String {
+    case ClipTableViewCell
+}
+
 public enum ViewControllerStoryboardIdentifier : String {
     case Clips
     case Landing

@@ -28,6 +28,7 @@
 		D00D68601F589AC10029BC79 /* PersistentContainerSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D685F1F589AC10029BC79 /* PersistentContainerSettable.swift */; };
 		D00D68631F58A3680029BC79 /* ClipsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68621F58A3680029BC79 /* ClipsDataProvider.swift */; };
 		D00D68681F58A55C0029BC79 /* ClipsDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68671F58A55C0029BC79 /* ClipsDataProviderTests.swift */; };
+		D00D68711F58B2560029BC79 /* ClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68701F58B2560029BC79 /* ClipTableViewCell.swift */; };
 		D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0112B7F1F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld */; };
 		D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0112B841F4A7E8400999761 /* ManagedClip.swift */; };
 		D03ABD3E1F4D37F000A7D473 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3D1F4D37F000A7D473 /* Constants.swift */; };
@@ -114,6 +115,7 @@
 		D00D685F1F589AC10029BC79 /* PersistentContainerSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentContainerSettable.swift; path = Protocols/PersistentContainerSettable.swift; sourceTree = "<group>"; };
 		D00D68621F58A3680029BC79 /* ClipsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipsDataProvider.swift; path = "Data Providers/ClipsDataProvider.swift"; sourceTree = "<group>"; };
 		D00D68671F58A55C0029BC79 /* ClipsDataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipsDataProviderTests.swift; path = "Data Providers/ClipsDataProviderTests.swift"; sourceTree = "<group>"; };
+		D00D68701F58B2560029BC79 /* ClipTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTableViewCell.swift; path = Views/ClipTableViewCell.swift; sourceTree = "<group>"; };
 		D0112B801F4A7BAE00999761 /* CrystalClipboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CrystalClipboard.xcdatamodel; sourceTree = "<group>"; };
 		D0112B841F4A7E8400999761 /* ManagedClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedClip.swift; path = Model/ManagedClip.swift; sourceTree = "<group>"; };
 		D03ABD3D1F4D37F000A7D473 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -224,6 +226,14 @@
 				D00D68671F58A55C0029BC79 /* ClipsDataProviderTests.swift */,
 			);
 			name = "Data Providers";
+			sourceTree = "<group>";
+		};
+		D00D686F1F58B2230029BC79 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D00D68701F58B2560029BC79 /* ClipTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		D0112B7E1F4A7B5200999761 /* Model */ = {
@@ -410,6 +420,7 @@
 				D035A2C31F46921000B6887B /* Supporting Files */,
 				D05336031F4A9E240077B1F9 /* Utilities */,
 				D0979B651F4B31B200B8407F /* View Models */,
+				D00D686F1F58B2230029BC79 /* Views */,
 			);
 			path = CrystalClipboard;
 			sourceTree = "<group>";
@@ -818,6 +829,7 @@
 				D0979B631F4B306100B8407F /* RootViewController.swift in Sources */,
 				D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */,
 				D00D685A1F5761330029BC79 /* ResetPasswordViewController.swift in Sources */,
+				D00D68711F58B2560029BC79 /* ClipTableViewCell.swift in Sources */,
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
 				D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */,
 				D00D685C1F5762EE0029BC79 /* ResetPasswordViewModel.swift in Sources */,
