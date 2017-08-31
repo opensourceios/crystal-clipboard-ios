@@ -10,7 +10,6 @@ import XCTest
 import CoreData
 
 class CoreDataTestCase: XCTestCase {
-    
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "CrystalClipboard")
         let description = NSPersistentStoreDescription()
@@ -24,9 +23,4 @@ class CoreDataTestCase: XCTestCase {
         }
         return container
     }()
-    
-    lazy var managedObjectContext: NSManagedObjectContext = {
-        return self.persistentContainer.viewContext
-    }()
-    
 }

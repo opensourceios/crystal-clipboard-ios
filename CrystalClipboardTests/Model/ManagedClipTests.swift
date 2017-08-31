@@ -12,22 +12,14 @@ import CoreData
 
 class ManagedClipTests: CoreDataTestCase {
     func testInsert() {
+        let context = persistentContainer.viewContext
         let now = Date()
-        ManagedClip(from: Clip(id: 1, text: "hi", createdAt: now), context: managedObjectContext)
-        try! managedObjectContext.save()
+        ManagedClip(from: Clip(id: 1, text: "hi", createdAt: now), context: context)
+        try! context.save()
         let fetchRequest = ManagedClip.fetchRequest() as! NSFetchRequest<ManagedClip>
-        let managedClip = try! managedObjectContext.fetch(fetchRequest).first!
+        let managedClip = try! context.fetch(fetchRequest).first!
         XCTAssertEqual(managedClip.id, 1)
         XCTAssertEqual(managedClip.text, "hi")
         XCTAssertEqual(managedClip.createdAt, now)
-    }
-    
-    func testUniqueId() {
-        ManagedClip(from: Clip(id: 1, text: "hi", createdAt: Date()), context: managedObjectContext)
-        ManagedClip(from: Clip(id: 2, text: "yo", createdAt: Date()), context: managedObjectContext)
-        ManagedClip(from: Clip(id: 1, text: "there can only be one", createdAt: Date()), context: managedObjectContext)
-        try! managedObjectContext.save()
-        let fetchRequest = ManagedClip.fetchRequest() as! NSFetchRequest<ManagedClip>
-        XCTAssertEqual(try! managedObjectContext.count(for: fetchRequest), 2)
     }
 }
