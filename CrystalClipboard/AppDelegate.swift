@@ -27,12 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         PKHUD.sharedHUD.gracePeriod = HUDGracePeriod
-        (window?.rootViewController as? ManagedObjectContextSettable)?.managedObjectContext = persistentContainer.viewContext
+        (window?.rootViewController as? PersistentContainerSettable)?.persistentContainer = persistentContainer
         return true
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        try? persistentContainer.viewContext.save()
+        if persistentContainer.viewContext.hasChanges {
+            try? persistentContainer.viewContext.save()
+        }
     }
 }
 

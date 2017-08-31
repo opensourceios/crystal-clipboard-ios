@@ -6,6 +6,7 @@
 //  Copyright © 2017 Justin Mazzocchi. All rights reserved.
 //
 
+import CoreData
 import ReactiveSwift
 import Moya
 
@@ -14,8 +15,12 @@ class ClipsViewModel {
     // MARK: Private
     
     private let provider: APIProvider
+    private let persistentContainer: NSPersistentContainer
     
-    init(provider: APIProvider) {
+    // MARK: Initialization
+    
+    init(provider: APIProvider, persistentContainer: NSPersistentContainer) {
         self.provider = provider
+        self.persistentContainer = persistentContainer
     }
 }

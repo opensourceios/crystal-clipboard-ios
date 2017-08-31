@@ -9,11 +9,11 @@
 import UIKit
 import CoreData
 
-class ClipsViewController: UIViewController, ManagedObjectContextSettable, ProviderSettable {
-    var managedObjectContext: NSManagedObjectContext!
+class ClipsViewController: UIViewController, PersistentContainerSettable, ProviderSettable {
+    var persistentContainer: NSPersistentContainer!
     var provider: APIProvider!
     
-    private lazy var viewModel: ClipsViewModel! = ClipsViewModel(provider: self.provider)
+    private lazy var viewModel: ClipsViewModel! = ClipsViewModel(provider: self.provider, persistentContainer: self.persistentContainer)
     
     @IBOutlet private weak var tableView: UITableView!
     

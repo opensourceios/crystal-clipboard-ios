@@ -25,6 +25,7 @@
 		D00D685A1F5761330029BC79 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68591F5761330029BC79 /* ResetPasswordViewController.swift */; };
 		D00D685C1F5762EE0029BC79 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D685B1F5762EE0029BC79 /* ResetPasswordViewModel.swift */; };
 		D00D685E1F57631A0029BC79 /* ResetPasswordViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D685D1F57631A0029BC79 /* ResetPasswordViewModelTests.swift */; };
+		D00D68601F589AC10029BC79 /* PersistentContainerSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D685F1F589AC10029BC79 /* PersistentContainerSettable.swift */; };
 		D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0112B7F1F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld */; };
 		D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0112B841F4A7E8400999761 /* ManagedClip.swift */; };
 		D03ABD3E1F4D37F000A7D473 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3D1F4D37F000A7D473 /* Constants.swift */; };
@@ -58,7 +59,6 @@
 		D0B0CE0B1F4671E8006201CE /* CrystalClipboardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */; };
 		D0C1F6111F578FC100E49B77 /* ClipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6101F578FC100E49B77 /* ClipsViewModel.swift */; };
 		D0C1F6131F578FE600E49B77 /* ClipsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6121F578FE600E49B77 /* ClipsViewModelTests.swift */; };
-		D0C1F6151F5797D800E49B77 /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6141F5797D800E49B77 /* ManagedObjectContextSettable.swift */; };
 		D0C1F6171F579D8700E49B77 /* ProviderSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6161F579D8700E49B77 /* ProviderSettable.swift */; };
 		D0C1F6271F57BCBC00E49B77 /* ResponseErrorDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6261F57BCBC00E49B77 /* ResponseErrorDataTests.swift */; };
 		D0C70AED1F4E4454003C5C1B /* JSONDeserializableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C70AEC1F4E4454003C5C1B /* JSONDeserializableTests.swift */; };
@@ -109,6 +109,7 @@
 		D00D68591F5761330029BC79 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		D00D685B1F5762EE0029BC79 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewModel.swift; path = "View Models/ResetPasswordViewModel.swift"; sourceTree = "<group>"; };
 		D00D685D1F57631A0029BC79 /* ResetPasswordViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewModelTests.swift; path = "View Models/ResetPasswordViewModelTests.swift"; sourceTree = "<group>"; };
+		D00D685F1F589AC10029BC79 /* PersistentContainerSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentContainerSettable.swift; path = Protocols/PersistentContainerSettable.swift; sourceTree = "<group>"; };
 		D0112B801F4A7BAE00999761 /* CrystalClipboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CrystalClipboard.xcdatamodel; sourceTree = "<group>"; };
 		D0112B841F4A7E8400999761 /* ManagedClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedClip.swift; path = Model/ManagedClip.swift; sourceTree = "<group>"; };
 		D03ABD3D1F4D37F000A7D473 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -148,7 +149,6 @@
 		D0B0CE0C1F4671E8006201CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0C1F6101F578FC100E49B77 /* ClipsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipsViewModel.swift; path = "View Models/ClipsViewModel.swift"; sourceTree = "<group>"; };
 		D0C1F6121F578FE600E49B77 /* ClipsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipsViewModelTests.swift; path = "View Models/ClipsViewModelTests.swift"; sourceTree = "<group>"; };
-		D0C1F6141F5797D800E49B77 /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectContextSettable.swift; path = Protocols/ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 		D0C1F6161F579D8700E49B77 /* ProviderSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProviderSettable.swift; path = Protocols/ProviderSettable.swift; sourceTree = "<group>"; };
 		D0C1F6261F57BCBC00E49B77 /* ResponseErrorDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseErrorDataTests.swift; path = Networking/ResponseErrorDataTests.swift; sourceTree = "<group>"; };
 		D0C70AEC1F4E4454003C5C1B /* JSONDeserializableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONDeserializableTests.swift; path = Protocols/JSONDeserializableTests.swift; sourceTree = "<group>"; };
@@ -320,7 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				D095D8C81F4E26E700D15CE4 /* JSONDeserializable.swift */,
-				D0C1F6141F5797D800E49B77 /* ManagedObjectContextSettable.swift */,
+				D00D685F1F589AC10029BC79 /* PersistentContainerSettable.swift */,
 				D0C1F6161F579D8700E49B77 /* ProviderSettable.swift */,
 			);
 			name = Protocols;
@@ -795,7 +795,6 @@
 			files = (
 				D0979B631F4B306100B8407F /* RootViewController.swift in Sources */,
 				D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */,
-				D0C1F6151F5797D800E49B77 /* ManagedObjectContextSettable.swift in Sources */,
 				D00D685A1F5761330029BC79 /* ResetPasswordViewController.swift in Sources */,
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
 				D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */,
@@ -803,6 +802,7 @@
 				D00D68501F5733BF0029BC79 /* SignInViewModel.swift in Sources */,
 				D00D684C1F5712F40029BC79 /* UIViewController+Extensions.swift in Sources */,
 				D0979B671F4B31EB00B8407F /* SignUpViewController.swift in Sources */,
+				D00D68601F589AC10029BC79 /* PersistentContainerSettable.swift in Sources */,
 				D095D8C21F4E260800D15CE4 /* User.swift in Sources */,
 				D00D68581F575AB80029BC79 /* AuthenticatingViewController.swift in Sources */,
 				D0C1F6171F579D8700E49B77 /* ProviderSettable.swift in Sources */,

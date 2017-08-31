@@ -11,13 +11,13 @@ import CoreData
 
 private let transitionDuration: TimeInterval = 0.5
 
-class RootViewController: UIViewController, ManagedObjectContextSettable {
-    var managedObjectContext: NSManagedObjectContext!
+class RootViewController: UIViewController, PersistentContainerSettable {
+    var persistentContainer: NSPersistentContainer!
     
     private let viewModel = RootViewModel()
     fileprivate var currentController: UIViewController! {
         didSet {
-            (currentController.childViewControllers.first as? ManagedObjectContextSettable)?.managedObjectContext = managedObjectContext
+            (currentController.childViewControllers.first as? PersistentContainerSettable)?.persistentContainer = persistentContainer
         }
     }
     
