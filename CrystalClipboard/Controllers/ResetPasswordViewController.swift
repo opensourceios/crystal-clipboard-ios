@@ -11,8 +11,10 @@ import ReactiveSwift
 import ReactiveCocoa
 import PKHUD
 
-class ResetPasswordViewController: UIViewController {
-    fileprivate let viewModel = ResetPasswordViewModel(provider: APIProvider.adminProvider())
+class ResetPasswordViewController: UIViewController, ProviderSettable {
+    var provider: APIProvider!
+    
+    fileprivate lazy var viewModel: ResetPasswordViewModel = ResetPasswordViewModel(provider: self.provider)
     
     @IBOutlet fileprivate weak var emailTextField: UITextField!
     @IBOutlet fileprivate weak var submitButton: UIButton!

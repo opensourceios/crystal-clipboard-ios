@@ -41,7 +41,7 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
-        <!--Clips View Controller-->
+        <!--Crystal Clipboard-->
         <scene sceneID="tHx-9y-Irj">
             <objects>
                 <viewController storyboardIdentifier="Clips" id="1Kn-Ww-pD6" customClass="ClipsViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,12 +52,27 @@
                     <view key="view" contentMode="scaleToFill" id="Ig6-Vs-M7D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S06-Wp-DHM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="S06-Wp-DHM" secondAttribute="trailing" id="34Q-sh-Vfg"/>
+                            <constraint firstItem="S06-Wp-DHM" firstAttribute="leading" secondItem="Ig6-Vs-M7D" secondAttribute="leading" id="AMQ-rT-5OQ"/>
+                            <constraint firstItem="S06-Wp-DHM" firstAttribute="top" secondItem="Ig6-Vs-M7D" secondAttribute="top" id="UD3-af-fUQ"/>
+                            <constraint firstItem="LJM-Rt-BPy" firstAttribute="top" secondItem="S06-Wp-DHM" secondAttribute="bottom" id="ocJ-Uo-ito"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Crystal Clipboard" id="IlV-KU-4Xa"/>
+                    <connections>
+                        <outlet property="tableView" destination="S06-Wp-DHM" id="iDG-9S-09c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTC-rr-HKO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="935" y="139"/>
+            <point key="canvasLocation" x="933.60000000000002" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>

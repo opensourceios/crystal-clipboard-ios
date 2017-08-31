@@ -7,6 +7,18 @@
 //
 
 import UIKit
+import CoreData
 
-class ClipsViewController: UIViewController {
+class ClipsViewController: UIViewController, ManagedObjectContextSettable, ProviderSettable {
+    var managedObjectContext: NSManagedObjectContext!
+    var provider: APIProvider!
+    
+    private lazy var viewModel: ClipsViewModel! = ClipsViewModel(provider: self.provider)
+    
+    @IBOutlet private weak var tableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
 }

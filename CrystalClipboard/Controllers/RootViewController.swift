@@ -7,19 +7,28 @@
 //
 
 import UIKit
+import CoreData
 
 private let transitionDuration: TimeInterval = 0.5
 
-class RootViewController: UIViewController {
+class RootViewController: UIViewController, ManagedObjectContextSettable {
+    var managedObjectContext: NSManagedObjectContext!
+    
     private let viewModel = RootViewModel()
-    fileprivate var currentController: UIViewController!
+    fileprivate var currentController: UIViewController! {
+        didSet {
+            (currentController.childViewControllers.first as? ManagedObjectContextSettable)?.managedObjectContext = managedObjectContext
+        }
+    }
     
     @IBOutlet fileprivate weak var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let storyboard = UIStoryboard(name: viewModel.transitionTo.value.storyboardName)
-        let controller = storyboard.instantiateViewController(withIdentifier: viewModel.transitionTo.value.controllerIdentifier)
+        let transition = viewModel.transitionTo.value
+        let storyboard = UIStoryboard(name: transition.storyboardName)
+        let controller = storyboard.instantiateViewController(withIdentifier: transition.controllerIdentifier)
+        (controller as? ProviderSettable)?.provider = transition.provider
         let navigationController = wrappingNavigation(forController: controller)
         addChildViewController(navigationController)
         view.addSubview(navigationController.view)
@@ -28,6 +37,7 @@ class RootViewController: UIViewController {
         
         viewModel.transitionTo.signal.observeValues { [unowned self] in
             let viewController = UIStoryboard(name: $0.storyboardName).instantiateViewController(withIdentifier: $0.controllerIdentifier)
+            (viewController as? ProviderSettable)?.provider = $0.provider
             let navigationController = self.wrappingNavigation(forController: viewController)
             self.performTransition(fromViewController: self.currentController, toViewController: navigationController)
         }
@@ -42,6 +52,7 @@ fileprivate extension RootViewController {
     }
     
     func performTransition(fromViewController: UIViewController, toViewController: UIViewController) {
+        self.currentController = toViewController
         fromViewController.willMove(toParentViewController: nil)
         addChildViewController(toViewController)
         transition(from: fromViewController,
@@ -51,7 +62,6 @@ fileprivate extension RootViewController {
                    animations: nil) { _ in
             fromViewController.removeFromParentViewController()
             toViewController.didMove(toParentViewController: self)
-            self.currentController = toViewController
         }
     }
 }

@@ -57,6 +57,10 @@
 		D0B0CDF51F4671E8006201CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDF31F4671E8006201CE /* LaunchScreen.storyboard */; };
 		D0B0CE001F4671E8006201CE /* CrystalClipboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CDFF1F4671E8006201CE /* CrystalClipboardTests.swift */; };
 		D0B0CE0B1F4671E8006201CE /* CrystalClipboardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */; };
+		D0C1F6111F578FC100E49B77 /* ClipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6101F578FC100E49B77 /* ClipsViewModel.swift */; };
+		D0C1F6131F578FE600E49B77 /* ClipsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6121F578FE600E49B77 /* ClipsViewModelTests.swift */; };
+		D0C1F6151F5797D800E49B77 /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6141F5797D800E49B77 /* ManagedObjectContextSettable.swift */; };
+		D0C1F6171F579D8700E49B77 /* ProviderSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6161F579D8700E49B77 /* ProviderSettable.swift */; };
 		D0C70AED1F4E4454003C5C1B /* JSONDeserializableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C70AEC1F4E4454003C5C1B /* JSONDeserializableTests.swift */; };
 		D0D59B701F4A0A0100200ABD /* Cable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D59B6F1F4A0A0100200ABD /* Cable.swift */; };
 /* End PBXBuildFile section */
@@ -143,6 +147,10 @@
 		D0B0CE061F4671E8006201CE /* CrystalClipboardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrystalClipboardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrystalClipboardUITests.swift; sourceTree = "<group>"; };
 		D0B0CE0C1F4671E8006201CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0C1F6101F578FC100E49B77 /* ClipsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipsViewModel.swift; path = "View Models/ClipsViewModel.swift"; sourceTree = "<group>"; };
+		D0C1F6121F578FE600E49B77 /* ClipsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipsViewModelTests.swift; path = "View Models/ClipsViewModelTests.swift"; sourceTree = "<group>"; };
+		D0C1F6141F5797D800E49B77 /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectContextSettable.swift; path = Protocols/ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
+		D0C1F6161F579D8700E49B77 /* ProviderSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProviderSettable.swift; path = Protocols/ProviderSettable.swift; sourceTree = "<group>"; };
 		D0C70AEC1F4E4454003C5C1B /* JSONDeserializableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONDeserializableTests.swift; path = Protocols/JSONDeserializableTests.swift; sourceTree = "<group>"; };
 		D0D59B6F1F4A0A0100200ABD /* Cable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cable.swift; path = Networking/Cable.swift; sourceTree = "<group>"; };
 		D22B5B8698FE83A31D24280D /* Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; sourceTree = "<group>"; };
@@ -312,6 +320,8 @@
 			isa = PBXGroup;
 			children = (
 				D095D8C81F4E26E700D15CE4 /* JSONDeserializable.swift */,
+				D0C1F6141F5797D800E49B77 /* ManagedObjectContextSettable.swift */,
+				D0C1F6161F579D8700E49B77 /* ProviderSettable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -320,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				D00D68551F574FF50029BC79 /* AuthenticatingViewModel.swift */,
+				D0C1F6101F578FC100E49B77 /* ClipsViewModel.swift */,
 				D0979B6C1F4B341200B8407F /* LandingViewModel.swift */,
 				D00D685B1F5762EE0029BC79 /* ResetPasswordViewModel.swift */,
 				D00D68451F55E5140029BC79 /* RootViewModel.swift */,
@@ -332,6 +343,7 @@
 		D0979B7E1F4B491100B8407F /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				D0C1F6121F578FE600E49B77 /* ClipsViewModelTests.swift */,
 				D00D685D1F57631A0029BC79 /* ResetPasswordViewModelTests.swift */,
 				D00D68491F55E8D70029BC79 /* RootViewModelTests.swift */,
 				D00D68511F5733EC0029BC79 /* SignInViewModelTests.swift */,
@@ -777,6 +789,7 @@
 			files = (
 				D0979B631F4B306100B8407F /* RootViewController.swift in Sources */,
 				D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */,
+				D0C1F6151F5797D800E49B77 /* ManagedObjectContextSettable.swift in Sources */,
 				D00D685A1F5761330029BC79 /* ResetPasswordViewController.swift in Sources */,
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
 				D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */,
@@ -786,7 +799,9 @@
 				D0979B671F4B31EB00B8407F /* SignUpViewController.swift in Sources */,
 				D095D8C21F4E260800D15CE4 /* User.swift in Sources */,
 				D00D68581F575AB80029BC79 /* AuthenticatingViewController.swift in Sources */,
+				D0C1F6171F579D8700E49B77 /* ProviderSettable.swift in Sources */,
 				D00D68421F55DA210029BC79 /* UIStoryboard+Extensions.swift in Sources */,
+				D0C1F6111F578FC100E49B77 /* ClipsViewModel.swift in Sources */,
 				D00D684E1F5733660029BC79 /* SignInViewController.swift in Sources */,
 				D095D8C91F4E26E700D15CE4 /* JSONDeserializable.swift in Sources */,
 				D00D68461F55E5140029BC79 /* RootViewModel.swift in Sources */,
@@ -820,6 +835,7 @@
 				D095D8CD1F4E2E9300D15CE4 /* UserTests.swift in Sources */,
 				D095D8CF1F4E2EB500D15CE4 /* AuthTokenTests.swift in Sources */,
 				D05335FC1F4A861A0077B1F9 /* ManagedClipTests.swift in Sources */,
+				D0C1F6131F578FE600E49B77 /* ClipsViewModelTests.swift in Sources */,
 				D00D684A1F55E8D70029BC79 /* RootViewModelTests.swift in Sources */,
 				D0979B821F4B580800B8407F /* TestObserver.swift in Sources */,
 				D0C70AED1F4E4454003C5C1B /* JSONDeserializableTests.swift in Sources */,

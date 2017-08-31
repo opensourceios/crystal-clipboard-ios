@@ -11,7 +11,8 @@ import ReactiveSwift
 import ReactiveCocoa
 import PKHUD
 
-class AuthenticatingViewController: UIViewController {
+class AuthenticatingViewController: UIViewController, ProviderSettable {
+    var provider: APIProvider!
     var viewModel: AuthenticatingViewModel!
     
     @IBOutlet fileprivate weak var emailTextField: UITextField!

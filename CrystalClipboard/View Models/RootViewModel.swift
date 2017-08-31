@@ -12,6 +12,7 @@ import Result
 protocol TransitionType {
     var storyboardName: StoryboardNames { get }
     var controllerIdentifier: ViewControllerStoryboardIdentifier { get }
+    var provider: APIProvider? { get }
 }
 
 fileprivate enum Transition: TransitionType {
@@ -27,6 +28,13 @@ fileprivate enum Transition: TransitionType {
         switch self {
         case .signIn: return .Clips
         case .signOut: return .Landing
+        }
+    }
+    
+    var provider: APIProvider? {
+        switch self {
+        case .signIn: return APIProvider.userProvider()
+        case .signOut: return APIProvider.adminProvider()
         }
     }
 }
