@@ -1,4 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/jzzocc/Specs.git'
 
 platform :ios, '10.0'
 
@@ -13,6 +14,7 @@ plugin 'cocoapods-keys', {
 }
 
 target 'CrystalClipboard' do
+  pod 'CellHelpers', '~> 0.1'
   pod 'KeychainAccess', '~> 3.0'
   pod 'Moya/ReactiveSwift', '9.0.0-alpha1'
   pod 'PKHUD'
