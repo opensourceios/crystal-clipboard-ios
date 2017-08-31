@@ -20,4 +20,11 @@ class ManagedClip: NSManagedObject {
         self.text = clip.text
         self.createdAt = clip.createdAt
     }
+    
+}
+
+extension ManagedClip {
+    override class func fetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
+        return NSFetchRequest<NSFetchRequestResult>(entityName: "ManagedClip")
+    }
 }
