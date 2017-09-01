@@ -31,10 +31,11 @@ class ClipsViewModel {
         self.provider = provider
         self.persistentContainer = persistentContainer
         
-        fetchClips.values.observeValues { JSON in
+        fetchClips.values.observeValues {
+            let clips = Clip.manyIn(JSON: $0)
             persistentContainer.performBackgroundTask { context in
                 context.mergePolicy = NSMergePolicy.rollback
-                for clip in Clip.manyIn(JSON: JSON) {
+                for clip in clips {
                     ManagedClip(from: clip, context: context)
                 }
                 try? context.save()
