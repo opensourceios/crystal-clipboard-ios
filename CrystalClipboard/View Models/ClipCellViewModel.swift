@@ -9,32 +9,30 @@
 import ReactiveSwift
 import Result
 
-class ClipCellViewModel {
+private let dateFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateStyle = .short
+    dateFormatter.timeStyle = .short
+    return dateFormatter
+}()
+
+// this is a struct and uses normal Swift properties rather than
+// ReactiveSwift properties to minimize allocations when scrolling
+struct ClipCellViewModel {
     // MARK: Inputs
     
-    private(set) lazy var copy: Action<Void, String, NoError> = Action() { [unowned self] _ in
-        return SignalProducer<String, NoError>(self.text.signal)
-    }
+    let copy: Action<Void, String, NoError>
     
     // MARK: Outputs
     
-    let text: Property<String>
-    let createdAt: Property<String>
+    let text: String
+    let createdAt: String
     
-    // MARK: Private
-    
-    private let clip: ClipType
-    
-    private static let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .short
-        return dateFormatter
-    }()
+    // MARK: Initialization
     
     init(clip: ClipType) {
-        self.clip = clip
-        text = Property(value: clip.text)
-        createdAt = Property(value: type(of: self).dateFormatter.string(from: clip.createdAt))
+        text = clip.text
+        createdAt = dateFormatter.string(from: clip.createdAt)
+        copy = Action() { SignalProducer<String, NoError>(value: clip.text) }
     }
 }

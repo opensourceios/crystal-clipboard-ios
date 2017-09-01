@@ -15,20 +15,21 @@ class ClipTableViewCell: UITableViewCell {
     @IBOutlet private weak var createdAtLabel: UILabel!
     @IBOutlet private weak var copyButton: UIButton!
     
-    var viewModel: ClipCellViewModel! {
+    var viewModel: ClipCellViewModel? {
         didSet {
-            setupBindings()
+            guard let viewModel = viewModel else { return }
+            setup(fromViewModel: viewModel)
         }
     }
     
-    private func setupBindings() {
+    private func setup(fromViewModel model: ClipCellViewModel) {
         // View model inputs
         
-        copyButton.reactive.pressed = CocoaAction(viewModel.copy)
+        copyButton.reactive.pressed = CocoaAction(model.copy)
         
         // View model outputs
         
-        clipTextLabel.reactive.text <~ viewModel.text
-        createdAtLabel.reactive.text <~ viewModel.createdAt
+        clipTextLabel.text = model.text
+        createdAtLabel.text = model.createdAt
     }
 }
