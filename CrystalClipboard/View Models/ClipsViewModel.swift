@@ -30,9 +30,10 @@ class ClipsViewModel {
     init(provider: APIProvider, persistentContainer: NSPersistentContainer) {
         self.provider = provider
         self.persistentContainer = persistentContainer
-        print(try! persistentContainer.viewContext.count(for: ManagedClip.fetchRequest()))
+        
         fetchClips.values.observeValues { JSON in
             persistentContainer.performBackgroundTask { context in
+                context.mergePolicy = NSMergePolicy.rollback
                 for clip in Clip.manyIn(JSON: JSON) {
                     ManagedClip(from: clip, context: context)
                 }

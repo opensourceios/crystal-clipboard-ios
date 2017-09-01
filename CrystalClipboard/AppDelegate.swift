@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "CrystalClipboard")
         container.viewContext.automaticallyMergesChangesFromParent = true
-        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         container.loadPersistentStores { storeDescription, error in
             if let error = error { fatalError("Could not load store: \(error)") }
         }
