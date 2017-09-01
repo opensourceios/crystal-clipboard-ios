@@ -36,13 +36,13 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
 }
 
 extension ClipsViewController: DataSourceDelegate {
-    func dataSource(_ dataSource: DataSource, reuseIdentifierForObject object: Any, atIndexPath indexPath: IndexPath) -> String {
+    func dataSource(_ dataSource: DataSource, reuseIdentifierForItem item: Any, atIndexPath indexPath: IndexPath) -> String {
         return TableViewCellReuseIdentifier.ClipTableViewCell.rawValue
     }
     
-    func configureCell(_ cell: ViewCell, fromDataSource dataSource: DataSource, atIndexPath indexPath: IndexPath, forObject object: Any) {
+    func configure(cell: ViewCell, fromDataSource dataSource: DataSource, atIndexPath indexPath: IndexPath, forItem item: Any) {
         guard let clipCell = cell as? ClipTableViewCell else { fatalError("Wrong cell type") }
-        guard let clip = object as? ClipType else { fatalError("Wrong object type") }
+        guard let clip = item as? ClipType else { fatalError("Wrong object type") }
         clipCell.viewModel = ClipCellViewModel(clip: clip)
     }
 }
