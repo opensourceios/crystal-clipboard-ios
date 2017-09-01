@@ -23,6 +23,7 @@ class ResetPasswordViewController: UIViewController, ProviderSettable {
         super.viewDidLoad()
         
         let submitAction = CocoaAction<UIButton>(viewModel.submit)
+        let uiScheduler = UIScheduler()
         
         // View model inputs
         
@@ -33,8 +34,8 @@ class ResetPasswordViewController: UIViewController, ProviderSettable {
         
         submitButton.reactive.isEnabled <~ viewModel.submit.isEnabled
         submitAction.isExecuting.signal.observeValues { $0 ? HUD.show(.progress) : HUD.hide() }
-        viewModel.errorMessage.observeValues { [unowned self] in self.presentAlert(message: $0) }
-        viewModel.successMessage.observeValues { [unowned self] in
+        viewModel.errorMessage.observe(on: uiScheduler).observeValues { [unowned self] in self.presentAlert(message: $0) }
+        viewModel.successMessage.observe(on: uiScheduler).observeValues { [unowned self] in
             let action = UIAlertAction(title: "ok".localized, style: .default) { [unowned self] _ in
                 self.navigationController?.popViewController(animated: true)
             }

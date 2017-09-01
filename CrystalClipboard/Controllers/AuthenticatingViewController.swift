@@ -33,7 +33,7 @@ class AuthenticatingViewController: UIViewController, ProviderSettable {
         // View model outputs
         
         submitButton.reactive.isEnabled <~ viewModel.submit.isEnabled
-        viewModel.alertMessage.observeValues { [unowned self] in self.presentAlert(message: $0) }
+        viewModel.alertMessage.observe(on: UIScheduler()).observeValues { [unowned self] in self.presentAlert(message: $0) }
         submitAction.isExecuting.signal.observeValues { $0 ? HUD.show(.progress) : HUD.hide() }
         
         // Other setup

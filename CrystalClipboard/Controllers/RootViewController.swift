@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import ReactiveSwift
 
 private let transitionDuration: TimeInterval = 0.5
 
@@ -35,7 +36,7 @@ class RootViewController: UIViewController, PersistentContainerSettable {
         navigationController.didMove(toParentViewController: self)
         currentController = navigationController
         
-        viewModel.transitionTo.signal.observeValues { [unowned self] in
+        viewModel.transitionTo.signal.observe(on: UIScheduler()).observeValues { [unowned self] in
             let viewController = UIStoryboard(name: $0.storyboardName).instantiateViewController(withIdentifier: $0.controllerIdentifier)
             (viewController as? ProviderSettable)?.provider = $0.provider
             let navigationController = self.wrappingNavigation(forController: viewController)

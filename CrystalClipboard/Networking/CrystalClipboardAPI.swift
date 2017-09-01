@@ -9,10 +9,11 @@
 import Moya
 
 typealias APIProvider = MoyaProvider<CrystalClipboardAPI>
+private let responseProcessingQueue = DispatchQueue(label: "com.jzzocc.crystal-clipboard.response-processing-queue",  attributes: .concurrent)
 
 extension MoyaProvider where Target == CrystalClipboardAPI {
     convenience init(authToken: AuthToken) {
-        self.init(plugins: [AccessTokenPlugin(token: authToken.token)])
+        self.init(callbackQueue: responseProcessingQueue, plugins: [AccessTokenPlugin(token: authToken.token)])
     }
     
     static func adminProvider() -> APIProvider {
