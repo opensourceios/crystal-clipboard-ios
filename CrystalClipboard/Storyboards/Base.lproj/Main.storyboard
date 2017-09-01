@@ -68,16 +68,16 @@
                                                     <rect key="frame" x="8" y="8" width="359" height="99"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TA6-4a-8QZ">
-                                                            <rect key="frame" x="8" y="8" width="343" height="51"/>
+                                                            <rect key="frame" x="8" y="8" width="263" height="51"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LjK-nM-FGW">
-                                                            <rect key="frame" x="0.0" y="67" width="359" height="32"/>
+                                                            <rect key="frame" x="0.0" y="67" width="279" height="32"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLw-jP-62e">
-                                                                    <rect key="frame" x="8" y="8" width="343" height="16"/>
+                                                                    <rect key="frame" x="8" y="8" width="263" height="16"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -91,14 +91,26 @@
                                                                 <constraint firstItem="bLw-jP-62e" firstAttribute="leading" secondItem="LjK-nM-FGW" secondAttribute="leading" constant="8" id="zOB-h4-9E2"/>
                                                             </constraints>
                                                         </view>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okj-y5-hx6">
+                                                            <rect key="frame" x="279" y="0.0" width="80" height="99"/>
+                                                            <color key="backgroundColor" red="0.3033139705657959" green="0.10741583257913589" blue="0.46743690967559814" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="hCa-B6-hSy"/>
+                                                                <constraint firstAttribute="width" constant="80" id="klR-DI-VNG"/>
+                                                            </constraints>
+                                                            <state key="normal" image="Clippy"/>
+                                                        </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="LjK-nM-FGW" secondAttribute="trailing" id="0mj-xo-gJG"/>
                                                         <constraint firstItem="TA6-4a-8QZ" firstAttribute="top" secondItem="EC0-FK-H9q" secondAttribute="top" constant="8" id="A5l-dy-Sg4"/>
-                                                        <constraint firstAttribute="trailing" secondItem="TA6-4a-8QZ" secondAttribute="trailing" constant="8" id="EUX-Ll-Uwg"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Okj-y5-hx6" secondAttribute="bottom" id="MdD-6h-cK5"/>
+                                                        <constraint firstItem="Okj-y5-hx6" firstAttribute="leading" secondItem="TA6-4a-8QZ" secondAttribute="trailing" constant="8" id="P7y-EO-sPC"/>
                                                         <constraint firstItem="LjK-nM-FGW" firstAttribute="leading" secondItem="EC0-FK-H9q" secondAttribute="leading" id="fpu-fI-27g"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Okj-y5-hx6" secondAttribute="trailing" id="lbE-by-Fyc"/>
+                                                        <constraint firstItem="Okj-y5-hx6" firstAttribute="top" secondItem="EC0-FK-H9q" secondAttribute="top" id="oen-VH-F0A"/>
                                                         <constraint firstItem="LjK-nM-FGW" firstAttribute="top" secondItem="TA6-4a-8QZ" secondAttribute="bottom" constant="8" id="sbc-dj-cHm"/>
                                                         <constraint firstAttribute="bottom" secondItem="LjK-nM-FGW" secondAttribute="bottom" id="so4-QU-Lrp"/>
+                                                        <constraint firstItem="Okj-y5-hx6" firstAttribute="leading" secondItem="LjK-nM-FGW" secondAttribute="trailing" id="va7-5r-FVZ"/>
                                                         <constraint firstItem="TA6-4a-8QZ" firstAttribute="leading" secondItem="EC0-FK-H9q" secondAttribute="leading" constant="8" id="zmx-en-onM"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -123,6 +135,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="clipTextLabel" destination="TA6-4a-8QZ" id="HdT-On-k20"/>
+                                            <outlet property="copyButton" destination="Okj-y5-hx6" id="IIZ-AN-XL5"/>
+                                            <outlet property="createdAtLabel" destination="bLw-jP-62e" id="96E-bw-Yjt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -145,4 +159,7 @@
             <point key="canvasLocation" x="933.60000000000002" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Clippy" width="28" height="30"/>
+    </resources>
 </document>
