@@ -10,10 +10,10 @@ import CoreData
 import CellHelpers
 
 struct ClipsDataProvider: FetchedDataProvider {
-    let fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>
+    let fetchedResultsController: NSFetchedResultsController<ManagedClip>
     
     init(managedObjectContext: NSManagedObjectContext) {
-        let fetchRequest = ManagedClip.fetchRequest()
+        let fetchRequest = ManagedClip.fetchRequest() as! NSFetchRequest<ManagedClip>
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(ManagedClip.createdAt), ascending: false)]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                   managedObjectContext: managedObjectContext,
