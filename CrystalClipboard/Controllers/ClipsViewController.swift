@@ -41,7 +41,7 @@ extension ClipsViewController: DataSourceDelegate {
     
     func configureCell(_ cell: ViewCell, fromDataSource dataSource: DataSource, atIndexPath indexPath: IndexPath, forObject object: AnyObject) {
         guard let clipCell = cell as? ClipTableViewCell else { fatalError("Wrong cell type") }
-        clipCell.clipText = (object as? ManagedClip)?.text
-        clipCell.createdAt = (object as? ManagedClip)?.createdAt
+        guard let clip = object as? ClipType else { fatalError("Wrong object type") }
+        clipCell.viewModel = ClipCellViewModel(clip: clip)
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Clip {
+struct Clip: ClipType {
     let id: Int
     let text: String
     let createdAt: Date

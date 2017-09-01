@@ -8,7 +8,7 @@
 
 import CoreData
 
-class ManagedClip: NSManagedObject {
+class ManagedClip: NSManagedObject, ClipType {
     @NSManaged fileprivate(set) var id: Int
     @NSManaged fileprivate(set) var text: String
     @NSManaged fileprivate(set) var createdAt: Date

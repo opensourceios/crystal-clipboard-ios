@@ -66,6 +66,8 @@
 		D0C1F6271F57BCBC00E49B77 /* ResponseErrorDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6261F57BCBC00E49B77 /* ResponseErrorDataTests.swift */; };
 		D0C1F6561F590A3700E49B77 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6551F590A3700E49B77 /* UIView+IBInspectable.swift */; };
 		D0C1F6581F590D5E00E49B77 /* MarginSettableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6571F590D5E00E49B77 /* MarginSettableTextField.swift */; };
+		D0C1F65A1F592DD600E49B77 /* ClipCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6591F592DD600E49B77 /* ClipCellViewModel.swift */; };
+		D0C1F65C1F592EFB00E49B77 /* ClipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F65B1F592EFB00E49B77 /* ClipType.swift */; };
 		D0C70AED1F4E4454003C5C1B /* JSONDeserializableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C70AEC1F4E4454003C5C1B /* JSONDeserializableTests.swift */; };
 		D0D59B701F4A0A0100200ABD /* Cable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D59B6F1F4A0A0100200ABD /* Cable.swift */; };
 /* End PBXBuildFile section */
@@ -161,6 +163,8 @@
 		D0C1F6261F57BCBC00E49B77 /* ResponseErrorDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseErrorDataTests.swift; path = Networking/ResponseErrorDataTests.swift; sourceTree = "<group>"; };
 		D0C1F6551F590A3700E49B77 /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+IBInspectable.swift"; path = "Extensions/UIView+IBInspectable.swift"; sourceTree = "<group>"; };
 		D0C1F6571F590D5E00E49B77 /* MarginSettableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarginSettableTextField.swift; path = Views/MarginSettableTextField.swift; sourceTree = "<group>"; };
+		D0C1F6591F592DD600E49B77 /* ClipCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipCellViewModel.swift; path = "View Models/ClipCellViewModel.swift"; sourceTree = "<group>"; };
+		D0C1F65B1F592EFB00E49B77 /* ClipType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipType.swift; path = Protocols/ClipType.swift; sourceTree = "<group>"; };
 		D0C70AEC1F4E4454003C5C1B /* JSONDeserializableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONDeserializableTests.swift; path = Protocols/JSONDeserializableTests.swift; sourceTree = "<group>"; };
 		D0D59B6F1F4A0A0100200ABD /* Cable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cable.swift; path = Networking/Cable.swift; sourceTree = "<group>"; };
 		D22B5B8698FE83A31D24280D /* Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 		D095D8C51F4E268700D15CE4 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				D0C1F65B1F592EFB00E49B77 /* ClipType.swift */,
 				D095D8C81F4E26E700D15CE4 /* JSONDeserializable.swift */,
 				D00D685F1F589AC10029BC79 /* PersistentContainerSettable.swift */,
 				D0C1F6161F579D8700E49B77 /* ProviderSettable.swift */,
@@ -366,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				D00D68551F574FF50029BC79 /* AuthenticatingViewModel.swift */,
+				D0C1F6591F592DD600E49B77 /* ClipCellViewModel.swift */,
 				D0C1F6101F578FC100E49B77 /* ClipsViewModel.swift */,
 				D0979B6C1F4B341200B8407F /* LandingViewModel.swift */,
 				D00D685B1F5762EE0029BC79 /* ResetPasswordViewModel.swift */,
@@ -835,6 +841,7 @@
 				D0C1F6581F590D5E00E49B77 /* MarginSettableTextField.swift in Sources */,
 				D0979B631F4B306100B8407F /* RootViewController.swift in Sources */,
 				D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */,
+				D0C1F65C1F592EFB00E49B77 /* ClipType.swift in Sources */,
 				D00D685A1F5761330029BC79 /* ResetPasswordViewController.swift in Sources */,
 				D00D68711F58B2560029BC79 /* ClipTableViewCell.swift in Sources */,
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
@@ -868,6 +875,7 @@
 				D0979B6D1F4B341200B8407F /* LandingViewModel.swift in Sources */,
 				D00D68561F574FF50029BC79 /* AuthenticatingViewModel.swift in Sources */,
 				D00D68371F55CAF80029BC79 /* Identifiers.swift in Sources */,
+				D0C1F65A1F592DD600E49B77 /* ClipCellViewModel.swift in Sources */,
 				D0979B6B1F4B33F300B8407F /* LandingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

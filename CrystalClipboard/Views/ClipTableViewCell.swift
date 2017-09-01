@@ -7,28 +7,28 @@
 //
 
 import UIKit
+import ReactiveSwift
+import ReactiveCocoa
 
 class ClipTableViewCell: UITableViewCell {
-    private static let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .short
-        return dateFormatter
-    }()
-    
     @IBOutlet private weak var clipTextLabel: UILabel!
     @IBOutlet private weak var createdAtLabel: UILabel!
     @IBOutlet private weak var copyButton: UIButton!
     
-    var clipText: String? {
-        get { return clipTextLabel.text }
-        set { clipTextLabel.text = newValue }
+    var viewModel: ClipCellViewModel! {
+        didSet {
+            setupBindings()
+        }
     }
     
-    var createdAt: Date? {
-        didSet {
-            guard let createdAt = createdAt else { return }
-            createdAtLabel.text = ClipTableViewCell.dateFormatter.string(from: createdAt)
-        }
+    private func setupBindings() {
+        // View model inputs
+        
+        copyButton.reactive.pressed = CocoaAction(viewModel.copy)
+        
+        // View model outputs
+        
+        clipTextLabel.reactive.text <~ viewModel.text
+        createdAtLabel.reactive.text <~ viewModel.createdAt
     }
 }
