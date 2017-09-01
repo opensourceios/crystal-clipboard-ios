@@ -9,8 +9,10 @@
 import CoreData
 import CellHelpers
 
-class ClipsDataProvider: FetchedDataProvider {
-    required init(managedObjectContext: NSManagedObjectContext) {
+struct ClipsDataProvider: FetchedDataProvider {
+    let fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>
+    
+    init(managedObjectContext: NSManagedObjectContext) {
         let fetchRequest = ManagedClip.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(ManagedClip.createdAt), ascending: false)]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
@@ -18,10 +20,6 @@ class ClipsDataProvider: FetchedDataProvider {
                                                                   sectionNameKeyPath: nil,
                                                                   cacheName: nil)
         try! fetchedResultsController.performFetch()
-        super.init(fetchedResultsController: fetchedResultsController)
-    }
-    
-    required init(fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>) {
-        fatalError("init(fetchedResultsController:) has not been implemented")
+        self.fetchedResultsController = fetchedResultsController
     }
 }
