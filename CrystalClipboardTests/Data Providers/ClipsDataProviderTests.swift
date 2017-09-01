@@ -16,10 +16,10 @@ fileprivate let reuseIdentifier = "reuseIdentifier"
 
 class ClipsDataProviderTests: CoreDataTestCase {
     class Controller: UITableViewController, DataSourceDelegate {
-        func dataSource(_ dataSource: DataSource, reuseIdentifierForObject object: AnyObject, atIndexPath indexPath: IndexPath) -> String {
+        func dataSource(_ dataSource: DataSource, reuseIdentifierForObject object: Any, atIndexPath indexPath: IndexPath) -> String {
             return reuseIdentifier
         }
-        func configureCell(_ cell: ViewCell, fromDataSource dataSource: DataSource, atIndexPath indexPath: IndexPath, forObject object: AnyObject) {
+        func configureCell(_ cell: ViewCell, fromDataSource dataSource: DataSource, atIndexPath indexPath: IndexPath, forObject object: Any) {
             guard let tableViewCell = cell as? UITableViewCell else { fatalError("Wrong cell type") }
             guard let managedClip = object as? ManagedClip else { fatalError("Wrong object type") }
             tableViewCell.textLabel?.text = managedClip.text
