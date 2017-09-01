@@ -15,7 +15,7 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
     var provider: APIProvider!
     
     private lazy var viewModel: ClipsViewModel! = ClipsViewModel(provider: self.provider, persistentContainer: self.persistentContainer)
-    private var dataSource: FetchedDataSource!
+    private var dataSource: DataSource!
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -25,7 +25,8 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         // Other setup
         
         let dataProvider = ClipsDataProvider(managedObjectContext: self.persistentContainer.viewContext)
-        dataSource = FetchedDataSource(dataProvider: dataProvider, delegate: self, view: tableView)
+        dataProvider.fetchedResultsController.delegate = tableView
+        dataSource = DataSource(dataProvider: dataProvider, delegate: self)
         tableView.dataSource = dataSource
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
