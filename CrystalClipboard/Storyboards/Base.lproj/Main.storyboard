@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -54,29 +53,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S06-Wp-DHM">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="107" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S06-Wp-DHM">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClipTableViewCell" id="u70-dM-u4B" customClass="ClipTableViewCell" customModule="CrystalClipboard" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClipTableViewCell" rowHeight="107" id="u70-dM-u4B" customClass="ClipTableViewCell" customModule="CrystalClipboard" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u70-dM-u4B" id="pYP-1y-bgh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TA6-4a-8QZ">
-                                                    <rect key="frame" x="8" y="8" width="359" height="27.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EC0-FK-H9q">
+                                                    <rect key="frame" x="8" y="8" width="359" height="99"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TA6-4a-8QZ">
+                                                            <rect key="frame" x="8" y="8" width="343" height="51"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LjK-nM-FGW">
+                                                            <rect key="frame" x="0.0" y="67" width="359" height="32"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLw-jP-62e">
+                                                                    <rect key="frame" x="8" y="8" width="343" height="16"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.96476286649703979" green="0.96446877717971802" blue="0.9729953408241272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="bLw-jP-62e" secondAttribute="trailing" constant="8" id="6py-UO-fL0"/>
+                                                                <constraint firstItem="bLw-jP-62e" firstAttribute="top" secondItem="LjK-nM-FGW" secondAttribute="top" constant="8" id="Pb2-Qi-CeQ"/>
+                                                                <constraint firstAttribute="bottom" secondItem="bLw-jP-62e" secondAttribute="bottom" constant="8" id="XZN-mg-q7G"/>
+                                                                <constraint firstItem="bLw-jP-62e" firstAttribute="leading" secondItem="LjK-nM-FGW" secondAttribute="leading" constant="8" id="zOB-h4-9E2"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="LjK-nM-FGW" secondAttribute="trailing" id="0mj-xo-gJG"/>
+                                                        <constraint firstItem="TA6-4a-8QZ" firstAttribute="top" secondItem="EC0-FK-H9q" secondAttribute="top" constant="8" id="A5l-dy-Sg4"/>
+                                                        <constraint firstAttribute="trailing" secondItem="TA6-4a-8QZ" secondAttribute="trailing" constant="8" id="EUX-Ll-Uwg"/>
+                                                        <constraint firstItem="LjK-nM-FGW" firstAttribute="leading" secondItem="EC0-FK-H9q" secondAttribute="leading" id="fpu-fI-27g"/>
+                                                        <constraint firstItem="LjK-nM-FGW" firstAttribute="top" secondItem="TA6-4a-8QZ" secondAttribute="bottom" constant="8" id="sbc-dj-cHm"/>
+                                                        <constraint firstAttribute="bottom" secondItem="LjK-nM-FGW" secondAttribute="bottom" id="so4-QU-Lrp"/>
+                                                        <constraint firstItem="TA6-4a-8QZ" firstAttribute="leading" secondItem="EC0-FK-H9q" secondAttribute="leading" constant="8" id="zmx-en-onM"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="0.5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="TA6-4a-8QZ" firstAttribute="trailing" secondItem="pYP-1y-bgh" secondAttribute="trailingMargin" id="YJb-fj-wjO"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="TA6-4a-8QZ" secondAttribute="bottom" id="hVE-Wk-XXz"/>
-                                                <constraint firstItem="TA6-4a-8QZ" firstAttribute="top" secondItem="pYP-1y-bgh" secondAttribute="topMargin" id="iJr-Kt-HGO"/>
-                                                <constraint firstItem="TA6-4a-8QZ" firstAttribute="leading" secondItem="pYP-1y-bgh" secondAttribute="leadingMargin" id="l1Q-lS-YrT"/>
+                                                <constraint firstItem="EC0-FK-H9q" firstAttribute="leading" secondItem="pYP-1y-bgh" secondAttribute="leading" constant="8" id="DPA-3a-1qq"/>
+                                                <constraint firstAttribute="trailing" secondItem="EC0-FK-H9q" secondAttribute="trailing" constant="8" id="WgP-w9-M0Y"/>
+                                                <constraint firstItem="EC0-FK-H9q" firstAttribute="top" secondItem="pYP-1y-bgh" secondAttribute="top" constant="8" id="fjw-WM-eXb"/>
+                                                <constraint firstAttribute="bottom" secondItem="EC0-FK-H9q" secondAttribute="bottom" id="rTc-XS-g4U"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
