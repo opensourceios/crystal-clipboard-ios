@@ -12,6 +12,13 @@ import XCTest
 class UserTests: XCTestCase {
     let user = User(id: 666, email: "satan@hell.org")
     
+    func testDecoding() {
+        let jsonData = CrystalClipboardAPI.me.sampleData
+        let user = try! JSONDecoder().decode(APIResponse<User>.self, from: jsonData).data
+        XCTAssertEqual(user.id, 666)
+        XCTAssertEqual(user.email, "satan@hell.org")
+    }
+    
     func testJSONDeserialization() {
         let jsonData = CrystalClipboardAPI.me.sampleData
         let json = try! JSONSerialization.jsonObject(with: jsonData) as! [String: Any]

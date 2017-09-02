@@ -36,3 +36,24 @@ extension Clip: JSONDeserializable {
         return Clip(id: id, text: text, createdAt: createdAt)
     }
 }
+
+extension Clip: Decodable {
+    private enum DataKeys: String, CodingKey {
+        case id
+        case attributes
+        enum AttributeKeys: String, CodingKey {
+            case text
+            case createdAt = "created-at"
+        }
+    }
+    
+    init(from decoder: Decoder) throws {
+        let data = try decoder.container(keyedBy: DataKeys.self)
+        let attributes = try data.nestedContainer(keyedBy: DataKeys.AttributeKeys.self, forKey: .attributes)
+        let idString = try data.decode(String.self, forKey: .id)
+        guard let id = Int(idString) else { throw NSError() }
+        self.id = id
+        text = try attributes.decode(String.self, forKey: .text)
+        createdAt = try attributes.decode(Date.self, forKey: .createdAt)
+    }
+}

@@ -56,3 +56,17 @@ extension AuthToken: JSONDeserializable {
         return AuthToken(token: token)
     }
 }
+
+extension AuthToken: Decodable {
+    private enum DataKeys: String, CodingKey {
+        case attributes
+        enum AttributeKeys: String, CodingKey {
+            case token
+        }
+    }
+    init(from decoder: Decoder) throws {
+        let data = try decoder.container(keyedBy: DataKeys.self)
+        let attributes = try data.nestedContainer(keyedBy: DataKeys.AttributeKeys.self, forKey: .attributes)
+        token = try attributes.decode(String.self, forKey: .token)
+    }
+}

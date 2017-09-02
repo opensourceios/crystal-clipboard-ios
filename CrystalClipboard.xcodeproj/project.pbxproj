@@ -31,6 +31,8 @@
 		D00D68711F58B2560029BC79 /* ClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68701F58B2560029BC79 /* ClipTableViewCell.swift */; };
 		D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0112B7F1F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld */; };
 		D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0112B841F4A7E8400999761 /* ManagedClip.swift */; };
+		D0253F8F1F5A83B60066B444 /* APIResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0253F8E1F5A83B60066B444 /* APIResponseDecoder.swift */; };
+		D0363EA91F5A68BE00C37ECE /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0363EA81F5A68BE00C37ECE /* APIResponse.swift */; };
 		D03ABD3E1F4D37F000A7D473 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3D1F4D37F000A7D473 /* Constants.swift */; };
 		D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3F1F4E8FF600A7D473 /* Clip.swift */; };
 		D03ABD421F4E902400A7D473 /* ClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD411F4E902400A7D473 /* ClipTests.swift */; };
@@ -122,6 +124,8 @@
 		D00D68701F58B2560029BC79 /* ClipTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTableViewCell.swift; path = Views/ClipTableViewCell.swift; sourceTree = "<group>"; };
 		D0112B801F4A7BAE00999761 /* CrystalClipboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CrystalClipboard.xcdatamodel; sourceTree = "<group>"; };
 		D0112B841F4A7E8400999761 /* ManagedClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedClip.swift; path = Model/ManagedClip.swift; sourceTree = "<group>"; };
+		D0253F8E1F5A83B60066B444 /* APIResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIResponseDecoder.swift; path = Networking/APIResponseDecoder.swift; sourceTree = "<group>"; };
+		D0363EA81F5A68BE00C37ECE /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Networking/APIResponse.swift; sourceTree = "<group>"; };
 		D03ABD3D1F4D37F000A7D473 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D03ABD3F1F4E8FF600A7D473 /* Clip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clip.swift; path = Model/Clip.swift; sourceTree = "<group>"; };
 		D03ABD411F4E902400A7D473 /* ClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTests.swift; path = Model/ClipTests.swift; sourceTree = "<group>"; };
@@ -318,6 +322,8 @@
 		D04C144C1F46975E0068AEA0 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				D0363EA81F5A68BE00C37ECE /* APIResponse.swift */,
+				D0253F8E1F5A83B60066B444 /* APIResponseDecoder.swift */,
 				D0D59B6F1F4A0A0100200ABD /* Cable.swift */,
 				D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */,
 				D085FAF31F4BF6AD0022C806 /* ResponseErrorData.swift */,
@@ -842,6 +848,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0C1F6581F590D5E00E49B77 /* MarginSettableTextField.swift in Sources */,
+				D0253F8F1F5A83B60066B444 /* APIResponseDecoder.swift in Sources */,
 				D0979B631F4B306100B8407F /* RootViewController.swift in Sources */,
 				D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */,
 				D0C1F65C1F592EFB00E49B77 /* ClipType.swift in Sources */,
@@ -854,6 +861,7 @@
 				D00D68501F5733BF0029BC79 /* SignInViewModel.swift in Sources */,
 				D00D684C1F5712F40029BC79 /* UIViewController+Extensions.swift in Sources */,
 				D0979B671F4B31EB00B8407F /* SignUpViewController.swift in Sources */,
+				D0363EA91F5A68BE00C37ECE /* APIResponse.swift in Sources */,
 				D00D68601F589AC10029BC79 /* PersistentContainerSettable.swift in Sources */,
 				D095D8C21F4E260800D15CE4 /* User.swift in Sources */,
 				D00D68581F575AB80029BC79 /* AuthenticatingViewController.swift in Sources */,

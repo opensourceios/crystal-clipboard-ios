@@ -76,3 +76,22 @@ extension User: JSONDeserializable {
         return User(id: id, email: email)
     }
 }
+
+extension User: Decodable {
+    private enum DataKeys: String, CodingKey {
+        case id
+        case attributes
+        enum AttributeKeys: String, CodingKey {
+            case email
+        }
+    }
+    
+    init(from decoder: Decoder) throws {
+        let data = try decoder.container(keyedBy: DataKeys.self)
+        let attributes = try data.nestedContainer(keyedBy: DataKeys.AttributeKeys.self, forKey: .attributes)
+        let idString = try data.decode(String.self, forKey: .id)
+        guard let id = Int(idString) else { throw NSError() }
+        self.id = id
+        email = try attributes.decode(String.self, forKey: .email)
+    }
+}
