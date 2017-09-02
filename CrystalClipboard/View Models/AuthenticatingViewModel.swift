@@ -50,7 +50,10 @@ class AuthenticatingViewModel {
     init(provider: APIProvider) {
         self.provider = provider
         
-        submit.values.observeValues { [unowned self] in self.saveAuthentication(JSON: $0) }
+        submit.values.observeValues {
+            AuthToken.current = AuthToken.includedIn(JSON: $0).first
+            User.current = try? User.in(JSON: $0)
+        }
     }
     
     // MARK: For Subclasses
@@ -60,10 +63,6 @@ class AuthenticatingViewModel {
     }
     
     var request: CrystalClipboardAPI {
-        fatalError("This should only be called from subclasses")
-    }
-    
-    func saveAuthentication(JSON: Any) {
         fatalError("This should only be called from subclasses")
     }
 }

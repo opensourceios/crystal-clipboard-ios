@@ -7,8 +7,7 @@
 //
 
 class SignUpViewController: AuthenticatingViewController {
-    override func viewDidLoad() {
-        viewModel = SignUpViewModel(provider: provider)
-        super.viewDidLoad()
+    override func createViewModel() -> AuthenticatingViewModel {
+        return SignUpViewModel(provider: provider)
     }
 }

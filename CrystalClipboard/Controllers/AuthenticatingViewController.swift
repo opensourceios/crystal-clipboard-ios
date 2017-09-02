@@ -21,6 +21,7 @@ class AuthenticatingViewController: UIViewController, ProviderSettable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = createViewModel()
         
         let submitAction = CocoaAction<UIButton>(viewModel.submit)
         
@@ -39,6 +40,10 @@ class AuthenticatingViewController: UIViewController, ProviderSettable {
         // Other setup
         
         emailTextField.becomeFirstResponder()
+    }
+    
+    func createViewModel() -> AuthenticatingViewModel {
+        fatalError("This should only be called from subclasses")
     }
 }
 
