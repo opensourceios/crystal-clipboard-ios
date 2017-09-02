@@ -8,10 +8,9 @@
 
 import UIKit
 
-class SignInViewController: AuthenticatingViewController {
-    override func viewDidLoad() {
-        viewModel = SignInViewModel(provider: provider)
-        super.viewDidLoad()
+class SignInViewController: AuthenticatingViewController {    
+    override func createViewModel() -> AuthenticatingViewModel {
+        return SignInViewModel(provider: provider)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
