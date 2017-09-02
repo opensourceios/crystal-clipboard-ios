@@ -12,8 +12,8 @@ import XCTest
 class AuthTokenTests: XCTestCase {
     func testJSONDeserialization() {
         let jsonData = CrystalClipboardAPI.signIn(email: "satan@hell.org", password: "password").sampleData
-        let json = try! JSONSerialization.jsonObject(with: jsonData) as! [String: Any]
-        let authToken = try! AuthToken.in(JSON: json)
+        let json = try! JSONSerialization.jsonObject(with: jsonData)
+        let authToken = AuthToken.includedIn(JSON: json).first!
         XCTAssertEqual(authToken.token, "Vy5KbYX116Y1him376FvAhkw")
     }
     

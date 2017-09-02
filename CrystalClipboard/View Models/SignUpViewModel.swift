@@ -14,9 +14,4 @@ class SignUpViewModel: AuthenticatingViewModel {
     override var request: CrystalClipboardAPI {
         return .createUser(email: email.value, password: password.value)
     }
-    
-    override func saveAuthentication(JSON: Any) {
-        AuthToken.current = AuthToken.includedIn(JSON: JSON).first
-        User.current = try? User.in(JSON: JSON)
-    }
 }

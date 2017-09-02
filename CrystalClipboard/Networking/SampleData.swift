@@ -57,7 +57,7 @@ extension CrystalClipboardAPI {
         case let .signIn(email, password):
             switch (email, password) {
             case ("satan@hell.org", "password"):
-                return .networkResponse(200, "{\"data\":{\"id\":\"999\",\"type\":\"auth-tokens\",\"attributes\":{\"token\":\"Vy5KbYX116Y1him376FvAhkw\"},\"relationships\":{\"user\":{\"data\":{\"id\":\"666\",\"type\":\"users\"}}}},\"included\":[{\"id\":\"666\",\"type\":\"users\",\"attributes\":{\"email\":\"satan@hell.org\"}}]}".data(using: .utf8)!)
+                return .networkResponse(200, "{\"data\":{\"id\":\"666\",\"type\":\"users\",\"attributes\":{\"email\":\"satan@hell.org\"},\"relationships\":{\"auth-token\":{\"data\":{\"id\":\"1587\",\"type\":\"auth-tokens\"}}}},\"included\":[{\"id\":\"999\",\"type\":\"auth-tokens\",\"attributes\":{\"token\":\"Vy5KbYX116Y1him376FvAhkw\"}}]}".data(using: .utf8)!)
             default:
                 return .networkResponse(401, "{\"errors\":[{\"detail\":\"The email or password provided was incorrect\"}]}".data(using: .utf8)!)
             }
