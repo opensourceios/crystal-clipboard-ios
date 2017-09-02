@@ -30,21 +30,21 @@ class UserTests: XCTestCase {
     
     func testNotifiesSignIn() {
         User.current = nil
-        expectation(forNotification: Notification.Name.userSignedIn.rawValue, object: nil, handler: nil)
+        expectation(forNotification: Notification.Name.userSignedIn, object: nil, handler: nil)
         User.current = user
         waitForExpectations(timeout: 1, handler: nil)
     }
     
     func testNotifiesSignOut() {
         User.current = user
-        expectation(forNotification: Notification.Name.userSignedOut.rawValue, object: nil, handler: nil)
+        expectation(forNotification: Notification.Name.userSignedOut, object: nil, handler: nil)
         User.current = nil
         waitForExpectations(timeout: 1, handler: nil)
     }
     
     func testNotifiesUserUpdated() {
         User.current = user
-        expectation(forNotification: Notification.Name.userUpdated.rawValue, object: nil, handler: nil)
+        expectation(forNotification: Notification.Name.userUpdated, object: nil, handler: nil)
         User.current = User(id: 666, email: "satan@gmail.com")
         waitForExpectations(timeout: 1, handler: nil)
     }
