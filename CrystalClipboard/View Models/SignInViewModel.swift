@@ -7,11 +7,7 @@
 //
 
 class SignInViewModel: AuthenticatingViewModel {
-    override var defaultAlertMessage: String {
-        return "sign-in.could-not".localized
-    }
-    
-    override var request: CrystalClipboardAPI {
-        return .signIn(email: email.value, password: password.value)
+    init(provider: APIProvider) {
+        super.init(provider: provider, defaultAlertMessage: "sign-in.could-not".localized) { .signIn(email: $0, password: $1) }
     }
 }

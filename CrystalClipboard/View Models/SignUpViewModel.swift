@@ -7,11 +7,7 @@
 //
 
 class SignUpViewModel: AuthenticatingViewModel {
-    override var defaultAlertMessage: String {
-        return "sign-up.could-not".localized
-    }
-    
-    override var request: CrystalClipboardAPI {
-        return .createUser(email: email.value, password: password.value)
+    init(provider: APIProvider) {
+        super.init(provider: provider, defaultAlertMessage: "sign-up.could-not".localized) { .createUser(email: $0, password: $1) }
     }
 }

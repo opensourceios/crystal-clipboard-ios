@@ -10,59 +10,52 @@ import ReactiveSwift
 import Result
 import Moya
 
-// This would ideally be done using protocols / extensions, but alas, we cannot add stored properties that way
-
 class AuthenticatingViewModel {
     enum FormError: Error {
-        case invalidEmail, invalidPassword
+        case invalidEmail
+        case invalidPassword
+        case response(APIResponseError)
     }
     
     // MARK: Inputs
     
-    let email = ValidatingProperty<String, FormError>("") { $0.characters.count > 0 ? .valid : .invalid(.invalidEmail) }
-    
-    let password = ValidatingProperty<String, FormError>("") { $0.characters.count > 0 ? .valid : .invalid(.invalidPassword) }
-    
-    private(set) lazy var submit: Action<Void, User, APIResponseError> = Action(enabledIf: self.submitEnabled) { [unowned self] _ in
-        return self.provider.reactive.request(self.request)
-            .decode(to: User.self)
-            .on(value: { User.current = $0 })
-    }
+    let email: ValidatingProperty<String, FormError>
+    let password: ValidatingProperty<String, FormError>
+    let submit: Action<Void, Void, FormError>
     
     // MARK: Outputs
     
-    private(set) lazy var alertMessage: Signal<String, NoError> = self.submit.errors.map { [unowned self] in
-        if case let .with(errors) = $0 {
-            let messages = errors.flatMap { $0.message }
-            if messages.count > 0 {
-                return messages.joined(separator: "\n\n")
-            }
-        }
-
-        return self.defaultAlertMessage
-    }
-    
-    // MARK: Private
-    
-    private let provider: APIProvider
-    
-    private lazy var submitEnabled: Property<Bool> = Property
-        .combineLatest(self.email.result, self.password.result)
-        .map { !$0.isInvalid && !$1.isInvalid }
+    let alertMessage: Signal<String, NoError>
     
     // MARK: Initialization
     
-    init(provider: APIProvider) {
-        self.provider = provider
-    }
-    
-    // MARK: For Subclasses
-    
-    var defaultAlertMessage: String {
-        fatalError("This should only be called from subclasses")
-    }
-    
-    var request: CrystalClipboardAPI {
-        fatalError("This should only be called from subclasses")
+    init(provider: APIProvider, defaultAlertMessage: String, request: @escaping (String, String) -> CrystalClipboardAPI) {
+        email = ValidatingProperty<String, FormError>("") { $0.characters.count > 0 ? .valid : .invalid(.invalidEmail) }
+        
+        password = ValidatingProperty<String, FormError>("") { $0.characters.count > 0 ? .valid : .invalid(.invalidPassword) }
+        
+        let submitEnabled: Property<(String, String)?> = Property.combineLatest(email.result, password.result).map {
+            guard let emailValue = $0.value, let passwordValue = $1.value else { return nil }
+            return (emailValue, passwordValue)
+        }
+
+        submit = Action<Void, Void, FormError>(unwrapping: submitEnabled) { validEmail, validPassword in
+            provider.reactive.request(request(validEmail, validPassword))
+                .decode(to: User.self)
+                .on(value: { User.current = $0 })
+                .mapError { FormError.response($0) }
+                .map { _ in Void() }
+        }
+
+        alertMessage = submit.errors.map { e -> String in
+            if case let .response(apiResponseError) = e, case let .with(errors) = apiResponseError {
+                let messages = errors.flatMap { $0.message }
+                if messages.count > 0 {
+                    return messages.joined(separator: "\n\n")
+                }
+            }
+
+            return defaultAlertMessage
+        }
     }
 }
