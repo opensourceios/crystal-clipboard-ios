@@ -31,7 +31,7 @@ class ResetPasswordViewModel {
     // MARK: Initialization
     
     init(provider: APIProvider) {
-        email = ValidatingProperty("") { $0.characters.count > 0 ? .valid : .invalid(.invalidEmail) }
+        email = ValidatingProperty("") { $0.count > 0 ? .valid : .invalid(.invalidEmail) }
         
         let validInput: Property<String?> = email.result.map { $0.value }
         

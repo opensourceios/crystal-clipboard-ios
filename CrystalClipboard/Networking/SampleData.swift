@@ -46,7 +46,7 @@ extension CrystalClipboardAPI {
             if email == "satan@hell.org" {
                 errors.append(["source": ["pointer": "/data/attributes/email"], "detail": "has already been taken"])
             }
-            if password.characters.count < 6 {
+            if password.count < 6 {
                 errors.append(["source": ["pointer": "/data/attributes/password"], "detail": "is too short (minimum is 6 characters)"])
             }
             if errors.count > 0 {
