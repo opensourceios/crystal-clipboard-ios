@@ -16,7 +16,7 @@ class ClipsViewModel {
     
     // MARK: Inputs
     
-    private(set) lazy var fetchClips: Action<Void, [Clip], APIResponseError> = Action() { _ in
+    private(set) lazy var fetchClips: Action<Void, [Clip], APIResponseError<[Clip]>> = Action() { _ in
         return self.provider.reactive.request(.listClips(page: 1, pageSize: pageSize)).decode(to: [Clip].self)
     }
     

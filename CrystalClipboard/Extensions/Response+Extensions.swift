@@ -11,17 +11,13 @@ import Moya
 extension Response {
     private static let decoder = APIResponseDecoder()
     
-    func map<T: Resource>(toResource: T.Type) {
-        
-    }
-    
     func decode<T: Decodable>(to: T.Type) throws -> T {
         let apiResponse = try type(of: self).decoder.decode(APIResponse<T>.self, from: data)
         guard let apiData = apiResponse.data else {
             if let errors = apiResponse.errors {
                 throw APIResponseError.with(errors)
             } else {
-                throw APIResponseError.other
+                throw APIResponseError<T>.other
             }
         }
         
@@ -34,7 +30,7 @@ extension Response {
             if let errors = apiResponse.errors {
                 throw APIResponseError.with(errors)
             } else {
-                throw APIResponseError.other
+                throw APIResponseError<T>.other
             }
         }
         
