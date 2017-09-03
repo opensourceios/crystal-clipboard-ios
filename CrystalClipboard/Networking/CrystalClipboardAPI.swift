@@ -12,16 +12,16 @@ typealias APIProvider = MoyaProvider<CrystalClipboardAPI>
 private let responseProcessingQueue = DispatchQueue(label: "com.jzzocc.crystal-clipboard.response-processing-queue",  attributes: .concurrent)
 
 extension MoyaProvider where Target == CrystalClipboardAPI {
-    convenience init(authToken: AuthToken) {
+    convenience init(authToken: User.AuthToken) {
         self.init(callbackQueue: responseProcessingQueue, plugins: [AccessTokenPlugin(token: authToken.token)])
     }
     
     static func adminProvider() -> APIProvider {
-        return APIProvider(authToken: AuthToken.admin)
+        return APIProvider(authToken: User.AuthToken.admin)
     }
     
     static func userProvider() -> APIProvider? {
-        guard let authToken = AuthToken.current else { return nil }
+        guard let authToken = User.current?.authToken else { return nil }
         return APIProvider(authToken: authToken)
     }
 }

@@ -7,16 +7,17 @@
 //
 
 import XCTest
+import KeychainAccess
 @testable import CrystalClipboard
 
 class UserTests: XCTestCase {
-    let user = User(id: 666, email: "satan@hell.org")
+    static let jsonData = CrystalClipboardAPI.signIn(email: "satan@hell.org", password: "password").sampleData
+    let user = try! JSONDecoder().decode(APIResponse<User>.self, from: UserTests.jsonData).data!
     
     func testDecoding() {
-        let jsonData = CrystalClipboardAPI.me.sampleData
-        let user = try! JSONDecoder().decode(APIResponse<User>.self, from: jsonData).data!
         XCTAssertEqual(user.id, 666)
         XCTAssertEqual(user.email, "satan@hell.org")
+        XCTAssertEqual(user.authToken!.token, "Vy5KbYX116Y1him376FvAhkw")
     }
     
     func testUserDefaultsPersistence() {
@@ -25,6 +26,15 @@ class UserTests: XCTestCase {
         XCTAssertEqual(User.current!.email, user.email)
         User.current = nil
         XCTAssertNil(User.current)
+    }
+    
+    func testAuthTokenKeychainPersistence() {
+        let keychain = Keychain(service: Constants.keychainService)
+        User.current = nil
+        User.current = user
+        XCTAssertEqual(keychain["auth-token"], "Vy5KbYX116Y1him376FvAhkw")
+        User.current = nil
+        XCTAssertNil(keychain["auth-token"])
     }
 
     func testNotifiesSignIn() {
@@ -44,7 +54,7 @@ class UserTests: XCTestCase {
     func testNotifiesUserUpdated() {
         User.current = user
         expectation(forNotification: Notification.Name.userUpdated, object: nil, handler: nil)
-        User.current = User(id: 666, email: "satan@gmail.com")
+        User.current = User(id: 666, email: "satan+newemail@gmail.com")
         waitForExpectations(timeout: 1, handler: nil)
     }
 }

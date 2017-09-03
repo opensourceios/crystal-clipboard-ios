@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KeychainAccess
 
 extension Notification.Name {
     static let userSignedIn = Notification.Name("com.jzzocc.crystal-clipboard.notifications.user-signed-in")
@@ -15,6 +16,13 @@ extension Notification.Name {
 }
 
 struct User {
+    struct AuthToken {
+        let token: String
+        
+        fileprivate init(token: String) {
+            self.token = token
+        }
+    }
     let id: Int
     let email: String
     let authToken: AuthToken?
@@ -45,6 +53,7 @@ extension User {
                 defaults.set(user.id, forKey: idDefaultsKey)
                 defaults.set(user.email, forKey: emailDefaultsKey)
             } else {
+                AuthToken.current = nil
                 notificationName = .userSignedOut
                 defaults.removeObject(forKey: idDefaultsKey)
                 defaults.removeObject(forKey: emailDefaultsKey)
@@ -96,5 +105,33 @@ extension User: Decodable {
         self.authToken = authToken
         self.id = id
         email = try attributes.decode(String.self, forKey: .email)
+    }
+}
+
+extension User.AuthToken {
+    static var admin: User.AuthToken {
+        return User.AuthToken(token: Constants.environment.adminToken)
+    }
+}
+
+fileprivate extension User.AuthToken {
+    static private let keychainItem = "auth-token"
+    static private var memoizedCurrentAuthToken: User.AuthToken?
+    
+    static fileprivate var current: User.AuthToken? {
+        set {
+            Keychain(service: Constants.keychainService)[keychainItem] = newValue?.token
+            memoizedCurrentAuthToken = newValue
+        }
+        get {
+            if let currentAuthToken = memoizedCurrentAuthToken {
+                return currentAuthToken
+            } else if let token = Keychain(service: Constants.keychainService)[keychainItem] {
+                memoizedCurrentAuthToken = User.AuthToken(token: token)
+                return memoizedCurrentAuthToken
+            } else {
+                return nil
+            }
+        }
     }
 }
