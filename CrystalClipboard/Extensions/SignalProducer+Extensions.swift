@@ -11,14 +11,14 @@ import Moya
 import Result
 
 extension SignalProducerProtocol where Value == Response {
-    func decode<T: Decodable>(to: T.Type) -> SignalProducer<T, APIResponseError<T>> {
+    func decode<T: Decodable>(to: T.Type) -> SignalProducer<T, APIResponseError> {
         return producer
-            .mapError { APIResponseError<T>.underlying($0) }
-            .flatMap(.latest) { response -> SignalProducer<T, APIResponseError<T>> in
+            .mapError { APIResponseError.underlying($0) }
+            .flatMap(.latest) { response -> SignalProducer<T, APIResponseError> in
                 do {
                     return SignalProducer(value: try response.decode(to: T.self))
                 } catch {
-                    return SignalProducer(error: error as? APIResponseError<T> ?? APIResponseError<T>.underlying(error))
+                    return SignalProducer(error: error as? APIResponseError ?? APIResponseError.underlying(error))
                 }
         }
     }

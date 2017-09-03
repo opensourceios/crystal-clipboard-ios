@@ -14,10 +14,10 @@ extension Response {
     func decode<T: Decodable>(to: T.Type) throws -> T {
         let apiResponse = try type(of: self).decoder.decode(APIResponse<T>.self, from: data)
         guard let apiData = apiResponse.data else {
-            if let errors = apiResponse.errors {
-                throw APIResponseError.with(errors)
+            if let remoteErrors = apiResponse.errors {
+                throw APIResponseError.with(remoteErrors)
             } else {
-                throw APIResponseError<T>.other
+                throw APIResponseError.other
             }
         }
         

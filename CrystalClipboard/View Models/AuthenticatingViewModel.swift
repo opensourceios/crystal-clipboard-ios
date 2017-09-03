@@ -23,7 +23,7 @@ class AuthenticatingViewModel {
     
     let password = ValidatingProperty<String, FormError>("") { $0.characters.count > 0 ? .valid : .invalid(.invalidPassword) }
     
-    private(set) lazy var submit: Action<Void, User, APIResponseError<User>> = Action(enabledIf: self.submitEnabled) { [unowned self] _ in
+    private(set) lazy var submit: Action<Void, User, APIResponseError> = Action(enabledIf: self.submitEnabled) { [unowned self] _ in
         return self.provider.reactive.request(self.request)
             .decode(to: User.self)
             .on(value: { User.current = $0 })
