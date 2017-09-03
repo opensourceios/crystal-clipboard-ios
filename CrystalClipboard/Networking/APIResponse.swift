@@ -44,13 +44,6 @@ struct APIResponse<T: Decodable>: Decodable {
     let errors: [Error]?
 }
 
-struct APIResponseIncluded<T: Decodable, I: Decodable>: Decodable {
-    let data: T?
-    let included: [I]?
-    let meta: APIResponse<T>.Meta?
-    let errors: [APIResponse<T>.Error]?
-}
-
 extension APIResponse.Error {
     var message: String? {
         guard let detail = detail else { return nil }

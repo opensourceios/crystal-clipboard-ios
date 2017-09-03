@@ -12,9 +12,8 @@ import XCTest
 class AuthTokenTests: XCTestCase {  
     func testDecoding() {
         let jsonData = CrystalClipboardAPI.signIn(email: "satan@hell.org", password: "password").sampleData
-        let apiResponse = try! JSONDecoder().decode(APIResponseIncluded<User, AuthToken>.self, from: jsonData)
-        let authToken = apiResponse.included!.first!
-        XCTAssertEqual(authToken.token, "Vy5KbYX116Y1him376FvAhkw")
+        let user = try! JSONDecoder().decode(APIResponse<User>.self, from: jsonData).data!
+        XCTAssertEqual(user.authToken!.token, "Vy5KbYX116Y1him376FvAhkw")
     }
     
     func testKeychainPersistence() {

@@ -29,26 +29,6 @@ class SignalProducer_ExtensionsTests: XCTestCase {
         }
     }
     
-    func testDecodeIncluded() {
-        var usersDecoded = 0
-        var authTokensDecoded = 0
-        provider.reactive.request(.signIn(email: "satan@hell.org", password: "password")).decode(to: User.self, included: AuthToken.self).start { event in
-            switch event {
-            case let .value(user, authTokens):
-                XCTAssertEqual(user.id, 666)
-                XCTAssertEqual(user.email, "satan@hell.org")
-                XCTAssertEqual(authTokens.first!.token, "Vy5KbYX116Y1him376FvAhkw")
-                usersDecoded += 1
-                authTokensDecoded += authTokens.count
-            case .completed:
-                XCTAssertEqual(usersDecoded, 1)
-                XCTAssertEqual(authTokensDecoded, 1)
-            case .interrupted: XCTFail("User decoding was interrupted")
-            case let .failed(error): XCTFail("Failed to decode user: \(error)")
-            }
-        }
-    }
-    
     func testDecodeErrors() {
         var errorsDecoded = 0
         provider.reactive.request(.signIn(email: "satanhell.org", password: "password")).decode(to: User.self).start { event in

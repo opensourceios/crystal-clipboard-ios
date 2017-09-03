@@ -23,8 +23,8 @@ class AuthenticatingViewModel {
     
     let password = ValidatingProperty<String, FormError>("") { $0.characters.count > 0 ? .valid : .invalid(.invalidPassword) }
     
-    private(set) lazy var submit: Action<Void, (User, [AuthToken]), APIResponseError<User>> = Action(enabledIf: self.submitEnabled) { [unowned self] _ in
-        return self.provider.reactive.request(self.request).decode(to: User.self, included: AuthToken.self)
+    private(set) lazy var submit: Action<Void, User, APIResponseError<User>> = Action(enabledIf: self.submitEnabled) { [unowned self] _ in
+        return self.provider.reactive.request(self.request).decode(to: User.self)
     }
     
     // MARK: Outputs
@@ -53,10 +53,7 @@ class AuthenticatingViewModel {
     init(provider: APIProvider) {
         self.provider = provider
 
-        submit.values.observeValues {
-            AuthToken.current = $1.first
-            User.current = $0
-        }
+        submit.values.observeValues { User.current = $0 }
     }
     
     // MARK: For Subclasses

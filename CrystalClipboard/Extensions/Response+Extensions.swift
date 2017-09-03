@@ -23,17 +23,4 @@ extension Response {
         
         return apiData
     }
-    
-    func decode<T: Decodable, I: Decodable>(to: T.Type, included: I.Type) throws -> (T, [I]) {
-        let apiResponse = try type(of: self).decoder.decode(APIResponseIncluded<T, I>.self, from: data)
-        guard let apiData = apiResponse.data, let included = apiResponse.included else {
-            if let errors = apiResponse.errors {
-                throw APIResponseError.with(errors)
-            } else {
-                throw APIResponseError<T>.other
-            }
-        }
-        
-        return (apiData, included)
-    }
 }

@@ -22,16 +22,4 @@ extension SignalProducerProtocol where Value == Response {
                 }
         }
     }
-    
-    func decode<T: Decodable, I: Decodable>(to: T.Type, included: I.Type) -> SignalProducer<(T, [I]), APIResponseError<T>> {
-        return producer
-            .mapError { APIResponseError<T>.underlying($0) }
-            .flatMap(.latest) { response -> SignalProducer<(T, [I]), APIResponseError<T>> in
-                do {
-                    return SignalProducer(value: try response.decode(to: T.self, included: I.self))
-                } catch {
-                    return SignalProducer(error: error as? APIResponseError<T> ?? APIResponseError<T>.underlying(error))
-                }
-        }
-    }
 }

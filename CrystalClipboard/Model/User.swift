@@ -17,10 +17,12 @@ extension Notification.Name {
 struct User {
     let id: Int
     let email: String
+    let authToken: AuthToken?
     
     init(id: Int, email: String) {
         self.id = id
         self.email = email
+        authToken = nil
     }
 }
 
@@ -34,7 +36,12 @@ extension User {
             let defaults = UserDefaults.standard
             let notificationName: Notification.Name
             if let user = newValue {
-                notificationName = User.current == nil ? .userSignedIn : .userUpdated
+                if User.current == nil {
+                    AuthToken.current = user.authToken
+                    notificationName = .userSignedIn
+                } else {
+                    notificationName = .userUpdated
+                }
                 defaults.set(user.id, forKey: idDefaultsKey)
                 defaults.set(user.email, forKey: emailDefaultsKey)
             } else {
@@ -68,6 +75,7 @@ extension User: Decodable {
         case attributes
         enum AttributeKeys: String, CodingKey {
             case email
+            case authToken = "auth-token"
         }
     }
     
@@ -79,6 +87,13 @@ extension User: Decodable {
             let context = DecodingError.Context(codingPath: [DataKeys.id], debugDescription: "User id should be convertable to an integer")
             throw DecodingError.typeMismatch(Int.self, context)
         }
+        let authToken: AuthToken?
+        if let authTokenString = try attributes.decodeIfPresent(String.self, forKey: .authToken) {
+            authToken = AuthToken(token: authTokenString)
+        } else {
+            authToken = nil
+        }
+        self.authToken = authToken
         self.id = id
         email = try attributes.decode(String.self, forKey: .email)
     }
