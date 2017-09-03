@@ -30,16 +30,16 @@ class AuthenticatingViewModel {
     // MARK: Initialization
     
     init(provider: APIProvider, defaultAlertMessage: String, request: @escaping (String, String) -> CrystalClipboardAPI) {
-        email = ValidatingProperty<String, FormError>("") { $0.characters.count > 0 ? .valid : .invalid(.invalidEmail) }
+        email = ValidatingProperty("") { $0.count > 0 ? .valid : .invalid(.invalidEmail) }
         
-        password = ValidatingProperty<String, FormError>("") { $0.characters.count > 0 ? .valid : .invalid(.invalidPassword) }
+        password = ValidatingProperty("") { $0.count > 0 ? .valid : .invalid(.invalidPassword) }
         
         let submitEnabled: Property<(String, String)?> = Property.combineLatest(email.result, password.result).map {
             guard let emailValue = $0.value, let passwordValue = $1.value else { return nil }
             return (emailValue, passwordValue)
         }
 
-        submit = Action<Void, Void, FormError>(unwrapping: submitEnabled) { validEmail, validPassword in
+        submit = Action(unwrapping: submitEnabled) { validEmail, validPassword in
             provider.reactive.request(request(validEmail, validPassword))
                 .decode(to: User.self)
                 .on(value: { User.current = $0 })

@@ -37,5 +37,6 @@ class ResetPasswordViewModel {
     
     init(provider: APIProvider) {
         self.provider = provider
+        
     }
 }
