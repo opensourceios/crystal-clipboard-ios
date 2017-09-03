@@ -30,7 +30,6 @@ class SignalProducer_ExtensionsTests: XCTestCase {
     }
     
     func testDecodeErrors() {
-        var errorsDecoded = 0
         provider.reactive.request(.signIn(email: "satanhell.org", password: "password")).decode(to: User.self).start { event in
             switch event {
             case let .failed(error):
