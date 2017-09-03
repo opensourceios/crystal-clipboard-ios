@@ -57,6 +57,7 @@
 		D0979B6D1F4B341200B8407F /* LandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B6C1F4B341200B8407F /* LandingViewModel.swift */; };
 		D0979B801F4B495800B8407F /* SignUpViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B7F1F4B495800B8407F /* SignUpViewModelTests.swift */; };
 		D0979B821F4B580800B8407F /* TestObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B811F4B580800B8407F /* TestObserver.swift */; };
+		D0AA1E4F1F5C1D1E0034E20E /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AA1E4E1F5C1D1E0034E20E /* Resource.swift */; };
 		D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */; };
 		D0B0CDF01F4671E8006201CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDEE1F4671E8006201CE /* Main.storyboard */; };
 		D0B0CDF21F4671E8006201CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDF11F4671E8006201CE /* Assets.xcassets */; };
@@ -151,6 +152,7 @@
 		D0979B6C1F4B341200B8407F /* LandingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingViewModel.swift; path = "View Models/LandingViewModel.swift"; sourceTree = "<group>"; };
 		D0979B7F1F4B495800B8407F /* SignUpViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModelTests.swift; path = "View Models/SignUpViewModelTests.swift"; sourceTree = "<group>"; };
 		D0979B811F4B580800B8407F /* TestObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestObserver.swift; sourceTree = "<group>"; };
+		D0AA1E4E1F5C1D1E0034E20E /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = Protocols/Resource.swift; sourceTree = "<group>"; };
 		D0B0CDE71F4671E8006201CE /* CrystalClipboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrystalClipboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B0CDEF1F4671E8006201CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				D0C1F65B1F592EFB00E49B77 /* ClipType.swift */,
 				D00D685F1F589AC10029BC79 /* PersistentContainerSettable.swift */,
 				D0C1F6161F579D8700E49B77 /* ProviderSettable.swift */,
+				D0AA1E4E1F5C1D1E0034E20E /* Resource.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 				D0909B701F4D282C000F584B /* String+Localized.swift in Sources */,
 				D05336051F4A9E700077B1F9 /* DateParser.swift in Sources */,
 				D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */,
+				D0AA1E4F1F5C1D1E0034E20E /* Resource.swift in Sources */,
 				D03ABD3E1F4D37F000A7D473 /* Constants.swift in Sources */,
 				D095D8C41F4E261A00D15CE4 /* AuthToken.swift in Sources */,
 				D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */,

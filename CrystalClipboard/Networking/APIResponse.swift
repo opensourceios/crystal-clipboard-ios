@@ -8,10 +8,19 @@
 
 import Foundation
 
-enum APIResponseError<T: Decodable>: Error {
-    case with([APIResponse<T>.Error])
+enum APIResponseError: Error {
+    case with([RemoteError])
     case underlying(Error)
     case other
+}
+
+struct RemoteError: Decodable {
+    struct Source: Decodable {
+        let pointer: String?
+    }
+    
+    let source: Source?
+    let detail: String?
 }
 
 struct APIResponse<T: Decodable>: Decodable {
@@ -30,28 +39,19 @@ struct APIResponse<T: Decodable>: Decodable {
         }
     }
     
-    struct Error: Decodable {
-        struct Source: Decodable {
-            let pointer: String?
-        }
-        
-        let source: Source?
-        let detail: String?
-    }
-    
     let data: T?
     let meta: Meta?
-    let errors: [Error]?
+    let errors: [RemoteError]?
 }
 
 struct APIResponseIncluded<T: Decodable, I: Decodable>: Decodable {
     let data: T?
     let included: [I]?
     let meta: APIResponse<T>.Meta?
-    let errors: [APIResponse<T>.Error]?
+    let errors: [RemoteError]?
 }
 
-extension APIResponse.Error {
+extension RemoteError {
     var message: String? {
         guard let detail = detail else { return nil }
         if let pointer = source?.pointer, let specificPointer = pointer.components(separatedBy: "/").last {
