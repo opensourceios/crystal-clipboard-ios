@@ -12,7 +12,7 @@ import Result
 protocol TransitionType {
     var storyboardName: StoryboardNames { get }
     var controllerIdentifier: ViewControllerStoryboardIdentifier { get }
-    var provider: APIProvider? { get }
+    var provider: APIProvider { get }
 }
 
 fileprivate enum Transition: TransitionType {
@@ -31,9 +31,11 @@ fileprivate enum Transition: TransitionType {
         }
     }
     
-    var provider: APIProvider? {
+    var provider: APIProvider {
         switch self {
-        case .signIn: return APIProvider.userProvider()
+        case .signIn:
+            guard let userProvider = APIProvider.userProvider() else { fatalError("Should not transition to signed in without credentials") }
+            return userProvider
         case .signOut: return APIProvider.adminProvider()
         }
     }

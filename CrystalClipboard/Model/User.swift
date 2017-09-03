@@ -27,10 +27,10 @@ struct User {
     let email: String
     let authToken: AuthToken?
     
-    init(id: Int, email: String) {
+    init(id: Int, email: String, authToken: AuthToken? = nil) {
         self.id = id
         self.email = email
-        authToken = nil
+        self.authToken = authToken
     }
 }
 
@@ -69,7 +69,7 @@ extension User {
             if let currentUser = memoizedCurrentUser {
                 return currentUser
             } else if id != 0, let email = defaults.string(forKey: emailDefaultsKey) {
-                memoizedCurrentUser = User(id: id, email: email)
+                memoizedCurrentUser = User(id: id, email: email, authToken: AuthToken.current)
                 return memoizedCurrentUser
             } else {
                 return nil
