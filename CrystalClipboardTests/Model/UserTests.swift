@@ -14,15 +14,7 @@ class UserTests: XCTestCase {
     
     func testDecoding() {
         let jsonData = CrystalClipboardAPI.me.sampleData
-        let user = try! JSONDecoder().decode(APIResponse<User>.self, from: jsonData).data
-        XCTAssertEqual(user.id, 666)
-        XCTAssertEqual(user.email, "satan@hell.org")
-    }
-    
-    func testJSONDeserialization() {
-        let jsonData = CrystalClipboardAPI.me.sampleData
-        let json = try! JSONSerialization.jsonObject(with: jsonData) as! [String: Any]
-        let user = try! User.in(JSON: json)
+        let user = try! JSONDecoder().decode(APIResponse<User>.self, from: jsonData).data!
         XCTAssertEqual(user.id, 666)
         XCTAssertEqual(user.email, "satan@hell.org")
     }
@@ -34,21 +26,21 @@ class UserTests: XCTestCase {
         User.current = nil
         XCTAssertNil(User.current)
     }
-    
+
     func testNotifiesSignIn() {
         User.current = nil
         expectation(forNotification: Notification.Name.userSignedIn, object: nil, handler: nil)
         User.current = user
         waitForExpectations(timeout: 1, handler: nil)
     }
-    
+
     func testNotifiesSignOut() {
         User.current = user
         expectation(forNotification: Notification.Name.userSignedOut, object: nil, handler: nil)
         User.current = nil
         waitForExpectations(timeout: 1, handler: nil)
     }
-    
+
     func testNotifiesUserUpdated() {
         User.current = user
         expectation(forNotification: Notification.Name.userUpdated, object: nil, handler: nil)

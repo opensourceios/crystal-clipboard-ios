@@ -44,19 +44,6 @@ extension AuthToken {
     }
 }
 
-extension AuthToken: JSONDeserializable {
-    static var JSONType = "auth-tokens"
-
-    static func from(JSON: [String : Any]) throws -> AuthToken {
-        guard
-            let attributes = JSON["attributes"] as? [String: Any],
-            let token = attributes["token"] as? String
-            else { throw JSONDeserializationError.invalidAttributes }
-        
-        return AuthToken(token: token)
-    }
-}
-
 extension AuthToken: Decodable {
     private enum DataKeys: String, CodingKey {
         case attributes

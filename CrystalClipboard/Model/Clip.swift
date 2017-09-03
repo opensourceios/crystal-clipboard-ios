@@ -20,23 +20,6 @@ struct Clip: ClipType {
     }
 }
 
-extension Clip: JSONDeserializable {
-    static let JSONType = "clips"
-    
-    static func from(JSON: [String : Any]) throws -> Clip {
-        guard
-            let idString = JSON["id"] as? String,
-            let id = Int(idString),
-            let attributes = JSON["attributes"] as? [String: Any],
-            let text = attributes["text"] as? String,
-            let createdAtString = attributes["created-at"] as? String,
-            let createdAt = DateParser.date(from: createdAtString)
-            else { throw JSONDeserializationError.invalidAttributes }
-        
-        return Clip(id: id, text: text, createdAt: createdAt)
-    }
-}
-
 extension Clip: Decodable {
     private enum DataKeys: String, CodingKey {
         case id
@@ -51,7 +34,11 @@ extension Clip: Decodable {
         let data = try decoder.container(keyedBy: DataKeys.self)
         let attributes = try data.nestedContainer(keyedBy: DataKeys.AttributeKeys.self, forKey: .attributes)
         let idString = try data.decode(String.self, forKey: .id)
-        guard let id = Int(idString) else { throw NSError() }
+        guard let id = Int(idString) else {
+            let context = DecodingError.Context(codingPath: [DataKeys.id], debugDescription: "Clip id should be convertable to an integer")
+            throw DecodingError.typeMismatch(Int.self, context)
+            
+        }
         self.id = id
         text = try attributes.decode(String.self, forKey: .text)
         createdAt = try attributes.decode(Date.self, forKey: .createdAt)

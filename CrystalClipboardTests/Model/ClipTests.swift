@@ -10,18 +10,9 @@ import XCTest
 @testable import CrystalClipboard
 
 class ClipTests: XCTestCase {
-    func testJSONDeserialization() {
-        let jsonData = CrystalClipboardAPI.createClip(text: "lol").sampleData
-        let json = try! JSONSerialization.jsonObject(with: jsonData) as! [String: Any]
-        let clip = try! Clip.in(JSON: json)
-        XCTAssertEqual(clip.id, 5659)
-        XCTAssertEqual(clip.text, "lol")
-        XCTAssertEqual(clip.createdAt, DateParser.date(from: "2017-08-20T16:33:52.100Z")!)
-    }
-    
     func testDecoding() {
         let jsonData = CrystalClipboardAPI.createClip(text: "lol").sampleData
-        let clip = try! APIResponseDecoder().decode(APIResponse<Clip>.self, from: jsonData).data
+        let clip = try! APIResponseDecoder().decode(APIResponse<Clip>.self, from: jsonData).data!
         XCTAssertEqual(clip.id, 5659)
         XCTAssertEqual(clip.text, "lol")
         XCTAssertEqual(clip.createdAt, DateParser.date(from: "2017-08-20T16:33:52.100Z")!)
@@ -36,7 +27,7 @@ class ClipTests: XCTestCase {
         XCTAssertNil(meta.previousPage)
         XCTAssertEqual(meta.totalPages, 4)
         XCTAssertEqual(meta.totalCount, 88)
-        let clips = apiResponse.data
+        let clips = apiResponse.data!
         let clip = clips.first!
         XCTAssertEqual(clip.id, 9436)
         XCTAssertEqual(clip.text, "ec1eb9d60c8d136ef1085810d0fe5117")

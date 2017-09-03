@@ -62,21 +62,6 @@ extension User {
     }
 }
 
-extension User: JSONDeserializable {
-    static var JSONType = "users"
-    
-    static func from(JSON: [String : Any]) throws -> User {
-        guard
-            let idString = JSON["id"] as? String,
-            let id = Int(idString),
-            let attributes = JSON["attributes"] as? [String: Any],
-            let email = attributes["email"] as? String
-            else { throw JSONDeserializationError.invalidAttributes }
-        
-        return User(id: id, email: email)
-    }
-}
-
 extension User: Decodable {
     private enum DataKeys: String, CodingKey {
         case id
@@ -90,7 +75,10 @@ extension User: Decodable {
         let data = try decoder.container(keyedBy: DataKeys.self)
         let attributes = try data.nestedContainer(keyedBy: DataKeys.AttributeKeys.self, forKey: .attributes)
         let idString = try data.decode(String.self, forKey: .id)
-        guard let id = Int(idString) else { throw NSError() }
+        guard let id = Int(idString) else {
+            let context = DecodingError.Context(codingPath: [DataKeys.id], debugDescription: "User id should be convertable to an integer")
+            throw DecodingError.typeMismatch(Int.self, context)
+        }
         self.id = id
         email = try attributes.decode(String.self, forKey: .email)
     }

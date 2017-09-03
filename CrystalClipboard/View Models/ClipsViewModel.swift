@@ -16,8 +16,8 @@ class ClipsViewModel {
     
     // MARK: Inputs
     
-    private(set) lazy var fetchClips: Action<Void, Any, MoyaError> = Action() { _ in
-        return self.provider.reactive.request(.listClips(page: 1, pageSize: pageSize)).filterSuccessfulStatusCodes().mapJSON()
+    private(set) lazy var fetchClips: Action<Void, [Clip], APIResponseError<[Clip]>> = Action() { _ in
+        return self.provider.reactive.request(.listClips(page: 1, pageSize: pageSize)).decode(to: [Clip].self)
     }
     
     // MARK: Private
@@ -30,9 +30,8 @@ class ClipsViewModel {
     init(provider: APIProvider, persistentContainer: NSPersistentContainer) {
         self.provider = provider
         self.persistentContainer = persistentContainer
-        
-        fetchClips.values.observeValues {
-            let clips = Clip.manyIn(JSON: $0)
+
+        fetchClips.values.observeValues { clips in
             persistentContainer.performBackgroundTask { context in
                 context.mergePolicy = NSMergePolicy.rollback
                 for clip in clips {

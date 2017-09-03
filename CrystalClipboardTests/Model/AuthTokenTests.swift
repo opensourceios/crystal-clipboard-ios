@@ -9,17 +9,11 @@
 import XCTest
 @testable import CrystalClipboard
 
-class AuthTokenTests: XCTestCase {
-    func testJSONDeserialization() {
-        let jsonData = CrystalClipboardAPI.signIn(email: "satan@hell.org", password: "password").sampleData
-        let json = try! JSONSerialization.jsonObject(with: jsonData)
-        let authToken = AuthToken.includedIn(JSON: json).first!
-        XCTAssertEqual(authToken.token, "Vy5KbYX116Y1him376FvAhkw")
-    }
-    
+class AuthTokenTests: XCTestCase {  
     func testDecoding() {
         let jsonData = CrystalClipboardAPI.signIn(email: "satan@hell.org", password: "password").sampleData
-        let authToken = try! JSONDecoder().decode(APIResponse<AuthToken>.self, from: jsonData).data
+        let apiResponse = try! JSONDecoder().decode(APIResponseIncluded<User, AuthToken>.self, from: jsonData)
+        let authToken = apiResponse.included!.first!
         XCTAssertEqual(authToken.token, "Vy5KbYX116Y1him376FvAhkw")
     }
     
