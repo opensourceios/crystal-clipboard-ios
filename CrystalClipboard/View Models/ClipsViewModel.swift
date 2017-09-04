@@ -15,6 +15,9 @@ import CellHelpers
 fileprivate let pageSize = 25
 
 class ClipsViewModel {
+    enum ClipsPresent {
+        case none, all, some
+    }
     
     // MARK: Inputs
     
@@ -28,6 +31,7 @@ class ClipsViewModel {
     
     private(set) lazy var dataSource: DataSource = DataSource(dataProvider: self.dataProvider, delegate: self)
     let textToCopy: Signal<String, NoError>
+    let clipsPresent: Property<ClipsPresent>
     
     // MARK: Private
     
@@ -41,6 +45,7 @@ class ClipsViewModel {
         let (signal, observer) = Signal<Signal<String, NoError>, NoError>.pipe()
         textToCopy = signal.flatten(.merge)
         copyObserver = observer
+        clipsPresent = Property(value: .some)
         
         let fetchClips = Action<Int, [Clip], APIResponseError>() { page in
             provider.reactive.request(.listClips(page: page, pageSize: pageSize))
