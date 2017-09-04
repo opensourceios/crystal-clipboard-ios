@@ -10,14 +10,15 @@ import UIKit
 import CoreData
 import ReactiveSwift
 import ReactiveCocoa
+import PKHUD
 
 class ClipsViewController: UIViewController, PersistentContainerSettable, ProviderSettable {
     var persistentContainer: NSPersistentContainer!
     var provider: APIProvider!
     
     private lazy var viewModel: ClipsViewModel! = ClipsViewModel(provider: self.provider, persistentContainer: self.persistentContainer)
-    
     @IBOutlet private weak var tableView: UITableView!
+    private static let copiedHUDFlashDelay: TimeInterval = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,10 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         // View model outputs
         
         tableView.dataSource = viewModel.dataSource
-        viewModel.textToCopy.observe(on: UIScheduler()).observeValues { [unowned self] in self.presentAlert(message: $0) }
+        viewModel.textToCopy.observe(on: UIScheduler()).observeValues {
+            UIPasteboard.general.string = $0
+            HUD.flash(.labeledSuccess(title: "clips.copied".localized, subtitle: $0), delay: ClipsViewController.copiedHUDFlashDelay)
+        }
         
         // Other setup
 

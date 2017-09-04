@@ -19,3 +19,6 @@
 "reset-password.could-not" = " Your password could not be reset at this time.";
 "reset-password.email-not-found" = "Email not found.";
 "reset-password.will-receive-email" = "You will receive an email with instructions on how to reset your password in a few minutes.";
+
+// Clips
+"clips.copied" = "Copied!";
