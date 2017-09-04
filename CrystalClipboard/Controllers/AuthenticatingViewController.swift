@@ -14,7 +14,7 @@ import PKHUD
 class AuthenticatingViewController: UIViewController, ProviderSettable {
     var provider: APIProvider!
     lazy var viewModel: AuthenticatingViewModel = {
-        fatalError("Only sublclasses of AuthenticatingViewController shoudl be used")
+        fatalError("Only sublclasses of AuthenticatingViewController should be used")
     }()
     
     @IBOutlet fileprivate weak var emailTextField: UITextField!
