@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import ReactiveSwift
+import ReactiveCocoa
 
 class ClipsViewController: UIViewController, PersistentContainerSettable, ProviderSettable {
     var persistentContainer: NSPersistentContainer!
@@ -27,6 +29,7 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         // View model outputs
         
         tableView.dataSource = viewModel.dataSource
+        viewModel.textToCopy.observe(on: UIScheduler()).observeValues { [unowned self] in self.presentAlert(message: $0) }
         
         // Other setup
 

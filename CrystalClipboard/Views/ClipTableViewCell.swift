@@ -23,8 +23,8 @@ class ClipTableViewCell: UITableViewCell, ClipCellViewModelSettable {
             
             // View model outputs
             
-            clipTextLabel.text = viewModel.text
-            createdAtLabel.text = viewModel.createdAt
+            clipTextLabel.reactive.text <~ viewModel.text
+            createdAtLabel.reactive.text <~ viewModel.createdAt
         }
     }
     
