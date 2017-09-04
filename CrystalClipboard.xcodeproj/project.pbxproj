@@ -249,8 +249,8 @@
 			children = (
 				D00D68701F58B2560029BC79 /* ClipTableViewCell.swift */,
 				D01A12D51F5E0AA100197ECA /* LoadingFooterView.swift */,
-				D0C1F6571F590D5E00E49B77 /* MarginSettableTextField.swift */,
 				D01A12D71F5E0B9000197ECA /* LoadingFooterView.xib */,
+				D0C1F6571F590D5E00E49B77 /* MarginSettableTextField.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";

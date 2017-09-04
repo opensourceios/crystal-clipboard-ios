@@ -8,6 +8,4 @@
 
 import UIKit
 
-class LoadingFooterView: UITableViewHeaderFooterView {
-
-}
+class LoadingFooterView: UITableViewHeaderFooterView {}
