@@ -31,37 +31,32 @@ class ClipsViewModel {
     
     // MARK: Private
     
-    private let provider: APIProvider
-    private let persistentContainer: NSPersistentContainer
     private let dataProvider: ClipsDataProvider
     private let copyObserver: Signal<Signal<String, NoError>, NoError>.Observer
-    private(set) lazy var fetchClips: Action<Void, [Clip], APIResponseError> = Action() { _ in
-        return self.provider.reactive.request(.listClips(page: 1, pageSize: pageSize)).decode(to: [Clip].self)
-    }
     
     // MARK: Initialization
     
     init(provider: APIProvider, persistentContainer: NSPersistentContainer) {
-        self.provider = provider
-        self.persistentContainer = persistentContainer
-        dataProvider = ClipsDataProvider(managedObjectContext: self.persistentContainer.viewContext)
+        dataProvider = ClipsDataProvider(managedObjectContext: persistentContainer.viewContext)
         let (signal, observer) = Signal<Signal<String, NoError>, NoError>.pipe()
         textToCopy = signal.flatten(.merge)
         copyObserver = observer
-
-        // Ignore viewAppearing's initial value
-        viewAppearing.producer.skip(first: 1).startWithValues { [unowned self] in
-            self.fetchClips.apply().start()
+        
+        let fetchClips = Action<Int, [Clip], APIResponseError>() { page in
+            provider.reactive.request(.listClips(page: page, pageSize: pageSize))
+                .decode(to: [Clip].self)
+                .on(value: { clips in
+                    persistentContainer.performBackgroundTask { context in
+                        context.mergePolicy = NSMergePolicy.rollback
+                        for clip in clips { ManagedClip(from: clip, context: context) }
+                        try? context.save()
+                    }
+                })
         }
 
-        fetchClips.values.observeValues { clips in
-            persistentContainer.performBackgroundTask { context in
-                context.mergePolicy = NSMergePolicy.rollback
-                for clip in clips {
-                    ManagedClip(from: clip, context: context)
-                }
-                try? context.save()
-            }
+        // Ignore viewAppearing's initial value
+        viewAppearing.producer.skip(first: 1).startWithValues {
+            fetchClips.apply(1).start()
         }
     }
 }
