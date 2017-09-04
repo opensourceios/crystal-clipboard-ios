@@ -18,7 +18,7 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
     
     private lazy var viewModel: ClipsViewModel! = ClipsViewModel(provider: self.provider, persistentContainer: self.persistentContainer)
     @IBOutlet private weak var tableView: UITableView!
-    private static let copiedHUDFlashDelay: TimeInterval = 1
+    private static let copiedHUDFlashDelay: TimeInterval = 0.5
     
     override func viewDidLoad() {
         super.viewDidLoad()

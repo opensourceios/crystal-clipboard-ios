@@ -8,9 +8,6 @@
 
 import UIKit
 import CoreData
-import PKHUD
-
-private let HUDGracePeriod: TimeInterval = 0.5
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        PKHUD.sharedHUD.gracePeriod = HUDGracePeriod
         (window?.rootViewController as? PersistentContainerSettable)?.persistentContainer = persistentContainer
         return true
     }
