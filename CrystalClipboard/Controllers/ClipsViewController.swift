@@ -35,6 +35,7 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         tableView.dataSource = viewModel.dataSource
         viewModel.textToCopy.observe(on: UIScheduler()).observeValues {
             UIPasteboard.general.string = $0
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
             HUD.flash(.labeledSuccess(title: "clips.copied".localized, subtitle: $0), delay: ClipsViewController.copiedHUDFlashDelay)
         }
     }
