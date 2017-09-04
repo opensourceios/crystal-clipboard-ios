@@ -6,29 +6,28 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LoadingFooterView" customModule="CrystalClipboard" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8rj-QF-9ZD">
-                    <rect key="frame" x="177" y="8" width="20" height="20"/>
-                </activityIndicatorView>
-            </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="8rj-QF-9ZD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="1LW-1N-nSc"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="8rj-QF-9ZD" secondAttribute="bottom" constant="8" id="EAW-Pj-4dL"/>
-                <constraint firstItem="8rj-QF-9ZD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="LA1-AB-e2q"/>
-            </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="25.5" y="88"/>
-        </view>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3ig-7Q-x5h" customClass="LoadingFooterView" customModule="CrystalClipboard" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3ig-7Q-x5h" id="aK1-EX-Mxd">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="w8m-Bc-RbY">
+                        <rect key="frame" x="177" y="16" width="20" height="20"/>
+                    </activityIndicatorView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="w8m-Bc-RbY" firstAttribute="centerX" secondItem="aK1-EX-Mxd" secondAttribute="centerX" id="KDp-Kj-Zp5"/>
+                    <constraint firstItem="w8m-Bc-RbY" firstAttribute="centerY" secondItem="aK1-EX-Mxd" secondAttribute="centerY" id="fh8-lT-UKy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-218" y="-134"/>
+        </tableViewCell>
     </objects>
 </document>
