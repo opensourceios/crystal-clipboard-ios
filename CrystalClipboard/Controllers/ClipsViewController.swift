@@ -19,6 +19,7 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
     private lazy var viewModel: ClipsViewModel! = ClipsViewModel(provider: self.provider, persistentContainer: self.persistentContainer)
     @IBOutlet private weak var tableView: UITableView!
     private let loadingFooterView = LoadingFooterView.fromNib()!
+    private let spacingFooterView = SpacingFooterView.fromNib()!
     private static let copiedHUDFlashDelay: TimeInterval = 0.5
     
     override func viewDidLoad() {
@@ -41,14 +42,10 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         }
         viewModel.clipsPresent.producer.startWithValues { [unowned self] in
             switch $0 {
-            case .all: self.tableView.tableFooterView = nil
+            case .all: self.tableView.tableFooterView = self.spacingFooterView
             case .some: self.tableView.tableFooterView = self.loadingFooterView
             case .none: self.tableView.tableFooterView = nil
             }
         }
-        
-        // Other setup
-        
-        tableView.tableFooterView = loadingFooterView
     }
 }
