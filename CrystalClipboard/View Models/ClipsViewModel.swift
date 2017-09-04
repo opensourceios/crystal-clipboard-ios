@@ -9,6 +9,7 @@
 import CoreData
 import ReactiveSwift
 import Moya
+import CellHelpers
 
 fileprivate let pageSize = 25
 
@@ -20,16 +21,26 @@ class ClipsViewModel {
         return self.provider.reactive.request(.listClips(page: 1, pageSize: pageSize)).decode(to: [Clip].self)
     }
     
+    func setFetchedResultsControllerDelegate(_ delegate: NSFetchedResultsControllerDelegate) {
+        dataProvider.fetchedResultsController.delegate = delegate
+    }
+    
+    // MARK: Outputs
+    
+    private(set) lazy var dataSource: DataSource = DataSource(dataProvider: self.dataProvider, delegate: self)
+    
     // MARK: Private
     
     private let provider: APIProvider
     private let persistentContainer: NSPersistentContainer
+    private let dataProvider: ClipsDataProvider
     
     // MARK: Initialization
     
     init(provider: APIProvider, persistentContainer: NSPersistentContainer) {
         self.provider = provider
         self.persistentContainer = persistentContainer
+        dataProvider = ClipsDataProvider(managedObjectContext: self.persistentContainer.viewContext)
 
         fetchClips.values.observeValues { clips in
             persistentContainer.performBackgroundTask { context in
@@ -40,5 +51,17 @@ class ClipsViewModel {
                 try? context.save()
             }
         }
+    }
+}
+
+extension ClipsViewModel: DataSourceDelegate {
+    func dataSource(_ dataSource: DataSource, reuseIdentifierForItem item: Any, atIndexPath indexPath: IndexPath) -> String {
+        return TableViewCellReuseIdentifier.ClipTableViewCell.rawValue
+    }
+    
+    func configure(cell: ViewCell, fromDataSource dataSource: DataSource, atIndexPath indexPath: IndexPath, forItem item: Any) {
+        guard let clipCell = cell as? ClipCellViewModelSettable else { fatalError("Wrong cell type") }
+        guard let clip = item as? ClipType else { fatalError("Wrong object type") }
+        clipCell.setViewModel(ClipCellViewModel(clip: clip))
     }
 }

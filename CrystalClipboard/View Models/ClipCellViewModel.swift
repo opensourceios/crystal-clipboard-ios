@@ -16,6 +16,10 @@ private let dateFormatter: DateFormatter = {
     return dateFormatter
 }()
 
+protocol ClipCellViewModelSettable {
+    func setViewModel(_ viewModel: ClipCellViewModel)
+}
+
 // this is a struct and uses normal Swift properties rather than
 // ReactiveSwift properties to minimize allocations when scrolling
 struct ClipCellViewModel {

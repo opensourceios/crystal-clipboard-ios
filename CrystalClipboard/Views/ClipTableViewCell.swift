@@ -10,26 +10,25 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 
-class ClipTableViewCell: UITableViewCell {
+class ClipTableViewCell: UITableViewCell, ClipCellViewModelSettable {
     @IBOutlet private weak var clipTextLabel: UILabel!
     @IBOutlet private weak var createdAtLabel: UILabel!
     @IBOutlet private weak var copyButton: UIButton!
     
-    var viewModel: ClipCellViewModel? {
+    private var viewModel: ClipCellViewModel! {
         didSet {
-            guard let viewModel = viewModel else { return }
-            setup(fromViewModel: viewModel)
+            // View model inputs
+            
+            copyButton.reactive.pressed = CocoaAction(viewModel.copy)
+            
+            // View model outputs
+            
+            clipTextLabel.text = viewModel.text
+            createdAtLabel.text = viewModel.createdAt
         }
     }
     
-    private func setup(fromViewModel model: ClipCellViewModel) {
-        // View model inputs
-        
-        copyButton.reactive.pressed = CocoaAction(model.copy)
-        
-        // View model outputs
-        
-        clipTextLabel.text = model.text
-        createdAtLabel.text = model.createdAt
+    func setViewModel(_ viewModel: ClipCellViewModel) {
+        self.viewModel = viewModel
     }
 }

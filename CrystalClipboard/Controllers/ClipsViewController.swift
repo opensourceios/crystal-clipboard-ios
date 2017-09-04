@@ -22,27 +22,19 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Other setup
+        // View model inputs
         
-        let dataProvider = ClipsDataProvider(managedObjectContext: self.persistentContainer.viewContext)
-        dataProvider.fetchedResultsController.delegate = tableView
-        dataSource = DataSource(dataProvider: dataProvider, delegate: self)
-        tableView.dataSource = dataSource
+        viewModel.setFetchedResultsControllerDelegate(tableView)
+        
+        // View model outputs
+        
+        tableView.dataSource = viewModel.dataSource
+        
+        // Other setup
+
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
         viewModel.fetchClips.apply().start()
-    }
-}
-
-extension ClipsViewController: DataSourceDelegate {
-    func dataSource(_ dataSource: DataSource, reuseIdentifierForItem item: Any, atIndexPath indexPath: IndexPath) -> String {
-        return TableViewCellReuseIdentifier.ClipTableViewCell.rawValue
-    }
-    
-    func configure(cell: ViewCell, fromDataSource dataSource: DataSource, atIndexPath indexPath: IndexPath, forItem item: Any) {
-        guard let clipCell = cell as? ClipTableViewCell else { fatalError("Wrong cell type") }
-        guard let clip = item as? ClipType else { fatalError("Wrong object type") }
-        clipCell.viewModel = ClipCellViewModel(clip: clip)
     }
 }
