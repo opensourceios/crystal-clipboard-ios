@@ -45,7 +45,8 @@ class ClipsViewModel {
         let (signal, observer) = Signal<Signal<String, NoError>, NoError>.pipe()
         textToCopy = signal.flatten(.merge)
         copyObserver = observer
-        clipsPresent = Property(value: .some)
+        let clipCount = (try? persistentContainer.viewContext.count(for: ManagedClip.fetchRequest())) ?? 0
+        clipsPresent = Property(value: clipCount > 0 ? .some : .none)
         
         let fetchClips = Action<Int, [Clip], APIResponseError>() { page in
             provider.reactive.request(.listClips(page: page, pageSize: pageSize))
