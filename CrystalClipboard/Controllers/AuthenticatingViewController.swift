@@ -13,7 +13,9 @@ import PKHUD
 
 class AuthenticatingViewController: UIViewController, ProviderSettable {
     var provider: APIProvider!
-    var viewModel: AuthenticatingViewModel!
+    lazy var viewModel: AuthenticatingViewModel = {
+        fatalError("Only sublclasses of AuthenticatingViewController shoudl be used")
+    }()
     
     @IBOutlet fileprivate weak var emailTextField: UITextField!
     @IBOutlet fileprivate weak var passwordTextField: UITextField!
@@ -21,7 +23,6 @@ class AuthenticatingViewController: UIViewController, ProviderSettable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = createViewModel()
         
         let submitAction = CocoaAction<UIButton>(viewModel.submit)
         
@@ -40,10 +41,6 @@ class AuthenticatingViewController: UIViewController, ProviderSettable {
         // Other setup
         
         emailTextField.becomeFirstResponder()
-    }
-    
-    func createViewModel() -> AuthenticatingViewModel {
-        fatalError("This should only be called from subclasses")
     }
 }
 

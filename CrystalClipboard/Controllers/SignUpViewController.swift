@@ -7,7 +7,7 @@
 //
 
 class SignUpViewController: AuthenticatingViewController {
-    override func createViewModel() -> AuthenticatingViewModel {
+    override lazy var viewModel: AuthenticatingViewModel = {
         return SignUpViewModel(provider: provider)
-    }
+    }()
 }
