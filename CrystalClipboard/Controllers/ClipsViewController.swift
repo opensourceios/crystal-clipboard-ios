@@ -8,14 +8,12 @@
 
 import UIKit
 import CoreData
-import CellHelpers
 
 class ClipsViewController: UIViewController, PersistentContainerSettable, ProviderSettable {
     var persistentContainer: NSPersistentContainer!
     var provider: APIProvider!
     
     private lazy var viewModel: ClipsViewModel! = ClipsViewModel(provider: self.provider, persistentContainer: self.persistentContainer)
-    private var dataSource: DataSource!
     
     @IBOutlet private weak var tableView: UITableView!
     
