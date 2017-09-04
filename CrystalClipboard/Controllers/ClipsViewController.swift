@@ -36,9 +36,6 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         }
         
         // Other setup
-
-        tableView.estimatedRowHeight = 44
-        tableView.rowHeight = UITableViewAutomaticDimension
         
         viewModel.fetchClips.apply().start()
     }
