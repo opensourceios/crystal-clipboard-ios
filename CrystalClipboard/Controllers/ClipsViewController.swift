@@ -25,6 +25,9 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         
         // View model inputs
         
+        let willEnterForeground = NotificationCenter.default.reactive.notifications(forName: .UIApplicationWillEnterForeground).take(during: reactive.lifetime).map { _ in Void() }
+        let viewWillAppear = reactive.trigger(for: #selector(UIViewController.viewWillAppear(_:)))
+        viewModel.viewAppearing <~ SignalProducer(values: willEnterForeground, viewWillAppear).flatten(.merge)
         viewModel.setFetchedResultsControllerDelegate(tableView)
         
         // View model outputs
@@ -34,9 +37,5 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
             UIPasteboard.general.string = $0
             HUD.flash(.labeledSuccess(title: "clips.copied".localized, subtitle: $0), delay: ClipsViewController.copiedHUDFlashDelay)
         }
-        
-        // Other setup
-        
-        viewModel.fetchClips.apply().start()
     }
 }
