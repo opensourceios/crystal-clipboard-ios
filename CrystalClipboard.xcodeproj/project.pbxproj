@@ -55,6 +55,7 @@
 		D0979B6D1F4B341200B8407F /* LandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B6C1F4B341200B8407F /* LandingViewModel.swift */; };
 		D0979B801F4B495800B8407F /* SignUpViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B7F1F4B495800B8407F /* SignUpViewModelTests.swift */; };
 		D0979B821F4B580800B8407F /* TestObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B811F4B580800B8407F /* TestObserver.swift */; };
+		D09DCFF21F5CD4C4000D4B10 /* SubmissionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09DCFF11F5CD4C4000D4B10 /* SubmissionError.swift */; };
 		D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */; };
 		D0B0CDF01F4671E8006201CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDEE1F4671E8006201CE /* Main.storyboard */; };
 		D0B0CDF21F4671E8006201CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDF11F4671E8006201CE /* Assets.xcassets */; };
@@ -147,6 +148,7 @@
 		D0979B6C1F4B341200B8407F /* LandingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingViewModel.swift; path = "View Models/LandingViewModel.swift"; sourceTree = "<group>"; };
 		D0979B7F1F4B495800B8407F /* SignUpViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModelTests.swift; path = "View Models/SignUpViewModelTests.swift"; sourceTree = "<group>"; };
 		D0979B811F4B580800B8407F /* TestObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestObserver.swift; sourceTree = "<group>"; };
+		D09DCFF11F5CD4C4000D4B10 /* SubmissionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SubmissionError.swift; path = Errors/SubmissionError.swift; sourceTree = "<group>"; };
 		D0B0CDE71F4671E8006201CE /* CrystalClipboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrystalClipboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B0CDEF1F4671E8006201CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -405,6 +407,14 @@
 			name = "View Models";
 			sourceTree = "<group>";
 		};
+		D09DCFF01F5CD49F000D4B10 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				D09DCFF11F5CD4C4000D4B10 /* SubmissionError.swift */,
+			);
+			name = Errors;
+			sourceTree = "<group>";
+		};
 		D0B0CDDE1F4671E8006201CE = {
 			isa = PBXGroup;
 			children = (
@@ -435,6 +445,7 @@
 				D03ABD3D1F4D37F000A7D473 /* Constants.swift */,
 				D035A2C51F46928600B6887B /* Controllers */,
 				D00D68611F58A33F0029BC79 /* Data Providers */,
+				D09DCFF01F5CD49F000D4B10 /* Errors */,
 				D0909B6E1F4D27C0000F584B /* Extensions */,
 				D0112B7E1F4A7B5200999761 /* Model */,
 				D04C144C1F46975E0068AEA0 /* Networking */,
@@ -883,6 +894,7 @@
 				D00D68371F55CAF80029BC79 /* Identifiers.swift in Sources */,
 				D0C1F65A1F592DD600E49B77 /* ClipCellViewModel.swift in Sources */,
 				D0FD1CFE1F5B5A590061535C /* Response+Extensions.swift in Sources */,
+				D09DCFF21F5CD4C4000D4B10 /* SubmissionError.swift in Sources */,
 				D0979B6B1F4B33F300B8407F /* LandingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

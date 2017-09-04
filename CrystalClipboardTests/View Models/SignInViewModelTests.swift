@@ -15,11 +15,11 @@ import Moya
 class SignInViewModelTests: XCTestCase {
     static let provider = APIProvider.testingProvider()
     let viewModel = SignInViewModel(provider: provider)
-    let alertMessage = TestObserver<String, NoError>()
+    let submissionErrors = TestObserver<SubmissionError, NoError>()
     
     override func setUp() {
         super.setUp()
-        viewModel.alertMessage.observe(alertMessage.observer)
+        viewModel.submit.errors.observe(submissionErrors.observer)
     }
     
     func testSignInEnabled() {
@@ -42,23 +42,29 @@ class SignInViewModelTests: XCTestCase {
         viewModel.email.value = "satin@heck.org"
         viewModel.password.value = "p"
         viewModel.submit.apply().start()
-        alertMessage.assertValues(["The email or password provided was incorrect"])
+        submissionErrors.assertValues([SubmissionError(message: "The email or password provided was incorrect")])
         viewModel.email.value = "satan@hell.org"
         viewModel.submit.apply().start()
-        alertMessage.assertValues(["The email or password provided was incorrect", "The email or password provided was incorrect"])
+        submissionErrors.assertValues([
+            SubmissionError(message: "The email or password provided was incorrect"),
+            SubmissionError(message: "The email or password provided was incorrect")
+            ])
         viewModel.password.value = "password"
         viewModel.submit.apply().start()
-        alertMessage.assertValues(["The email or password provided was incorrect", "The email or password provided was incorrect"])
+        submissionErrors.assertValues([
+            SubmissionError(message: "The email or password provided was incorrect"),
+            SubmissionError(message: "The email or password provided was incorrect")
+            ])
     }
     
     func testAlertsNetworkError() {
         let offlineProvider = APIProvider.testingProvider(online: false)
         let offlineViewModel = SignInViewModel(provider: offlineProvider)
-        let offlineAlertMessage = TestObserver<String, NoError>()
-        offlineViewModel.alertMessage.observe(offlineAlertMessage.observer)
+        let offlineSubmissionErrors = TestObserver<SubmissionError, NoError>()
+        offlineViewModel.submit.errors.observe(offlineSubmissionErrors.observer)
         offlineViewModel.email.value = "satan@hell.org"
         offlineViewModel.password.value = "password"
         offlineViewModel.submit.apply().start()
-        offlineAlertMessage.assertValues(["sign-in.could-not".localized])
+        offlineSubmissionErrors.assertValues([SubmissionError(message: "sign-in.could-not".localized)])
     }
 }

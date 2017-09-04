@@ -15,11 +15,11 @@ import Moya
 class SignUpViewModelTests: XCTestCase {
     static let provider = APIProvider.testingProvider()
     let viewModel = SignUpViewModel(provider: provider)
-    let alertMessage = TestObserver<String, NoError>()
+    let submissionErrors = TestObserver<SubmissionError, NoError>()
     
     override func setUp() {
         super.setUp()
-        viewModel.alertMessage.observe(alertMessage.observer)
+        viewModel.submit.errors.observe(submissionErrors.observer)
     }
     
     func testSignUpEnabled() {
@@ -42,29 +42,29 @@ class SignUpViewModelTests: XCTestCase {
         viewModel.email.value = "satan@hell.org"
         viewModel.password.value = "p"
         viewModel.submit.apply().start()
-        alertMessage.assertValues(["Email has already been taken\n\nPassword is too short (minimum is 6 characters)"])
+        submissionErrors.assertValues([SubmissionError(message: "Email has already been taken\n\nPassword is too short (minimum is 6 characters)")])
         viewModel.email.value = "satan+2@hell.org"
         viewModel.submit.apply().start()
-        alertMessage.assertValues([
-            "Email has already been taken\n\nPassword is too short (minimum is 6 characters)",
-            "Password is too short (minimum is 6 characters)"
+        submissionErrors.assertValues([
+            SubmissionError(message: "Email has already been taken\n\nPassword is too short (minimum is 6 characters)"),
+            SubmissionError(message: "Password is too short (minimum is 6 characters)")
         ])
         viewModel.password.value = "password"
         viewModel.submit.apply().start()
-        alertMessage.assertValues([
-            "Email has already been taken\n\nPassword is too short (minimum is 6 characters)",
-            "Password is too short (minimum is 6 characters)"
+        submissionErrors.assertValues([
+            SubmissionError(message: "Email has already been taken\n\nPassword is too short (minimum is 6 characters)"),
+            SubmissionError(message: "Password is too short (minimum is 6 characters)")
         ])
     }
     
     func testAlertsNetworkError() {
         let offlineProvider = APIProvider.testingProvider(online: false)
         let offlineViewModel = SignUpViewModel(provider: offlineProvider)
-        let offlineAlertMessage = TestObserver<String, NoError>()
-        offlineViewModel.alertMessage.observe(offlineAlertMessage.observer)
+        let offlineSubmissionErrors = TestObserver<SubmissionError, NoError>()
+        offlineViewModel.submit.errors.observe(offlineSubmissionErrors.observer)
         offlineViewModel.email.value = "user@domain.com"
         offlineViewModel.password.value = "password"
         offlineViewModel.submit.apply().start()
-        offlineAlertMessage.assertValues(["sign-up.could-not".localized])
+        offlineSubmissionErrors.assertValues([SubmissionError(message: "sign-up.could-not".localized)])
     }
 }

@@ -11,43 +11,32 @@ import Result
 import Moya
 
 class ResetPasswordViewModel {
-    enum FormError: Error {
-        case invalidEmail
-        case response(MoyaError)
-    }
-    
     // MARK: Inputs
     
-    let email: ValidatingProperty<String, FormError>
+    let email: MutableProperty<String>
     
-    let submit: Action<Void, Void, FormError>
+    // MARK: Actions
     
-    // MARK: Outputs
-    
-    let successMessage: Signal<String, NoError>
-    
-    let errorMessage: Signal<String, NoError>
+    let submit: Action<Void, String, SubmissionError>
     
     // MARK: Initialization
     
     init(provider: APIProvider) {
-        email = ValidatingProperty("") { $0.count > 0 ? .valid : .invalid(.invalidEmail) }
+        email = MutableProperty("")
         
-        let validInput: Property<String?> = email.result.map { $0.value }
+        let validInput: Property<String?> = email.map { $0.count > 0 ? $0 : nil }
         
         submit = Action(unwrapping: validInput) { validEmail in
             provider.reactive.request(.resetPassword(email: validEmail))
                 .filterSuccessfulStatusCodes()
-                .mapError { FormError.response($0) }
-                .map {_ in Void() }
-        }
-        
-        successMessage = submit.values.map { _ in "reset-password.will-receive-email".localized }
-        errorMessage = submit.errors.map {
-            if case let .response(responseError) = $0, responseError.response?.statusCode == 404 {
-                return "reset-password.email-not-found".localized
-            } else {
-                return "reset-password.could-not".localized }
+                .mapError {
+                    if $0.response?.statusCode == 404 {
+                        return SubmissionError(message: "reset-password.email-not-found".localized)
+                    } else {
+                        return SubmissionError(message: "reset-password.could-not".localized)
+                    }
+                }
+                .map { _ in "reset-password.will-receive-email".localized }
         }
     }
 }

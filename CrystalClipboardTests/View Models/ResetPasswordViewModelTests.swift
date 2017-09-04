@@ -16,12 +16,12 @@ class ResetPasswordViewModelTests: XCTestCase {
     static let provider = APIProvider.testingProvider()
     let viewModel = ResetPasswordViewModel(provider: provider)
     let successMessage = TestObserver<String, NoError>()
-    let errorMessage = TestObserver<String, NoError>()
+    let submissionErrors = TestObserver<SubmissionError, NoError>()
     
     override func setUp() {
         super.setUp()
-        viewModel.successMessage.observe(successMessage.observer)
-        viewModel.errorMessage.observe(errorMessage.observer)
+        viewModel.submit.values.observe(successMessage.observer)
+        viewModel.submit.errors.observe(submissionErrors.observer)
     }
     
     func testResetPasswordEnabled() {
@@ -39,16 +39,16 @@ class ResetPasswordViewModelTests: XCTestCase {
     func testNotFoundErrorMessage() {
         viewModel.email.value = "user@domain.org"
         viewModel.submit.apply().start()
-        errorMessage.assertValues(["reset-password.email-not-found".localized])
+        submissionErrors.assertValues([SubmissionError(message: "reset-password.email-not-found".localized)])
     }
     
     func testNetworkErrorMessage() {
         let offlineProvider = APIProvider.testingProvider(online: false)
         let offlineViewModel = ResetPasswordViewModel(provider: offlineProvider)
-        let offlineErrorMessage = TestObserver<String, NoError>()
-        offlineViewModel.errorMessage.observe(offlineErrorMessage.observer)
+        let offlineSubmissionErrors = TestObserver<SubmissionError, NoError>()
+        offlineViewModel.submit.errors.observe(offlineSubmissionErrors.observer)
         offlineViewModel.email.value = "satan@hell.org"
         offlineViewModel.submit.apply().start()
-        offlineErrorMessage.assertValues(["reset-password.could-not".localized])
+        offlineSubmissionErrors.assertValues([SubmissionError(message: "reset-password.could-not".localized)])
     }
 }
