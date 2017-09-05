@@ -11,8 +11,6 @@ import ReactiveSwift
 import enum Result.NoError
 import CellHelpers
 
-fileprivate let pageSize = 25
-
 class ClipsViewModel: NSObject {
     // MARK: Inputs
     
@@ -33,6 +31,7 @@ class ClipsViewModel: NSObject {
     private let fetchedResultsChangeSetProducer: FetchedResultsChangeSetProducer
     private let changeSetsObserver: Signal<ChangeSet, NoError>.Observer
     private let clipCount: MutableProperty<Int>
+    private static let pageSize = 25
     
     // MARK: Initialization
     
@@ -57,7 +56,7 @@ class ClipsViewModel: NSObject {
         showLoadingFooter = Property(initial: moreClipsAvailaible.value, then: moreClipsAvailaible.signal)
         
         let fetchClips = Action<Int, ([Clip], APIResponse<[Clip]>.PageInfo), APIResponseError>() {
-            provider.reactive.request(.listClips(page: $0, pageSize: pageSize)).decodeWithPageInfo(to: [Clip].self)
+            provider.reactive.request(.listClips(page: $0, pageSize: ClipsViewModel.pageSize)).decodeWithPageInfo(to: [Clip].self)
         }
         
         fetchClips.values.observeValues { clips, pageInfo in
