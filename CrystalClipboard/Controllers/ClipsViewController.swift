@@ -32,7 +32,10 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         
         // View model inputs
         
-        let willEnterForeground = NotificationCenter.default.reactive.notifications(forName: .UIApplicationWillEnterForeground).take(during: reactive.lifetime).map { _ in Void() }
+        let willEnterForeground = NotificationCenter.default.reactive
+            .notifications(forName: .UIApplicationWillEnterForeground)
+            .take(during: reactive.lifetime)
+            .map { _ in Void() }
         let viewWillAppear = reactive.trigger(for: #selector(UIViewController.viewWillAppear(_:)))
         viewModel.viewAppearing <~ SignalProducer(values: willEnterForeground, viewWillAppear).flatten(.merge)
         
@@ -46,9 +49,7 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         
         tableView.dataSource = viewModel.dataSource
         
-        viewModel.changeSets.observe(on: uiScheduler).observeValues { [unowned self] in
-            self.tableView.performUpdates(fromChangeSet: $0)
-        }
+        viewModel.changeSets.observe(on: uiScheduler).observeValues { [unowned self] in self.tableView.performUpdates(fromChangeSet: $0) }
         
         tableView.reactive.showNoClipsMessage <~ viewModel.showNoClipsMessage
         tableView.reactive.showLoadingFooter <~ viewModel.showLoadingFooter
