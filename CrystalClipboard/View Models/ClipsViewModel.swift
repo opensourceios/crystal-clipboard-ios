@@ -14,35 +14,45 @@ import CellHelpers
 
 fileprivate let pageSize = 25
 
-class ClipsViewModel {
+class ClipsViewModel: NSObject {
     // MARK: Inputs
     
     let viewAppearing = MutableProperty<Void>(())
     
-    func setFetchedResultsControllerDelegate(_ delegate: NSFetchedResultsControllerDelegate) {
-        dataProvider.fetchedResultsController.delegate = delegate
-    }
-    
     // MARK: Outputs
     
-    private(set) lazy var dataSource: DataSource = ClipsDataSource(dataProvider: self.dataProvider, delegate: self)
+    private(set) lazy var dataSource: DataSource = DataSource(dataProvider: self.dataProvider, delegate: self)
+    let changeSets: Signal<ChangeSet, NoError>
     let textToCopy: Signal<String, NoError>
+    let showNoClipsMessage: Property<Bool>
     let showLoadingFooter: Property<Bool>
     
     // MARK: Private
     
     private let dataProvider: ClipsDataProvider
     private let copyObserver: Signal<Signal<String, NoError>, NoError>.Observer
+    private let fetchedResultsChangeSetProducer: FetchedResultsChangeSetProducer
+    private let changeSetsObserver: Signal<ChangeSet, NoError>.Observer
+    private let clipCount: MutableProperty<Int>
     
     // MARK: Initialization
     
     init(provider: APIProvider, persistentContainer: NSPersistentContainer) {
         let dataProvider = ClipsDataProvider(managedObjectContext: persistentContainer.viewContext)
         self.dataProvider = dataProvider
+        fetchedResultsChangeSetProducer = FetchedResultsChangeSetProducer()
+        dataProvider.fetchedResultsController.delegate = fetchedResultsChangeSetProducer
         
-        let (signal, observer) = Signal<Signal<String, NoError>, NoError>.pipe()
-        textToCopy = signal.flatten(.merge)
-        copyObserver = observer
+        let (changeSets, changeSetsObserver) = Signal<ChangeSet, NoError>.pipe()
+        self.changeSets = changeSets
+        self.changeSetsObserver = changeSetsObserver
+        
+        let (textToCopy, copyObserver) = Signal<Signal<String, NoError>, NoError>.pipe()
+        self.textToCopy = textToCopy.flatten(.merge)
+        self.copyObserver = copyObserver
+        
+        clipCount = MutableProperty(dataProvider.fetchedResultsController.fetchedObjects!.count)
+        showNoClipsMessage = Property(initial: clipCount.value == 0, then: clipCount.signal.map { $0 == 0 })
         
         let moreClipsAvailaible = MutableProperty(false)
         showLoadingFooter = Property(initial: moreClipsAvailaible.value, then: moreClipsAvailaible.signal)
@@ -63,6 +73,23 @@ class ClipsViewModel {
         viewAppearing.producer.skip(first: 1).startWithValues {
             fetchClips.apply(1).start()
         }
+        
+        super.init()
+        
+        fetchedResultsChangeSetProducer.delegate = self
+        fetchedResultsChangeSetProducer.forwardingDelegate = self
+    }
+}
+
+extension ClipsViewModel: FetchedResultsChangeSetProducerDelegate {
+    func fetchedResultsChangeSetProducer(_ fetchedResultsChangeSetProducer: FetchedResultsChangeSetProducer, didProduceChangeSet changeSet: ChangeSet) {
+        changeSetsObserver.send(value: changeSet)
+    }
+}
+
+extension ClipsViewModel: FetchedResultsChangeSetProducerForwardingDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        clipCount.value = controller.fetchedObjects!.count
     }
 }
 

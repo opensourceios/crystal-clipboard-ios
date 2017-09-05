@@ -75,7 +75,6 @@
 		D0C1F6581F590D5E00E49B77 /* MarginSettableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6571F590D5E00E49B77 /* MarginSettableTextField.swift */; };
 		D0C1F65A1F592DD600E49B77 /* ClipCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6591F592DD600E49B77 /* ClipCellViewModel.swift */; };
 		D0C1F65C1F592EFB00E49B77 /* ClipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F65B1F592EFB00E49B77 /* ClipType.swift */; };
-		D0C7201B1F5E696D003A545A /* ClipsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7201A1F5E696D003A545A /* ClipsDataSource.swift */; };
 		D0D59B701F4A0A0100200ABD /* Cable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D59B6F1F4A0A0100200ABD /* Cable.swift */; };
 		D0FD1CFC1F5B56300061535C /* APIResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD1CFB1F5B56300061535C /* APIResponseTests.swift */; };
 		D0FD1CFE1F5B5A590061535C /* Response+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD1CFD1F5B5A590061535C /* Response+Extensions.swift */; };
@@ -181,7 +180,6 @@
 		D0C1F6571F590D5E00E49B77 /* MarginSettableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarginSettableTextField.swift; path = Views/MarginSettableTextField.swift; sourceTree = "<group>"; };
 		D0C1F6591F592DD600E49B77 /* ClipCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipCellViewModel.swift; path = "View Models/ClipCellViewModel.swift"; sourceTree = "<group>"; };
 		D0C1F65B1F592EFB00E49B77 /* ClipType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipType.swift; path = Protocols/ClipType.swift; sourceTree = "<group>"; };
-		D0C7201A1F5E696D003A545A /* ClipsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClipsDataSource.swift; path = "Data Providers/ClipsDataSource.swift"; sourceTree = "<group>"; };
 		D0D59B6F1F4A0A0100200ABD /* Cable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cable.swift; path = Networking/Cable.swift; sourceTree = "<group>"; };
 		D0FD1CFB1F5B56300061535C /* APIResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIResponseTests.swift; path = Networking/APIResponseTests.swift; sourceTree = "<group>"; };
 		D0FD1CFD1F5B5A590061535C /* Response+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Response+Extensions.swift"; path = "Extensions/Response+Extensions.swift"; sourceTree = "<group>"; };
@@ -242,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				D00D68621F58A3680029BC79 /* ClipsDataProvider.swift */,
-				D0C7201A1F5E696D003A545A /* ClipsDataSource.swift */,
 			);
 			name = "Data Providers";
 			sourceTree = "<group>";
@@ -893,7 +890,6 @@
 				D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */,
 				D01A12DA1F5E19B200197ECA /* SpacingFooterView.swift in Sources */,
 				D0C1F6561F590A3700E49B77 /* UIView+Extensions.swift in Sources */,
-				D0C7201B1F5E696D003A545A /* ClipsDataSource.swift in Sources */,
 				D00D685C1F5762EE0029BC79 /* ResetPasswordViewModel.swift in Sources */,
 				D00D68501F5733BF0029BC79 /* SignInViewModel.swift in Sources */,
 				D00D684C1F5712F40029BC79 /* UIViewController+Extensions.swift in Sources */,

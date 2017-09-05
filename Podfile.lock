@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (4.5.0)
-  - CellHelpers (0.4.2)
+  - CellHelpers (0.5.0)
   - KeychainAccess (3.0.2)
   - Keys (1.0.0)
   - Moya/Core (9.0.0-alpha.1):
@@ -18,7 +18,7 @@ PODS:
   - Starscream (2.1.1)
 
 DEPENDENCIES:
-  - CellHelpers (~> 0.4)
+  - CellHelpers (~> 0.5)
   - KeychainAccess (~> 3.0)
   - Keys (from `Pods/CocoaPodsKeys`)
   - Moya/ReactiveSwift (= 9.0.0-alpha1)
@@ -32,7 +32,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  CellHelpers: 6481c737399e6ecdb2bc103c554675069cbdf31b
+  CellHelpers: b4baac51250029160509e7d23457a123b54a6b42
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
   Moya: f2ce44cbd5e8be82b4761194420588b6b1aebf1e
@@ -42,6 +42,6 @@ SPEC CHECKSUMS:
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   Starscream: 142bd8ef24592d985daee9fa48c936070b85b15f
 
-PODFILE CHECKSUM: ab2d372b412db9b904f62d9e0dc4502cb4f3c3e8
+PODFILE CHECKSUM: 668d85c71eb6750fd8de8741e1c3a1998897cf01
 
 COCOAPODS: 1.3.1
