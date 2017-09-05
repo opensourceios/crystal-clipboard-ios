@@ -15,7 +15,7 @@ import CellHelpers
 fileprivate let reuseIdentifier = "reuseIdentifier"
 
 class ClipsDataProviderTests: CoreDataTestCase {
-    class Controller: UITableViewController, DataSourceDelegate {
+    class Controller: UITableViewController, DataSourceDelegate, FetchedResultsChangeSetProducerDelegate {
         func dataSource(_ dataSource: DataSource, reuseIdentifierForItem item: Any, atIndexPath indexPath: IndexPath) -> String {
             return reuseIdentifier
         }
@@ -24,17 +24,23 @@ class ClipsDataProviderTests: CoreDataTestCase {
             guard let clip = item as? ClipType else { fatalError("Wrong object type") }
             tableViewCell.textLabel?.text = clip.text
         }
+        func fetchedResultsChangeSetProducer(_ fetchedResultsChangeSetProducer: FetchedResultsChangeSetProducer, didProduceChangeSet changeSet: ChangeSet) {
+            tableView.performUpdates(fromChangeSet: changeSet)
+        }
     }
     
     var controller: Controller!
     var dataSource: DataSource!
+    var changeSetProducer: FetchedResultsChangeSetProducer!
     
     override func setUp() {
         super.setUp()
         
         controller = Controller()
         let clipsDataProvider = ClipsDataProvider(managedObjectContext: persistentContainer.viewContext)
-        clipsDataProvider.fetchedResultsController.delegate = controller.tableView
+        changeSetProducer = FetchedResultsChangeSetProducer()
+        changeSetProducer.delegate = controller
+        clipsDataProvider.fetchedResultsController.delegate = changeSetProducer
         dataSource = DataSource(dataProvider: clipsDataProvider, delegate: controller)
         controller.tableView.dataSource = dataSource
         controller.tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
