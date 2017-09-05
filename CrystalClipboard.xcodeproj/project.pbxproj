@@ -35,6 +35,8 @@
 		D01A12D81F5E0B9000197ECA /* LoadingFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A12D71F5E0B9000197ECA /* LoadingFooterView.xib */; };
 		D01A12DA1F5E19B200197ECA /* SpacingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A12D91F5E19B200197ECA /* SpacingFooterView.swift */; };
 		D01A12DC1F5E19DC00197ECA /* SpacingFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A12DB1F5E19DC00197ECA /* SpacingFooterView.xib */; };
+		D01A12DE1F5E1CEB00197ECA /* NoClipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A12DD1F5E1CEB00197ECA /* NoClipsView.swift */; };
+		D01A12E01F5E1D1600197ECA /* NoClipsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */; };
 		D0253F8F1F5A83B60066B444 /* APIResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0253F8E1F5A83B60066B444 /* APIResponseDecoder.swift */; };
 		D0363EA91F5A68BE00C37ECE /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0363EA81F5A68BE00C37ECE /* APIResponse.swift */; };
 		D03ABD3E1F4D37F000A7D473 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3D1F4D37F000A7D473 /* Constants.swift */; };
@@ -132,6 +134,8 @@
 		D01A12D71F5E0B9000197ECA /* LoadingFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LoadingFooterView.xib; path = Views/LoadingFooterView.xib; sourceTree = "<group>"; };
 		D01A12D91F5E19B200197ECA /* SpacingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpacingFooterView.swift; path = Views/SpacingFooterView.swift; sourceTree = "<group>"; };
 		D01A12DB1F5E19DC00197ECA /* SpacingFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SpacingFooterView.xib; path = Views/SpacingFooterView.xib; sourceTree = "<group>"; };
+		D01A12DD1F5E1CEB00197ECA /* NoClipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoClipsView.swift; path = Views/NoClipsView.swift; sourceTree = "<group>"; };
+		D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NoClipsView.xib; path = Views/NoClipsView.xib; sourceTree = "<group>"; };
 		D0253F8E1F5A83B60066B444 /* APIResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIResponseDecoder.swift; path = Networking/APIResponseDecoder.swift; sourceTree = "<group>"; };
 		D0363EA81F5A68BE00C37ECE /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Networking/APIResponse.swift; sourceTree = "<group>"; };
 		D03ABD3D1F4D37F000A7D473 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -255,6 +259,8 @@
 				D01A12D51F5E0AA100197ECA /* LoadingFooterView.swift */,
 				D01A12D71F5E0B9000197ECA /* LoadingFooterView.xib */,
 				D0C1F6571F590D5E00E49B77 /* MarginSettableTextField.swift */,
+				D01A12DD1F5E1CEB00197ECA /* NoClipsView.swift */,
+				D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */,
 				D01A12D91F5E19B200197ECA /* SpacingFooterView.swift */,
 				D01A12DB1F5E19DC00197ECA /* SpacingFooterView.xib */,
 			);
@@ -631,6 +637,7 @@
 				D0B0CDF51F4671E8006201CE /* LaunchScreen.storyboard in Resources */,
 				D0909B6D1F4D2513000F584B /* Localizable.strings in Resources */,
 				D01A12D81F5E0B9000197ECA /* LoadingFooterView.xib in Resources */,
+				D01A12E01F5E1D1600197ECA /* NoClipsView.xib in Resources */,
 				D0B0CDF21F4671E8006201CE /* Assets.xcassets in Resources */,
 				D0B0CDF01F4671E8006201CE /* Main.storyboard in Resources */,
 				D01A12DC1F5E19DC00197ECA /* SpacingFooterView.xib in Resources */,
@@ -872,6 +879,7 @@
 				D0C1F6581F590D5E00E49B77 /* MarginSettableTextField.swift in Sources */,
 				D0253F8F1F5A83B60066B444 /* APIResponseDecoder.swift in Sources */,
 				D0979B631F4B306100B8407F /* RootViewController.swift in Sources */,
+				D01A12DE1F5E1CEB00197ECA /* NoClipsView.swift in Sources */,
 				D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */,
 				D0C1F65C1F592EFB00E49B77 /* ClipType.swift in Sources */,
 				D00D685A1F5761330029BC79 /* ResetPasswordViewController.swift in Sources */,

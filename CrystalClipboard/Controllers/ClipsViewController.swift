@@ -20,6 +20,7 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
     @IBOutlet private weak var tableView: UITableView!
     private let loadingFooterView = LoadingFooterView.fromNib()!
     private let spacingFooterView = SpacingFooterView.fromNib()!
+    private let noClipsView = NoClipsView.fromNib()!
     private static let copiedHUDFlashDelay: TimeInterval = 0.5
     
     override func viewDidLoad() {
@@ -44,7 +45,9 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
             switch $0 {
             case .all: self.tableView.tableFooterView = self.spacingFooterView
             case .some: self.tableView.tableFooterView = self.loadingFooterView
-            case .none: self.tableView.tableFooterView = nil
+            case .none:
+                self.tableView.tableFooterView = nil
+                self.tableView.backgroundView = self.noClipsView
             }
         }
     }

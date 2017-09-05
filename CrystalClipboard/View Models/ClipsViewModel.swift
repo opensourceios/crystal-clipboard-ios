@@ -37,16 +37,32 @@ class ClipsViewModel {
     
     private let dataProvider: ClipsDataProvider
     private let copyObserver: Signal<Signal<String, NoError>, NoError>.Observer
+    private let token: Lifetime.Token
     
     // MARK: Initialization
     
     init(provider: APIProvider, persistentContainer: NSPersistentContainer) {
+        let (lifetime, token) = Lifetime.make()
+        self.token = token
+        
         dataProvider = ClipsDataProvider(managedObjectContext: persistentContainer.viewContext)
+        
         let (signal, observer) = Signal<Signal<String, NoError>, NoError>.pipe()
         textToCopy = signal.flatten(.merge)
         copyObserver = observer
-        let clipCount = (try? persistentContainer.viewContext.count(for: ManagedClip.fetchRequest())) ?? 0
-        clipsPresent = Property(value: clipCount > 0 ? .all : .none)
+        
+        let allClipsFetched = MutableProperty(true)
+        let initialClipCount = dataProvider.fetchedResultsController.fetchedObjects?.count ?? 0
+        let clipCount = dataProvider.fetchedResultsController.reactive.producer(forKeyPath: "fetchedObjects")
+            .take(during: lifetime)
+            .map { ($0 as? [ManagedClip])?.count ?? 0 }
+        let clipPresence: SignalProducer<ClipsViewModel.ClipsPresent, NoError> = clipCount
+            .combineLatest(with: allClipsFetched.producer)
+            .map {
+                guard $0 > 0 else { return .none }
+                return $1 ? .all : .some
+        }
+        clipsPresent = Property(initial: initialClipCount > 0 ? .all : .none, then: clipPresence)
         
         let fetchClips = Action<Int, [Clip], APIResponseError>() { page in
             provider.reactive.request(.listClips(page: page, pageSize: pageSize))
