@@ -19,9 +19,10 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
     
     private lazy var viewModel: ClipsViewModel! = ClipsViewModel(provider: self.provider, persistentContainer: self.persistentContainer)
     @IBOutlet private weak var tableView: UITableView!
-    private let loadingFooterView = LoadingFooterView.fromNib()!
-    private let spacingFooterView = SpacingFooterView.fromNib()!
-    private let noClipsView = NoClipsView.fromNib()!
+    
+    fileprivate static let noClipsView = NoClipsView.fromNib()!
+    fileprivate static let loadingFooterView = LoadingFooterView.fromNib()!
+    fileprivate static let spacingFooterView = SpacingFooterView.fromNib()!
     private static let copiedHUDFlashDelay: TimeInterval = 0.5
     
     override func viewDidLoad() {
@@ -49,14 +50,17 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
             self.tableView.performUpdates(fromChangeSet: $0)
         }
         
-        tableView.backgroundView = viewModel.showNoClipsMessage.value ? noClipsView : nil
-        viewModel.showNoClipsMessage.signal.observe(on: uiScheduler).observeValues { [unowned self] in
-            self.tableView.backgroundView = $0 ? self.noClipsView : nil
-        }
-        
-        tableView.tableFooterView = viewModel.showLoadingFooter.value ? loadingFooterView : spacingFooterView
-        viewModel.showLoadingFooter.signal.observe(on: uiScheduler).observeValues { [unowned self] in
-            self.tableView.tableFooterView = $0 ? self.loadingFooterView : self.spacingFooterView
-        }
+        tableView.reactive.showNoClipsMessage <~ viewModel.showNoClipsMessage
+        tableView.reactive.showLoadingFooter <~ viewModel.showLoadingFooter
+    }
+}
+
+fileprivate extension Reactive where Base: UITableView {
+    fileprivate var showNoClipsMessage: BindingTarget<Bool> {
+        return makeBindingTarget { $0.backgroundView = $1 ? ClipsViewController.noClipsView : nil }
+    }
+    
+    fileprivate var showLoadingFooter: BindingTarget<Bool> {
+        return makeBindingTarget { $0.tableFooterView = $1 ? ClipsViewController.loadingFooterView : ClipsViewController.spacingFooterView }
     }
 }
