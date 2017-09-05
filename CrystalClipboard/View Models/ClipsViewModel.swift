@@ -41,14 +41,15 @@ class ClipsViewModel {
     // MARK: Initialization
     
     init(provider: APIProvider, persistentContainer: NSPersistentContainer) {
-        dataProvider = ClipsDataProvider(managedObjectContext: persistentContainer.viewContext)
+        let dataProvider = ClipsDataProvider(managedObjectContext: persistentContainer.viewContext)
+        self.dataProvider = dataProvider
         
         let (signal, observer) = Signal<Signal<String, NoError>, NoError>.pipe()
         textToCopy = signal.flatten(.merge)
         copyObserver = observer
         
         let allClipsFetched = MutableProperty(true)
-        let initialClipCount = dataProvider.fetchedResultsController.fetchedObjects?.count ?? 0
+        let initialClipCount = dataProvider.fetchedResultsController.fetchedObjects!.count
         let clipCount = dataProvider.fetchedResultsController.reactive.producer(forKeyPath: "fetchedObjects")
             .map { ($0 as? [ManagedClip])?.count ?? 0 }
         let clipPresence: SignalProducer<ClipsViewModel.ClipsPresent, NoError> = clipCount

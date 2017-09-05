@@ -44,7 +44,10 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         viewModel.clipsPresent.producer.startWithValues { [unowned self] in
             switch $0 {
             case .all: self.tableView.tableFooterView = self.spacingFooterView
-            case .some: self.tableView.tableFooterView = self.loadingFooterView
+                self.tableView.backgroundView = nil
+            case .some:
+                self.tableView.tableFooterView = self.loadingFooterView
+                self.tableView.backgroundView = nil
             case .none:
                 self.tableView.tableFooterView = nil
                 self.tableView.backgroundView = self.noClipsView
