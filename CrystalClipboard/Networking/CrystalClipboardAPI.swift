@@ -13,7 +13,7 @@ private let responseProcessingQueue = DispatchQueue(label: "com.jzzocc.crystal-c
 
 extension MoyaProvider where Target == CrystalClipboardAPI {
     convenience init(authToken: User.AuthToken) {
-        self.init(callbackQueue: responseProcessingQueue, plugins: [AccessTokenPlugin(token: authToken.token)])
+        self.init(callbackQueue: responseProcessingQueue, plugins: [AccessTokenPlugin(tokenClosure: authToken.token)])
     }
     
     static func adminProvider() -> APIProvider {
@@ -43,7 +43,8 @@ extension CrystalClipboardAPI: TargetType {
     }
 
     var task: Task {
-        return .request
+        guard let parameters = parameters else { return .requestPlain }
+        return .requestParameters(parameters: parameters, encoding: parameterEncoding)
     }
 
     var parameterEncoding: ParameterEncoding {
@@ -92,4 +93,8 @@ extension CrystalClipboardAPI: TargetType {
         default: return nil
         }
     }
+}
+
+extension CrystalClipboardAPI: AccessTokenAuthorizable {
+    var authorizationType: AuthorizationType { return .bearer }
 }

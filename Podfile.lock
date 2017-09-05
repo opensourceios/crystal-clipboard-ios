@@ -3,10 +3,10 @@ PODS:
   - CellHelpers (0.5.0)
   - KeychainAccess (3.0.2)
   - Keys (1.0.0)
-  - Moya/Core (9.0.0-alpha.1):
+  - Moya/Core (9.0.0):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
-  - Moya/ReactiveSwift (9.0.0-alpha.1):
+  - Moya/ReactiveSwift (9.0.0):
     - Moya/Core
     - ReactiveSwift (~> 2.0)
   - PKHUD (4.2.3)
@@ -21,7 +21,7 @@ DEPENDENCIES:
   - CellHelpers (~> 0.5)
   - KeychainAccess (~> 3.0)
   - Keys (from `Pods/CocoaPodsKeys`)
-  - Moya/ReactiveSwift (= 9.0.0-alpha1)
+  - Moya/ReactiveSwift (~> 9.0)
   - PKHUD
   - ReactiveCocoa (~> 6.0)
   - Starscream (~> 2.1)
@@ -35,13 +35,13 @@ SPEC CHECKSUMS:
   CellHelpers: b4baac51250029160509e7d23457a123b54a6b42
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
-  Moya: f2ce44cbd5e8be82b4761194420588b6b1aebf1e
+  Moya: cf5e6ee93af526532f92614004b8ad2ea60fd845
   PKHUD: c7692163a09875cbf15827dc581df3c5cf7f1015
   ReactiveCocoa: cf6595131c832c468fe3f84a2d7f74ed68eb3058
   ReactiveSwift: 60a29ff35988a964fd2bb759755cb6594de523fc
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   Starscream: 142bd8ef24592d985daee9fa48c936070b85b15f
 
-PODFILE CHECKSUM: 668d85c71eb6750fd8de8741e1c3a1998897cf01
+PODFILE CHECKSUM: b0b3f111a686ac603216f2bf8b18db5cffbaec82
 
 COCOAPODS: 1.3.1

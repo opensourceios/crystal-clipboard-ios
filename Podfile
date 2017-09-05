@@ -16,7 +16,7 @@ plugin 'cocoapods-keys', {
 target 'CrystalClipboard' do
   pod 'CellHelpers', '~> 0.5'
   pod 'KeychainAccess', '~> 3.0'
-  pod 'Moya/ReactiveSwift', '9.0.0-alpha1'
+  pod 'Moya/ReactiveSwift', '~> 9.0'
   pod 'PKHUD'
   pod 'ReactiveCocoa', '~> 6.0'
   pod 'Starscream', '~> 2.1'

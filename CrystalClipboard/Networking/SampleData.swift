@@ -24,7 +24,8 @@ extension MoyaProvider where Target == CrystalClipboardAPI {
                         )
                         return .networkError(error)
                     }
-            }
+            },
+                task: target.task
             )
         }
         return APIProvider(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub)
