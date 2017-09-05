@@ -18,7 +18,6 @@ struct ClipCellViewModel {
     
     let text: Property<String>
     let createdAt: Property<String>
-    let lifetime: Lifetime
     
     // MARK: Actions
     
@@ -30,14 +29,7 @@ struct ClipCellViewModel {
         text = Property(value: clip.text)
         createdAt = Property(value: ClipCellViewModel.dateFormatter.string(from: clip.createdAt))
         copy = Action() { SignalProducer<String, NoError>(value: clip.text) }
-        let (lifetime, token) = Lifetime.make()
-        self.lifetime = lifetime
-        self.token = token
     }
-    
-    // MARK: Private
-    
-    private let token: Lifetime.Token
 }
 
 private extension ClipCellViewModel {

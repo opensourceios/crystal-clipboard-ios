@@ -92,7 +92,7 @@ extension ClipsViewModel: DataSourceDelegate {
         guard let clipCell = cell as? ClipCellViewModelSettable else { fatalError("Wrong cell type") }
         guard let clip = item as? ClipType else { fatalError("Wrong object type") }
         let clipCellViewModel = ClipCellViewModel(clip: clip)
-        copyObserver.send(value: clipCellViewModel.copy.values.take(during: clipCellViewModel.lifetime))
+        copyObserver.send(value: clipCellViewModel.copy.values)
         clipCell.setViewModel(clipCellViewModel)
     }
 }
