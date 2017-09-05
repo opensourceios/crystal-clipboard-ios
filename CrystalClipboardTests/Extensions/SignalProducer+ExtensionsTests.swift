@@ -40,4 +40,22 @@ class SignalProducer_ExtensionsTests: XCTestCase {
             }
         }
     }
+    
+    func testDecodeWithPageInfo() {
+        var clipsDecoded = 0
+        provider.reactive.request(.listClips(page: 1, pageSize: 25)).decodeWithPageInfo(to: [Clip].self).start { event in
+            switch event {
+            case let .value(clips, pageInfo):
+                clipsDecoded = clips.count
+                XCTAssertEqual(pageInfo.currentPage, 1)
+                XCTAssertEqual(pageInfo.nextPage, 2)
+                XCTAssertNil(pageInfo.previousPage)
+                XCTAssertEqual(pageInfo.totalCount, 88)
+                XCTAssertEqual(pageInfo.totalPages, 4)
+            case .completed: XCTAssertEqual(clipsDecoded, 25)
+            case .interrupted: XCTFail("Clip decoding was interrupted")
+            case let .failed(error): XCTFail("Failed to decode clips: \(error)")
+            }
+        }
+    }
 }

@@ -11,6 +11,7 @@ import Foundation
 enum APIResponseError: Error {
     case with([RemoteError])
     case underlying(Error)
+    case pageInfoExpected
     case other
 }
 
@@ -24,7 +25,7 @@ struct RemoteError: Decodable {
 }
 
 struct APIResponse<T: Decodable>: Decodable {
-    struct Meta: Decodable {
+    struct PageInfo: Decodable {
         let currentPage: Int
         let nextPage: Int?
         let previousPage: Int?
@@ -40,7 +41,7 @@ struct APIResponse<T: Decodable>: Decodable {
     }
     
     let data: T?
-    let meta: Meta?
+    let meta: PageInfo?
     let errors: [RemoteError]?
 }
 

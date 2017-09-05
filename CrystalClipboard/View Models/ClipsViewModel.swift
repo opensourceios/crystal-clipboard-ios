@@ -59,16 +59,16 @@ class ClipsViewModel {
         }
         clipsPresent = Property(initial: initialClipCount > 0 ? .all : .none, then: clipPresence)
         
-        let fetchClips = Action<Int, [Clip], APIResponseError>() { page in
-            provider.reactive.request(.listClips(page: page, pageSize: pageSize))
-                .decode(to: [Clip].self)
-                .on(value: { clips in
-                    persistentContainer.performBackgroundTask { context in
-                        context.mergePolicy = NSMergePolicy.rollback
-                        for clip in clips { ManagedClip(from: clip, context: context) }
-                        try? context.save()
-                    }
-                })
+        let fetchClips = Action<Int, ([Clip], APIResponse<[Clip]>.PageInfo), APIResponseError>() {
+            provider.reactive.request(.listClips(page: $0, pageSize: pageSize)).decodeWithPageInfo(to: [Clip].self)
+        }
+        
+        fetchClips.values.observeValues { clips, pageInfo in
+            persistentContainer.performBackgroundTask { context in
+                context.mergePolicy = NSMergePolicy.rollback
+                for clip in clips { ManagedClip(from: clip, context: context) }
+                try? context.save()
+            }
         }
 
         // Ignore viewAppearing's initial value
