@@ -15,10 +15,6 @@ import CellHelpers
 fileprivate let pageSize = 25
 
 class ClipsViewModel {
-    enum ClipsPresent {
-        case none, all, some
-    }
-    
     // MARK: Inputs
     
     let viewAppearing = MutableProperty<Void>(())
@@ -29,9 +25,9 @@ class ClipsViewModel {
     
     // MARK: Outputs
     
-    private(set) lazy var dataSource: DataSource = DataSource(dataProvider: self.dataProvider, delegate: self)
+    private(set) lazy var dataSource: DataSource = ClipsDataSource(dataProvider: self.dataProvider, delegate: self)
     let textToCopy: Signal<String, NoError>
-    let clipsPresent: Property<ClipsPresent>
+    let showLoadingFooter: Property<Bool>
     
     // MARK: Private
     
@@ -48,17 +44,8 @@ class ClipsViewModel {
         textToCopy = signal.flatten(.merge)
         copyObserver = observer
         
-        let allClipsFetched = MutableProperty(true)
-        let initialClipCount = dataProvider.fetchedResultsController.fetchedObjects!.count
-        let clipCount = dataProvider.fetchedResultsController.reactive.producer(forKeyPath: "fetchedObjects")
-            .map { ($0 as? [ManagedClip])?.count ?? 0 }
-        let clipPresence: SignalProducer<ClipsViewModel.ClipsPresent, NoError> = clipCount
-            .combineLatest(with: allClipsFetched.producer)
-            .map {
-                guard $0 > 0 else { return .none }
-                return $1 ? .all : .some
-        }
-        clipsPresent = Property(initial: initialClipCount > 0 ? .all : .none, then: clipPresence)
+        let moreClipsAvailaible = MutableProperty(false)
+        showLoadingFooter = Property(initial: moreClipsAvailaible.value, then: moreClipsAvailaible.signal)
         
         let fetchClips = Action<Int, ([Clip], APIResponse<[Clip]>.PageInfo), APIResponseError>() {
             provider.reactive.request(.listClips(page: $0, pageSize: pageSize)).decodeWithPageInfo(to: [Clip].self)

@@ -41,17 +41,9 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
             UINotificationFeedbackGenerator().notificationOccurred(.success)
             HUD.flash(.labeledSuccess(title: "clips.copied".localized, subtitle: $0), delay: ClipsViewController.copiedHUDFlashDelay)
         }
-        viewModel.clipsPresent.producer.startWithValues { [unowned self] in
-            switch $0 {
-            case .all: self.tableView.tableFooterView = self.spacingFooterView
-                self.tableView.backgroundView = nil
-            case .some:
-                self.tableView.tableFooterView = self.loadingFooterView
-                self.tableView.backgroundView = nil
-            case .none:
-                self.tableView.tableFooterView = nil
-                self.tableView.backgroundView = self.noClipsView
-            }
+        tableView.tableFooterView = spacingFooterView
+        viewModel.showLoadingFooter.signal.observeValues { [unowned self] in
+            self.tableView.tableFooterView = $0 ? self.loadingFooterView : self.spacingFooterView
         }
     }
 }
