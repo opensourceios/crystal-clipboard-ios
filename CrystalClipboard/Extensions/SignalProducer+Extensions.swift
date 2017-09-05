@@ -8,7 +8,6 @@
 
 import ReactiveSwift
 import Moya
-import Result
 
 extension SignalProducerProtocol where Value == Response {
     func decode<T: Decodable>(to: T.Type) -> SignalProducer<T, APIResponseError> {

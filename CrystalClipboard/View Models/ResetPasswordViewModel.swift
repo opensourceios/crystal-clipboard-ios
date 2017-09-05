@@ -7,8 +7,6 @@
 //
 
 import ReactiveSwift
-import Result
-import Moya
 
 class ResetPasswordViewModel {
     // MARK: Inputs

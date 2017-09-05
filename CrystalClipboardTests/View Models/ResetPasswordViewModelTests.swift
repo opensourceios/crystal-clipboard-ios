@@ -8,8 +8,7 @@
 
 import XCTest
 import ReactiveSwift
-import Result
-import Moya
+import enum Result.NoError
 @testable import CrystalClipboard
 
 class ResetPasswordViewModelTests: XCTestCase {

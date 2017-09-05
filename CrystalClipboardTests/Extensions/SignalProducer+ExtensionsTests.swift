@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import Moya
 import ReactiveSwift
 @testable import CrystalClipboard
 

@@ -7,7 +7,6 @@
 //
 
 import ReactiveSwift
-import Result
 
 protocol TransitionType {
     var storyboardName: StoryboardNames { get }

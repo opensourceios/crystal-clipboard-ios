@@ -7,7 +7,7 @@
 //
 
 import ReactiveSwift
-import Result
+import enum Result.NoError
 
 protocol ClipCellViewModelSettable {
     func setViewModel(_ viewModel: ClipCellViewModel)

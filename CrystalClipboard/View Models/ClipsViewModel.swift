@@ -8,8 +8,7 @@
 
 import CoreData
 import ReactiveSwift
-import Result
-import Moya
+import enum Result.NoError
 import CellHelpers
 
 fileprivate let pageSize = 25
