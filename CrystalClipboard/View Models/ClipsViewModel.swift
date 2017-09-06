@@ -14,8 +14,7 @@ import CellHelpers
 class ClipsViewModel: NSObject {
     // MARK: Inputs
     
-    let viewAppearing = MutableProperty<Void>(())
-    let reachedEndOfClips = MutableProperty<Void>(())
+    let pageDisplayed = MutableProperty<Int>(0)
     
     // MARK: Outputs
     
@@ -32,11 +31,10 @@ class ClipsViewModel: NSObject {
     private let fetchedResultsChangeSetProducer: FetchedResultsChangeSetProducer
     private let changeSetsObserver: Signal<ChangeSet, NoError>.Observer
     private let clipCount: MutableProperty<Int>
-    private static let pageSize = 25
     
     // MARK: Initialization
     
-    init(provider: APIProvider, persistentContainer: NSPersistentContainer) {
+    init(provider: APIProvider, persistentContainer: NSPersistentContainer, pageSize: Int) {
         let dataProvider = ClipsDataProvider(managedObjectContext: persistentContainer.viewContext)
         self.dataProvider = dataProvider
         fetchedResultsChangeSetProducer = FetchedResultsChangeSetProducer()
@@ -54,7 +52,7 @@ class ClipsViewModel: NSObject {
         showNoClipsMessage = Property(initial: clipCount.value == 0, then: clipCount.signal.map { $0 == 0 })
         
         let fetchClips = Action<(maxID: Int?, sinceID: Int?), [Clip], ResponseError>() {
-            provider.reactive.request(.listClips(maxID: $0, sinceID: $1, count: ClipsViewModel.pageSize)).decode(to: [Clip].self)
+            provider.reactive.request(.listClips(maxID: $0, sinceID: $1, count: pageSize)).decode(to: [Clip].self)
         }
         showLoadingFooter = fetchClips.isExecuting
         
@@ -69,13 +67,11 @@ class ClipsViewModel: NSObject {
             }
         }
 
-        // Ignore viewAppearing's initial value
-        viewAppearing.producer.skip(first: 1).startWithValues {
-            fetchClips.apply((maxID: nil, sinceID: nil)).start()
-        }
-        
-        reachedEndOfClips.producer.startWithValues {
-            fetchClips.apply((maxID: maxFetchedClipID, sinceID: nil)).start()
+        pageDisplayed.producer.skip(first: 1).startWithValues { page in
+            let presentClips = dataProvider.fetchedResultsController.fetchedObjects!
+            let clipWithMaxIDIndex = page * pageSize - 1
+            let maxID = clipWithMaxIDIndex > 0 ? presentClips[clipWithMaxIDIndex].id : nil
+            fetchClips.apply((maxID: maxID, sinceID: nil)).start()
         }
         
         super.init()

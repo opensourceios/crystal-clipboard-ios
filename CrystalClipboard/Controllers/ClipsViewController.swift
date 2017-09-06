@@ -18,14 +18,16 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
     var persistentContainer: NSPersistentContainer!
     var provider: APIProvider!
     
-    private lazy var viewModel: ClipsViewModel! = ClipsViewModel(provider: self.provider, persistentContainer: self.persistentContainer)
+    private lazy var viewModel: ClipsViewModel! = ClipsViewModel(provider: self.provider, persistentContainer: self.persistentContainer, pageSize: ClipsViewController.pageSize)
     @IBOutlet private weak var tableView: UITableView!
-    fileprivate var reachedEndOfClipsObverver: Signal<Void, NoError>.Observer!
+    fileprivate var pageDisplayedObserver: Signal<Int, NoError>.Observer!
+    fileprivate var lastPageDisplayed = 0
     
     fileprivate static let noClipsView = NoClipsView.fromNib()!
     fileprivate static let loadingFooterView = LoadingFooterView.fromNib()!
     fileprivate static let spacingFooterView = SpacingFooterView.fromNib()!
     private static let copiedHUDFlashDelay: TimeInterval = 0.5
+    private static let pageSize = 25
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,15 +36,16 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         
         // View model inputs
         
-        let willEnterForeground = NotificationCenter.default.reactive
+        let pageWillAppear = reactive.trigger(for: #selector(UIViewController.viewWillAppear(_:)))
+            .skip(first: 1)
+            .map { [unowned self] in self.lastPageDisplayed }
+        let pageWillEnterForeground = NotificationCenter.default.reactive
             .notifications(forName: .UIApplicationWillEnterForeground)
             .take(during: reactive.lifetime)
-            .map { _ in Void() }
-        let viewWillAppear = reactive.trigger(for: #selector(UIViewController.viewWillAppear(_:)))
-        viewModel.viewAppearing <~ SignalProducer(values: willEnterForeground, viewWillAppear).flatten(.merge)
-        let (reachedEndOfClipsSignal, reachedEndOfClipsObverver) = Signal<Void, NoError>.pipe()
-        viewModel.reachedEndOfClips <~ reachedEndOfClipsSignal
-        self.reachedEndOfClipsObverver = reachedEndOfClipsObverver
+            .map { [unowned self] _ in self.lastPageDisplayed }
+        let (pageDisplayedSignal, pageDisplayedObserver) = Signal<Int, NoError>.pipe()
+        self.pageDisplayedObserver = pageDisplayedObserver
+        viewModel.pageDisplayed <~ SignalProducer(values: pageDisplayedSignal.skipRepeats(), pageWillAppear, pageWillEnterForeground).flatten(.merge)
         
         // View model outputs
         
@@ -67,9 +70,8 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
 
 extension ClipsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
-            reachedEndOfClipsObverver.send(value: ())
-        }
+        lastPageDisplayed = (indexPath.row + 1) / ClipsViewController.pageSize
+        pageDisplayedObserver.send(value: lastPageDisplayed)
     }
 }
 
