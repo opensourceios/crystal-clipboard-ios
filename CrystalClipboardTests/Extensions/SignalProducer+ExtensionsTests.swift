@@ -42,7 +42,7 @@ class SignalProducer_ExtensionsTests: XCTestCase {
     
     func testDecodeWithPageInfo() {
         var clipsDecoded = 0
-        provider.reactive.request(.listClips(page: 1, pageSize: 25)).decodeWithPageInfo(to: [Clip].self).start { event in
+        provider.reactive.request(.listClips(maxID: nil, sinceID: nil, count: 25)).decodeWithPageInfo(to: [Clip].self).start { event in
             switch event {
             case let .value(clips, pageInfo):
                 clipsDecoded = clips.count

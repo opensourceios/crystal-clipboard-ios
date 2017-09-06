@@ -55,11 +55,11 @@ class ClipsViewModel: NSObject {
         let moreClipsAvailaible = MutableProperty(false)
         showLoadingFooter = Property(initial: moreClipsAvailaible.value, then: moreClipsAvailaible.signal)
         
-        let fetchClips = Action<Int, ([Clip], APIResponse<[Clip]>.PageInfo), APIResponseError>() {
-            provider.reactive.request(.listClips(page: $0, pageSize: ClipsViewModel.pageSize)).decodeWithPageInfo(to: [Clip].self)
+        let fetchClips = Action<(maxID: Int?, sinceID: Int?), [Clip], APIResponseError>() {
+            provider.reactive.request(.listClips(maxID: $0, sinceID: $1, count: ClipsViewModel.pageSize)).decode(to: [Clip].self)
         }
         
-        fetchClips.values.observeValues { clips, pageInfo in
+        fetchClips.values.observeValues { clips in
             persistentContainer.performBackgroundTask { context in
                 context.mergePolicy = NSMergePolicy.rollback
                 for clip in clips { ManagedClip(from: clip, context: context) }
@@ -69,7 +69,7 @@ class ClipsViewModel: NSObject {
 
         // Ignore viewAppearing's initial value
         viewAppearing.producer.skip(first: 1).startWithValues {
-            fetchClips.apply(1).start()
+            fetchClips.apply((maxID: nil, sinceID: nil)).start()
         }
         
         super.init()

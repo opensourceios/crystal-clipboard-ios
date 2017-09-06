@@ -18,13 +18,4 @@ extension SignalProducerProtocol where Value == Response {
                 catch { return SignalProducer(error: error as? APIResponseError ?? APIResponseError.underlying(error)) }
         }
     }
-    
-    func decodeWithPageInfo<T: Decodable>(to: T.Type) -> SignalProducer<(T, APIResponse<T>.PageInfo), APIResponseError> {
-        return producer
-            .mapError { APIResponseError.underlying($0) }
-            .flatMap(.latest) { response -> SignalProducer<(T, APIResponse<T>.PageInfo), APIResponseError> in
-                do { return SignalProducer(value: try response.decodeWithPageInfo(to: T.self)) }
-                catch { return SignalProducer(error: error as? APIResponseError ?? APIResponseError.underlying(error)) }
-        }
-    }
 }

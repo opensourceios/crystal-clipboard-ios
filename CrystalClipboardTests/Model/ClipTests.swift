@@ -19,7 +19,7 @@ class ClipTests: XCTestCase {
     }
     
     func testDecodingMany() {
-        let jsonData = CrystalClipboardAPI.listClips(page: 1, pageSize: 25).sampleData
+        let jsonData = CrystalClipboardAPI.listClips(maxID: nil, sinceID: nil, count: 25).sampleData
         let apiResponse = try! APIResponseDecoder().decode(APIResponse<[Clip]>.self, from: jsonData)
         let meta = apiResponse.meta!
         XCTAssertEqual(meta.currentPage, 1)

@@ -12,6 +12,7 @@ extension Response {
     private static let decoder = APIResponseDecoder()
     
     func decode<T: Decodable>(to: T.Type) throws -> T {
+        return try Response.decoder.decode(T.self, from: data)
         let apiResponse = try Response.decoder.decode(APIResponse<T>.self, from: data)
         guard let apiData = apiResponse.data else {
             if let remoteErrors = apiResponse.errors {
@@ -22,20 +23,5 @@ extension Response {
         }
         
         return apiData
-    }
-    
-    func decodeWithPageInfo<T: Decodable>(to: T.Type) throws -> (T, APIResponse<T>.PageInfo) {
-        let apiResponse = try Response.decoder.decode(APIResponse<T>.self, from: data)
-        guard let apiData = apiResponse.data else {
-            if let remoteErrors = apiResponse.errors {
-                throw APIResponseError.with(remoteErrors)
-            } else {
-                throw APIResponseError.other
-            }
-        }
-        
-        guard let pageInfo = apiResponse.meta else { throw APIResponseError.pageInfoExpected }
-        
-        return (apiData, pageInfo)
     }
 }

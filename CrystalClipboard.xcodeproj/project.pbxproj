@@ -38,7 +38,6 @@
 		D01A12DE1F5E1CEB00197ECA /* NoClipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A12DD1F5E1CEB00197ECA /* NoClipsView.swift */; };
 		D01A12E01F5E1D1600197ECA /* NoClipsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */; };
 		D0253F8F1F5A83B60066B444 /* APIResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0253F8E1F5A83B60066B444 /* APIResponseDecoder.swift */; };
-		D0363EA91F5A68BE00C37ECE /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0363EA81F5A68BE00C37ECE /* APIResponse.swift */; };
 		D03ABD3E1F4D37F000A7D473 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3D1F4D37F000A7D473 /* Constants.swift */; };
 		D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3F1F4E8FF600A7D473 /* Clip.swift */; };
 		D03ABD421F4E902400A7D473 /* ClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD411F4E902400A7D473 /* ClipTests.swift */; };
@@ -62,6 +61,7 @@
 		D0979B801F4B495800B8407F /* SignUpViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B7F1F4B495800B8407F /* SignUpViewModelTests.swift */; };
 		D0979B821F4B580800B8407F /* TestObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B811F4B580800B8407F /* TestObserver.swift */; };
 		D09DCFF21F5CD4C4000D4B10 /* SubmissionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09DCFF11F5CD4C4000D4B10 /* SubmissionError.swift */; };
+		D0A39B391F5FC3040042828B /* RemoteErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A39B381F5FC3040042828B /* RemoteErrorMessages.swift */; };
 		D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */; };
 		D0B0CDF01F4671E8006201CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDEE1F4671E8006201CE /* Main.storyboard */; };
 		D0B0CDF21F4671E8006201CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDF11F4671E8006201CE /* Assets.xcassets */; };
@@ -137,7 +137,6 @@
 		D01A12DD1F5E1CEB00197ECA /* NoClipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoClipsView.swift; path = Views/NoClipsView.swift; sourceTree = "<group>"; };
 		D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NoClipsView.xib; path = Views/NoClipsView.xib; sourceTree = "<group>"; };
 		D0253F8E1F5A83B60066B444 /* APIResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIResponseDecoder.swift; path = Networking/APIResponseDecoder.swift; sourceTree = "<group>"; };
-		D0363EA81F5A68BE00C37ECE /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Networking/APIResponse.swift; sourceTree = "<group>"; };
 		D03ABD3D1F4D37F000A7D473 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D03ABD3F1F4E8FF600A7D473 /* Clip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clip.swift; path = Model/Clip.swift; sourceTree = "<group>"; };
 		D03ABD411F4E902400A7D473 /* ClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTests.swift; path = Model/ClipTests.swift; sourceTree = "<group>"; };
@@ -161,6 +160,7 @@
 		D0979B7F1F4B495800B8407F /* SignUpViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModelTests.swift; path = "View Models/SignUpViewModelTests.swift"; sourceTree = "<group>"; };
 		D0979B811F4B580800B8407F /* TestObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestObserver.swift; sourceTree = "<group>"; };
 		D09DCFF11F5CD4C4000D4B10 /* SubmissionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SubmissionError.swift; path = Errors/SubmissionError.swift; sourceTree = "<group>"; };
+		D0A39B381F5FC3040042828B /* RemoteErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RemoteErrorMessages.swift; path = Networking/RemoteErrorMessages.swift; sourceTree = "<group>"; };
 		D0B0CDE71F4671E8006201CE /* CrystalClipboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrystalClipboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B0CDEF1F4671E8006201CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -339,11 +339,11 @@
 		D04C144C1F46975E0068AEA0 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				D0363EA81F5A68BE00C37ECE /* APIResponse.swift */,
 				D0253F8E1F5A83B60066B444 /* APIResponseDecoder.swift */,
 				D0D59B6F1F4A0A0100200ABD /* Cable.swift */,
 				D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */,
 				D04DBF8E1F4C8466002B5A02 /* SampleData.swift */,
+				D0A39B381F5FC3040042828B /* RemoteErrorMessages.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -894,7 +894,6 @@
 				D00D68501F5733BF0029BC79 /* SignInViewModel.swift in Sources */,
 				D00D684C1F5712F40029BC79 /* UIViewController+Extensions.swift in Sources */,
 				D0979B671F4B31EB00B8407F /* SignUpViewController.swift in Sources */,
-				D0363EA91F5A68BE00C37ECE /* APIResponse.swift in Sources */,
 				D00D68601F589AC10029BC79 /* PersistentContainerSettable.swift in Sources */,
 				D095D8C21F4E260800D15CE4 /* User.swift in Sources */,
 				D00D68581F575AB80029BC79 /* AuthenticatingViewController.swift in Sources */,
@@ -907,6 +906,7 @@
 				D05336051F4A9E700077B1F9 /* DateParser.swift in Sources */,
 				D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */,
 				D03ABD3E1F4D37F000A7D473 /* Constants.swift in Sources */,
+				D0A39B391F5FC3040042828B /* RemoteErrorMessages.swift in Sources */,
 				D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */,
 				D04DBF8F1F4C8466002B5A02 /* SampleData.swift in Sources */,
 				D00D68631F58A3680029BC79 /* ClipsDataProvider.swift in Sources */,

@@ -22,7 +22,7 @@ class Response_ExtensionsTests: XCTestCase {
     }
     
     func testDecodeWithPageInfo() {
-        APIProvider.testingProvider().request(.listClips(page: 1, pageSize: 25)) { result in
+        APIProvider.testingProvider().request(.listClips(maxID: nil, sinceID: nil, count: 25)) { result in
             switch result {
             case let .success(response):
                 let (clips, pageInfo) = try! response.decodeWithPageInfo(to: [Clip].self)
