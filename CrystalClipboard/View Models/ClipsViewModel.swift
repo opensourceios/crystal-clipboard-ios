@@ -15,6 +15,7 @@ class ClipsViewModel: NSObject {
     // MARK: Inputs
     
     let viewAppearing = MutableProperty<Void>(())
+    let reachedEndOfClips = MutableProperty<Void>(())
     
     // MARK: Outputs
     
@@ -57,7 +58,10 @@ class ClipsViewModel: NSObject {
         }
         showLoadingFooter = fetchClips.isExecuting
         
+        var maxFetchedClipID: Int?
+        
         fetchClips.values.observeValues { clips in
+            maxFetchedClipID = clips.last?.id ?? maxFetchedClipID
             persistentContainer.performBackgroundTask { context in
                 context.mergePolicy = NSMergePolicy.rollback
                 for clip in clips { ManagedClip(from: clip, context: context) }
@@ -68,6 +72,10 @@ class ClipsViewModel: NSObject {
         // Ignore viewAppearing's initial value
         viewAppearing.producer.skip(first: 1).startWithValues {
             fetchClips.apply((maxID: nil, sinceID: nil)).start()
+        }
+        
+        reachedEndOfClips.producer.startWithValues {
+            fetchClips.apply((maxID: maxFetchedClipID, sinceID: nil)).start()
         }
         
         super.init()

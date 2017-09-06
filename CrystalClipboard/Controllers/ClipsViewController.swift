@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import ReactiveSwift
 import ReactiveCocoa
+import enum Result.NoError
 import PKHUD
 import CellHelpers
 
@@ -19,6 +20,7 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
     
     private lazy var viewModel: ClipsViewModel! = ClipsViewModel(provider: self.provider, persistentContainer: self.persistentContainer)
     @IBOutlet private weak var tableView: UITableView!
+    fileprivate var reachedEndOfClipsObverver: Signal<Void, NoError>.Observer!
     
     fileprivate static let noClipsView = NoClipsView.fromNib()!
     fileprivate static let loadingFooterView = LoadingFooterView.fromNib()!
@@ -38,6 +40,9 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
             .map { _ in Void() }
         let viewWillAppear = reactive.trigger(for: #selector(UIViewController.viewWillAppear(_:)))
         viewModel.viewAppearing <~ SignalProducer(values: willEnterForeground, viewWillAppear).flatten(.merge)
+        let (reachedEndOfClipsSignal, reachedEndOfClipsObverver) = Signal<Void, NoError>.pipe()
+        viewModel.reachedEndOfClips <~ reachedEndOfClipsSignal
+        self.reachedEndOfClipsObverver = reachedEndOfClipsObverver
         
         // View model outputs
         
@@ -53,6 +58,18 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         
         tableView.reactive.showNoClipsMessage <~ viewModel.showNoClipsMessage
         tableView.reactive.showLoadingFooter <~ viewModel.showLoadingFooter
+        
+        // Other setup
+        
+        tableView.delegate = self
+    }
+}
+
+extension ClipsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+            reachedEndOfClipsObverver.send(value: ())
+        }
     }
 }
 
