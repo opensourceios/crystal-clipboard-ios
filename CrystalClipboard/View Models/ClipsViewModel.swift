@@ -65,7 +65,6 @@ class ClipsViewModel: NSObject {
                 context.mergePolicy = NSMergePolicy.rollback
                 for clip in clips { ManagedClip(from: clip, context: context) }
                 let fetchedClipIDs = clips.map { $0.id }
-                print(fetchedClipIDs)
                 if let firstID = fetchedClipIDs.first, let lastID = fetchedClipIDs.last {
                     let idKeyPath = #keyPath(ManagedClip.id)
                     let predicateFormat = "%K < %i AND %K > %i AND NOT (%K IN %@)"
@@ -80,7 +79,6 @@ class ClipsViewModel: NSObject {
                     let clipsToDeleteFetchRequest = ManagedClip.fetchRequest() as! NSFetchRequest<ManagedClip>
                     clipsToDeleteFetchRequest.predicate = predicate
                     if let clipsToDelete = try? context.fetch(clipsToDeleteFetchRequest) {
-                        print("deleting: \(clipsToDelete.map { $0.id })")
                         for clip in clipsToDelete { context.delete(clip) }
                     }
                 }
