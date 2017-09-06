@@ -32,7 +32,7 @@ enum CrystalClipboardAPI {
     case signOut
     case resetPassword(email: String)
     case me
-    case listClips(page: Int, pageSize: Int)
+    case listClips(maxID: Int?, sinceID: Int?, count: Int?)
     case createClip(text: String)
     case deleteClip(id: Int)
 }
@@ -55,7 +55,7 @@ extension CrystalClipboardAPI: TargetType {
     }
     
     var headers: [String : String]? {
-        return ["Content-Type": "application/vnd.api+json"]
+        return nil
     }
     
     var path: String {
@@ -81,15 +81,19 @@ extension CrystalClipboardAPI: TargetType {
     var parameters: [String : Any]? {
         switch self {
         case let .createUser(email, password):
-            return ["data": ["type": "users", "attributes": ["email": email, "password": password]]]
+            return ["email": email, "password": password]
         case let .signIn(email, password):
-            return ["data": ["type": "authentications", "attributes": ["email": email, "password": password]]]
+            return ["email": email, "password": password]
         case let .resetPassword(email):
-            return ["data": ["type": "password-resets", "attributes": ["email": email]]]
-        case let .listClips(page, pageSize):
-            return ["page[number]": page, "page[size]": pageSize]
+            return ["email": email]
+        case let .listClips(maxID, sinceID, count):
+            var params = [String: Int]()
+            params["max_id"] = maxID
+            params["since_id"] = sinceID
+            params["count"] = count
+            return params
         case let .createClip(text):
-            return ["data": ["type": "clips", "attributes": ["text": text]]]
+            return ["text": text]
         default: return nil
         }
     }

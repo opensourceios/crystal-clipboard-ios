@@ -15,8 +15,11 @@ extension Notification.Name {
     static let userUpdated = Notification.Name("com.jzzocc.crystal-clipboard.notifications.user-updated")
 }
 
-struct User {
-    struct AuthToken {
+struct User: Codable {
+    enum CodingKeys: String, CodingKey {
+        case id, email, authToken = "auth_token"
+    }
+    struct AuthToken: Codable {
         let token: String
         
         fileprivate init(token: String) {
@@ -75,36 +78,6 @@ extension User {
                 return nil
             }
         }
-    }
-}
-
-extension User: Decodable {
-    private enum DataKeys: String, CodingKey {
-        case id
-        case attributes
-        enum AttributeKeys: String, CodingKey {
-            case email
-            case authToken = "auth-token"
-        }
-    }
-    
-    init(from decoder: Decoder) throws {
-        let data = try decoder.container(keyedBy: DataKeys.self)
-        let attributes = try data.nestedContainer(keyedBy: DataKeys.AttributeKeys.self, forKey: .attributes)
-        let idString = try data.decode(String.self, forKey: .id)
-        guard let id = Int(idString) else {
-            let context = DecodingError.Context(codingPath: [DataKeys.id], debugDescription: "User id should be convertable to an integer")
-            throw DecodingError.typeMismatch(Int.self, context)
-        }
-        let authToken: AuthToken?
-        if let authTokenString = try attributes.decodeIfPresent(String.self, forKey: .authToken) {
-            authToken = AuthToken(token: authTokenString)
-        } else {
-            authToken = nil
-        }
-        self.authToken = authToken
-        self.id = id
-        email = try attributes.decode(String.self, forKey: .email)
     }
 }
 

@@ -30,8 +30,8 @@ class AuthenticatingViewModel {
                 .decode(to: User.self)
                 .on(value: { User.current = $0 })
                 .mapError {
-                    if case let .with(errors) = $0 {
-                        let messages = errors.flatMap { $0.message }
+                    if case let .with(response: _, remoteErrors: remoteErrors) = $0 {
+                        let messages = remoteErrors.map { $0.message }
                         if messages.count > 0 {
                             return SubmissionError(message: messages.joined(separator: "\n\n"))
                         }

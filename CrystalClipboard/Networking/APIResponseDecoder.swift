@@ -11,7 +11,7 @@ import Foundation
 class APIResponseDecoder: JSONDecoder {
     private static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.dateFormat = Constants.iso8601DateFormat
         return dateFormatter
     }()
     

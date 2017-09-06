@@ -20,20 +20,4 @@ class Response_ExtensionsTests: XCTestCase {
             }
         }
     }
-    
-    func testDecodeWithPageInfo() {
-        APIProvider.testingProvider().request(.listClips(page: 1, pageSize: 25)) { result in
-            switch result {
-            case let .success(response):
-                let (clips, pageInfo) = try! response.decodeWithPageInfo(to: [Clip].self)
-                XCTAssertEqual(clips.count, 25)
-                XCTAssertEqual(pageInfo.currentPage, 1)
-                XCTAssertEqual(pageInfo.nextPage, 2)
-                XCTAssertNil(pageInfo.previousPage)
-                XCTAssertEqual(pageInfo.totalCount, 88)
-                XCTAssertEqual(pageInfo.totalPages, 4)
-            case .failure: XCTFail("Should be a successful response")
-            }
-        }
-    }
 }

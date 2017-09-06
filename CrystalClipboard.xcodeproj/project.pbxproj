@@ -38,7 +38,7 @@
 		D01A12DE1F5E1CEB00197ECA /* NoClipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A12DD1F5E1CEB00197ECA /* NoClipsView.swift */; };
 		D01A12E01F5E1D1600197ECA /* NoClipsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */; };
 		D0253F8F1F5A83B60066B444 /* APIResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0253F8E1F5A83B60066B444 /* APIResponseDecoder.swift */; };
-		D0363EA91F5A68BE00C37ECE /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0363EA81F5A68BE00C37ECE /* APIResponse.swift */; };
+		D0340BC91F6038A50030CD82 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0340BC81F6038A50030CD82 /* ResponseError.swift */; };
 		D03ABD3E1F4D37F000A7D473 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3D1F4D37F000A7D473 /* Constants.swift */; };
 		D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3F1F4E8FF600A7D473 /* Clip.swift */; };
 		D03ABD421F4E902400A7D473 /* ClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD411F4E902400A7D473 /* ClipTests.swift */; };
@@ -76,7 +76,6 @@
 		D0C1F65A1F592DD600E49B77 /* ClipCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6591F592DD600E49B77 /* ClipCellViewModel.swift */; };
 		D0C1F65C1F592EFB00E49B77 /* ClipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F65B1F592EFB00E49B77 /* ClipType.swift */; };
 		D0D59B701F4A0A0100200ABD /* Cable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D59B6F1F4A0A0100200ABD /* Cable.swift */; };
-		D0FD1CFC1F5B56300061535C /* APIResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD1CFB1F5B56300061535C /* APIResponseTests.swift */; };
 		D0FD1CFE1F5B5A590061535C /* Response+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD1CFD1F5B5A590061535C /* Response+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -137,7 +136,7 @@
 		D01A12DD1F5E1CEB00197ECA /* NoClipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoClipsView.swift; path = Views/NoClipsView.swift; sourceTree = "<group>"; };
 		D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NoClipsView.xib; path = Views/NoClipsView.xib; sourceTree = "<group>"; };
 		D0253F8E1F5A83B60066B444 /* APIResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIResponseDecoder.swift; path = Networking/APIResponseDecoder.swift; sourceTree = "<group>"; };
-		D0363EA81F5A68BE00C37ECE /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Networking/APIResponse.swift; sourceTree = "<group>"; };
+		D0340BC81F6038A50030CD82 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResponseError.swift; path = Errors/ResponseError.swift; sourceTree = "<group>"; };
 		D03ABD3D1F4D37F000A7D473 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D03ABD3F1F4E8FF600A7D473 /* Clip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clip.swift; path = Model/Clip.swift; sourceTree = "<group>"; };
 		D03ABD411F4E902400A7D473 /* ClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTests.swift; path = Model/ClipTests.swift; sourceTree = "<group>"; };
@@ -181,7 +180,6 @@
 		D0C1F6591F592DD600E49B77 /* ClipCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipCellViewModel.swift; path = "View Models/ClipCellViewModel.swift"; sourceTree = "<group>"; };
 		D0C1F65B1F592EFB00E49B77 /* ClipType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipType.swift; path = Protocols/ClipType.swift; sourceTree = "<group>"; };
 		D0D59B6F1F4A0A0100200ABD /* Cable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cable.swift; path = Networking/Cable.swift; sourceTree = "<group>"; };
-		D0FD1CFB1F5B56300061535C /* APIResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIResponseTests.swift; path = Networking/APIResponseTests.swift; sourceTree = "<group>"; };
 		D0FD1CFD1F5B5A590061535C /* Response+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Response+Extensions.swift"; path = "Extensions/Response+Extensions.swift"; sourceTree = "<group>"; };
 		D22B5B8698FE83A31D24280D /* Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; sourceTree = "<group>"; };
 		DD3162C9717AFAFB194112F5 /* Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardUITests/Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -278,14 +276,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		D031F62D1F4BF9AC00530226 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				D0FD1CFB1F5B56300061535C /* APIResponseTests.swift */,
-			);
-			name = Networking;
-			sourceTree = "<group>";
-		};
 		D035A2C31F46921000B6887B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,7 +329,6 @@
 		D04C144C1F46975E0068AEA0 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				D0363EA81F5A68BE00C37ECE /* APIResponse.swift */,
 				D0253F8E1F5A83B60066B444 /* APIResponseDecoder.swift */,
 				D0D59B6F1F4A0A0100200ABD /* Cable.swift */,
 				D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */,
@@ -429,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				D09DCFF11F5CD4C4000D4B10 /* SubmissionError.swift */,
+				D0340BC81F6038A50030CD82 /* ResponseError.swift */,
 			);
 			name = Errors;
 			sourceTree = "<group>";
@@ -485,7 +475,6 @@
 				D00D68661F58A5490029BC79 /* Data Providers */,
 				D06EF5D01F5B64E80093C87D /* Extensions */,
 				D05335FA1F4A85FA0077B1F9 /* Model */,
-				D031F62D1F4BF9AC00530226 /* Networking */,
 				D035A2C71F4692A800B6887B /* Supporting Files */,
 				D0979B811F4B580800B8407F /* TestObserver.swift */,
 				D0979B7E1F4B491100B8407F /* View Models */,
@@ -888,13 +877,13 @@
 				D06EF5CF1F5B62970093C87D /* SignalProducer+Extensions.swift in Sources */,
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
 				D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */,
+				D0340BC91F6038A50030CD82 /* ResponseError.swift in Sources */,
 				D01A12DA1F5E19B200197ECA /* SpacingFooterView.swift in Sources */,
 				D0C1F6561F590A3700E49B77 /* UIView+Extensions.swift in Sources */,
 				D00D685C1F5762EE0029BC79 /* ResetPasswordViewModel.swift in Sources */,
 				D00D68501F5733BF0029BC79 /* SignInViewModel.swift in Sources */,
 				D00D684C1F5712F40029BC79 /* UIViewController+Extensions.swift in Sources */,
 				D0979B671F4B31EB00B8407F /* SignUpViewController.swift in Sources */,
-				D0363EA91F5A68BE00C37ECE /* APIResponse.swift in Sources */,
 				D00D68601F589AC10029BC79 /* PersistentContainerSettable.swift in Sources */,
 				D095D8C21F4E260800D15CE4 /* User.swift in Sources */,
 				D00D68581F575AB80029BC79 /* AuthenticatingViewController.swift in Sources */,
@@ -930,7 +919,6 @@
 				D0B0CE001F4671E8006201CE /* CrystalClipboardTests.swift in Sources */,
 				D05335FE1F4A87DA0077B1F9 /* CoreDataTestCase.swift in Sources */,
 				D0979B801F4B495800B8407F /* SignUpViewModelTests.swift in Sources */,
-				D0FD1CFC1F5B56300061535C /* APIResponseTests.swift in Sources */,
 				D00D68681F58A55C0029BC79 /* ClipsDataProviderTests.swift in Sources */,
 				D00D68521F5733EC0029BC79 /* SignInViewModelTests.swift in Sources */,
 				D095D8CD1F4E2E9300D15CE4 /* UserTests.swift in Sources */,
