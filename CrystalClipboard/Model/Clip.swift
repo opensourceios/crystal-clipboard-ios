@@ -9,6 +9,10 @@
 import Foundation
 
 struct Clip: ClipType, Codable {
+    enum CodingKeys: String, CodingKey {
+        case id, text, createdAt = "created_at"
+    }
+    
     let id: Int
     let text: String
     let createdAt: Date

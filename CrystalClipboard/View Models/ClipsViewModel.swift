@@ -55,7 +55,7 @@ class ClipsViewModel: NSObject {
         let moreClipsAvailaible = MutableProperty(false)
         showLoadingFooter = Property(initial: moreClipsAvailaible.value, then: moreClipsAvailaible.signal)
         
-        let fetchClips = Action<(maxID: Int?, sinceID: Int?), [Clip], APIResponseError>() {
+        let fetchClips = Action<(maxID: Int?, sinceID: Int?), [Clip], ResponseError>() {
             provider.reactive.request(.listClips(maxID: $0, sinceID: $1, count: ClipsViewModel.pageSize)).decode(to: [Clip].self)
         }
         

@@ -12,7 +12,7 @@ import KeychainAccess
 
 class UserTests: XCTestCase {
     static let jsonData = CrystalClipboardAPI.signIn(email: "satan@hell.org", password: "password").sampleData
-    let user = try! JSONDecoder().decode(APIResponse<User>.self, from: UserTests.jsonData).data!
+    let user = try! APIResponseDecoder().decode(User.self, from: UserTests.jsonData)
     
     func testDecoding() {
         XCTAssertEqual(user.id, 666)
