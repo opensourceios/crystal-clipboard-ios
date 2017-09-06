@@ -80,7 +80,9 @@ extension CrystalClipboardAPI {
             let sinceStrings = Array(CrystalClipboardAPI.sampleClipStrings[..<(sampleClipStrings.count - since)])
             return .networkResponse(200, "[\((sinceStrings + maxStrings)[...(count ?? 25)].joined())]".data(using: .utf8)!)
         case .createClip(let text):
-            return .networkResponse(201, "{\"id\":\(arc4random_uniform(999) + 1),\"text\":\"\(text)\",\"created_at\":\"\(CrystalClipboardAPI.dateFormatter.string(from: Date()))\",\"user\":{\"id\":666,\"email\":\"satan@hell.org\"}}".data(using: .utf8)!)
+            let clipString = "{\"id\":\(CrystalClipboardAPI.sampleClipStrings.count + 1),\"text\":\"\(text)\",\"created_at\":\"\(CrystalClipboardAPI.dateFormatter.string(from: Date()))\",\"user\":{\"id\":666,\"email\":\"satan@hell.org\"}}"
+            CrystalClipboardAPI.sampleClipStrings.insert(clipString, at: 0)
+            return .networkResponse(201, clipString.data(using: .utf8)!)
         }
     }
     
