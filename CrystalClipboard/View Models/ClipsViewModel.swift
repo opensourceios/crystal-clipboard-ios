@@ -52,12 +52,10 @@ class ClipsViewModel: NSObject {
         clipCount = MutableProperty(dataProvider.fetchedResultsController.fetchedObjects!.count)
         showNoClipsMessage = Property(initial: clipCount.value == 0, then: clipCount.signal.map { $0 == 0 })
         
-        let moreClipsAvailaible = MutableProperty(false)
-        showLoadingFooter = Property(initial: moreClipsAvailaible.value, then: moreClipsAvailaible.signal)
-        
         let fetchClips = Action<(maxID: Int?, sinceID: Int?), [Clip], ResponseError>() {
             provider.reactive.request(.listClips(maxID: $0, sinceID: $1, count: ClipsViewModel.pageSize)).decode(to: [Clip].self)
         }
+        showLoadingFooter = fetchClips.isExecuting
         
         fetchClips.values.observeValues { clips in
             persistentContainer.performBackgroundTask { context in
