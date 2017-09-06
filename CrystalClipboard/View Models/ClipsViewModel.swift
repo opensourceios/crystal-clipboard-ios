@@ -59,10 +59,31 @@ class ClipsViewModel: NSObject {
         var maxFetchedClipID: Int?
         
         fetchClips.values.observeValues { clips in
+            let previousMaxFetchedClipID = maxFetchedClipID
             maxFetchedClipID = clips.last?.id ?? maxFetchedClipID
             persistentContainer.performBackgroundTask { context in
                 context.mergePolicy = NSMergePolicy.rollback
                 for clip in clips { ManagedClip(from: clip, context: context) }
+                let fetchedClipIDs = clips.map { $0.id }
+                print(fetchedClipIDs)
+                if let firstID = fetchedClipIDs.first, let lastID = fetchedClipIDs.last {
+                    let idKeyPath = #keyPath(ManagedClip.id)
+                    let predicateFormat = "%K < %i AND %K > %i AND NOT (%K IN %@)"
+                    let predicateArguments: [Any] = [idKeyPath, firstID, idKeyPath, lastID, idKeyPath, fetchedClipIDs, idKeyPath]
+                    var predicate = NSPredicate(format: predicateFormat, argumentArray: predicateArguments)
+                    if let previousMaxFetchedClipID = previousMaxFetchedClipID {
+                        let orPredicateFormat = "%K < %i AND %K > %i"
+                        let orPredicateArguments: [Any] = [idKeyPath, previousMaxFetchedClipID, idKeyPath, firstID]
+                        let orPredicate = NSPredicate(format: orPredicateFormat, argumentArray: orPredicateArguments)
+                        predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [predicate, orPredicate])
+                    }
+                    let clipsToDeleteFetchRequest = ManagedClip.fetchRequest() as! NSFetchRequest<ManagedClip>
+                    clipsToDeleteFetchRequest.predicate = predicate
+                    if let clipsToDelete = try? context.fetch(clipsToDeleteFetchRequest) {
+                        print("deleting: \(clipsToDelete.map { $0.id })")
+                        for clip in clipsToDelete { context.delete(clip) }
+                    }
+                }
                 try? context.save()
             }
         }
