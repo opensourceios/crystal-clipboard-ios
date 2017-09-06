@@ -9,7 +9,7 @@
 import Moya
 
 extension Response {
-    private static let decoder = APIResponseDecoder()
+    private static let decoder = ISO8601JSONDecoder()
     
     func decode<T: Decodable>(to: T.Type) throws -> T {
         do {

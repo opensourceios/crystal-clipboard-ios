@@ -1,5 +1,5 @@
 //
-//  APIResponseDecoder.swift
+//  ISO8601JSONDecoder.swift
 //  CrystalClipboard
 //
 //  Created by Justin Mazzocchi on 9/2/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class APIResponseDecoder: JSONDecoder {
+class ISO8601JSONDecoder: JSONDecoder {
     private static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = Constants.iso8601DateFormat

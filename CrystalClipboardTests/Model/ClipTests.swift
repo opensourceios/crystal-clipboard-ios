@@ -12,7 +12,7 @@ import XCTest
 class ClipTests: XCTestCase {
     func testDecoding() {
         let jsonData = CrystalClipboardAPI.createClip(text: "lol").sampleData
-        let clip = try! APIResponseDecoder().decode(Clip.self, from: jsonData)
+        let clip = try! ISO8601JSONDecoder().decode(Clip.self, from: jsonData)
         XCTAssertEqual(clip.text, "lol")
     }
 }
