@@ -16,9 +16,7 @@ class RootViewModelTests: XCTestCase {
         User.current = nil
         XCTAssertEqual(viewModel.transitionTo.value.storyboardName, .SignedOut)
         XCTAssertEqual(viewModel.transitionTo.value.controllerIdentifier, .Landing)
-        let jsonData = CrystalClipboardAPI.signIn(email: "satan@hell.org", password: "password").sampleData
-        let user = try! JSONDecoder().decode(User.self, from: jsonData)
-        User.current = user
+        User.current = User(id: 666, email: "satan@hell.org", authToken: User.AuthToken(token: "lol"))
         XCTAssertEqual(viewModel.transitionTo.value.storyboardName, .Main)
         XCTAssertEqual(viewModel.transitionTo.value.controllerIdentifier, .Clips)
     }

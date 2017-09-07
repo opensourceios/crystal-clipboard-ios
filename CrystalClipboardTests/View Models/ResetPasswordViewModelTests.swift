@@ -12,7 +12,7 @@ import enum Result.NoError
 @testable import CrystalClipboard
 
 class ResetPasswordViewModelTests: XCTestCase {
-    static let provider = APIProvider.testingProvider()
+    static let provider = TestAPIProvider()
     let viewModel = ResetPasswordViewModel(provider: provider)
     let successMessage = TestObserver<String, NoError>()
     let submissionErrors = TestObserver<SubmissionError, NoError>()
@@ -42,7 +42,7 @@ class ResetPasswordViewModelTests: XCTestCase {
     }
     
     func testNetworkErrorMessage() {
-        let offlineProvider = APIProvider.testingProvider(online: false)
+        let offlineProvider = TestAPIProvider(online: false)
         let offlineViewModel = ResetPasswordViewModel(provider: offlineProvider)
         let offlineSubmissionErrors = TestObserver<SubmissionError, NoError>()
         offlineViewModel.submit.errors.observe(offlineSubmissionErrors.observer)

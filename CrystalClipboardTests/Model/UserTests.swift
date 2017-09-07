@@ -11,13 +11,22 @@ import KeychainAccess
 @testable import CrystalClipboard
 
 class UserTests: XCTestCase {
-    static let jsonData = CrystalClipboardAPI.signIn(email: "satan@hell.org", password: "password").sampleData
-    let user = try! ISO8601JSONDecoder().decode(User.self, from: UserTests.jsonData)
+    var user: User!
+    
+    override func setUp() {
+        user = User(id: 666, email: "satan@hell.org", authToken: User.AuthToken(token: "lol"))
+    }
+    
+    override func tearDown() {
+        user = nil
+    }
     
     func testDecoding() {
-        XCTAssertEqual(user.id, 666)
-        XCTAssertEqual(user.email, "satan@hell.org")
-        XCTAssertEqual(user.authToken!.token, "Vy5KbYX116Y1him376FvAhkw")
+        let jsonData = "{\"id\":666,\"email\":\"satan@hell.org\",\"auth_token\":{\"token\":\"lol\"}}".data(using: .utf8)!
+        let decodedUser = try! JSONDecoder().decode(User.self, from: jsonData)
+        XCTAssertEqual(decodedUser.id, 666)
+        XCTAssertEqual(decodedUser.email, "satan@hell.org")
+        XCTAssertEqual(decodedUser.authToken!.token, "lol")
     }
     
     func testUserDefaultsPersistence() {
@@ -32,7 +41,7 @@ class UserTests: XCTestCase {
         let keychain = Keychain(service: Constants.keychainService)
         User.current = nil
         User.current = user
-        XCTAssertEqual(keychain["auth-token"], "Vy5KbYX116Y1him376FvAhkw")
+        XCTAssertEqual(keychain["auth-token"], "lol")
         User.current = nil
         XCTAssertNil(keychain["auth-token"])
     }

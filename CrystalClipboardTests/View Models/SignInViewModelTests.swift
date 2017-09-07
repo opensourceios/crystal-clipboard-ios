@@ -12,7 +12,7 @@ import enum Result.NoError
 @testable import CrystalClipboard
 
 class SignInViewModelTests: XCTestCase {
-    static let provider = APIProvider.testingProvider()
+    static let provider = TestAPIProvider()
     let viewModel = SignInViewModel(provider: provider)
     let submissionErrors = TestObserver<SubmissionError, NoError>()
     
@@ -57,7 +57,7 @@ class SignInViewModelTests: XCTestCase {
     }
     
     func testAlertsNetworkError() {
-        let offlineProvider = APIProvider.testingProvider(online: false)
+        let offlineProvider = TestAPIProvider(online: false)
         let offlineViewModel = SignInViewModel(provider: offlineProvider)
         let offlineSubmissionErrors = TestObserver<SubmissionError, NoError>()
         offlineViewModel.submit.errors.observe(offlineSubmissionErrors.observer)

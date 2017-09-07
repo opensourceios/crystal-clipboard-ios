@@ -11,7 +11,7 @@ import ReactiveSwift
 @testable import CrystalClipboard
 
 class SignalProducer_ExtensionsTests: XCTestCase {
-    let provider =  APIProvider.testingProvider()
+    let provider =  TestAPIProvider()
     
     func testDecode() {
         var usersDecoded = 0

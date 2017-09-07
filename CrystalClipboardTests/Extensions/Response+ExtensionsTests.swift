@@ -11,7 +11,7 @@ import XCTest
 
 class Response_ExtensionsTests: XCTestCase {
     func testDecode() {
-        APIProvider.testingProvider().request(.me) { result in
+        TestAPIProvider().request(.me) { result in
             switch result {
             case let .success(response):
                 let user = try! response.decode(to: User.self)

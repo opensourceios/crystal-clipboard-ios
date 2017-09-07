@@ -1,21 +1,36 @@
 //
-//  SampleData.swift
-//  CrystalClipboard
+//  TestAPIProvider.swift
+//  CrystalClipboardTests
 //
-//  Created by Justin Mazzocchi on 8/20/17.
+//  Created by Justin Mazzocchi on 9/7/17.
 //  Copyright © 2017 Justin Mazzocchi. All rights reserved.
 //
 
 import Moya
+@testable import CrystalClipboard
 
-extension MoyaProvider where Target == CrystalClipboardAPI {
-    static func testingProvider(online: Bool = true) -> APIProvider {
+fileprivate class TestData {
+    var clipStrings: [String] = (1...88).map { "{\"id\":\($0),\"text\":\"\(NSUUID().uuidString)\",\"created_at\":\"\(dateFormatter.string(from: Date()))\",\"user\":{\"id\":666,\"email\":\"satan@hell.org\"}}" }.reversed()
+    
+    private static let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Constants.iso8601DateFormat
+        return dateFormatter
+    }()
+}
+
+class TestAPIProvider: APIProvider {
+    private let testData: TestData
+    
+    init(online: Bool = true) {
+        let testData = TestData()
+        self.testData = testData
         let endpointClosure = { (target: CrystalClipboardAPI) -> Endpoint<CrystalClipboardAPI> in
             return Endpoint<CrystalClipboardAPI>(
                 url: URL(target: target).absoluteString,
                 sampleResponseClosure: {
                     if online {
-                        return target.sampleResponse
+                        return target.sampleResponse(testData: testData)
                     } else {
                         let error = NSError(
                             domain: NSURLErrorDomain,
@@ -28,18 +43,12 @@ extension MoyaProvider where Target == CrystalClipboardAPI {
                 task: target.task
             )
         }
-        return APIProvider(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub)
+        super.init(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub)
     }
 }
 
 extension CrystalClipboardAPI {
-    // Required for TargetType, but we're preferring sampleResponse to always get a status code
-    var sampleData: Data {
-        guard case let .networkResponse(_, data) = sampleResponse else { fatalError("sampleResponse should always have data") }
-        return data
-    }
-    
-    var sampleResponse: EndpointSampleResponse {
+    fileprivate func sampleResponse(testData: TestData) -> EndpointSampleResponse {
         switch self {
         case let .createUser(email, password):
             var errors = [[String: Any]]()
@@ -71,20 +80,20 @@ extension CrystalClipboardAPI {
         case .me:
             return .networkResponse(200, "{\"id\":666,\"email\":\"satan@hell.org\"}".data(using: .utf8)!)
         case let .listClips(maxID, count):
-            let sampleClipStrings = CrystalClipboardAPI.sampleClipStrings
+            let sampleClipStrings = testData.clipStrings
             var max = maxID ?? sampleClipStrings.count
             max = min(max, sampleClipStrings.count)
             let maxStrings = max < sampleClipStrings.count ? Array(sampleClipStrings[(sampleClipStrings.count - max + 1)...]) : sampleClipStrings
             return .networkResponse(200, "[\(maxStrings[..<(count ?? 25)].joined(separator: ","))]".data(using: .utf8)!)
         case let .createClip(text):
-            let clipString = "{\"id\":\(CrystalClipboardAPI.sampleClipStrings.count + 1),\"text\":\"\(text)\",\"created_at\":\"\(CrystalClipboardAPI.dateFormatter.string(from: Date()))\",\"user\":{\"id\":666,\"email\":\"satan@hell.org\"}}"
-            CrystalClipboardAPI.sampleClipStrings.insert(clipString, at: 0)
+            let clipString = "{\"id\":\(testData.clipStrings.count + 1),\"text\":\"\(text)\",\"created_at\":\"\(CrystalClipboardAPI.dateFormatter.string(from: Date()))\",\"user\":{\"id\":666,\"email\":\"satan@hell.org\"}}"
+            testData.clipStrings.insert(clipString, at: 0)
             return .networkResponse(201, clipString.data(using: .utf8)!)
         case let .deleteClip(id):
-            if let index = CrystalClipboardAPI.sampleClipStrings.index(where: {
+            if let index = testData.clipStrings.index(where: {
                 (try! JSONSerialization.jsonObject(with: $0.data(using: .utf8)!) as! [String: Any])["id"] as! Int == id
             }) {
-                CrystalClipboardAPI.sampleClipStrings.remove(at: index)
+                testData.clipStrings.remove(at: index)
                 return .networkResponse(204, Data())
             } else {
                 return .networkResponse(404, "{\"errors\":[{\"message\":\"Record not found\"}]}".data(using: .utf8)!)
@@ -97,6 +106,4 @@ extension CrystalClipboardAPI {
         dateFormatter.dateFormat = Constants.iso8601DateFormat
         return dateFormatter
     }()
-    
-    private static var sampleClipStrings: [String] = (1...88).map { "{\"id\":\($0),\"text\":\"\(NSUUID().uuidString)\",\"created_at\":\"\(dateFormatter.string(from: Date()))\",\"user\":{\"id\":666,\"email\":\"satan@hell.org\"}}" }.reversed()
 }

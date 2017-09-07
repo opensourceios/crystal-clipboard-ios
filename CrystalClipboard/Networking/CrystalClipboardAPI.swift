@@ -96,6 +96,10 @@ extension CrystalClipboardAPI: TargetType {
         default: return nil
         }
     }
+    
+    var sampleData: Data {
+        fatalError("sampleResponse should be used by the TestAPIProvider subclass instead of this")
+    }
 }
 
 extension CrystalClipboardAPI: AccessTokenAuthorizable {

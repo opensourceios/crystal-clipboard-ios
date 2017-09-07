@@ -22,7 +22,7 @@ struct User: Codable {
     struct AuthToken: Codable {
         let token: String
         
-        fileprivate init(token: String) {
+        init(token: String) {
             self.token = token
         }
     }
