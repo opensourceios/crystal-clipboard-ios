@@ -27,20 +27,6 @@ fileprivate struct ClipWithUser: ClipType, Codable {
     }
 }
 
-fileprivate class TestData {
-    var createdUsers = [User]()
-    var passwordsForUserIDs = [Int: String]()
-    var signedInUser: User?
-    
-    var clipStrings: [String] = (1...88).map { "{\"id\":\($0),\"text\":\"\(NSUUID().uuidString)\",\"created_at\":\"\(dateFormatter.string(from: Date()))\",\"user\":{\"id\":666,\"email\":\"satan@hell.org\"}}" }.reversed()
-    
-    private static let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = Constants.iso8601DateFormat
-        return dateFormatter
-    }()
-}
-
 class TestAPIProvider: APIProvider {
     private let testData: TestData
     
@@ -84,32 +70,25 @@ extension CrystalClipboardAPI {
     fileprivate func sampleResponse(testData: TestData) -> EndpointSampleResponse {
         switch self {
         case let .createUser(email, password):
-            var errors = [[String: Any]]()
-            if testData.createdUsers.index(where: { $0.email == email }) != nil {
-                errors.append(["message": "Email has already been taken"])
+            var errors = [RemoteError]()
+            if testData.userForEmail(email) != nil {
+                errors.append(RemoteError(message: "Email has already been taken"))
             }
             if password.count < 6 {
-                errors.append(["message": "Password is too short (minimum is 6 characters)"])
+                errors.append(RemoteError(message: "Password is too short (minimum is 6 characters)"))
             }
             if errors.count > 0 {
-                return .networkResponse(422, try! JSONSerialization.data(withJSONObject: ["errors": errors]))
+                return .networkResponse(422, encode(RemoteErrors(errors: errors)))
             } else {
-                let createdUser = User(id: testData.createdUsers.last?.id ?? 0 + 1, email: email, authToken: User.AuthToken(token: NSUUID().uuidString))
-                testData.createdUsers.append(createdUser)
-                testData.passwordsForUserIDs[createdUser.id] = password
-                testData.signedInUser = createdUser
+                let createdUser = testData.createUser(email: email, password: password)!
                 return .networkResponse(201, encode(createdUser))
             }
         case let .signIn(email, password):
             guard
-                let index = testData.createdUsers.index(where: { $0.email == email }),
-                testData.passwordsForUserIDs[testData.createdUsers[index].id] == password
-                else {
-                    return .networkResponse(401, "{\"errors\":[{\"message\":\"The email or password provided was incorrect\"}]}".data(using: .utf8)!)
+                let user = testData.authenticate(email: email, password: password) else {
+                    return .networkResponse(401, encode(RemoteErrors(errors: [RemoteError(message: "The email or password provided was incorrect")])))
             }
-            let user = testData.createdUsers[index]
-            let authenticatedUser = User(id: user.id, email: user.email, authToken: User.AuthToken(token: NSUUID().uuidString))
-            return .networkResponse(200, encode(authenticatedUser))
+            return .networkResponse(200, encode(user))
         case let .resetPassword(email):
             if email == "satan@hell.org" {
                 return .networkResponse(204, Data())
