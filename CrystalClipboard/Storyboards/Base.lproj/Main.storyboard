@@ -20,22 +20,8 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gi-9b-t9v">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </containerView>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="2gi-9b-t9v" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1Ws-Ks-HQk"/>
-                            <constraint firstItem="2gi-9b-t9v" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3eL-zw-Mcz"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2gi-9b-t9v" secondAttribute="bottom" id="QGC-NU-UlL"/>
-                            <constraint firstAttribute="trailing" secondItem="2gi-9b-t9v" secondAttribute="trailing" id="nu2-Bs-Kiu"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="containerView" destination="2gi-9b-t9v" id="ndv-hX-JkQ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

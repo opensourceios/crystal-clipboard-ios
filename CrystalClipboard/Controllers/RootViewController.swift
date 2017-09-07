@@ -22,8 +22,6 @@ class RootViewController: UIViewController, PersistentContainerSettable {
         }
     }
     
-    @IBOutlet fileprivate weak var containerView: UIView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let transition = viewModel.transitionTo.value
@@ -48,7 +46,7 @@ class RootViewController: UIViewController, PersistentContainerSettable {
 fileprivate extension RootViewController {
     func wrappingNavigation(forController: UIViewController) -> UINavigationController {
         let navigationController = UINavigationController(rootViewController: forController)
-        navigationController.view.frame = containerView.bounds
+        navigationController.view.frame = view.bounds
         return navigationController
     }
     
