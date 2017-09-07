@@ -45,24 +45,12 @@ extension CrystalClipboardAPI {
         switch self {
         case let .createUser(email, password):
             do {
-                try testData.createUser(email: email, password: password)
+                let user = try testData.createUser(email: email, password: password)
+                return .networkResponse(201, encode(user))
             } catch let remoteErrors as RemoteErrors {
                 return .networkResponse(422, encode(remoteErrors))
             } catch {
                 fatalError()
-            }
-            var errors = [RemoteError]()
-            if (try? testData.userForEmail(email)) != nil {
-                errors.append(RemoteError(message: "Email has already been taken"))
-            }
-            if password.count < 6 {
-                errors.append(RemoteError(message: "Password is too short (minimum is 6 characters)"))
-            }
-            if errors.count > 0 {
-                return .networkResponse(422, encode(RemoteErrors(errors: errors)))
-            } else {
-                let createdUser = try! testData.createUser(email: email, password: password)
-                return .networkResponse(201, encode(createdUser))
             }
         case let .signIn(email, password):
             do {
