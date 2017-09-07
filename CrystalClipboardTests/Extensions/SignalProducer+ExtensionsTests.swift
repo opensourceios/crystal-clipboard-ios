@@ -12,11 +12,12 @@ import ReactiveSwift
 
 class SignalProducer_ExtensionsTests: ProviderTestCase {    
     func testDecode() {
+        try! testData.createUser(email: "satan@hell.org", password: "password")
+        
         var usersDecoded = 0
         provider.reactive.request(.me).decode(to: User.self).start { event in
             switch event {
             case let .value(user):
-                XCTAssertEqual(user.id, 666)
                 XCTAssertEqual(user.email, "satan@hell.org")
                 usersDecoded += 1
             case .completed: XCTAssertEqual(usersDecoded, 1)

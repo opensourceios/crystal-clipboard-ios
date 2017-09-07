@@ -9,11 +9,11 @@
 import Foundation
 import class Moya.Response
 
-struct RemoteError: Codable {
+struct RemoteError: Error, Codable {
     let message: String
 }
 
-struct RemoteErrors: Codable {
+struct RemoteErrors: Error, Codable {
     let errors: [RemoteError]
 }
 

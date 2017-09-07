@@ -21,7 +21,7 @@ class SignInViewModelTests: ProviderTestCase {
         submissionErrors = TestObserver()
         viewModel.submit.errors.observe(submissionErrors.observer)
         
-        testData.createUser(email: "satan@hell.org", password: "password")
+        try! testData.createUser(email: "satan@hell.org", password: "password")
     }
     
     override func tearDown() {

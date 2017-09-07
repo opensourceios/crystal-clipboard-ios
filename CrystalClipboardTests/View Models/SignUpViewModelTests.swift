@@ -39,7 +39,7 @@ class SignUpViewModelTests: ProviderTestCase {
     }
     
     func testAlertsRemoteErrors() {
-        testData.createUser(email: "satan@hell.org", password: "password")
+        try! testData.createUser(email: "satan@hell.org", password: "password")
         
         viewModel.email.value = "satan@hell.org"
         viewModel.password.value = "p"

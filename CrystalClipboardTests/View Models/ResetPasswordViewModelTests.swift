@@ -23,6 +23,8 @@ class ResetPasswordViewModelTests: ProviderTestCase {
         submissionErrors = TestObserver()
         viewModel.submit.values.observe(successMessage.observer)
         viewModel.submit.errors.observe(submissionErrors.observer)
+        
+        try! testData.createUser(email: "satan@hell.org", password: "password")
     }
     
     override func tearDown() {

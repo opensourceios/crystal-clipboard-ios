@@ -9,26 +9,7 @@
 import Moya
 @testable import CrystalClipboard
 
-fileprivate struct ClipWithUser: ClipType, Codable {
-    private enum CodingKeys: String, CodingKey {
-        case id, text, createdAt = "created_at", user
-    }
-    
-    let id: Int
-    let text: String
-    let createdAt: Date
-    private let user: User
-    
-    init(id: Int, text: String, createdAt: Date, user: User) {
-        self.id = id
-        self.text = text
-        self.createdAt = createdAt
-        self.user = user
-    }
-}
-
 class TestAPIProvider: APIProvider {
-    
     init(testData: TestData, online: Bool = true) {
         let endpointClosure = { (target: CrystalClipboardAPI) -> Endpoint<CrystalClipboardAPI> in
             let sampleResponseClosure: Endpoint<CrystalClipboardAPI>.SampleResponseClosure = {
@@ -63,8 +44,15 @@ extension CrystalClipboardAPI {
     fileprivate func sampleResponse(testData: TestData) -> EndpointSampleResponse {
         switch self {
         case let .createUser(email, password):
+            do {
+                try testData.createUser(email: email, password: password)
+            } catch let remoteErrors as RemoteErrors {
+                return .networkResponse(422, encode(remoteErrors))
+            } catch {
+                fatalError()
+            }
             var errors = [RemoteError]()
-            if testData.userForEmail(email) != nil {
+            if (try? testData.userForEmail(email)) != nil {
                 errors.append(RemoteError(message: "Email has already been taken"))
             }
             if password.count < 6 {
@@ -73,42 +61,71 @@ extension CrystalClipboardAPI {
             if errors.count > 0 {
                 return .networkResponse(422, encode(RemoteErrors(errors: errors)))
             } else {
-                let createdUser = testData.createUser(email: email, password: password)!
+                let createdUser = try! testData.createUser(email: email, password: password)
                 return .networkResponse(201, encode(createdUser))
             }
         case let .signIn(email, password):
-            guard
-                let user = testData.authenticate(email: email, password: password) else {
-                    return .networkResponse(401, encode(RemoteErrors(errors: [RemoteError(message: "The email or password provided was incorrect")])))
+            do {
+                let user = try testData.signIn(email: email, password: password)
+                return .networkResponse(200, encode(user))
+            } catch TestData.AuthenticationError.wrongPassword {
+                return .networkResponse(401, encode(RemoteErrors(errors: [RemoteError(message: "The email or password provided was incorrect")])))
+            } catch {
+                fatalError()
             }
-            return .networkResponse(200, encode(user))
         case let .resetPassword(email):
-            if email == "satan@hell.org" {
+            do {
+                let _ = try testData.userForEmail(email)
                 return .networkResponse(204, Data())
-            } else {
-                return .networkResponse(404, "{\"errors\":[{\"message\":\"Record not found\"}]}".data(using: .utf8)!)
+            } catch TestData.RecordError.notFound {
+                return .networkResponse(404, encode(RemoteErrors(errors: [RemoteError(message: "Record not found")])))
+            } catch {
+                fatalError()
             }
-        case .signOut: return .networkResponse(204, Data())
-        case .me:
-            return .networkResponse(200, "{\"id\":666,\"email\":\"satan@hell.org\"}".data(using: .utf8)!)
-        case let .listClips(maxID, count):
-            let sampleClipStrings = testData.clipStrings
-            var max = maxID ?? sampleClipStrings.count
-            max = min(max, sampleClipStrings.count)
-            let maxStrings = max < sampleClipStrings.count ? Array(sampleClipStrings[(sampleClipStrings.count - max + 1)...]) : sampleClipStrings
-            return .networkResponse(200, "[\(maxStrings[..<(count ?? 25)].joined(separator: ","))]".data(using: .utf8)!)
-        case let .createClip(text):
-            let clipString = "{\"id\":\(testData.clipStrings.count + 1),\"text\":\"\(text)\",\"created_at\":\"\(CrystalClipboardAPI.dateFormatter.string(from: Date()))\",\"user\":{\"id\":666,\"email\":\"satan@hell.org\"}}"
-            testData.clipStrings.insert(clipString, at: 0)
-            return .networkResponse(201, clipString.data(using: .utf8)!)
-        case let .deleteClip(id):
-            if let index = testData.clipStrings.index(where: {
-                (try! JSONSerialization.jsonObject(with: $0.data(using: .utf8)!) as! [String: Any])["id"] as! Int == id
-            }) {
-                testData.clipStrings.remove(at: index)
+        case .signOut:
+            do {
+                try testData.signOut()
                 return .networkResponse(204, Data())
-            } else {
-                return .networkResponse(404, "{\"errors\":[{\"message\":\"Record not found\"}]}".data(using: .utf8)!)
+            } catch TestData.AuthenticationError.unauthenticated {
+                return .networkResponse(401, Data())
+            } catch {
+                fatalError()
+            }
+        case .me:
+            guard let user = testData.signedInUser else { return .networkResponse(401, Data()) }
+            return .networkResponse(200, encode(user))
+        case let .listClips(maxID, count):
+            do {
+                let clips = try testData.listClips(maxID: maxID, count: count)
+                return .networkResponse(200, encode(clips))
+            } catch TestData.AuthenticationError.unauthenticated {
+                return .networkResponse(401, Data())
+            } catch {
+                fatalError()
+            }
+        case let .createClip(text):
+            do {
+                let clip = try testData.createClip(text: text)
+                return .networkResponse(201, encode(clip))
+            } catch TestData.AuthenticationError.unauthenticated {
+                return .networkResponse(401, Data())
+            } catch TestData.ClipError.textMissing {
+                let error = RemoteError(message: "Text is too short (minimum is 1 character)")
+                return .networkResponse(422, encode(RemoteErrors(errors: [error])))
+            } catch let TestData.ClipError.textTooLong(limit) {
+                let error = RemoteError(message: "Text is too long (maximum is \(limit) characters)")
+                return .networkResponse(422, encode(RemoteErrors(errors: [error])))
+            } catch {
+                fatalError()
+            }
+        case let .deleteClip(id):
+            do {
+                try testData.deleteClip(id: id)
+                return .networkResponse(204, Data())
+            } catch TestData.RecordError.notFound {
+                return .networkResponse(404, encode(RemoteErrors(errors: [RemoteError(message: "Record not found")])))
+            } catch {
+                fatalError()
             }
         }
     }

@@ -15,6 +15,7 @@ import struct CellHelpers.ChangeSet
 
 class ClipsViewModelTests: CoreDataTestCase {
     static let pageSize = 25
+    static let initialClips = 55
     
     class Controller {
         let (pageSignal, pageObserver) = Signal<Int, NoError>.pipe()
@@ -37,12 +38,19 @@ class ClipsViewModelTests: CoreDataTestCase {
         viewModel = ClipsViewModel(provider: provider, persistentContainer: persistentContainer, pageSize: ClipsViewModelTests.pageSize)
         controller = Controller()
         controller.viewModel = viewModel
+        
+        try! testData.createUser(email: "satan@hell.org", password: "password")
+        for _ in 0..<ClipsViewModelTests.initialClips {
+            try! testData.createClip(text: NSUUID().uuidString)
+        }
     }
     
     func testFetchesAndInsertsClips() {
         let changeSetObserver = TestObserver<ChangeSet, NoError>()
         viewModel.changeSets.observe(changeSetObserver.observer)
         controller.displayPage(0)
+        print((try! testData.listClips(maxID: nil, count: nil)).count)
+        
         expect(after: 0.01, by: 0.1, description: "Clips fetched and inserted", execute: {
             XCTAssertEqual(changeSetObserver.values.first?.insertions.count, ClipsViewModelTests.pageSize)
         })
