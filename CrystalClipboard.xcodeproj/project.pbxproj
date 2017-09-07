@@ -10,9 +10,12 @@
 		071DD13392D6F63A9C9E6577 /* Pods_CrystalClipboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD82DAABCF3EFB0DB952AD3 /* Pods_CrystalClipboard.framework */; };
 		5139455BEAD1A38DFBEC3EFE /* Pods_CrystalClipboard_CrystalClipboardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB6D1252A5CFB8E0A71638C /* Pods_CrystalClipboard_CrystalClipboardUITests.framework */; };
 		AC34E29D5531A22239EC7F0A /* Pods_CrystalClipboard_CrystalClipboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6AEB327ECEAE3823D0BFB96 /* Pods_CrystalClipboard_CrystalClipboardTests.framework */; };
-		D00A00821F61A74900B11866 /* TestAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A00811F61A74900B11866 /* TestAPIProvider.swift */; };
 		D00A00841F61AC9300B11866 /* ISO8601JSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A00831F61AC9300B11866 /* ISO8601JSONEncoder.swift */; };
 		D00A00891F61C35B00B11866 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A00881F61C35B00B11866 /* TestData.swift */; };
+		D00A008E1F61C49000B11866 /* CoreDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A008A1F61C49000B11866 /* CoreDataTestCase.swift */; };
+		D00A008F1F61C49000B11866 /* XCTestCase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A008B1F61C49000B11866 /* XCTestCase+Extensions.swift */; };
+		D00A00901F61C49000B11866 /* TestObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A008C1F61C49000B11866 /* TestObserver.swift */; };
+		D00A00911F61C49000B11866 /* TestAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A008D1F61C49000B11866 /* TestAPIProvider.swift */; };
 		D00D68371F55CAF80029BC79 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68361F55CAF80029BC79 /* Identifiers.swift */; };
 		D00D68421F55DA210029BC79 /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68411F55DA210029BC79 /* UIStoryboard+Extensions.swift */; };
 		D00D68441F55DEE60029BC79 /* SignedOut.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D00D68431F55DEE60029BC79 /* SignedOut.storyboard */; };
@@ -48,7 +51,6 @@
 		D04460BD1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */; };
 		D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */; };
 		D05335FC1F4A861A0077B1F9 /* ManagedClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */; };
-		D05335FE1F4A87DA0077B1F9 /* CoreDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FD1F4A87DA0077B1F9 /* CoreDataTestCase.swift */; };
 		D06EF5CF1F5B62970093C87D /* SignalProducer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06EF5CE1F5B62970093C87D /* SignalProducer+Extensions.swift */; };
 		D06EF5D21F5B650F0093C87D /* Response+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06EF5D11F5B650F0093C87D /* Response+ExtensionsTests.swift */; };
 		D0909B6D1F4D2513000F584B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0909B6C1F4D2513000F584B /* Localizable.strings */; };
@@ -61,9 +63,7 @@
 		D0979B6B1F4B33F300B8407F /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B6A1F4B33F300B8407F /* LandingViewController.swift */; };
 		D0979B6D1F4B341200B8407F /* LandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B6C1F4B341200B8407F /* LandingViewModel.swift */; };
 		D0979B801F4B495800B8407F /* SignUpViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B7F1F4B495800B8407F /* SignUpViewModelTests.swift */; };
-		D0979B821F4B580800B8407F /* TestObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0979B811F4B580800B8407F /* TestObserver.swift */; };
 		D09DCFF21F5CD4C4000D4B10 /* SubmissionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09DCFF11F5CD4C4000D4B10 /* SubmissionError.swift */; };
-		D0AACAAB1F6106E9001D4FFF /* XCTestCase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AACAAA1F6106E9001D4FFF /* XCTestCase+Extensions.swift */; };
 		D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */; };
 		D0B0CDF01F4671E8006201CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDEE1F4671E8006201CE /* Main.storyboard */; };
 		D0B0CDF21F4671E8006201CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDF11F4671E8006201CE /* Assets.xcassets */; };
@@ -109,9 +109,12 @@
 		AAB6D1252A5CFB8E0A71638C /* Pods_CrystalClipboard_CrystalClipboardUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrystalClipboard_CrystalClipboardUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C526E4CC18C0F90CF02AF061 /* Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig"; sourceTree = "<group>"; };
 		C6AEB327ECEAE3823D0BFB96 /* Pods_CrystalClipboard_CrystalClipboardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrystalClipboard_CrystalClipboardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D00A00811F61A74900B11866 /* TestAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAPIProvider.swift; sourceTree = "<group>"; };
 		D00A00831F61AC9300B11866 /* ISO8601JSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISO8601JSONEncoder.swift; sourceTree = "<group>"; };
 		D00A00881F61C35B00B11866 /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestData.swift; path = Utilities/TestData.swift; sourceTree = "<group>"; };
+		D00A008A1F61C49000B11866 /* CoreDataTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataTestCase.swift; path = Utilities/CoreDataTestCase.swift; sourceTree = "<group>"; };
+		D00A008B1F61C49000B11866 /* XCTestCase+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "XCTestCase+Extensions.swift"; path = "Utilities/XCTestCase+Extensions.swift"; sourceTree = "<group>"; };
+		D00A008C1F61C49000B11866 /* TestObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestObserver.swift; path = Utilities/TestObserver.swift; sourceTree = "<group>"; };
+		D00A008D1F61C49000B11866 /* TestAPIProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestAPIProvider.swift; path = Utilities/TestAPIProvider.swift; sourceTree = "<group>"; };
 		D00D68361F55CAF80029BC79 /* Identifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		D00D68411F55DA210029BC79 /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Extensions.swift"; path = "Extensions/UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
 		D00D68431F55DEE60029BC79 /* SignedOut.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignedOut.storyboard; sourceTree = "<group>"; };
@@ -147,7 +150,6 @@
 		D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SignalProducer+ExtensionsTests.swift"; path = "Extensions/SignalProducer+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrystalClipboardAPI.swift; path = Networking/CrystalClipboardAPI.swift; sourceTree = "<group>"; };
 		D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedClipTests.swift; path = Model/ManagedClipTests.swift; sourceTree = "<group>"; };
-		D05335FD1F4A87DA0077B1F9 /* CoreDataTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestCase.swift; sourceTree = "<group>"; };
 		D06EF5CE1F5B62970093C87D /* SignalProducer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SignalProducer+Extensions.swift"; path = "Extensions/SignalProducer+Extensions.swift"; sourceTree = "<group>"; };
 		D06EF5D11F5B650F0093C87D /* Response+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Response+ExtensionsTests.swift"; path = "Extensions/Response+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		D0909B6C1F4D2513000F584B /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -160,9 +162,7 @@
 		D0979B6A1F4B33F300B8407F /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		D0979B6C1F4B341200B8407F /* LandingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingViewModel.swift; path = "View Models/LandingViewModel.swift"; sourceTree = "<group>"; };
 		D0979B7F1F4B495800B8407F /* SignUpViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModelTests.swift; path = "View Models/SignUpViewModelTests.swift"; sourceTree = "<group>"; };
-		D0979B811F4B580800B8407F /* TestObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestObserver.swift; sourceTree = "<group>"; };
 		D09DCFF11F5CD4C4000D4B10 /* SubmissionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SubmissionError.swift; path = Errors/SubmissionError.swift; sourceTree = "<group>"; };
-		D0AACAAA1F6106E9001D4FFF /* XCTestCase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extensions.swift"; sourceTree = "<group>"; };
 		D0B0CDE71F4671E8006201CE /* CrystalClipboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrystalClipboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B0CDEF1F4671E8006201CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -239,7 +239,11 @@
 		D00A00871F61C33F00B11866 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D00A008A1F61C49000B11866 /* CoreDataTestCase.swift */,
+				D00A008D1F61C49000B11866 /* TestAPIProvider.swift */,
 				D00A00881F61C35B00B11866 /* TestData.swift */,
+				D00A008C1F61C49000B11866 /* TestObserver.swift */,
+				D00A008B1F61C49000B11866 /* XCTestCase+Extensions.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -471,16 +475,12 @@
 		D0B0CDFE1F4671E8006201CE /* CrystalClipboardTests */ = {
 			isa = PBXGroup;
 			children = (
-				D05335FD1F4A87DA0077B1F9 /* CoreDataTestCase.swift */,
 				D00D68661F58A5490029BC79 /* Data Providers */,
 				D06EF5D01F5B64E80093C87D /* Extensions */,
 				D05335FA1F4A85FA0077B1F9 /* Model */,
 				D035A2C71F4692A800B6887B /* Supporting Files */,
-				D00A00811F61A74900B11866 /* TestAPIProvider.swift */,
-				D0979B811F4B580800B8407F /* TestObserver.swift */,
 				D00A00871F61C33F00B11866 /* Utilities */,
 				D0979B7E1F4B491100B8407F /* View Models */,
-				D0AACAAA1F6106E9001D4FFF /* XCTestCase+Extensions.swift */,
 			);
 			path = CrystalClipboardTests;
 			sourceTree = "<group>";
@@ -918,22 +918,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D05335FE1F4A87DA0077B1F9 /* CoreDataTestCase.swift in Sources */,
 				D0979B801F4B495800B8407F /* SignUpViewModelTests.swift in Sources */,
 				D00D68681F58A55C0029BC79 /* ClipsDataProviderTests.swift in Sources */,
+				D00A008F1F61C49000B11866 /* XCTestCase+Extensions.swift in Sources */,
 				D00D68521F5733EC0029BC79 /* SignInViewModelTests.swift in Sources */,
-				D00A00821F61A74900B11866 /* TestAPIProvider.swift in Sources */,
 				D095D8CD1F4E2E9300D15CE4 /* UserTests.swift in Sources */,
+				D00A00911F61C49000B11866 /* TestAPIProvider.swift in Sources */,
+				D00A008E1F61C49000B11866 /* CoreDataTestCase.swift in Sources */,
 				D05335FC1F4A861A0077B1F9 /* ManagedClipTests.swift in Sources */,
-				D0AACAAB1F6106E9001D4FFF /* XCTestCase+Extensions.swift in Sources */,
 				D00A00891F61C35B00B11866 /* TestData.swift in Sources */,
 				D0C1F6131F578FE600E49B77 /* ClipsViewModelTests.swift in Sources */,
 				D06EF5D21F5B650F0093C87D /* Response+ExtensionsTests.swift in Sources */,
 				D00D684A1F55E8D70029BC79 /* RootViewModelTests.swift in Sources */,
-				D0979B821F4B580800B8407F /* TestObserver.swift in Sources */,
 				D00D685E1F57631A0029BC79 /* ResetPasswordViewModelTests.swift in Sources */,
 				D03ABD421F4E902400A7D473 /* ClipTests.swift in Sources */,
 				D04460BD1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift in Sources */,
+				D00A00901F61C49000B11866 /* TestObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
