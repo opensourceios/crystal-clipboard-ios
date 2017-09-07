@@ -49,7 +49,7 @@ class ClipsViewModelTests: CoreDataTestCase {
         })
         controller.displayPage(1)
         expect(after: 0.1, by: 1, description: "Second page fetched", execute: {
-            XCTAssertEqual(changeSetObserver.values.last?.insertions.count, ClipsViewModelTests.pageSize)
+            XCTAssertEqual(changeSetObserver.values[1].insertions.count, ClipsViewModelTests.pageSize)
         })
     }
 }
