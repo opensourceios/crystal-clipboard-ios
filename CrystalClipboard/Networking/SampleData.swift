@@ -41,7 +41,6 @@ extension CrystalClipboardAPI {
     
     var sampleResponse: EndpointSampleResponse {
         switch self {
-        case .signOut, .deleteClip: return .networkResponse(204, Data())
         case let .createUser(email, password):
             var errors = [[String: Any]]()
             if email == "satan@hell.org" {
@@ -68,9 +67,10 @@ extension CrystalClipboardAPI {
             } else {
                 return .networkResponse(404, "{\"errors\":[{\"message\":\"Record not found\"}]}".data(using: .utf8)!)
             }
+        case .signOut: return .networkResponse(204, Data())
         case .me:
             return .networkResponse(200, "{\"id\":666,\"email\":\"satan@hell.org\"}".data(using: .utf8)!)
-        case .listClips(let maxID, let sinceID, let count):
+        case let .listClips(maxID, sinceID, count):
             let sampleClipStrings = CrystalClipboardAPI.sampleClipStrings
             var max = maxID ?? sampleClipStrings.count
             max = min(max, sampleClipStrings.count)
@@ -78,11 +78,20 @@ extension CrystalClipboardAPI {
             var since = sinceID ?? sampleClipStrings.count
             since = min(since, sampleClipStrings.count)
             let sinceStrings = Array(CrystalClipboardAPI.sampleClipStrings[..<(sampleClipStrings.count - since)])
-            return .networkResponse(200, "[\((sinceStrings + maxStrings)[...(count ?? 25)].joined())]".data(using: .utf8)!)
-        case .createClip(let text):
+            return .networkResponse(200, "[\((sinceStrings + maxStrings)[..<(count ?? 25)].joined(separator: ","))]".data(using: .utf8)!)
+        case let .createClip(text):
             let clipString = "{\"id\":\(CrystalClipboardAPI.sampleClipStrings.count + 1),\"text\":\"\(text)\",\"created_at\":\"\(CrystalClipboardAPI.dateFormatter.string(from: Date()))\",\"user\":{\"id\":666,\"email\":\"satan@hell.org\"}}"
             CrystalClipboardAPI.sampleClipStrings.insert(clipString, at: 0)
             return .networkResponse(201, clipString.data(using: .utf8)!)
+        case let .deleteClip(id):
+            if let index = CrystalClipboardAPI.sampleClipStrings.index(where: {
+                (try! JSONSerialization.jsonObject(with: $0.data(using: .utf8)!) as! [String: Any])["id"] as! Int == id
+            }) {
+                CrystalClipboardAPI.sampleClipStrings.remove(at: index)
+                return .networkResponse(204, Data())
+            } else {
+                return .networkResponse(404, "{\"errors\":[{\"message\":\"Record not found\"}]}".data(using: .utf8)!)
+            }
         }
     }
     
