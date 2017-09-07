@@ -12,18 +12,21 @@ import enum Result.NoError
 @testable import CrystalClipboard
 
 class SignUpViewModelTests: XCTestCase {
-    static let provider = TestAPIProvider()
-    let viewModel = SignUpViewModel(provider: provider)
-    let submissionErrors = TestObserver<SubmissionError, NoError>()
+    var provider: TestAPIProvider!
+    var viewModel: SignUpViewModel!
+    var submissionErrors: TestObserver<SubmissionError, NoError>!
     
     override func setUp() {
         super.setUp()
+        provider = TestAPIProvider()
+        viewModel = SignUpViewModel(provider: provider)
+        submissionErrors = TestObserver()
         viewModel.submit.errors.observe(submissionErrors.observer)
     }
     
     func testSignUpEnabled() {
         XCTAssertFalse(viewModel.submit.isEnabled.value)
-        viewModel.email.value = "user@domain.com"
+        viewModel.email.value = "satan@hell.org"
         XCTAssertFalse(viewModel.submit.isEnabled.value)
         viewModel.password.value = "password"
         XCTAssertTrue(viewModel.submit.isEnabled.value)
@@ -31,13 +34,14 @@ class SignUpViewModelTests: XCTestCase {
     
     func testSignUpSetsCurrentUser() {
         User.current = nil
-        viewModel.email.value = "user@domain.org"
+        viewModel.email.value = "satan@hell.org"
         viewModel.password.value = "password"
         viewModel.submit.apply().start()
-        XCTAssertEqual(User.current!.email, "user@domain.org")
+        XCTAssertEqual(User.current!.email, "satan@hell.org")
     }
     
     func testAlertsRemoteErrors() {
+        provider.request(.createUser(email: "satan@hell.org", password: "password"))
         viewModel.email.value = "satan@hell.org"
         viewModel.password.value = "p"
         viewModel.submit.apply().start()
@@ -57,13 +61,14 @@ class SignUpViewModelTests: XCTestCase {
     }
     
     func testAlertsNetworkError() {
-        let offlineProvider = TestAPIProvider(online: false)
-        let offlineViewModel = SignUpViewModel(provider: offlineProvider)
-        let offlineSubmissionErrors = TestObserver<SubmissionError, NoError>()
-        offlineViewModel.submit.errors.observe(offlineSubmissionErrors.observer)
-        offlineViewModel.email.value = "user@domain.com"
-        offlineViewModel.password.value = "password"
-        offlineViewModel.submit.apply().start()
-        offlineSubmissionErrors.assertValues([SubmissionError(message: "sign-up.could-not".localized)])
+        provider = TestAPIProvider(online: false)
+        viewModel = SignUpViewModel(provider: provider)
+        submissionErrors = TestObserver<SubmissionError, NoError>()
+        viewModel.submit.errors.observe(submissionErrors.observer)
+        
+        viewModel.email.value = "user@domain.com"
+        viewModel.password.value = "password"
+        viewModel.submit.apply().start()
+        submissionErrors.assertValues([SubmissionError(message: "sign-up.could-not".localized)])
     }
 }

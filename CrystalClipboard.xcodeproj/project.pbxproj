@@ -11,6 +11,7 @@
 		5139455BEAD1A38DFBEC3EFE /* Pods_CrystalClipboard_CrystalClipboardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB6D1252A5CFB8E0A71638C /* Pods_CrystalClipboard_CrystalClipboardUITests.framework */; };
 		AC34E29D5531A22239EC7F0A /* Pods_CrystalClipboard_CrystalClipboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6AEB327ECEAE3823D0BFB96 /* Pods_CrystalClipboard_CrystalClipboardTests.framework */; };
 		D00A00821F61A74900B11866 /* TestAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A00811F61A74900B11866 /* TestAPIProvider.swift */; };
+		D00A00841F61AC9300B11866 /* ISO8601JSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A00831F61AC9300B11866 /* ISO8601JSONEncoder.swift */; };
 		D00D68371F55CAF80029BC79 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68361F55CAF80029BC79 /* Identifiers.swift */; };
 		D00D68421F55DA210029BC79 /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68411F55DA210029BC79 /* UIStoryboard+Extensions.swift */; };
 		D00D68441F55DEE60029BC79 /* SignedOut.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D00D68431F55DEE60029BC79 /* SignedOut.storyboard */; };
@@ -109,6 +110,7 @@
 		C526E4CC18C0F90CF02AF061 /* Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig"; sourceTree = "<group>"; };
 		C6AEB327ECEAE3823D0BFB96 /* Pods_CrystalClipboard_CrystalClipboardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrystalClipboard_CrystalClipboardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D00A00811F61A74900B11866 /* TestAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAPIProvider.swift; sourceTree = "<group>"; };
+		D00A00831F61AC9300B11866 /* ISO8601JSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISO8601JSONEncoder.swift; sourceTree = "<group>"; };
 		D00D68361F55CAF80029BC79 /* Identifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		D00D68411F55DA210029BC79 /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Extensions.swift"; path = "Extensions/UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
 		D00D68431F55DEE60029BC79 /* SignedOut.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignedOut.storyboard; sourceTree = "<group>"; };
@@ -329,9 +331,10 @@
 		D04C144C1F46975E0068AEA0 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				D0253F8E1F5A83B60066B444 /* ISO8601JSONDecoder.swift */,
 				D0D59B6F1F4A0A0100200ABD /* Cable.swift */,
 				D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */,
+				D0253F8E1F5A83B60066B444 /* ISO8601JSONDecoder.swift */,
+				D00A00831F61AC9300B11866 /* ISO8601JSONEncoder.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 				D0C1F6171F579D8700E49B77 /* ProviderSettable.swift in Sources */,
 				D00D68421F55DA210029BC79 /* UIStoryboard+Extensions.swift in Sources */,
 				D0C1F6111F578FC100E49B77 /* ClipsViewModel.swift in Sources */,
+				D00A00841F61AC9300B11866 /* ISO8601JSONEncoder.swift in Sources */,
 				D00D684E1F5733660029BC79 /* SignInViewController.swift in Sources */,
 				D00D68461F55E5140029BC79 /* RootViewModel.swift in Sources */,
 				D0909B701F4D282C000F584B /* String+Localized.swift in Sources */,

@@ -12,13 +12,24 @@ import enum Result.NoError
 @testable import CrystalClipboard
 
 class SignInViewModelTests: XCTestCase {
-    static let provider = TestAPIProvider()
-    let viewModel = SignInViewModel(provider: provider)
-    let submissionErrors = TestObserver<SubmissionError, NoError>()
+    var provider: TestAPIProvider!
+    var viewModel: SignInViewModel!
+    var submissionErrors: TestObserver<SubmissionError, NoError>!
     
     override func setUp() {
         super.setUp()
+        provider = TestAPIProvider()
+        viewModel = SignInViewModel(provider: provider)
+        submissionErrors = TestObserver()
         viewModel.submit.errors.observe(submissionErrors.observer)
+        
+        provider.request(.createUser(email: "satan@hell.org", password: "password"))
+    }
+    
+    override func tearDown() {
+        submissionErrors = nil
+        viewModel = nil
+        provider = nil
     }
     
     func testSignInEnabled() {
@@ -57,13 +68,14 @@ class SignInViewModelTests: XCTestCase {
     }
     
     func testAlertsNetworkError() {
-        let offlineProvider = TestAPIProvider(online: false)
-        let offlineViewModel = SignInViewModel(provider: offlineProvider)
-        let offlineSubmissionErrors = TestObserver<SubmissionError, NoError>()
-        offlineViewModel.submit.errors.observe(offlineSubmissionErrors.observer)
-        offlineViewModel.email.value = "satan@hell.org"
-        offlineViewModel.password.value = "password"
-        offlineViewModel.submit.apply().start()
-        offlineSubmissionErrors.assertValues([SubmissionError(message: "sign-in.could-not".localized)])
+        provider = TestAPIProvider(online: false)
+        viewModel = SignInViewModel(provider: provider)
+        submissionErrors = TestObserver()
+        
+        viewModel.submit.errors.observe(submissionErrors.observer)
+        viewModel.email.value = "satan@hell.org"
+        viewModel.password.value = "password"
+        viewModel.submit.apply().start()
+        submissionErrors.assertValues([SubmissionError(message: "sign-in.could-not".localized)])
     }
 }
