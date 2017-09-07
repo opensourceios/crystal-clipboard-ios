@@ -51,8 +51,8 @@ class ClipsViewModel: NSObject {
         clipCount = MutableProperty(dataProvider.fetchedResultsController.fetchedObjects!.count)
         showNoClipsMessage = Property(initial: clipCount.value == 0, then: clipCount.signal.map { $0 == 0 })
         
-        let fetchClips = Action<(maxID: Int?, sinceID: Int?), [Clip], ResponseError>() {
-            provider.reactive.request(.listClips(maxID: $0, sinceID: $1, count: pageSize)).decode(to: [Clip].self)
+        let fetchClips = Action<Int?, [Clip], ResponseError>() {
+            provider.reactive.request(.listClips(maxID: $0, count: pageSize)).decode(to: [Clip].self)
         }
         showLoadingFooter = fetchClips.isExecuting
         
@@ -90,7 +90,7 @@ class ClipsViewModel: NSObject {
             let presentClips = dataProvider.fetchedResultsController.fetchedObjects!
             let clipWithMaxIDIndex = page * pageSize - 1
             let maxID = clipWithMaxIDIndex > 0 ? presentClips[clipWithMaxIDIndex].id : nil
-            fetchClips.apply((maxID: maxID, sinceID: nil)).start()
+            fetchClips.apply(maxID).start()
         }
         
         super.init()

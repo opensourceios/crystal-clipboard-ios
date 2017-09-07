@@ -70,15 +70,12 @@ extension CrystalClipboardAPI {
         case .signOut: return .networkResponse(204, Data())
         case .me:
             return .networkResponse(200, "{\"id\":666,\"email\":\"satan@hell.org\"}".data(using: .utf8)!)
-        case let .listClips(maxID, sinceID, count):
+        case let .listClips(maxID, count):
             let sampleClipStrings = CrystalClipboardAPI.sampleClipStrings
             var max = maxID ?? sampleClipStrings.count
             max = min(max, sampleClipStrings.count)
             let maxStrings = max < sampleClipStrings.count ? Array(sampleClipStrings[(sampleClipStrings.count - max + 1)...]) : sampleClipStrings
-            var since = sinceID ?? sampleClipStrings.count
-            since = min(since, sampleClipStrings.count)
-            let sinceStrings = Array(CrystalClipboardAPI.sampleClipStrings[..<(sampleClipStrings.count - since)])
-            return .networkResponse(200, "[\((sinceStrings + maxStrings)[..<(count ?? 25)].joined(separator: ","))]".data(using: .utf8)!)
+            return .networkResponse(200, "[\(maxStrings[..<(count ?? 25)].joined(separator: ","))]".data(using: .utf8)!)
         case let .createClip(text):
             let clipString = "{\"id\":\(CrystalClipboardAPI.sampleClipStrings.count + 1),\"text\":\"\(text)\",\"created_at\":\"\(CrystalClipboardAPI.dateFormatter.string(from: Date()))\",\"user\":{\"id\":666,\"email\":\"satan@hell.org\"}}"
             CrystalClipboardAPI.sampleClipStrings.insert(clipString, at: 0)

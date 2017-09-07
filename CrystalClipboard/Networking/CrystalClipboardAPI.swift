@@ -32,7 +32,7 @@ enum CrystalClipboardAPI {
     case signOut
     case resetPassword(email: String)
     case me
-    case listClips(maxID: Int?, sinceID: Int?, count: Int?)
+    case listClips(maxID: Int?, count: Int?)
     case createClip(text: String)
     case deleteClip(id: Int)
 }
@@ -86,10 +86,9 @@ extension CrystalClipboardAPI: TargetType {
             return ["email": email, "password": password]
         case let .resetPassword(email):
             return ["email": email]
-        case let .listClips(maxID, sinceID, count):
+        case let .listClips(maxID, count):
             var params = [String: Int]()
             params["max_id"] = maxID
-            params["since_id"] = sinceID
             params["count"] = count
             return params
         case let .createClip(text):
