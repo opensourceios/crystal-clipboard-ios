@@ -14,6 +14,7 @@ class TestData {
     private var passwordsForUserIDs = [Int: String]()
     private var signedInUser: User?
     
+    @discardableResult
     func createUser(email: String, password: String) -> User? {
         guard userForEmail(email) == nil else { return nil }
         let user = User(id: users.last?.id ?? 0 + 1, email: email, authToken: User.AuthToken(token: NSUUID().uuidString))

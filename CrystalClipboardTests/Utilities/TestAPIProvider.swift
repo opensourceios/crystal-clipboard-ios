@@ -28,11 +28,8 @@ fileprivate struct ClipWithUser: ClipType, Codable {
 }
 
 class TestAPIProvider: APIProvider {
-    private let testData: TestData
     
-    init(online: Bool = true) {
-        let testData = TestData()
-        self.testData = testData
+    init(testData: TestData, online: Bool = true) {
         let endpointClosure = { (target: CrystalClipboardAPI) -> Endpoint<CrystalClipboardAPI> in
             let sampleResponseClosure: Endpoint<CrystalClipboardAPI>.SampleResponseClosure = {
                 if online {
@@ -53,10 +50,6 @@ class TestAPIProvider: APIProvider {
             )
         }
         super.init(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub)
-    }
-    
-    func request(_ target: CrystalClipboardAPI) {
-        super.request(target, completion: { _ in })
     }
 }
 

@@ -11,16 +11,25 @@ import ReactiveSwift
 import enum Result.NoError
 @testable import CrystalClipboard
 
-class ResetPasswordViewModelTests: XCTestCase {
-    static let provider = TestAPIProvider()
-    let viewModel = ResetPasswordViewModel(provider: provider)
-    let successMessage = TestObserver<String, NoError>()
-    let submissionErrors = TestObserver<SubmissionError, NoError>()
+class ResetPasswordViewModelTests: ProviderTestCase {
+    var viewModel: ResetPasswordViewModel!
+    var successMessage: TestObserver<String, NoError>!
+    var submissionErrors: TestObserver<SubmissionError, NoError>!
     
     override func setUp() {
         super.setUp()
+        viewModel = ResetPasswordViewModel(provider: provider)
+        successMessage = TestObserver()
+        submissionErrors = TestObserver()
         viewModel.submit.values.observe(successMessage.observer)
         viewModel.submit.errors.observe(submissionErrors.observer)
+    }
+    
+    override func tearDown() {
+        submissionErrors = nil
+        successMessage = nil
+        viewModel = nil
+        super.tearDown()
     }
     
     func testResetPasswordEnabled() {
@@ -42,12 +51,14 @@ class ResetPasswordViewModelTests: XCTestCase {
     }
     
     func testNetworkErrorMessage() {
-        let offlineProvider = TestAPIProvider(online: false)
-        let offlineViewModel = ResetPasswordViewModel(provider: offlineProvider)
-        let offlineSubmissionErrors = TestObserver<SubmissionError, NoError>()
-        offlineViewModel.submit.errors.observe(offlineSubmissionErrors.observer)
-        offlineViewModel.email.value = "satan@hell.org"
-        offlineViewModel.submit.apply().start()
-        offlineSubmissionErrors.assertValues([SubmissionError(message: "reset-password.could-not".localized)])
+        provider = TestAPIProvider(testData: testData, online: false)
+        viewModel = ResetPasswordViewModel(provider: provider)
+        successMessage = nil
+        submissionErrors = TestObserver<SubmissionError, NoError>()
+        viewModel.submit.errors.observe(submissionErrors.observer)
+        
+        viewModel.email.value = "satan@hell.org"
+        viewModel.submit.apply().start()
+        submissionErrors.assertValues([SubmissionError(message: "reset-password.could-not".localized)])
     }
 }

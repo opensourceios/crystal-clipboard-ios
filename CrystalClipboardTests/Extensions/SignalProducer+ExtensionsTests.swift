@@ -10,9 +10,7 @@ import XCTest
 import ReactiveSwift
 @testable import CrystalClipboard
 
-class SignalProducer_ExtensionsTests: XCTestCase {
-    let provider =  TestAPIProvider()
-    
+class SignalProducer_ExtensionsTests: ProviderTestCase {    
     func testDecode() {
         var usersDecoded = 0
         provider.reactive.request(.me).decode(to: User.self).start { event in

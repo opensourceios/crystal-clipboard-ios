@@ -9,18 +9,24 @@
 import XCTest
 import CoreData
 
-class CoreDataTestCase: XCTestCase {
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "CrystalClipboard")
+class CoreDataTestCase: ProviderTestCase {
+    var persistentContainer: NSPersistentContainer!
+    
+    override func setUp() {
+        super.setUp()
+        persistentContainer = NSPersistentContainer(name: "CrystalClipboard")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
-        container.persistentStoreDescriptions = [description]
-        container.loadPersistentStores { storeDescription, error in
+        persistentContainer.persistentStoreDescriptions = [description]
+        persistentContainer.loadPersistentStores { storeDescription, error in
             if let error = error {
                 fatalError("Could not load store: \(error)")
             }
         }
-        container.viewContext.automaticallyMergesChangesFromParent = true
-        return container
-    }()
+        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+    }
 }

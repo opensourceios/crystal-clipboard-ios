@@ -11,14 +11,12 @@ import ReactiveSwift
 import enum Result.NoError
 @testable import CrystalClipboard
 
-class SignUpViewModelTests: XCTestCase {
-    var provider: TestAPIProvider!
+class SignUpViewModelTests: ProviderTestCase {
     var viewModel: SignUpViewModel!
     var submissionErrors: TestObserver<SubmissionError, NoError>!
     
     override func setUp() {
         super.setUp()
-        provider = TestAPIProvider()
         viewModel = SignUpViewModel(provider: provider)
         submissionErrors = TestObserver()
         viewModel.submit.errors.observe(submissionErrors.observer)
@@ -41,7 +39,8 @@ class SignUpViewModelTests: XCTestCase {
     }
     
     func testAlertsRemoteErrors() {
-        provider.request(.createUser(email: "satan@hell.org", password: "password"))
+        testData.createUser(email: "satan@hell.org", password: "password")
+        
         viewModel.email.value = "satan@hell.org"
         viewModel.password.value = "p"
         viewModel.submit.apply().start()
@@ -61,7 +60,7 @@ class SignUpViewModelTests: XCTestCase {
     }
     
     func testAlertsNetworkError() {
-        provider = TestAPIProvider(online: false)
+        provider = TestAPIProvider(testData: testData, online: false)
         viewModel = SignUpViewModel(provider: provider)
         submissionErrors = TestObserver<SubmissionError, NoError>()
         viewModel.submit.errors.observe(submissionErrors.observer)

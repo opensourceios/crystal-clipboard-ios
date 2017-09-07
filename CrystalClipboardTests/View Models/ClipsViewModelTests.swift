@@ -29,7 +29,6 @@ class ClipsViewModelTests: CoreDataTestCase {
         }
     }
     
-    let provider = TestAPIProvider()
     var viewModel: ClipsViewModel!
     var controller: Controller!
     

@@ -16,6 +16,8 @@
 		D00A008F1F61C49000B11866 /* XCTestCase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A008B1F61C49000B11866 /* XCTestCase+Extensions.swift */; };
 		D00A00901F61C49000B11866 /* TestObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A008C1F61C49000B11866 /* TestObserver.swift */; };
 		D00A00911F61C49000B11866 /* TestAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A008D1F61C49000B11866 /* TestAPIProvider.swift */; };
+		D00A00951F61C66500B11866 /* DataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A00941F61C66500B11866 /* DataTestCase.swift */; };
+		D00A00971F61C8D300B11866 /* ProviderTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A00961F61C8D300B11866 /* ProviderTestCase.swift */; };
 		D00D68371F55CAF80029BC79 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68361F55CAF80029BC79 /* Identifiers.swift */; };
 		D00D68421F55DA210029BC79 /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68411F55DA210029BC79 /* UIStoryboard+Extensions.swift */; };
 		D00D68441F55DEE60029BC79 /* SignedOut.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D00D68431F55DEE60029BC79 /* SignedOut.storyboard */; };
@@ -115,6 +117,8 @@
 		D00A008B1F61C49000B11866 /* XCTestCase+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "XCTestCase+Extensions.swift"; path = "Utilities/XCTestCase+Extensions.swift"; sourceTree = "<group>"; };
 		D00A008C1F61C49000B11866 /* TestObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestObserver.swift; path = Utilities/TestObserver.swift; sourceTree = "<group>"; };
 		D00A008D1F61C49000B11866 /* TestAPIProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestAPIProvider.swift; path = Utilities/TestAPIProvider.swift; sourceTree = "<group>"; };
+		D00A00941F61C66500B11866 /* DataTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataTestCase.swift; path = Utilities/DataTestCase.swift; sourceTree = "<group>"; };
+		D00A00961F61C8D300B11866 /* ProviderTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProviderTestCase.swift; path = Utilities/ProviderTestCase.swift; sourceTree = "<group>"; };
 		D00D68361F55CAF80029BC79 /* Identifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		D00D68411F55DA210029BC79 /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Extensions.swift"; path = "Extensions/UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
 		D00D68431F55DEE60029BC79 /* SignedOut.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignedOut.storyboard; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				D00A008A1F61C49000B11866 /* CoreDataTestCase.swift */,
+				D00A00941F61C66500B11866 /* DataTestCase.swift */,
+				D00A00961F61C8D300B11866 /* ProviderTestCase.swift */,
 				D00A008D1F61C49000B11866 /* TestAPIProvider.swift */,
 				D00A00881F61C35B00B11866 /* TestData.swift */,
 				D00A008C1F61C49000B11866 /* TestObserver.swift */,
@@ -918,6 +924,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D00A00951F61C66500B11866 /* DataTestCase.swift in Sources */,
 				D0979B801F4B495800B8407F /* SignUpViewModelTests.swift in Sources */,
 				D00D68681F58A55C0029BC79 /* ClipsDataProviderTests.swift in Sources */,
 				D00A008F1F61C49000B11866 /* XCTestCase+Extensions.swift in Sources */,
@@ -927,6 +934,7 @@
 				D00A008E1F61C49000B11866 /* CoreDataTestCase.swift in Sources */,
 				D05335FC1F4A861A0077B1F9 /* ManagedClipTests.swift in Sources */,
 				D00A00891F61C35B00B11866 /* TestData.swift in Sources */,
+				D00A00971F61C8D300B11866 /* ProviderTestCase.swift in Sources */,
 				D0C1F6131F578FE600E49B77 /* ClipsViewModelTests.swift in Sources */,
 				D06EF5D21F5B650F0093C87D /* Response+ExtensionsTests.swift in Sources */,
 				D00D684A1F55E8D70029BC79 /* RootViewModelTests.swift in Sources */,
