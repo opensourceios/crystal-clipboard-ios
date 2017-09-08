@@ -13,14 +13,14 @@ import CoreData
 class ManagedClipTests: CoreDataTestCase {
     func testInsert() {
         let context = persistentContainer.viewContext
-        let user = User(id: 666, email: "satan@hell.org")
-        let now = Date()
-        ManagedClip(from: Clip(id: 1, text: "hi", createdAt: now, user: user), context: context)
+        let user = User(id: generateNumber(), email: generateEmail())
+        let clip = Clip(id: generateNumber(), text: generateString(), createdAt: Date(), user: user)
+        ManagedClip(from: clip, context: context)
         try! context.save()
         let fetchRequest = ManagedClip.fetchRequest() as! NSFetchRequest<ManagedClip>
         let managedClip = try! context.fetch(fetchRequest).first!
-        XCTAssertEqual(managedClip.id, 1)
-        XCTAssertEqual(managedClip.text, "hi")
-        XCTAssertEqual(managedClip.createdAt, now)
+        XCTAssertEqual(managedClip.id, clip.id)
+        XCTAssertEqual(managedClip.text, clip.text)
+        XCTAssertEqual(managedClip.createdAt, clip.createdAt)
     }
 }

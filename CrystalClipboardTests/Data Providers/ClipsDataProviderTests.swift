@@ -19,11 +19,13 @@ class ClipsDataProviderTests: CoreDataTestCase {
         func dataSource(_ dataSource: DataSource, reuseIdentifierForItem item: Any, atIndexPath indexPath: IndexPath) -> String {
             return reuseIdentifier
         }
+        
         func configure(cell: ViewCell, fromDataSource dataSource: DataSource, atIndexPath indexPath: IndexPath, forItem item: Any) {
             guard let tableViewCell = cell as? UITableViewCell else { fatalError("Wrong cell type") }
             guard let clip = item as? ClipType else { fatalError("Wrong object type") }
             tableViewCell.textLabel?.text = clip.text
         }
+        
         func fetchedResultsChangeSetProducer(_ fetchedResultsChangeSetProducer: FetchedResultsChangeSetProducer, didProduceChangeSet changeSet: ChangeSet) {
             tableView.performUpdates(fromChangeSet: changeSet)
         }
@@ -54,10 +56,10 @@ class ClipsDataProviderTests: CoreDataTestCase {
     
     func testDataProvided() {
         let context = persistentContainer.viewContext
-        let user = User(id: 666, email: "satan@hell.org")
-        let clip1 = Clip(id: 1, text: "hi", createdAt: Date(), user: user)
-        let clip2 = Clip(id: 2, text: "bye", createdAt: Date(), user: user)
-        let clip3 = Clip(id: 3, text: "ok", createdAt: Date(), user: user)
+        let user = User(id: generateNumber(), email: generateEmail())
+        let clip1 = Clip(id: 1, text: generateString(), createdAt: Date(), user: user)
+        let clip2 = Clip(id: 2, text: generateString(), createdAt: Date(), user: user)
+        let clip3 = Clip(id: 3, text: generateString(), createdAt: Date(), user: user)
         ManagedClip(from: clip1, context: context)
         ManagedClip(from: clip2, context: context)
         try! context.save()

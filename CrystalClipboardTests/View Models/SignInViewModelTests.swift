@@ -14,17 +14,22 @@ import enum Result.NoError
 class SignInViewModelTests: ProviderTestCase {
     var viewModel: SignInViewModel!
     var submissionErrors: TestObserver<SubmissionError, NoError>!
+    var email: String!
+    var password: String!
     
     override func setUp() {
         super.setUp()
         viewModel = SignInViewModel(provider: provider)
         submissionErrors = TestObserver()
         viewModel.submit.errors.observe(submissionErrors.observer)
-        
-        try! testData.createUser(email: "satan@hell.org", password: "password")
+        email = generateEmail()
+        password = generateString()
+        try! testData.createUser(email: email, password: password)
     }
     
     override func tearDown() {
+        password = nil
+        email = nil
         submissionErrors = nil
         viewModel = nil
         provider = nil
@@ -32,32 +37,32 @@ class SignInViewModelTests: ProviderTestCase {
     
     func testSignInEnabled() {
         XCTAssertFalse(viewModel.submit.isEnabled.value)
-        viewModel.email.value = "user@domain.com"
+        viewModel.email.value = generateEmail()
         XCTAssertFalse(viewModel.submit.isEnabled.value)
-        viewModel.password.value = "password"
+        viewModel.password.value = generateString()
         XCTAssertTrue(viewModel.submit.isEnabled.value)
     }
     
     func testSignInSetsCurrentUser() {
         User.current = nil
-        viewModel.email.value = "satan@hell.org"
-        viewModel.password.value = "password"
+        viewModel.email.value = email
+        viewModel.password.value = password
         viewModel.submit.apply().start()
-        XCTAssertEqual(User.current!.email, "satan@hell.org")
+        XCTAssertEqual(User.current!.email, email)
     }
     
     func testAlertsRemoteErrors() {
-        viewModel.email.value = "satin@heck.org"
-        viewModel.password.value = "p"
+        viewModel.email.value = generateEmail()
+        viewModel.password.value = generateString()
         viewModel.submit.apply().start()
         submissionErrors.assertValues([SubmissionError(message: "The email or password provided was incorrect")])
-        viewModel.email.value = "satan@hell.org"
+        viewModel.email.value = email
         viewModel.submit.apply().start()
         submissionErrors.assertValues([
             SubmissionError(message: "The email or password provided was incorrect"),
             SubmissionError(message: "The email or password provided was incorrect")
             ])
-        viewModel.password.value = "password"
+        viewModel.password.value = password
         viewModel.submit.apply().start()
         submissionErrors.assertValues([
             SubmissionError(message: "The email or password provided was incorrect"),
@@ -71,8 +76,8 @@ class SignInViewModelTests: ProviderTestCase {
         submissionErrors = TestObserver()
         
         viewModel.submit.errors.observe(submissionErrors.observer)
-        viewModel.email.value = "satan@hell.org"
-        viewModel.password.value = "password"
+        viewModel.email.value = email
+        viewModel.password.value = password
         viewModel.submit.apply().start()
         submissionErrors.assertValues([SubmissionError(message: "sign-in.could-not".localized)])
     }

@@ -39,7 +39,7 @@ class ClipsViewModelTests: CoreDataTestCase {
         controller = Controller()
         controller.viewModel = viewModel
         
-        try! testData.createUser(email: "satan@hell.org", password: "password")
+        try! testData.createUser(email: generateEmail(), password: generateString())
         for _ in 0..<ClipsViewModelTests.initialClips {
             try! testData.createClip(text: NSUUID().uuidString)
         }
@@ -48,9 +48,8 @@ class ClipsViewModelTests: CoreDataTestCase {
     func testFetchesAndInsertsClips() {
         let changeSetObserver = TestObserver<ChangeSet, NoError>()
         viewModel.changeSets.observe(changeSetObserver.observer)
-        controller.displayPage(0)
-        print((try! testData.listClips(maxID: nil, count: nil)).count)
         
+        controller.displayPage(0)
         expect(after: 0.01, by: 0.1, description: "Clips fetched and inserted", execute: {
             XCTAssertEqual(changeSetObserver.values.first?.insertions.count, ClipsViewModelTests.pageSize)
         })

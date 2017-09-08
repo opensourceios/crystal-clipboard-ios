@@ -12,13 +12,13 @@ import ReactiveSwift
 
 class SignalProducer_ExtensionsTests: ProviderTestCase {    
     func testDecode() {
-        try! testData.createUser(email: "satan@hell.org", password: "password")
+        let user = try! testData.createUser(email: generateEmail(), password: generateString())
         
         var usersDecoded = 0
         provider.reactive.request(.me).decode(to: User.self).start { event in
             switch event {
-            case let .value(user):
-                XCTAssertEqual(user.email, "satan@hell.org")
+            case let .value(decodedUser):
+                XCTAssertEqual(decodedUser.email, user.email)
                 usersDecoded += 1
             case .completed: XCTAssertEqual(usersDecoded, 1)
             case .interrupted: XCTFail("User decoding was interrupted")
@@ -28,7 +28,7 @@ class SignalProducer_ExtensionsTests: ProviderTestCase {
     }
     
     func testDecodeErrors() {
-        provider.reactive.request(.signIn(email: "satanhell.org", password: "password")).decode(to: User.self).start { event in
+        provider.reactive.request(.signIn(email: generateEmail(), password: generateString())).decode(to: User.self).start { event in
             switch event {
             case let .failed(error):
                 guard case let .with(response: _, remoteErrors: decodedErrors) = error else { XCTFail("Should have decoded errors"); break }

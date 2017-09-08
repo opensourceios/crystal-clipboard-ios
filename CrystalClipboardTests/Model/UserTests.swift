@@ -14,7 +14,7 @@ class UserTests: XCTestCase {
     var user: User!
     
     override func setUp() {
-        user = User(id: 666, email: "satan@hell.org", authToken: User.AuthToken(token: "lol"))
+        user = User(id: generateNumber(), email: generateEmail(), authToken: User.AuthToken(token: generateString()))
     }
     
     override func tearDown() {
@@ -22,26 +22,32 @@ class UserTests: XCTestCase {
     }
     
     func testDecoding() {
-        let jsonData = "{\"id\":666,\"email\":\"satan@hell.org\",\"auth_token\":{\"token\":\"lol\"}}".data(using: .utf8)!
+        let jsonString = "{\"id\":\(user.id),\"email\":\"\(user.email)\",\"auth_token\":{\"token\":\"\(user.authToken!.token)\"}}"
+        let jsonData = jsonString.data(using: .utf8)!
         let decodedUser = try! JSONDecoder().decode(User.self, from: jsonData)
-        XCTAssertEqual(decodedUser.id, 666)
-        XCTAssertEqual(decodedUser.email, "satan@hell.org")
-        XCTAssertEqual(decodedUser.authToken!.token, "lol")
+        XCTAssertEqual(decodedUser.id, user.id)
+        XCTAssertEqual(decodedUser.email, user.email)
+        XCTAssertEqual(decodedUser.authToken!.token, user.authToken!.token)
     }
     
     func testUserDefaultsPersistence() {
+        let defaults = UserDefaults.standard
         User.current = user
         XCTAssertEqual(User.current!.id, user.id)
+        XCTAssertEqual(defaults.integer(forKey: "com.jzzocc.crystal-clipboard.user-defaults.user-id"), user.id)
         XCTAssertEqual(User.current!.email, user.email)
+        XCTAssertEqual(defaults.string(forKey: "com.jzzocc.crystal-clipboard.user-defaults.user-email"), user.email)
         User.current = nil
         XCTAssertNil(User.current)
+        XCTAssertEqual(defaults.integer(forKey: "com.jzzocc.crystal-clipboard.user-defaults.user-id"), 0)
+        XCTAssertNil(defaults.string(forKey: "com.jzzocc.crystal-clipboard.user-defaults.user-email"))
     }
     
     func testAuthTokenKeychainPersistence() {
         let keychain = Keychain(service: Constants.keychainService)
         User.current = nil
         User.current = user
-        XCTAssertEqual(keychain["auth-token"], "lol")
+        XCTAssertEqual(keychain["auth-token"], user.authToken!.token)
         User.current = nil
         XCTAssertNil(keychain["auth-token"])
     }

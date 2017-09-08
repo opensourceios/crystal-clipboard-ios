@@ -11,13 +11,13 @@ import XCTest
 
 class Response_ExtensionsTests: ProviderTestCase {
     func testDecode() {
-        try! testData.createUser(email: "satan@hell.org", password: "password")
+        let user = try! testData.createUser(email: generateString(), password: generateString())
         
         provider.request(.me) { result in
             switch result {
             case let .success(response):
-                let user = try! response.decode(to: User.self)
-                XCTAssertEqual(user.email, "satan@hell.org")
+                let decodedUser = try! response.decode(to: User.self)
+                XCTAssertEqual(decodedUser.email, user.email)
             case .failure: XCTFail("Should be a successful response")
             }
         }

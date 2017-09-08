@@ -15,6 +15,7 @@ class ResetPasswordViewModelTests: ProviderTestCase {
     var viewModel: ResetPasswordViewModel!
     var successMessage: TestObserver<String, NoError>!
     var submissionErrors: TestObserver<SubmissionError, NoError>!
+    var email: String!
     
     override func setUp() {
         super.setUp()
@@ -23,11 +24,12 @@ class ResetPasswordViewModelTests: ProviderTestCase {
         submissionErrors = TestObserver()
         viewModel.submit.values.observe(successMessage.observer)
         viewModel.submit.errors.observe(submissionErrors.observer)
-        
-        try! testData.createUser(email: "satan@hell.org", password: "password")
+        email = generateEmail()
+        try! testData.createUser(email: email, password: generateString())
     }
     
     override func tearDown() {
+        email = nil
         submissionErrors = nil
         successMessage = nil
         viewModel = nil
@@ -36,18 +38,18 @@ class ResetPasswordViewModelTests: ProviderTestCase {
     
     func testResetPasswordEnabled() {
         XCTAssertFalse(viewModel.submit.isEnabled.value)
-        viewModel.email.value = "user@domain.com"
+        viewModel.email.value = generateEmail()
         XCTAssertTrue(viewModel.submit.isEnabled.value)
     }
     
     func testSuccessMessage() {
-        viewModel.email.value = "satan@hell.org"
+        viewModel.email.value = email
         viewModel.submit.apply().start()
         successMessage.assertValues(["reset-password.will-receive-email".localized])
     }
     
     func testNotFoundErrorMessage() {
-        viewModel.email.value = "user@domain.org"
+        viewModel.email.value = generateEmail()
         viewModel.submit.apply().start()
         submissionErrors.assertValues([SubmissionError(message: "reset-password.email-not-found".localized)])
     }
@@ -59,7 +61,7 @@ class ResetPasswordViewModelTests: ProviderTestCase {
         submissionErrors = TestObserver<SubmissionError, NoError>()
         viewModel.submit.errors.observe(submissionErrors.observer)
         
-        viewModel.email.value = "satan@hell.org"
+        viewModel.email.value = email
         viewModel.submit.apply().start()
         submissionErrors.assertValues([SubmissionError(message: "reset-password.could-not".localized)])
     }

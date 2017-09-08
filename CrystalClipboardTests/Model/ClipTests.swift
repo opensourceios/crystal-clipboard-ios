@@ -11,9 +11,18 @@ import XCTest
 
 class ClipTests: XCTestCase {
     func testDecoding() {
-        let jsonData = "{\"id\":999,\"text\":\"lol\",\"created_at\":\"2017-09-07T11:47:27.713-04:00\",\"user\":{\"id\":666,\"email\":\"satan@hell.org\"}}".data(using: .utf8)!
+        let id = generateNumber()
+        let text = generateString()
+        let createdAt = XCTestCase.dateFormatter.string(from: Date())
+        let userID = generateNumber()
+        let userEmail = generateEmail()
+        let jsonString = "{\"id\":\(id),\"text\":\"\(text)\",\"created_at\":\"\(createdAt)\",\"user\":{\"id\":\(userID),\"email\":\"\(userEmail)\"}}"
+        let jsonData = jsonString.data(using: .utf8)!
         let clip = try! ISO8601JSONDecoder().decode(Clip.self, from: jsonData)
-        XCTAssertEqual(clip.id, 999)
-        XCTAssertEqual(clip.text, "lol")
+        XCTAssertEqual(clip.id, id)
+        XCTAssertEqual(clip.text, text)
+        XCTAssertEqual(XCTestCase.dateFormatter.string(from: clip.createdAt), createdAt)
+        XCTAssertEqual(clip.user.id, userID)
+        XCTAssertEqual(clip.user.email, userEmail)
     }
 }

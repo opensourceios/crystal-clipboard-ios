@@ -16,7 +16,7 @@ class RootViewModelTests: XCTestCase {
         User.current = nil
         XCTAssertEqual(viewModel.transitionTo.value.storyboardName, .SignedOut)
         XCTAssertEqual(viewModel.transitionTo.value.controllerIdentifier, .Landing)
-        User.current = User(id: 666, email: "satan@hell.org", authToken: User.AuthToken(token: NSUUID().uuidString))
+        User.current = User(id: generateNumber(), email: generateEmail(), authToken: User.AuthToken(token: generateString()))
         XCTAssertEqual(viewModel.transitionTo.value.storyboardName, .Main)
         XCTAssertEqual(viewModel.transitionTo.value.controllerIdentifier, .Clips)
     }

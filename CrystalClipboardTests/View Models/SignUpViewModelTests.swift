@@ -24,34 +24,36 @@ class SignUpViewModelTests: ProviderTestCase {
     
     func testSignUpEnabled() {
         XCTAssertFalse(viewModel.submit.isEnabled.value)
-        viewModel.email.value = "satan@hell.org"
+        viewModel.email.value = generateEmail()
         XCTAssertFalse(viewModel.submit.isEnabled.value)
-        viewModel.password.value = "password"
+        viewModel.password.value = generateString()
         XCTAssertTrue(viewModel.submit.isEnabled.value)
     }
     
     func testSignUpSetsCurrentUser() {
         User.current = nil
-        viewModel.email.value = "satan@hell.org"
-        viewModel.password.value = "password"
+        let email = generateEmail()
+        viewModel.email.value = email
+        viewModel.password.value = generateString()
         viewModel.submit.apply().start()
-        XCTAssertEqual(User.current!.email, "satan@hell.org")
+        XCTAssertEqual(User.current!.email, email)
     }
     
     func testAlertsRemoteErrors() {
-        try! testData.createUser(email: "satan@hell.org", password: "password")
+        let takenEmail = generateEmail()
+        try! testData.createUser(email: takenEmail, password: generateString())
         
-        viewModel.email.value = "satan@hell.org"
+        viewModel.email.value = takenEmail
         viewModel.password.value = "p"
         viewModel.submit.apply().start()
         submissionErrors.assertValues([SubmissionError(message: "Email has already been taken\n\nPassword is too short (minimum is 6 characters)")])
-        viewModel.email.value = "satan+2@hell.org"
+        viewModel.email.value = generateEmail()
         viewModel.submit.apply().start()
         submissionErrors.assertValues([
             SubmissionError(message: "Email has already been taken\n\nPassword is too short (minimum is 6 characters)"),
             SubmissionError(message: "Password is too short (minimum is 6 characters)")
         ])
-        viewModel.password.value = "password"
+        viewModel.password.value = generateString()
         viewModel.submit.apply().start()
         submissionErrors.assertValues([
             SubmissionError(message: "Email has already been taken\n\nPassword is too short (minimum is 6 characters)"),
@@ -65,8 +67,8 @@ class SignUpViewModelTests: ProviderTestCase {
         submissionErrors = TestObserver<SubmissionError, NoError>()
         viewModel.submit.errors.observe(submissionErrors.observer)
         
-        viewModel.email.value = "user@domain.com"
-        viewModel.password.value = "password"
+        viewModel.email.value = generateEmail()
+        viewModel.password.value = generateString()
         viewModel.submit.apply().start()
         submissionErrors.assertValues([SubmissionError(message: "sign-up.could-not".localized)])
     }
