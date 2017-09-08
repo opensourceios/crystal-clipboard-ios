@@ -47,8 +47,8 @@ extension CrystalClipboardAPI {
             do {
                 let user = try testData.createUser(email: email, password: password)
                 return .networkResponse(201, encode(user))
-            } catch let remoteErrors as RemoteErrors {
-                return .networkResponse(422, encode(remoteErrors))
+            } catch let errors as TestData.UserCreationErrors {
+                return .networkResponse(422, encode(errors))
             } catch {
                 fatalError()
             }
@@ -117,10 +117,4 @@ extension CrystalClipboardAPI {
             }
         }
     }
-    
-    private static let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = Constants.iso8601DateFormat
-        return dateFormatter
-    }()
 }

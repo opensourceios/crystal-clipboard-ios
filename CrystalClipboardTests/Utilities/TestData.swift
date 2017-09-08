@@ -10,18 +10,12 @@ import Foundation
 @testable import CrystalClipboard
 
 class TestData {
+    typealias UserCreationErrors = RemoteErrors
+    typealias UserCreationError = RemoteError
+    
     enum AuthenticationError: Error {
-        case userWithEmailExists
         case wrongPassword
         case unauthenticated
-    }
-    
-    struct RegistrationErrors: Error {
-        struct Error {
-            let message: String
-        }
-        
-        let errors: [Error]
     }
     
     enum RecordError: Error {
@@ -46,40 +40,44 @@ class TestData {
     
     @discardableResult
     func createUser(email: String, password: String) throws -> User {
-        var errors = [RemoteError]()
+        var errors = [UserCreationError]()
         do {
             _ = try userForEmail(email)
-            errors.append(RemoteError(message: "Email has already been taken"))
+            errors.append(UserCreationError(message: "Email has already been taken"))
         } catch RecordError.notFound {
             // do nothing
         } catch {
             fatalError()
         }
         if password.count < TestData.minPasswordLength {
-            errors.append(RemoteError(message: "Password is too short (minimum is \(TestData.minPasswordLength) characters)"))
+            errors.append(UserCreationError(message: "Password is too short (minimum is \(TestData.minPasswordLength) characters)"))
         }
-        guard errors.count == 0 else { throw RemoteErrors(errors: errors) }
+        guard errors.count == 0 else { throw UserCreationErrors(errors: errors) }
         
         let user = User(id: (users.last?.id ?? 0) + 1, email: email, authToken: User.AuthToken(token: NSUUID().uuidString))
         users.append(user)
         signedInUser = user
         passwordsForUserIDs[user.id] = password
+        
         return user
     }
     
     func userForEmail(_ email: String) throws -> User {
         guard let index = users.index(where: { $0.email == email }) else { throw RecordError.notFound }
+        
         return users[index]
     }
     
     func signIn(email: String, password: String) throws -> User {
         guard let user = try? userForEmail(email), passwordsForUserIDs[user.id] == password else { throw AuthenticationError.wrongPassword }
+        
         signedInUser = user
         return User(id: user.id, email: user.email, authToken: User.AuthToken(token: NSUUID().uuidString))
     }
     
     func signOut() throws {
         try authenticate()
+        
         signedInUser = nil
         clips = [Clip]()
     }
@@ -121,14 +119,6 @@ class TestData {
         guard let index = clips.index(where: { $0.id == id }) else { throw RecordError.notFound }
         clips.remove(at: index)
     }
-    
-    var clipStrings: [String] = (1...88).map { "{\"id\":\($0),\"text\":\"\(NSUUID().uuidString)\",\"created_at\":\"\(dateFormatter.string(from: Date()))\",\"user\":{\"id\":666,\"email\":\"satan@hell.org\"}}" }.reversed()
-    
-    private static let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = Constants.iso8601DateFormat
-        return dateFormatter
-    }()
 }
 
 private extension TestData {
