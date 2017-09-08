@@ -40,13 +40,11 @@ class ClipsViewModel: NSObject {
         fetchedResultsChangeSetProducer = FetchedResultsChangeSetProducer()
         dataProvider.fetchedResultsController.delegate = fetchedResultsChangeSetProducer
         
-        let (changeSets, changeSetsObserver) = Signal<ChangeSet, NoError>.pipe()
-        self.changeSets = changeSets
-        self.changeSetsObserver = changeSetsObserver
+        (changeSets, changeSetsObserver) = Signal<ChangeSet, NoError>.pipe()
         
-        let (textToCopy, copyObserver) = Signal<Signal<String, NoError>, NoError>.pipe()
-        self.textToCopy = textToCopy.flatten(.merge)
-        self.copyObserver = copyObserver
+        let textToCopySignals = Signal<Signal<String, NoError>, NoError>.pipe()
+        textToCopy = textToCopySignals.output.flatten(.merge)
+        copyObserver = textToCopySignals.input
         
         clipCount = MutableProperty(dataProvider.fetchedResultsController.fetchedObjects!.count)
         showNoClipsMessage = Property(initial: clipCount.value == 0, then: clipCount.signal.map { $0 == 0 })
