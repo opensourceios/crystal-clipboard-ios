@@ -15,45 +15,38 @@ import struct CellHelpers.ChangeSet
 
 class ClipsViewModelTests: CoreDataTestCase {
     static let pageSize = 25
-    static let initialClips = 55
-    
-    class Controller {
-        let (pageSignal, pageObserver) = Signal<Int, NoError>.pipe()
-        var viewModel: ClipsViewModel! {
-            didSet {
-                viewModel.pageDisplayed <~ pageSignal
-            }
-        }
-        
-        func displayPage(_ page: Int) {
-            pageObserver.send(value: page)
-        }
-    }
+    static let initialRemoteClips = 55
     
     var viewModel: ClipsViewModel!
-    var controller: Controller!
+    var displayPage: Signal<Int, NoError>.Observer!
     
     override func setUp() {
         super.setUp()
         viewModel = ClipsViewModel(provider: provider, persistentContainer: persistentContainer, pageSize: ClipsViewModelTests.pageSize)
-        controller = Controller()
-        controller.viewModel = viewModel
+        let pageSignal = Signal<Int, NoError>.pipe()
+        displayPage = pageSignal.input
+        viewModel.pageDisplayed <~ pageSignal.output
         
         try! testRemoteData.createUser(email: generateEmail(), password: generateString())
-        for _ in 0..<ClipsViewModelTests.initialClips {
+        for _ in 0..<ClipsViewModelTests.initialRemoteClips {
             try! testRemoteData.createClip(text: generateString())
         }
+    }
+    
+    override func tearDown() {
+        viewModel = nil
+        super.tearDown()
     }
     
     func testFetchesAndInsertsClips() {
         let changeSetObserver = TestObserver<ChangeSet, NoError>()
         viewModel.changeSets.observe(changeSetObserver.observer)
         
-        controller.displayPage(0)
+        displayPage.send(value: 0)
         expect(after: 0.01, by: 0.1, description: "Clips fetched and inserted", execute: {
             XCTAssertEqual(changeSetObserver.values.first?.insertions.count, ClipsViewModelTests.pageSize)
         })
-        controller.displayPage(1)
+        displayPage.send(value: 1)
         expect(after: 0.1, by: 1, description: "Second page fetched", execute: {
             XCTAssertEqual(changeSetObserver.values[1].insertions.count, ClipsViewModelTests.pageSize)
         })
