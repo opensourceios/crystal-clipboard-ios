@@ -8,16 +8,16 @@
 
 import XCTest
 
-class DataTestCase: XCTestCase {
-    var testData: TestData!
+class TestRemoteDataTestCase: XCTestCase {
+    var testRemoteData: TestRemoteData!
     
     override func setUp() {
         super.setUp()
-        testData = TestData()
+        testRemoteData = TestRemoteData()
     }
     
     override func tearDown() {
-        testData = nil
+        testRemoteData = nil
         super.tearDown()
     }
 }

@@ -39,9 +39,9 @@ class ClipsViewModelTests: CoreDataTestCase {
         controller = Controller()
         controller.viewModel = viewModel
         
-        try! testData.createUser(email: generateEmail(), password: generateString())
+        try! testRemoteData.createUser(email: generateEmail(), password: generateString())
         for _ in 0..<ClipsViewModelTests.initialClips {
-            try! testData.createClip(text: NSUUID().uuidString)
+            try! testRemoteData.createClip(text: NSUUID().uuidString)
         }
     }
     

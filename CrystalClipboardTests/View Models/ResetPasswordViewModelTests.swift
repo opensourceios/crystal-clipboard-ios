@@ -25,7 +25,7 @@ class ResetPasswordViewModelTests: ProviderTestCase {
         viewModel.submit.values.observe(successMessage.observer)
         viewModel.submit.errors.observe(submissionErrors.observer)
         email = generateEmail()
-        try! testData.createUser(email: email, password: generateString())
+        try! testRemoteData.createUser(email: email, password: generateString())
     }
     
     override func tearDown() {
@@ -55,7 +55,7 @@ class ResetPasswordViewModelTests: ProviderTestCase {
     }
     
     func testNetworkErrorMessage() {
-        provider = TestAPIProvider(testData: testData, online: false)
+        provider = TestAPIProvider(testRemoteData: testRemoteData, online: false)
         viewModel = ResetPasswordViewModel(provider: provider)
         successMessage = nil
         submissionErrors = TestObserver<SubmissionError, NoError>()

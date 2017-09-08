@@ -11,7 +11,7 @@ import XCTest
 
 class Response_ExtensionsTests: ProviderTestCase {
     func testDecode() {
-        let user = try! testData.createUser(email: generateString(), password: generateString())
+        let user = try! testRemoteData.createUser(email: generateString(), password: generateString())
         
         provider.request(.me) { result in
             switch result {

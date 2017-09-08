@@ -24,7 +24,7 @@ class SignInViewModelTests: ProviderTestCase {
         viewModel.submit.errors.observe(submissionErrors.observer)
         email = generateEmail()
         password = generateString()
-        try! testData.createUser(email: email, password: password)
+        try! testRemoteData.createUser(email: email, password: password)
     }
     
     override func tearDown() {
@@ -71,7 +71,7 @@ class SignInViewModelTests: ProviderTestCase {
     }
     
     func testAlertsNetworkError() {
-        provider = TestAPIProvider(testData: testData, online: false)
+        provider = TestAPIProvider(testRemoteData: testRemoteData, online: false)
         viewModel = SignInViewModel(provider: provider)
         submissionErrors = TestObserver()
         

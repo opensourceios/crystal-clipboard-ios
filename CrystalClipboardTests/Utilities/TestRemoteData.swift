@@ -1,5 +1,5 @@
 //
-//  TestData.swift
+//  TestRemoteData.swift
 //  CrystalClipboardTests
 //
 //  Created by Justin Mazzocchi on 9/7/17.
@@ -9,23 +9,12 @@
 import Foundation
 @testable import CrystalClipboard
 
-class TestData {
-    typealias UserCreationErrors = RemoteErrors
-    typealias UserCreationError = RemoteError
-    
-    enum AuthenticationError: Error {
-        case wrongPassword
-        case unauthenticated
-    }
-    
-    enum RecordError: Error {
-        case notFound
-    }
-    
-    enum ClipError: Error {
-        case textMissing
-        case textTooLong(limit: Int)
-    }
+class TestRemoteData {
+    static let recordNotFoundError = RemoteErrors(errors: [RemoteError(message: "Record not found")])
+    static let wrongEmailPasswordError = RemoteErrors(errors: [RemoteError(message: "The email or password provided was incorrect")])
+    static let unauthenticatedError = RemoteErrors(errors: [RemoteError(message: "You need to sign up or sign in before continuing")])
+    static let clipTextMissingError = RemoteErrors(errors: [RemoteError(message: "Text is too short (minimum is 1 character)")])
+    static let clipTextTooLongError = RemoteErrors(errors: [RemoteError(message: "Text is too long (maximum is \(clipTextLimit) characters)")])
     
     private static let minPasswordLength = 6
     private static let clipTextLimit = 5000
@@ -40,19 +29,19 @@ class TestData {
     
     @discardableResult
     func createUser(email: String, password: String) throws -> User {
-        var errors = [UserCreationError]()
+        var errors = [RemoteError]()
         do {
             _ = try userForEmail(email)
-            errors.append(UserCreationError(message: "Email has already been taken"))
-        } catch RecordError.notFound {
+            errors.append(RemoteError(message: "Email has already been taken"))
+        } catch let error as RemoteErrors where error == TestRemoteData.recordNotFoundError {
             // do nothing
         } catch {
             fatalError()
         }
-        if password.count < TestData.minPasswordLength {
-            errors.append(UserCreationError(message: "Password is too short (minimum is \(TestData.minPasswordLength) characters)"))
+        if password.count < TestRemoteData.minPasswordLength {
+            errors.append(RemoteError(message: "Password is too short (minimum is \(TestRemoteData.minPasswordLength) characters)"))
         }
-        guard errors.count == 0 else { throw UserCreationErrors(errors: errors) }
+        guard errors.count == 0 else { throw RemoteErrors(errors: errors) }
         
         let user = User(id: (users.last?.id ?? 0) + 1, email: email, authToken: User.AuthToken(token: NSUUID().uuidString))
         users.append(user)
@@ -63,13 +52,13 @@ class TestData {
     }
     
     func userForEmail(_ email: String) throws -> User {
-        guard let index = users.index(where: { $0.email == email }) else { throw RecordError.notFound }
+        guard let index = users.index(where: { $0.email == email }) else { throw TestRemoteData.recordNotFoundError }
         
         return users[index]
     }
     
     func signIn(email: String, password: String) throws -> User {
-        guard let user = try? userForEmail(email), passwordsForUserIDs[user.id] == password else { throw AuthenticationError.wrongPassword }
+        guard let user = try? userForEmail(email), passwordsForUserIDs[user.id] == password else { throw TestRemoteData.wrongEmailPasswordError }
         
         signedInUser = user
         return User(id: user.id, email: user.email, authToken: User.AuthToken(token: NSUUID().uuidString))
@@ -84,10 +73,10 @@ class TestData {
     
     @discardableResult
     func createClip(text: String) throws -> Clip {
-        let limit = TestData.clipTextLimit
+        let limit = TestRemoteData.clipTextLimit
         let user = try authenticate()
-        guard text.count > 0 else { throw ClipError.textMissing }
-        guard text.count < limit else { throw ClipError.textTooLong(limit: limit) }
+        guard text.count > 0 else { throw TestRemoteData.clipTextMissingError }
+        guard text.count < limit else { throw TestRemoteData.clipTextTooLongError }
         
         let clip = Clip(id: (clips.last?.id ?? 0) + 1, text: text, createdAt: Date(), user: user)
         clips.append(clip)
@@ -103,10 +92,10 @@ class TestData {
             actualMaxID = clips.count
         }
         let actualCount: Int
-        if let count = count, count < TestData.maxCount {
+        if let count = count, count < TestRemoteData.maxCount {
             actualCount = count
         } else {
-            actualCount = TestData.defaultCount
+            actualCount = TestRemoteData.defaultCount
         }
         
         let maxClips = Array(clips[..<actualMaxID].reversed())
@@ -116,15 +105,15 @@ class TestData {
     func deleteClip(id: Int) throws {
         try authenticate()
         
-        guard let index = clips.index(where: { $0.id == id }) else { throw RecordError.notFound }
+        guard let index = clips.index(where: { $0.id == id }) else { throw TestRemoteData.recordNotFoundError }
         clips.remove(at: index)
     }
 }
 
-private extension TestData {
+private extension TestRemoteData {
     @discardableResult
     private func authenticate() throws -> User {
-        guard let user = signedInUser else { throw AuthenticationError.unauthenticated }
+        guard let user = signedInUser else { throw TestRemoteData.unauthenticatedError }
         return user
     }
 }

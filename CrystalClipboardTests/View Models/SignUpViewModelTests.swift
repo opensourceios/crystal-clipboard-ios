@@ -41,7 +41,7 @@ class SignUpViewModelTests: ProviderTestCase {
     
     func testAlertsRemoteErrors() {
         let takenEmail = generateEmail()
-        try! testData.createUser(email: takenEmail, password: generateString())
+        try! testRemoteData.createUser(email: takenEmail, password: generateString())
         
         viewModel.email.value = takenEmail
         viewModel.password.value = "p"
@@ -62,7 +62,7 @@ class SignUpViewModelTests: ProviderTestCase {
     }
     
     func testAlertsNetworkError() {
-        provider = TestAPIProvider(testData: testData, online: false)
+        provider = TestAPIProvider(testRemoteData: testRemoteData, online: false)
         viewModel = SignUpViewModel(provider: provider)
         submissionErrors = TestObserver<SubmissionError, NoError>()
         viewModel.submit.errors.observe(submissionErrors.observer)

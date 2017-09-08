@@ -12,7 +12,7 @@ import ReactiveSwift
 
 class SignalProducer_ExtensionsTests: ProviderTestCase {    
     func testDecode() {
-        let user = try! testData.createUser(email: generateEmail(), password: generateString())
+        let user = try! testRemoteData.createUser(email: generateEmail(), password: generateString())
         
         var usersDecoded = 0
         provider.reactive.request(.me).decode(to: User.self).start { event in

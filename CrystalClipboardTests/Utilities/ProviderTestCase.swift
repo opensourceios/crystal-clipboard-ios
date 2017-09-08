@@ -8,12 +8,12 @@
 
 import XCTest
 
-class ProviderTestCase: DataTestCase {
+class ProviderTestCase: TestRemoteDataTestCase {
     var provider: TestAPIProvider!
     
     override func setUp() {
         super.setUp()
-        provider = TestAPIProvider(testData: testData)
+        provider = TestAPIProvider(testRemoteData: testRemoteData)
     }
     
     override func tearDown() {
