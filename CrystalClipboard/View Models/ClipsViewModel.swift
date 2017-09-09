@@ -18,6 +18,7 @@ class ClipsViewModel: NSObject {
     
     // MARK: Outputs
     
+    let pageSize: Int
     private(set) lazy var dataSource: DataSource = DataSource(dataProvider: self.dataProvider, delegate: self)
     let changeSets: Signal<ChangeSet, NoError>
     let textToCopy: Signal<String, NoError>
@@ -35,6 +36,8 @@ class ClipsViewModel: NSObject {
     // MARK: Initialization
     
     init(provider: APIProvider, persistentContainer: NSPersistentContainer, pageSize: Int) {
+        self.pageSize = pageSize
+        
         let dataProvider = ClipsDataProvider(managedObjectContext: persistentContainer.viewContext)
         self.dataProvider = dataProvider
         fetchedResultsChangeSetProducer = FetchedResultsChangeSetProducer()

@@ -18,12 +18,11 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
     var persistentContainer: NSPersistentContainer!
     var provider: APIProvider!
     
-    private lazy var viewModel: ClipsViewModel = ClipsViewModel(provider: self.provider, persistentContainer: self.persistentContainer, pageSize: ClipsViewController.pageSize)
+    private lazy var viewModel: ClipsViewModel = ClipsViewModel(provider: self.provider, persistentContainer: self.persistentContainer, pageSize: 25)
     private var pageScrolledTo = MutableProperty(0)
     @IBOutlet private weak var tableView: UITableView!
     
     private static let copiedHUDFlashDelay: TimeInterval = 0.5
-    private static let pageSize = 25
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +61,7 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
 
 extension ClipsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        pageScrolledTo.value = (indexPath.row + 1) / ClipsViewController.pageSize
+        pageScrolledTo.value = (indexPath.row + 1) / viewModel.pageSize
     }
 }
 
