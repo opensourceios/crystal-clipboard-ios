@@ -55,6 +55,7 @@
 		D05335FC1F4A861A0077B1F9 /* ManagedClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */; };
 		D06EF5CF1F5B62970093C87D /* SignalProducer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06EF5CE1F5B62970093C87D /* SignalProducer+Extensions.swift */; };
 		D06EF5D21F5B650F0093C87D /* Response+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06EF5D11F5B650F0093C87D /* Response+ExtensionsTests.swift */; };
+		D07D9C641F6480100009DF68 /* ClipDisplayError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07D9C631F6480100009DF68 /* ClipDisplayError.swift */; };
 		D08263F41F62FCCA00091E9A /* RemoteErrors+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08263F31F62FCCA00091E9A /* RemoteErrors+Equatable.swift */; };
 		D0909B6D1F4D2513000F584B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0909B6C1F4D2513000F584B /* Localizable.strings */; };
 		D0909B701F4D282C000F584B /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0909B6F1F4D282C000F584B /* String+Localized.swift */; };
@@ -157,6 +158,7 @@
 		D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedClipTests.swift; path = Model/ManagedClipTests.swift; sourceTree = "<group>"; };
 		D06EF5CE1F5B62970093C87D /* SignalProducer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SignalProducer+Extensions.swift"; path = "Extensions/SignalProducer+Extensions.swift"; sourceTree = "<group>"; };
 		D06EF5D11F5B650F0093C87D /* Response+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Response+ExtensionsTests.swift"; path = "Extensions/Response+ExtensionsTests.swift"; sourceTree = "<group>"; };
+		D07D9C631F6480100009DF68 /* ClipDisplayError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClipDisplayError.swift; path = Errors/ClipDisplayError.swift; sourceTree = "<group>"; };
 		D08263F31F62FCCA00091E9A /* RemoteErrors+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RemoteErrors+Equatable.swift"; path = "Utilities/RemoteErrors+Equatable.swift"; sourceTree = "<group>"; };
 		D0909B6C1F4D2513000F584B /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		D0909B6F1F4D282C000F584B /* String+Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Localized.swift"; path = "Extensions/String+Localized.swift"; sourceTree = "<group>"; };
@@ -432,8 +434,9 @@
 		D09DCFF01F5CD49F000D4B10 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
-				D09DCFF11F5CD4C4000D4B10 /* SubmissionError.swift */,
+				D07D9C631F6480100009DF68 /* ClipDisplayError.swift */,
 				D0340BC81F6038A50030CD82 /* ResponseError.swift */,
+				D09DCFF11F5CD4C4000D4B10 /* SubmissionError.swift */,
 			);
 			name = Errors;
 			sourceTree = "<group>";
@@ -890,6 +893,7 @@
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
 				D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */,
 				D0340BC91F6038A50030CD82 /* ResponseError.swift in Sources */,
+				D07D9C641F6480100009DF68 /* ClipDisplayError.swift in Sources */,
 				D01A12DA1F5E19B200197ECA /* SpacingFooterView.swift in Sources */,
 				D0C1F6561F590A3700E49B77 /* UIView+Extensions.swift in Sources */,
 				D00D685C1F5762EE0029BC79 /* ResetPasswordViewModel.swift in Sources */,

@@ -31,14 +31,14 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         // View model inputs
         
         let pageWillAppear = reactive.trigger(for: #selector(UIViewController.viewWillAppear(_:)))
-            .skip(first: 1)
             .map { [unowned self] in self.pageScrolledTo.value }
         let pageWillEnterForeground = NotificationCenter.default.reactive
             .notifications(forName: .UIApplicationWillEnterForeground)
             .take(during: reactive.lifetime)
             .map { [unowned self] _ in self.pageScrolledTo.value }
+        let pageWasScrolledTo = pageScrolledTo.signal.skip(first: 1).skipRepeats()
         
-        viewModel.pageViewed <~ SignalProducer(values: pageScrolledTo.signal.skipRepeats(), pageWillAppear, pageWillEnterForeground).flatten(.merge)
+        viewModel.pageViewed <~ SignalProducer(values: pageWasScrolledTo, pageWillAppear, pageWillEnterForeground).flatten(.merge).logEvents()
         
         // View model outputs
         
