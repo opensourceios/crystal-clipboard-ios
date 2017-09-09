@@ -15,14 +15,12 @@ class ClipTests: XCTestCase {
         let text = generateString()
         let createdAt = XCTestCase.dateFormatter.string(from: Date())
         let userID = generateNumber()
-        let userEmail = generateEmail()
-        let jsonString = "{\"id\":\(id),\"text\":\"\(text)\",\"created_at\":\"\(createdAt)\",\"user\":{\"id\":\(userID),\"email\":\"\(userEmail)\"}}"
+        let jsonString = "{\"id\":\(id),\"text\":\"\(text)\",\"created_at\":\"\(createdAt)\",\"user_id\":\(userID)}"
         let jsonData = jsonString.data(using: .utf8)!
         let clip = try! ISO8601JSONDecoder().decode(Clip.self, from: jsonData)
         XCTAssertEqual(clip.id, id)
         XCTAssertEqual(clip.text, text)
         XCTAssertEqual(XCTestCase.dateFormatter.string(from: clip.createdAt), createdAt)
-        XCTAssertEqual(clip.user.id, userID)
-        XCTAssertEqual(clip.user.email, userEmail)
+        XCTAssertEqual(clip.userID, userID)
     }
 }

@@ -10,18 +10,11 @@ import Foundation
 
 struct Clip: ClipType, Codable {
     enum CodingKeys: String, CodingKey {
-        case id, text, user, createdAt = "created_at"
+        case id, text, userID = "user_id", createdAt = "created_at"
     }
     
     let id: Int
     let text: String
-    let user: User
+    let userID: Int
     let createdAt: Date
-    
-    init(id: Int, text: String, createdAt: Date, user: User) {
-        self.id = id
-        self.text = text
-        self.createdAt = createdAt
-        self.user = user
-    }
 }

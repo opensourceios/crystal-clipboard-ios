@@ -14,7 +14,7 @@ class ManagedClipTests: CoreDataTestCase {
     func testInsert() {
         let context = persistentContainer.viewContext
         let user = User(id: generateNumber(), email: generateEmail())
-        let clip = Clip(id: generateNumber(), text: generateString(), createdAt: Date(), user: user)
+        let clip = Clip(id: generateNumber(), text: generateString(), userID: user.id, createdAt: Date())
         ManagedClip(from: clip, context: context)
         try! context.save()
         let fetchRequest = ManagedClip.fetchRequest() as! NSFetchRequest<ManagedClip>

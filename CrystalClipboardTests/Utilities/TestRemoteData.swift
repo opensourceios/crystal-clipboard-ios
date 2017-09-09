@@ -78,7 +78,7 @@ class TestRemoteData {
         guard text.count > 0 else { throw TestRemoteData.clipTextMissingError }
         guard text.count < limit else { throw TestRemoteData.clipTextTooLongError }
         
-        let clip = Clip(id: (clips.last?.id ?? 0) + 1, text: text, createdAt: Date(), user: user)
+        let clip = Clip(id: (clips.last?.id ?? 0) + 1, text: text, userID: user.id, createdAt: Date())
         clips.append(clip)
         return clip
     }

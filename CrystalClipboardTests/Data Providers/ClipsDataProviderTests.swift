@@ -57,9 +57,9 @@ class ClipsDataProviderTests: CoreDataTestCase {
     func testDataProvided() {
         let context = persistentContainer.viewContext
         let user = User(id: generateNumber(), email: generateEmail())
-        let clip1 = Clip(id: 1, text: generateString(), createdAt: Date(), user: user)
-        let clip2 = Clip(id: 2, text: generateString(), createdAt: Date(), user: user)
-        let clip3 = Clip(id: 3, text: generateString(), createdAt: Date(), user: user)
+        let clip1 = Clip(id: 1, text: generateString(), userID: user.id, createdAt: Date())
+        let clip2 = Clip(id: 2, text: generateString(), userID: user.id, createdAt: Date())
+        let clip3 = Clip(id: 3, text: generateString(), userID: user.id, createdAt: Date())
         ManagedClip(from: clip1, context: context)
         ManagedClip(from: clip2, context: context)
         try! context.save()
