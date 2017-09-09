@@ -25,7 +25,7 @@ class ClipsViewModelTests: CoreDataTestCase {
         viewModel = ClipsViewModel(provider: provider, persistentContainer: persistentContainer, pageSize: ClipsViewModelTests.pageSize)
         let pageSignal = Signal<Int, NoError>.pipe()
         displayPage = pageSignal.input
-        viewModel.pageDisplayed <~ pageSignal.output
+        viewModel.pageViewed <~ pageSignal.output
         
         try! testRemoteData.createUser(email: generateEmail(), password: generateString())
         for _ in 0..<ClipsViewModelTests.initialRemoteClips {

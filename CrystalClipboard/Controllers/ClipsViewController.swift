@@ -19,8 +19,7 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
     var provider: APIProvider!
     
     private lazy var viewModel: ClipsViewModel = ClipsViewModel(provider: self.provider, persistentContainer: self.persistentContainer, pageSize: ClipsViewController.pageSize)
-    private var pageDisplayedObserver: Signal<Int, NoError>.Observer!
-    private var lastPageDisplayed = 0
+    private var pageScrolledTo = MutableProperty(0)
     @IBOutlet private weak var tableView: UITableView!
     
     private static let copiedHUDFlashDelay: TimeInterval = 0.5
@@ -31,17 +30,15 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         
         // View model inputs
         
-        let (pageDisplayedSignal, pageDisplayedObserver) = Signal<Int, NoError>.pipe()
         let pageWillAppear = reactive.trigger(for: #selector(UIViewController.viewWillAppear(_:)))
             .skip(first: 1)
-            .map { [unowned self] in self.lastPageDisplayed }
+            .map { [unowned self] in self.pageScrolledTo.value }
         let pageWillEnterForeground = NotificationCenter.default.reactive
             .notifications(forName: .UIApplicationWillEnterForeground)
             .take(during: reactive.lifetime)
-            .map { [unowned self] _ in self.lastPageDisplayed }
+            .map { [unowned self] _ in self.pageScrolledTo.value }
         
-        viewModel.pageDisplayed <~ SignalProducer(values: pageDisplayedSignal.skipRepeats(), pageWillAppear, pageWillEnterForeground).flatten(.merge)
-        self.pageDisplayedObserver = pageDisplayedObserver
+        viewModel.pageViewed <~ SignalProducer(values: pageScrolledTo.signal.skipRepeats(), pageWillAppear, pageWillEnterForeground).flatten(.merge)
         
         // View model outputs
         
@@ -65,8 +62,7 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
 
 extension ClipsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        lastPageDisplayed = (indexPath.row + 1) / ClipsViewController.pageSize
-        pageDisplayedObserver.send(value: lastPageDisplayed)
+        pageScrolledTo.value = (indexPath.row + 1) / ClipsViewController.pageSize
     }
 }
 

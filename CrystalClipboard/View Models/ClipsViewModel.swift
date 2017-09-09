@@ -14,7 +14,7 @@ import CellHelpers
 class ClipsViewModel: NSObject {
     // MARK: Inputs
     
-    let pageDisplayed = MutableProperty<Int>(0)
+    let pageViewed = MutableProperty<Int>(0)
     
     // MARK: Outputs
     
@@ -84,7 +84,7 @@ class ClipsViewModel: NSObject {
             }
         }
 
-        pageDisplayed.producer.skip(first: 1).startWithValues { page in
+        pageViewed.producer.skip(first: 1).startWithValues { page in
             let presentClips = dataProvider.fetchedResultsController.fetchedObjects!
             let clipWithMaxIDIndex = page * pageSize - 1
             let maxID = clipWithMaxIDIndex > 0 ? presentClips[clipWithMaxIDIndex].id : nil
