@@ -34,6 +34,7 @@ class ClipsViewModelTests: CoreDataTestCase {
     }
     
     override func tearDown() {
+        displayPage = nil
         viewModel = nil
         super.tearDown()
     }
@@ -41,7 +42,7 @@ class ClipsViewModelTests: CoreDataTestCase {
     func testFetchesAndInsertsClips() {
         let clipsInsertedExpectation = expectation(description: "Clips inserted")
         let clipsInsertedDisposable = viewModel.changeSets.observeValues {
-            XCTAssertEqual($0.insertions.count, ClipsViewModelTests.pageSize)
+            XCTAssertEqual($0.insertions.count, 25)
             clipsInsertedExpectation.fulfill()
         }
         displayPage.send(value: 0)
@@ -50,7 +51,7 @@ class ClipsViewModelTests: CoreDataTestCase {
         
         let moreClipsInsertedExpectation = expectation(description: "More clips inserted")
         let moreClipsInsertedDisposable = viewModel.changeSets.observeValues {
-            XCTAssertEqual($0.insertions.count, ClipsViewModelTests.pageSize)
+            XCTAssertEqual($0.insertions.count, 25)
             moreClipsInsertedExpectation.fulfill()
         }
         displayPage.send(value: 1)
@@ -64,5 +65,30 @@ class ClipsViewModelTests: CoreDataTestCase {
         }
         displayPage.send(value: 2)
         waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    func testDeletesClipsDeletedRemotely() {
+        let clipsInsertedExpectation = expectation(description: "Clips inserted")
+        let clipsInsertedDisposable = viewModel.changeSets.observeValues {
+            XCTAssertEqual($0.insertions.count, 25)
+            clipsInsertedExpectation.fulfill()
+        }
+        displayPage.send(value: 0)
+        waitForExpectations(timeout: 1, handler: nil)
+        clipsInsertedDisposable?.dispose()
+        
+        try! testRemoteData.deleteClip(id: 55)
+        try! testRemoteData.deleteClip(id: 50)
+        
+        let clipDeletedExpectation = expectation(description: "Clips deleted")
+        let clipDeletedDisposable = viewModel.changeSets.observeValues {
+            XCTAssertEqual($0.deletions.count, 2)
+            clipDeletedExpectation.fulfill()
+        }
+        displayPage.send(value: 0)
+        waitForExpectations(timeout: 1, handler: nil)
+        clipDeletedDisposable?.dispose()
+        
+        
     }
 }

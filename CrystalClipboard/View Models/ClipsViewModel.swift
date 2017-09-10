@@ -73,7 +73,12 @@ class ClipsViewModel: NSObject {
                         let predicateFormat = "%K < %i AND %K > %i AND NOT (%K IN %@)"
                         let predicateArguments: [Any] = [idKeyPath, firstID, idKeyPath, lastID, idKeyPath, fetchedClipIDs, idKeyPath]
                         var predicate = NSPredicate(format: predicateFormat, argumentArray: predicateArguments)
-                        if let previousMaxFetchedClipID = previousMaxFetchedClipID {
+                        if maxID == nil {
+                            let orPredicateFormat = "%K > %i"
+                            let orPredicateArguments: [Any] = [idKeyPath, firstID]
+                            let orPredicate = NSPredicate(format: orPredicateFormat, argumentArray: orPredicateArguments)
+                            predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [predicate, orPredicate])
+                        } else if let previousMaxFetchedClipID = previousMaxFetchedClipID {
                             let orPredicateFormat = "%K < %i AND %K > %i"
                             let orPredicateArguments: [Any] = [idKeyPath, previousMaxFetchedClipID, idKeyPath, firstID]
                             let orPredicate = NSPredicate(format: orPredicateFormat, argumentArray: orPredicateArguments)
