@@ -37,7 +37,7 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
             .map { [unowned self] _ in self.pageScrolledTo.value }
         let pageWasScrolledTo = pageScrolledTo.signal.skip(first: 1).skipRepeats()
         
-        viewModel.pageViewed <~ SignalProducer(values: pageWasScrolledTo, pageWillAppear, pageWillEnterForeground).flatten(.merge).logEvents()
+        viewModel.pageViewed <~ SignalProducer(values: pageWasScrolledTo, pageWillAppear, pageWillEnterForeground).flatten(.merge)
         
         // View model outputs
         
