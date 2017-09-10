@@ -36,12 +36,12 @@ class ResetPasswordViewModelTests: ProviderTestCase {
     
     func testSuccessMessage() {
         viewModel.email.value = email
-        viewModel.submit.apply().start()
         let submitExpectation = expectation(description: "Submission successful")
         viewModel.submit.values.observeValues {
             XCTAssertEqual($0, "reset-password.will-receive-email".localized)
             submitExpectation.fulfill()
         }
+        viewModel.submit.apply().start()
         waitForExpectations(timeout: 1, handler: nil)
     }
     
