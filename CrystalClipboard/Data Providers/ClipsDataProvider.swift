@@ -14,7 +14,7 @@ struct ClipsDataProvider: FetchedDataProvider {
     
     init(managedObjectContext: NSManagedObjectContext) {
         let fetchRequest = ManagedClip.fetchRequest() as! NSFetchRequest<ManagedClip>
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(ManagedClip.createdAt), ascending: false)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(ManagedClip.id), ascending: false)]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                   managedObjectContext: managedObjectContext,
                                                                   sectionNameKeyPath: nil,

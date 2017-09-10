@@ -87,7 +87,7 @@ class TestRemoteData {
         try authenticate()
         let actualMaxID: Int
         if let maxID = maxID, maxID < clips.count {
-            actualMaxID = maxID
+            actualMaxID = maxID - 1
         } else {
             actualMaxID = clips.count
         }
@@ -99,7 +99,7 @@ class TestRemoteData {
         }
         
         let maxClips = Array(clips[..<actualMaxID].reversed())
-        return Array(maxClips[..<actualCount])
+        return Array(maxClips[..<(min(actualCount, maxClips.count))])
     }
     
     func deleteClip(id: Int) throws {

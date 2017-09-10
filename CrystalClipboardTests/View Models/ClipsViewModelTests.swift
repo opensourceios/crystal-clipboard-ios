@@ -39,12 +39,30 @@ class ClipsViewModelTests: CoreDataTestCase {
     }
     
     func testFetchesAndInsertsClips() {
-        let clipsInsertedExpectation = expectation(description: "Clips Inserted")
-        viewModel.changeSets.observeValues {
+        let clipsInsertedExpectation = expectation(description: "Clips inserted")
+        let clipsInsertedDisposable = viewModel.changeSets.observeValues {
             XCTAssertEqual($0.insertions.count, ClipsViewModelTests.pageSize)
             clipsInsertedExpectation.fulfill()
         }
         displayPage.send(value: 0)
+        waitForExpectations(timeout: 1, handler: nil)
+        clipsInsertedDisposable?.dispose()
+        
+        let moreClipsInsertedExpectation = expectation(description: "More clips inserted")
+        let moreClipsInsertedDisposable = viewModel.changeSets.observeValues {
+            XCTAssertEqual($0.insertions.count, ClipsViewModelTests.pageSize)
+            moreClipsInsertedExpectation.fulfill()
+        }
+        displayPage.send(value: 1)
+        waitForExpectations(timeout: 1, handler: nil)
+        moreClipsInsertedDisposable?.dispose()
+        
+        let remainingClipsInsertedExpectation = expectation(description: "Remaining clips inserted")
+        viewModel.changeSets.observeValues {
+            XCTAssertEqual($0.insertions.count, 5)
+            remainingClipsInsertedExpectation.fulfill()
+        }
+        displayPage.send(value: 2)
         waitForExpectations(timeout: 1, handler: nil)
     }
 }
