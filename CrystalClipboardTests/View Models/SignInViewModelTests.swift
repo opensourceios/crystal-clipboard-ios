@@ -13,24 +13,21 @@ import enum Result.NoError
 
 class SignInViewModelTests: ProviderTestCase {
     var viewModel: SignInViewModel!
-    var submissionErrors: TestObserver<SubmissionError, NoError>!
     var email: String!
     var password: String!
     
     override func setUp() {
         super.setUp()
         viewModel = SignInViewModel(provider: provider)
-        submissionErrors = TestObserver()
-        viewModel.submit.errors.observe(submissionErrors.observer)
         email = generateEmail()
         password = generateString()
         try! testRemoteData.createUser(email: email, password: password)
     }
     
     override func tearDown() {
+        User.current = nil
         password = nil
         email = nil
-        submissionErrors = nil
         viewModel = nil
         provider = nil
     }
@@ -47,38 +44,57 @@ class SignInViewModelTests: ProviderTestCase {
         User.current = nil
         viewModel.email.value = email
         viewModel.password.value = password
+        let submitExpectation = expectation(description: "Submission successful")
+        viewModel.submit.values.observeValues { [unowned self] in
+            XCTAssertEqual(User.current?.email, self.email)
+            submitExpectation.fulfill()
+        }
         viewModel.submit.apply().start()
-        XCTAssertEqual(User.current!.email, email)
+        waitForExpectations(timeout: 1, handler: nil)
     }
     
     func testAlertsRemoteErrors() {
         viewModel.email.value = generateEmail()
         viewModel.password.value = generateString()
+        let firstUnsuccessfulSubmissionExpectation = expectation(description: "Submission fails")
+        let firstUnsuccessfulSubmissionDisposable = viewModel.submit.errors.observeValues {
+            XCTAssertEqual($0, SubmissionError(message: "The email or password provided was incorrect"))
+            firstUnsuccessfulSubmissionExpectation.fulfill()
+        }
         viewModel.submit.apply().start()
-        submissionErrors.assertValues([SubmissionError(message: "The email or password provided was incorrect")])
+        waitForExpectations(timeout: 1, handler: nil)
+        firstUnsuccessfulSubmissionDisposable?.dispose()
+        
         viewModel.email.value = email
+        let secondUnsuccessfulSubmissionExpectation = expectation(description: "Submission fails")
+        viewModel.submit.errors.observeValues {
+            XCTAssertEqual($0, SubmissionError(message: "The email or password provided was incorrect"))
+            secondUnsuccessfulSubmissionExpectation.fulfill()
+        }
         viewModel.submit.apply().start()
-        submissionErrors.assertValues([
-            SubmissionError(message: "The email or password provided was incorrect"),
-            SubmissionError(message: "The email or password provided was incorrect")
-            ])
+        waitForExpectations(timeout: 1, handler: nil)
+        
         viewModel.password.value = password
+        let successfulSubmissionExpectation = expectation(description: "Submission successful")
+        viewModel.submit.values.observeValues {
+            successfulSubmissionExpectation.fulfill()
+        }
         viewModel.submit.apply().start()
-        submissionErrors.assertValues([
-            SubmissionError(message: "The email or password provided was incorrect"),
-            SubmissionError(message: "The email or password provided was incorrect")
-            ])
+        waitForExpectations(timeout: 1, handler: nil)
     }
     
     func testAlertsNetworkError() {
         provider = TestAPIProvider(testRemoteData: testRemoteData, online: false)
         viewModel = SignInViewModel(provider: provider)
-        submissionErrors = TestObserver()
         
-        viewModel.submit.errors.observe(submissionErrors.observer)
         viewModel.email.value = email
         viewModel.password.value = password
+        let submitExpectation = expectation(description: "Submission fails")
+        viewModel.submit.errors.observeValues {
+            XCTAssertEqual($0, SubmissionError(message: "sign-in.could-not".localized))
+            submitExpectation.fulfill()
+        }
         viewModel.submit.apply().start()
-        submissionErrors.assertValues([SubmissionError(message: "sign-in.could-not".localized)])
+        waitForExpectations(timeout: 1, handler: nil)
     }
 }

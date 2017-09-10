@@ -39,16 +39,12 @@ class ClipsViewModelTests: CoreDataTestCase {
     }
     
     func testFetchesAndInsertsClips() {
-        let changeSetObserver = TestObserver<ChangeSet, NoError>()
-        viewModel.changeSets.observe(changeSetObserver.observer)
-        
+        let clipsInsertedExpectation = expectation(description: "Clips Inserted")
+        viewModel.changeSets.observeValues {
+            XCTAssertEqual($0.insertions.count, ClipsViewModelTests.pageSize)
+            clipsInsertedExpectation.fulfill()
+        }
         displayPage.send(value: 0)
-        expect(after: 0.01, by: 0.1, description: "Clips fetched and inserted", execute: {
-            XCTAssertEqual(changeSetObserver.values.first?.insertions.count, ClipsViewModelTests.pageSize)
-        })
-        displayPage.send(value: 1)
-        expect(after: 0.1, by: 1, description: "Second page fetched", execute: {
-            XCTAssertEqual(changeSetObserver.values[1].insertions.count, ClipsViewModelTests.pageSize)
-        })
+        waitForExpectations(timeout: 1, handler: nil)
     }
 }

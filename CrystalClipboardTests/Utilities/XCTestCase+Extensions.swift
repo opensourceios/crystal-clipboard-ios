@@ -30,13 +30,4 @@ extension XCTestCase {
         
         return Int(lowerBound + arc4random_uniform(UInt32(upperBound - lowerBound)))
     }
-    
-    func expect(after: TimeInterval, by: TimeInterval, description: String,  execute: @escaping () -> Void, handler: XCWaitCompletionHandler? = nil) {
-        let expect = expectation(description: description)
-        DispatchQueue.main.asyncAfter(deadline: .now() + after) {
-            execute()
-            expect.fulfill()
-        }
-        waitForExpectations(timeout: by, handler: handler)
-    }
 }

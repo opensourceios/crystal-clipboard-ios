@@ -19,6 +19,7 @@ class UserTests: XCTestCase {
     
     override func tearDown() {
         user = nil
+        User.current = nil
     }
     
     func testDecoding() {
@@ -45,7 +46,6 @@ class UserTests: XCTestCase {
     
     func testAuthTokenKeychainPersistence() {
         let keychain = Keychain(service: Constants.keychainService)
-        User.current = nil
         User.current = user
         XCTAssertEqual(keychain["auth-token"], user.authToken!.token)
         User.current = nil
@@ -53,7 +53,6 @@ class UserTests: XCTestCase {
     }
 
     func testNotifiesSignIn() {
-        User.current = nil
         expectation(forNotification: Notification.Name.userSignedIn, object: nil, handler: nil)
         User.current = user
         waitForExpectations(timeout: 1, handler: nil)
@@ -69,7 +68,7 @@ class UserTests: XCTestCase {
     func testNotifiesUserUpdated() {
         User.current = user
         expectation(forNotification: Notification.Name.userUpdated, object: nil, handler: nil)
-        User.current = User(id: 666, email: "satan+newemail@gmail.com")
+        User.current = User(id: user.id, email: generateEmail())
         waitForExpectations(timeout: 1, handler: nil)
     }
 }

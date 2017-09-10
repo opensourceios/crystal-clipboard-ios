@@ -10,10 +10,20 @@ import XCTest
 @testable import CrystalClipboard
 
 class RootViewModelTests: XCTestCase {
-    let viewModel = RootViewModel()
+    var viewModel: RootViewModel!
+    
+    override func setUp() {
+        super.setUp()
+        viewModel = RootViewModel()
+    }
+    
+    override func tearDown() {
+        User.current = nil
+        viewModel = nil
+        super.tearDown()
+    }
     
     func testTransitionTo() {
-        User.current = nil
         XCTAssertEqual(viewModel.transitionTo.value.storyboardName, .SignedOut)
         XCTAssertEqual(viewModel.transitionTo.value.controllerIdentifier, .Landing)
         User.current = User(id: generateNumber(), email: generateEmail(), authToken: User.AuthToken(token: generateString()))

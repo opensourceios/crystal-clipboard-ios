@@ -10,7 +10,15 @@ import Moya
 @testable import CrystalClipboard
 
 class TestAPIProvider: APIProvider {
-    init(testRemoteData: TestRemoteData, online: Bool = true) {
+    required init(testRemoteData: TestRemoteData,
+                  online: Bool = true,
+                  requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping,
+                  stubClosure: @escaping StubClosure = MoyaProvider.immediatelyStub,
+                  callbackQueue: DispatchQueue? = nil,
+                  manager: Manager = MoyaProvider<Target>.defaultAlamofireManager(),
+                  plugins: [PluginType] = [],
+                  trackInflights: Bool = false) {
+        
         let endpointClosure = { (target: CrystalClipboardAPI) -> Endpoint<CrystalClipboardAPI> in
             let sampleResponseClosure: Endpoint<CrystalClipboardAPI>.SampleResponseClosure = {
                 if online {
@@ -30,7 +38,14 @@ class TestAPIProvider: APIProvider {
                 task: target.task
             )
         }
-        super.init(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub)
+        
+        super.init(endpointClosure: endpointClosure,
+                   requestClosure: requestClosure,
+                   stubClosure: stubClosure,
+                   callbackQueue: callbackQueue,
+                   manager: manager,
+                   plugins: plugins,
+                   trackInflights: trackInflights)
     }
 }
 

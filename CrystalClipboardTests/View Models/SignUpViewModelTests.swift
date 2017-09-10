@@ -13,13 +13,16 @@ import enum Result.NoError
 
 class SignUpViewModelTests: ProviderTestCase {
     var viewModel: SignUpViewModel!
-    var submissionErrors: TestObserver<SubmissionError, NoError>!
     
     override func setUp() {
         super.setUp()
         viewModel = SignUpViewModel(provider: provider)
-        submissionErrors = TestObserver()
-        viewModel.submit.errors.observe(submissionErrors.observer)
+    }
+    
+    override func tearDown() {
+        User.current = nil
+        viewModel = nil
+        super.tearDown()
     }
     
     func testSignUpEnabled() {
@@ -35,8 +38,13 @@ class SignUpViewModelTests: ProviderTestCase {
         let email = generateEmail()
         viewModel.email.value = email
         viewModel.password.value = generateString()
+        let submitExpectation = expectation(description: "Submission successful")
+        viewModel.submit.values.observeValues {
+            XCTAssertEqual(User.current!.email, email)
+            submitExpectation.fulfill()
+        }
         viewModel.submit.apply().start()
-        XCTAssertEqual(User.current!.email, email)
+        waitForExpectations(timeout: 1, handler: nil)
     }
     
     func testAlertsRemoteErrors() {
@@ -45,31 +53,44 @@ class SignUpViewModelTests: ProviderTestCase {
         
         viewModel.email.value = takenEmail
         viewModel.password.value = "p"
+        let firstUnsuccessfulSubmissionExpectation = expectation(description: "Submission fails")
+        let firstUnsuccessfulSubmissionDisposable = viewModel.submit.errors.observeValues {
+            XCTAssertEqual($0, SubmissionError(message: "Email has already been taken\n\nPassword is too short (minimum is 6 characters)"))
+            firstUnsuccessfulSubmissionExpectation.fulfill()
+        }
         viewModel.submit.apply().start()
-        submissionErrors.assertValues([SubmissionError(message: "Email has already been taken\n\nPassword is too short (minimum is 6 characters)")])
+        waitForExpectations(timeout: 1, handler: nil)
+        firstUnsuccessfulSubmissionDisposable?.dispose()
         viewModel.email.value = generateEmail()
+        let secondUnsuccessfulSubmissionExpectation = expectation(description: "Submission fails")
+        viewModel.submit.errors.observeValues {
+            XCTAssertEqual($0, SubmissionError(message: "Password is too short (minimum is 6 characters)"))
+            secondUnsuccessfulSubmissionExpectation.fulfill()
+        }
         viewModel.submit.apply().start()
-        submissionErrors.assertValues([
-            SubmissionError(message: "Email has already been taken\n\nPassword is too short (minimum is 6 characters)"),
-            SubmissionError(message: "Password is too short (minimum is 6 characters)")
-        ])
+        waitForExpectations(timeout: 1, handler: nil)
+        
         viewModel.password.value = generateString()
+        let successfulSubmissionExpectation = expectation(description: "Submission successful")
+        viewModel.submit.values.observeValues {
+            successfulSubmissionExpectation.fulfill()
+        }
         viewModel.submit.apply().start()
-        submissionErrors.assertValues([
-            SubmissionError(message: "Email has already been taken\n\nPassword is too short (minimum is 6 characters)"),
-            SubmissionError(message: "Password is too short (minimum is 6 characters)")
-        ])
+        waitForExpectations(timeout: 1, handler: nil)
     }
     
     func testAlertsNetworkError() {
         provider = TestAPIProvider(testRemoteData: testRemoteData, online: false)
         viewModel = SignUpViewModel(provider: provider)
-        submissionErrors = TestObserver<SubmissionError, NoError>()
-        viewModel.submit.errors.observe(submissionErrors.observer)
         
         viewModel.email.value = generateEmail()
         viewModel.password.value = generateString()
+        let submitExpectation = expectation(description: "Submission fails")
+        viewModel.submit.errors.observeValues {
+            XCTAssertEqual($0, SubmissionError(message: "sign-up.could-not".localized))
+            submitExpectation.fulfill()
+        }
         viewModel.submit.apply().start()
-        submissionErrors.assertValues([SubmissionError(message: "sign-up.could-not".localized)])
+        waitForExpectations(timeout: 1, handler: nil)
     }
 }

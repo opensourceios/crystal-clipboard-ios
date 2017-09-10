@@ -15,7 +15,9 @@ protocol TransitionType {
 }
 
 fileprivate enum Transition: TransitionType {
-    case signIn, signOut
+    case signIn(authToken: User.AuthToken)
+    case signOut
+    
     var storyboardName: StoryboardNames {
         switch self {
         case .signIn: return .Main
@@ -32,10 +34,9 @@ fileprivate enum Transition: TransitionType {
     
     var provider: APIProvider {
         switch self {
-        case .signIn:
-            guard let userProvider = APIProvider.userProvider() else { fatalError("Should not transition to signed in without credentials") }
-            return userProvider
-        case .signOut: return APIProvider.adminProvider()
+        case let .signIn(authToken):
+            return APIProvider(token: authToken.token)
+        case .signOut: return APIProvider(token: User.AuthToken.admin.token)
         }
     }
 }
@@ -58,12 +59,19 @@ class RootViewModel {
         let notificationsSignal = SignalProducer(values: signInSignal, signOutSignal).flatten(.merge)
         let then = notificationsSignal.map { notification -> TransitionType in
             switch notification.name {
-            case Notification.Name.userSignedIn: return Transition.signIn
+            case Notification.Name.userSignedIn:
+                guard let authToken = (notification.object as? User)?.authToken else { fatalError("A signed in user should have an auth token") }
+                return Transition.signIn(authToken: authToken)
             case Notification.Name.userSignedOut: return Transition.signOut
             default: fatalError("Wrong notification observed")
             }
         }
-        let initial: Transition = User.current == nil ? .signOut : .signIn
+        let initial: Transition
+        if let authToken = User.current?.authToken {
+            initial = .signIn(authToken: authToken)
+        } else {
+            initial = .signOut
+        }
         transitionTo = Property<TransitionType>(initial: initial, then: then)
     }
 }
