@@ -24,6 +24,7 @@ class RootViewModelTests: XCTestCase {
     }
     
     func testTransitionTo() {
+        User.current = nil
         XCTAssertEqual(viewModel.transitionTo.value.storyboardName, .SignedOut)
         XCTAssertEqual(viewModel.transitionTo.value.controllerIdentifier, .Landing)
         User.current = User(id: generateNumber(), email: generateEmail(), authToken: User.AuthToken(token: generateString()))
