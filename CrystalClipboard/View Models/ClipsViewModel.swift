@@ -61,36 +61,10 @@ class ClipsViewModel: NSObject {
             return provider.reactive.request(.listClips(maxID: maxID, count: pageSize))
                 .decode(to: [Clip].self)
                 .mapError { ClipDisplayError.response(underlying: $0) }
-                .map { clips in
-                    let previousMaxFetchedClipID = maxFetchedClipID
-                    maxFetchedClipID = clips.last?.id ?? maxFetchedClipID
-                    let context = persistentContainer.newBackgroundContext()
-                    context.mergePolicy = NSMergePolicy.rollback
-                    for clip in clips { ManagedClip(from: clip, context: context) }
-                    let fetchedClipIDs = clips.map { $0.id }
-                    if let firstID = fetchedClipIDs.first, let lastID = fetchedClipIDs.last {
-                        let idKeyPath = #keyPath(ManagedClip.id)
-                        let predicateFormat = "%K < %i AND %K > %i AND NOT (%K IN %@)"
-                        let predicateArguments: [Any] = [idKeyPath, firstID, idKeyPath, lastID, idKeyPath, fetchedClipIDs, idKeyPath]
-                        var predicate = NSPredicate(format: predicateFormat, argumentArray: predicateArguments)
-                        if maxID == nil {
-                            let orPredicateFormat = "%K > %i"
-                            let orPredicateArguments: [Any] = [idKeyPath, firstID]
-                            let orPredicate = NSPredicate(format: orPredicateFormat, argumentArray: orPredicateArguments)
-                            predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [predicate, orPredicate])
-                        } else if let previousMaxFetchedClipID = previousMaxFetchedClipID {
-                            let orPredicateFormat = "%K < %i AND %K > %i"
-                            let orPredicateArguments: [Any] = [idKeyPath, previousMaxFetchedClipID, idKeyPath, firstID]
-                            let orPredicate = NSPredicate(format: orPredicateFormat, argumentArray: orPredicateArguments)
-                            predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [predicate, orPredicate])
-                        }
-                        let clipsToDeleteFetchRequest = ManagedClip.fetchRequest() as! NSFetchRequest<ManagedClip>
-                        clipsToDeleteFetchRequest.predicate = predicate
-                        if let clipsToDelete = try? context.fetch(clipsToDeleteFetchRequest) {
-                            for clip in clipsToDelete { context.delete(clip) }
-                        }
-                    }
-                    try? context.save()
+                .map { ClipsViewModel.persistClips($0,
+                                                   inPersistentContainer: persistentContainer,
+                                                   maxID: maxID,
+                                                   maxFetchedClipID: &maxFetchedClipID)
                 }
                 .mapError { ClipDisplayError.persistence(underlying: $0) }
                 .map { _ in () }
@@ -101,6 +75,44 @@ class ClipsViewModel: NSObject {
         
         fetchedResultsChangeSetProducer.delegate = self
         fetchedResultsChangeSetProducer.forwardingDelegate = self
+    }
+}
+
+private extension ClipsViewModel {
+    // this is separated out to keep init from being too long
+    private static func persistClips(_ clips: [Clip],
+                                     inPersistentContainer persistentContainer: NSPersistentContainer,
+                                     maxID: Int?,
+                                     maxFetchedClipID: inout Int?) {
+        let previousMaxFetchedClipID = maxFetchedClipID
+        maxFetchedClipID = clips.last?.id ?? maxFetchedClipID
+        let context = persistentContainer.newBackgroundContext()
+        context.mergePolicy = NSMergePolicy.rollback
+        for clip in clips { ManagedClip(from: clip, context: context) }
+        let fetchedClipIDs = clips.map { $0.id }
+        if let firstID = fetchedClipIDs.first, let lastID = fetchedClipIDs.last {
+            let idKeyPath = #keyPath(ManagedClip.id)
+            let predicateFormat = "%K < %i AND %K > %i AND NOT (%K IN %@)"
+            let predicateArguments: [Any] = [idKeyPath, firstID, idKeyPath, lastID, idKeyPath, fetchedClipIDs, idKeyPath]
+            var predicate = NSPredicate(format: predicateFormat, argumentArray: predicateArguments)
+            if maxID == nil {
+                let orPredicateFormat = "%K > %i"
+                let orPredicateArguments: [Any] = [idKeyPath, firstID]
+                let orPredicate = NSPredicate(format: orPredicateFormat, argumentArray: orPredicateArguments)
+                predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [predicate, orPredicate])
+            } else if let previousMaxFetchedClipID = previousMaxFetchedClipID {
+                let orPredicateFormat = "%K < %i AND %K > %i"
+                let orPredicateArguments: [Any] = [idKeyPath, previousMaxFetchedClipID, idKeyPath, firstID]
+                let orPredicate = NSPredicate(format: orPredicateFormat, argumentArray: orPredicateArguments)
+                predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [predicate, orPredicate])
+            }
+            let clipsToDeleteFetchRequest = ManagedClip.fetchRequest() as! NSFetchRequest<ManagedClip>
+            clipsToDeleteFetchRequest.predicate = predicate
+            if let clipsToDelete = try? context.fetch(clipsToDeleteFetchRequest) {
+                for clip in clipsToDelete { context.delete(clip) }
+            }
+        }
+        try? context.save()
     }
 }
 
