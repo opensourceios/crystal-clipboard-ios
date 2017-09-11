@@ -35,6 +35,13 @@ class ClipsViewModel: NSObject {
     private let fetchedResultsChangeSetProducer: FetchedResultsChangeSetProducer
     private let changeSetsObserver: Signal<ChangeSet, NoError>.Observer
     private let clipCount: MutableProperty<Int>
+    private let cable = Cable(url: Constants.environment.cableURL,
+                              origin: Constants.environment.baseURL.absoluteString,
+                              token: User.current?.authToken?.token)
+    private var connection: Cable.Connection?
+    private var channel: Channel?
+    private var channelReconnectInterval: Int = 0
+    private static var maxCableReconnectTries = 10
     
     // MARK: Initialization
     
@@ -65,18 +72,58 @@ class ClipsViewModel: NSObject {
                 .decode(to: [Clip].self)
                 .mapError { ClipDisplayError($0) }
                 .attemptMap {
+                    let deletionPredicate = ClipsViewModel.clipDeletionPredicate(clipIDs: $0.map { $0.id },
+                                                                                     maxID: maxID,
+                                                                                     maxFetchedClipID: &maxFetchedClipID)
                     try ClipsViewModel.persistClips($0,
                                                     inPersistentContainer: persistentContainer,
-                                                    maxID: maxID,
-                                                    maxFetchedClipID: &maxFetchedClipID)
+                                                    deletionPredicate: deletionPredicate)
             }
         }
         showLoadingFooter = pageViewed.isExecuting
         
         super.init()
         
+        connect(cable: cable, persistentContainer: persistentContainer)
+        
         fetchedResultsChangeSetProducer.delegate = self
         fetchedResultsChangeSetProducer.forwardingDelegate = self
+    }
+    
+    private func connect(cable: Cable, persistentContainer: NSPersistentContainer) {
+        connection = cable.connect().on(
+            failed: { [unowned self] _ in
+                guard self.channelReconnectInterval < ClipsViewModel.maxCableReconnectTries else { return }
+                self.channelReconnectInterval += 1
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(self.channelReconnectInterval)) {
+                    self.connect(cable: self.cable, persistentContainer: persistentContainer)
+                }
+        },
+            value: { [unowned self] value in
+                switch value {
+                case .connected:
+                    self.channelReconnectInterval = 0
+                    self.channel = self.cable.subscribe(channelIdentifier: Constants.clipboardChannelIdentifier).on(value: {
+                        guard
+                            case let .message(message) = $0,
+                            let dictionary = message as? [String: Any],
+                            let clipChannelMessage = ClipChannelMessage(dictionary: dictionary)
+                            else { return }
+                        let clips: [Clip]
+                        let deletionPredicate: NSPredicate?
+                        switch clipChannelMessage {
+                        case let .clipCreated(clip):
+                            clips = [clip]
+                            deletionPredicate = nil
+                        case let .clipDeleted(id):
+                            clips = []
+                            deletionPredicate = NSPredicate(format: "%K = %i", #keyPath(ManagedClip.id), id)
+                        }
+                        try? ClipsViewModel.persistClips(clips, inPersistentContainer: persistentContainer, deletionPredicate: deletionPredicate)
+                    })
+                default: break
+                }
+        })
     }
 }
 
@@ -84,14 +131,25 @@ private extension ClipsViewModel {
     // this is separated out to keep init from being too long
     private static func persistClips(_ clips: [Clip],
                                      inPersistentContainer persistentContainer: NSPersistentContainer,
-                                     maxID: Int?,
-                                     maxFetchedClipID: inout Int?) throws {
-        let previousMaxFetchedClipID = maxFetchedClipID
-        maxFetchedClipID = clips.last?.id ?? maxFetchedClipID
+                                     deletionPredicate: NSPredicate?) throws {
         let context = persistentContainer.newBackgroundContext()
         context.mergePolicy = NSMergePolicy.rollback
-        for clip in clips { ManagedClip(from: clip, context: context) }
-        let clipIDs = clips.map { $0.id }
+        for clip in clips {
+            ManagedClip(from: clip, context: context)
+        }
+        if let deletionPredicate = deletionPredicate {
+            let deletionFetchRequest = ManagedClip.fetchRequest() as! NSFetchRequest<ManagedClip>
+            deletionFetchRequest.predicate = deletionPredicate
+            for clip in try context.fetch(deletionFetchRequest) {
+                context.delete(clip)
+            }
+        }
+        try context.save()
+    }
+    
+    private static func clipDeletionPredicate(clipIDs: [Int], maxID: Int?, maxFetchedClipID: inout Int?) -> NSPredicate? {
+        let previousMaxFetchedClipID = maxFetchedClipID
+        maxFetchedClipID = clipIDs.last ?? maxFetchedClipID
         if let firstID = clipIDs.first, let lastID = clipIDs.last {
             let idKeyPath = #keyPath(ManagedClip.id)
             let predicateFormat = "%K < %i AND %K > %i AND NOT (%K IN %@)"
@@ -108,13 +166,10 @@ private extension ClipsViewModel {
                 let orPredicate = NSPredicate(format: orPredicateFormat, argumentArray: orPredicateArguments)
                 predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [predicate, orPredicate])
             }
-            let clipsToDeleteFetchRequest = ManagedClip.fetchRequest() as! NSFetchRequest<ManagedClip>
-            clipsToDeleteFetchRequest.predicate = predicate
-            if let clipsToDelete = try? context.fetch(clipsToDeleteFetchRequest) {
-                for clip in clipsToDelete { context.delete(clip) }
-            }
+            return predicate
         }
-        try context.save()
+        
+        return nil
     }
 }
 

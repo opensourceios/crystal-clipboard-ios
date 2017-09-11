@@ -93,6 +93,10 @@ class Cable {
         return connection.output
     }
     
+    var isConnected: Bool {
+        return socket.isConnected
+    }
+    
     func disconnect() {
         socket.disconnect()
     }
