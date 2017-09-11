@@ -16,9 +16,9 @@ class ManagedClip: NSManagedObject, ClipType {
     @discardableResult
     convenience init(from clip: Clip, context: NSManagedObjectContext) {
         self.init(context: context)
-        self.id = clip.id
-        self.text = clip.text
-        self.createdAt = clip.createdAt
+        id = clip.id
+        text = clip.text
+        createdAt = clip.createdAt
     }
     
 }
