@@ -9,7 +9,10 @@
 import CoreData
 import ReactiveSwift
 import enum Result.NoError
+import struct Result.AnyError
 import CellHelpers
+
+typealias ClipDisplayError = AnyError
 
 class ClipsViewModel: NSObject {
     // MARK: Inputs
@@ -60,13 +63,13 @@ class ClipsViewModel: NSObject {
             let maxID = clipWithMaxIDIndex > 0 ? presentClips[clipWithMaxIDIndex].id : nil
             return provider.reactive.request(.listClips(maxID: maxID, count: pageSize))
                 .decode(to: [Clip].self)
-                .mapError { ClipDisplayError.response(underlying: $0) }
-                .map { ClipsViewModel.persistClips($0,
-                                                   inPersistentContainer: persistentContainer,
-                                                   maxID: maxID,
-                                                   maxFetchedClipID: &maxFetchedClipID)
-                }
-                .mapError { ClipDisplayError.persistence(underlying: $0) }
+                .mapError { ClipDisplayError($0) }
+                .attemptMap {
+                    try ClipsViewModel.persistClips($0,
+                                                    inPersistentContainer: persistentContainer,
+                                                    maxID: maxID,
+                                                    maxFetchedClipID: &maxFetchedClipID)
+            }
         }
         showLoadingFooter = pageViewed.isExecuting
         
@@ -82,7 +85,7 @@ private extension ClipsViewModel {
     private static func persistClips(_ clips: [Clip],
                                      inPersistentContainer persistentContainer: NSPersistentContainer,
                                      maxID: Int?,
-                                     maxFetchedClipID: inout Int?) {
+                                     maxFetchedClipID: inout Int?) throws {
         let previousMaxFetchedClipID = maxFetchedClipID
         maxFetchedClipID = clips.last?.id ?? maxFetchedClipID
         let context = persistentContainer.newBackgroundContext()
@@ -111,7 +114,7 @@ private extension ClipsViewModel {
                 for clip in clipsToDelete { context.delete(clip) }
             }
         }
-        try? context.save()
+        try context.save()
     }
 }
 
