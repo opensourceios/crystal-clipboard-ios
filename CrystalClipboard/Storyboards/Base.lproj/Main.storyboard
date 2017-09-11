@@ -51,7 +51,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EC0-FK-H9q">
-                                                    <rect key="frame" x="8" y="8" width="359" height="99"/>
+                                                    <rect key="frame" x="8" y="4" width="359" height="99"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TA6-4a-8QZ">
                                                             <rect key="frame" x="8" y="8" width="263" height="51"/>
@@ -115,8 +115,8 @@
                                             <constraints>
                                                 <constraint firstItem="EC0-FK-H9q" firstAttribute="leading" secondItem="pYP-1y-bgh" secondAttribute="leading" constant="8" id="DPA-3a-1qq"/>
                                                 <constraint firstAttribute="trailing" secondItem="EC0-FK-H9q" secondAttribute="trailing" constant="8" id="WgP-w9-M0Y"/>
-                                                <constraint firstItem="EC0-FK-H9q" firstAttribute="top" secondItem="pYP-1y-bgh" secondAttribute="top" constant="8" id="fjw-WM-eXb"/>
-                                                <constraint firstAttribute="bottom" secondItem="EC0-FK-H9q" secondAttribute="bottom" id="rTc-XS-g4U"/>
+                                                <constraint firstItem="EC0-FK-H9q" firstAttribute="top" secondItem="pYP-1y-bgh" secondAttribute="top" constant="4" id="fjw-WM-eXb"/>
+                                                <constraint firstAttribute="bottom" secondItem="EC0-FK-H9q" secondAttribute="bottom" constant="4" id="rTc-XS-g4U"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

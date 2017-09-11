@@ -60,6 +60,7 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         
         tableView.dataSource = viewModel.dataSource
         tableView.delegate = self
+        tableView.tableHeaderView = ClipsViewController.spacingHeaderFooterView
     }
 }
 
@@ -80,7 +81,7 @@ extension ClipsViewController: UITableViewDelegate {
 fileprivate extension ClipsViewController {
     fileprivate static let noClipsView = NoClipsView.fromNib()!
     fileprivate static let loadingFooterView = LoadingFooterView.fromNib()!
-    fileprivate static let spacingFooterView = SpacingFooterView.fromNib()!
+    fileprivate static let spacingHeaderFooterView = SpacingHeaderFooterView.fromNib()!
 }
 
 fileprivate extension Reactive where Base: UITableView {
@@ -89,6 +90,6 @@ fileprivate extension Reactive where Base: UITableView {
     }
     
     fileprivate var showLoadingFooter: BindingTarget<Bool> {
-        return makeBindingTarget { $0.tableFooterView = $1 ? ClipsViewController.loadingFooterView : ClipsViewController.spacingFooterView }
+        return makeBindingTarget { $0.tableFooterView = $1 ? ClipsViewController.loadingFooterView : ClipsViewController.spacingHeaderFooterView }
     }
 }

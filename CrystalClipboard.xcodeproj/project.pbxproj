@@ -40,8 +40,8 @@
 		D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0112B841F4A7E8400999761 /* ManagedClip.swift */; };
 		D01A12D61F5E0AA100197ECA /* LoadingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A12D51F5E0AA100197ECA /* LoadingFooterView.swift */; };
 		D01A12D81F5E0B9000197ECA /* LoadingFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A12D71F5E0B9000197ECA /* LoadingFooterView.xib */; };
-		D01A12DA1F5E19B200197ECA /* SpacingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A12D91F5E19B200197ECA /* SpacingFooterView.swift */; };
-		D01A12DC1F5E19DC00197ECA /* SpacingFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A12DB1F5E19DC00197ECA /* SpacingFooterView.xib */; };
+		D01A12DA1F5E19B200197ECA /* SpacingHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A12D91F5E19B200197ECA /* SpacingHeaderFooterView.swift */; };
+		D01A12DC1F5E19DC00197ECA /* SpacingHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A12DB1F5E19DC00197ECA /* SpacingHeaderFooterView.xib */; };
 		D01A12DE1F5E1CEB00197ECA /* NoClipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A12DD1F5E1CEB00197ECA /* NoClipsView.swift */; };
 		D01A12E01F5E1D1600197ECA /* NoClipsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */; };
 		D0253F8F1F5A83B60066B444 /* ISO8601JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0253F8E1F5A83B60066B444 /* ISO8601JSONDecoder.swift */; };
@@ -143,8 +143,8 @@
 		D0112B841F4A7E8400999761 /* ManagedClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedClip.swift; path = Model/ManagedClip.swift; sourceTree = "<group>"; };
 		D01A12D51F5E0AA100197ECA /* LoadingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadingFooterView.swift; path = Views/LoadingFooterView.swift; sourceTree = "<group>"; };
 		D01A12D71F5E0B9000197ECA /* LoadingFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LoadingFooterView.xib; path = Views/LoadingFooterView.xib; sourceTree = "<group>"; };
-		D01A12D91F5E19B200197ECA /* SpacingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpacingFooterView.swift; path = Views/SpacingFooterView.swift; sourceTree = "<group>"; };
-		D01A12DB1F5E19DC00197ECA /* SpacingFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SpacingFooterView.xib; path = Views/SpacingFooterView.xib; sourceTree = "<group>"; };
+		D01A12D91F5E19B200197ECA /* SpacingHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpacingHeaderFooterView.swift; path = Views/SpacingHeaderFooterView.swift; sourceTree = "<group>"; };
+		D01A12DB1F5E19DC00197ECA /* SpacingHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SpacingHeaderFooterView.xib; path = Views/SpacingHeaderFooterView.xib; sourceTree = "<group>"; };
 		D01A12DD1F5E1CEB00197ECA /* NoClipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoClipsView.swift; path = Views/NoClipsView.swift; sourceTree = "<group>"; };
 		D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NoClipsView.xib; path = Views/NoClipsView.xib; sourceTree = "<group>"; };
 		D0253F8E1F5A83B60066B444 /* ISO8601JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ISO8601JSONDecoder.swift; path = Networking/ISO8601JSONDecoder.swift; sourceTree = "<group>"; };
@@ -283,8 +283,8 @@
 				D0C1F6571F590D5E00E49B77 /* MarginSettableTextField.swift */,
 				D01A12DD1F5E1CEB00197ECA /* NoClipsView.swift */,
 				D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */,
-				D01A12D91F5E19B200197ECA /* SpacingFooterView.swift */,
-				D01A12DB1F5E19DC00197ECA /* SpacingFooterView.xib */,
+				D01A12D91F5E19B200197ECA /* SpacingHeaderFooterView.swift */,
+				D01A12DB1F5E19DC00197ECA /* SpacingHeaderFooterView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -644,7 +644,7 @@
 				D01A12E01F5E1D1600197ECA /* NoClipsView.xib in Resources */,
 				D0B0CDF21F4671E8006201CE /* Assets.xcassets in Resources */,
 				D0B0CDF01F4671E8006201CE /* Main.storyboard in Resources */,
-				D01A12DC1F5E19DC00197ECA /* SpacingFooterView.xib in Resources */,
+				D01A12DC1F5E19DC00197ECA /* SpacingHeaderFooterView.xib in Resources */,
 				D00D68441F55DEE60029BC79 /* SignedOut.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -893,7 +893,7 @@
 				D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */,
 				D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */,
 				D0340BC91F6038A50030CD82 /* ResponseError.swift in Sources */,
-				D01A12DA1F5E19B200197ECA /* SpacingFooterView.swift in Sources */,
+				D01A12DA1F5E19B200197ECA /* SpacingHeaderFooterView.swift in Sources */,
 				D0C1F6561F590A3700E49B77 /* UIView+Extensions.swift in Sources */,
 				D00D685C1F5762EE0029BC79 /* ResetPasswordViewModel.swift in Sources */,
 				D0334CCF1F64A9280004CB14 /* APIProvider.swift in Sources */,

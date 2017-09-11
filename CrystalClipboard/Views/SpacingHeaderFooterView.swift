@@ -1,5 +1,5 @@
 //
-//  SpacingFooterView.swift
+//  SpacingHeaderFooterView.swift
 //  CrystalClipboard
 //
 //  Created by Justin Mazzocchi on 9/4/17.
@@ -8,4 +8,4 @@
 
 import UIKit
 
-class SpacingFooterView: UITableViewHeaderFooterView {}
+class SpacingHeaderFooterView: UITableViewHeaderFooterView {}
