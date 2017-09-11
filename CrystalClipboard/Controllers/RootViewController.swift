@@ -17,9 +17,6 @@ class RootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let initialViewController = viewControllerForTransition(viewModel.transitionTo.value)
-        performTransition(fromViewController: nil, toViewController: initialViewController)
         
         reactive.transition <~ viewModel.transitionTo
     }
