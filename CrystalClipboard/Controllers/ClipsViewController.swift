@@ -9,13 +9,12 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
+import CellHelpers
 import PKHUD
 
 class ClipsViewController: ModeledViewController<ClipsViewModel>, UITableViewDelegate {
     private var pageScrolledTo = MutableProperty(0)
-    @IBOutlet private weak var tableView: UITableView!
-    
-    private static let copiedHUDFlashDelay: TimeInterval = 0.5
+    @IBOutlet fileprivate weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,22 +35,13 @@ class ClipsViewController: ModeledViewController<ClipsViewModel>, UITableViewDel
         
         tableView.reactive.showNoClipsMessage <~ viewModel.showNoClipsMessage
         tableView.reactive.showLoadingFooter <~ viewModel.showLoadingFooter
-        
-        let scheduler = UIScheduler()
-        
-        viewModel.textToCopy.observe(on: scheduler).observeValues {
-            UIPasteboard.general.string = $0
-            UINotificationFeedbackGenerator().notificationOccurred(.success)
-            HUD.flash(.labeledSuccess(title: "clips.copied".localized, subtitle: $0), delay: ClipsViewController.copiedHUDFlashDelay)
-        }
-        
-        viewModel.changeSets.observe(on: scheduler).observeValues { [unowned self] in self.tableView.performUpdates(fromChangeSet: $0) }
-        
-        viewModel.deleteAtIndexPath.errors.observeValues { [unowned self] _ in
-            self.presentAlert(message: "clips.could-not-be-deleted".localized)
-        }
-        
+        tableView.reactive.changeSets <~ viewModel.changeSets
         tableView.dataSource = viewModel.dataSource
+        reactive.textToCopy <~ viewModel.textToCopy
+        reactive.alertMessage <~ viewModel.deleteAtIndexPath.errors.map { _ in "clips.could-not-be-deleted".localized }
+        
+        // Other setup
+        
         tableView.delegate = self
         tableView.tableHeaderView = ClipsViewController.spacingHeaderFooterView
         navigationController?.isToolbarHidden = false
@@ -76,6 +66,7 @@ fileprivate extension ClipsViewController {
     fileprivate static let noClipsView = NoClipsView.fromNib()!
     fileprivate static let loadingFooterView = LoadingFooterView.fromNib()!
     fileprivate static let spacingHeaderFooterView = SpacingHeaderFooterView.fromNib()!
+    fileprivate static let copiedHUDFlashDelay: TimeInterval = 0.5
 }
 
 fileprivate extension Reactive where Base: UITableView {
@@ -85,5 +76,19 @@ fileprivate extension Reactive where Base: UITableView {
     
     fileprivate var showLoadingFooter: BindingTarget<Bool> {
         return makeBindingTarget { $0.tableFooterView = $1 ? ClipsViewController.loadingFooterView : ClipsViewController.spacingHeaderFooterView }
+    }
+    
+    fileprivate var changeSets: BindingTarget<ChangeSet> {
+        return makeBindingTarget { $0.performUpdates(fromChangeSet: $1) }
+    }
+}
+
+fileprivate extension Reactive where Base: ClipsViewController {
+    fileprivate var textToCopy: BindingTarget<String> {
+        return makeBindingTarget { _, text in
+            UIPasteboard.general.string = text
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+            HUD.flash(.labeledSuccess(title: "clips.copied".localized, subtitle: text), delay: ClipsViewController.copiedHUDFlashDelay)
+        }
     }
 }
