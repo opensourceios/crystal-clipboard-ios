@@ -210,3 +210,13 @@ extension ClipsViewModel: DataSourceDelegate {
         modeledCell._viewModel = clipCellViewModel
     }
 }
+
+extension ClipsViewModel: SegueingViewModel {
+    func viewModel(segueIdentifier: SegueIdentifier?) -> ViewModelType? {
+        if segueIdentifier == .PresentCreateClip {
+            return CreateClipViewModel()
+        }
+        
+        return nil
+    }
+}

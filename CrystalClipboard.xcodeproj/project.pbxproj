@@ -43,6 +43,7 @@
 		D01A12DC1F5E19DC00197ECA /* SpacingHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A12DB1F5E19DC00197ECA /* SpacingHeaderFooterView.xib */; };
 		D01A12DE1F5E1CEB00197ECA /* NoClipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A12DD1F5E1CEB00197ECA /* NoClipsView.swift */; };
 		D01A12E01F5E1D1600197ECA /* NoClipsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */; };
+		D021CD931F67175600F0C05E /* CreateClipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021CD921F67175600F0C05E /* CreateClipViewModel.swift */; };
 		D0253F8F1F5A83B60066B444 /* ISO8601JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0253F8E1F5A83B60066B444 /* ISO8601JSONDecoder.swift */; };
 		D0334CCF1F64A9280004CB14 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0334CCE1F64A9280004CB14 /* APIProvider.swift */; };
 		D0340BC91F6038A50030CD82 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0340BC81F6038A50030CD82 /* ResponseError.swift */; };
@@ -53,6 +54,7 @@
 		D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */; };
 		D05335FC1F4A861A0077B1F9 /* ManagedClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */; };
 		D055ECBE1F66E6A400D9C49B /* SegueingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055ECBD1F66E6A400D9C49B /* SegueingViewModel.swift */; };
+		D055ECC21F67149A00D9C49B /* CreateClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055ECC11F67149A00D9C49B /* CreateClipViewController.swift */; };
 		D06EF5CF1F5B62970093C87D /* SignalProducer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06EF5CE1F5B62970093C87D /* SignalProducer+Extensions.swift */; };
 		D06EF5D21F5B650F0093C87D /* Response+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06EF5D11F5B650F0093C87D /* Response+ExtensionsTests.swift */; };
 		D08263F41F62FCCA00091E9A /* RemoteErrors+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08263F31F62FCCA00091E9A /* RemoteErrors+Equatable.swift */; };
@@ -149,6 +151,7 @@
 		D01A12DB1F5E19DC00197ECA /* SpacingHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SpacingHeaderFooterView.xib; path = Views/SpacingHeaderFooterView.xib; sourceTree = "<group>"; };
 		D01A12DD1F5E1CEB00197ECA /* NoClipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoClipsView.swift; path = Views/NoClipsView.swift; sourceTree = "<group>"; };
 		D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NoClipsView.xib; path = Views/NoClipsView.xib; sourceTree = "<group>"; };
+		D021CD921F67175600F0C05E /* CreateClipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateClipViewModel.swift; path = "View Models/CreateClipViewModel.swift"; sourceTree = "<group>"; };
 		D0253F8E1F5A83B60066B444 /* ISO8601JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ISO8601JSONDecoder.swift; path = Networking/ISO8601JSONDecoder.swift; sourceTree = "<group>"; };
 		D0334CCE1F64A9280004CB14 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIProvider.swift; path = Networking/APIProvider.swift; sourceTree = "<group>"; };
 		D0340BC81F6038A50030CD82 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResponseError.swift; path = Errors/ResponseError.swift; sourceTree = "<group>"; };
@@ -159,6 +162,7 @@
 		D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrystalClipboardAPI.swift; path = Networking/CrystalClipboardAPI.swift; sourceTree = "<group>"; };
 		D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedClipTests.swift; path = Model/ManagedClipTests.swift; sourceTree = "<group>"; };
 		D055ECBD1F66E6A400D9C49B /* SegueingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SegueingViewModel.swift; path = Protocols/SegueingViewModel.swift; sourceTree = "<group>"; };
+		D055ECC11F67149A00D9C49B /* CreateClipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClipViewController.swift; sourceTree = "<group>"; };
 		D06EF5CE1F5B62970093C87D /* SignalProducer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SignalProducer+Extensions.swift"; path = "Extensions/SignalProducer+Extensions.swift"; sourceTree = "<group>"; };
 		D06EF5D11F5B650F0093C87D /* Response+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Response+ExtensionsTests.swift"; path = "Extensions/Response+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		D08263F31F62FCCA00091E9A /* RemoteErrors+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RemoteErrors+Equatable.swift"; path = "Utilities/RemoteErrors+Equatable.swift"; sourceTree = "<group>"; };
@@ -331,6 +335,7 @@
 			children = (
 				D00D68571F575AB80029BC79 /* AuthenticatingViewController.swift */,
 				D00D68471F55E8260029BC79 /* ClipsViewController.swift */,
+				D055ECC11F67149A00D9C49B /* CreateClipViewController.swift */,
 				D0979B6A1F4B33F300B8407F /* LandingViewController.swift */,
 				D08263FB1F66E43900091E9A /* ModeledViewController.swift */,
 				D00D68591F5761330029BC79 /* ResetPasswordViewController.swift */,
@@ -420,6 +425,7 @@
 				D00D68551F574FF50029BC79 /* AuthenticatingViewModel.swift */,
 				D0C1F6591F592DD600E49B77 /* ClipCellViewModel.swift */,
 				D0C1F6101F578FC100E49B77 /* ClipsViewModel.swift */,
+				D021CD921F67175600F0C05E /* CreateClipViewModel.swift */,
 				D0979B6C1F4B341200B8407F /* LandingViewModel.swift */,
 				D00D685B1F5762EE0029BC79 /* ResetPasswordViewModel.swift */,
 				D00D68451F55E5140029BC79 /* RootViewModel.swift */,
@@ -889,6 +895,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D021CD931F67175600F0C05E /* CreateClipViewModel.swift in Sources */,
 				D0C1F6581F590D5E00E49B77 /* MarginSettableTextField.swift in Sources */,
 				D0253F8F1F5A83B60066B444 /* ISO8601JSONDecoder.swift in Sources */,
 				D0979B631F4B306100B8407F /* RootViewController.swift in Sources */,
@@ -926,6 +933,7 @@
 				D03ABD3E1F4D37F000A7D473 /* Constants.swift in Sources */,
 				D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */,
 				D00D68631F58A3680029BC79 /* ClipsDataProvider.swift in Sources */,
+				D055ECC21F67149A00D9C49B /* CreateClipViewController.swift in Sources */,
 				D0D59B701F4A0A0100200ABD /* Cable.swift in Sources */,
 				D00D68481F55E8260029BC79 /* ClipsViewController.swift in Sources */,
 				D0979B691F4B325300B8407F /* SignUpViewModel.swift in Sources */,
