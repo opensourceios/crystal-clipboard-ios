@@ -40,7 +40,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S06-Wp-DHM">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClipTableViewCell" rowHeight="107" id="u70-dM-u4B" customClass="ClipTableViewCell" customModule="CrystalClipboard" customModuleProvider="target">
@@ -132,7 +132,7 @@
                             <constraint firstAttribute="trailing" secondItem="S06-Wp-DHM" secondAttribute="trailing" id="34Q-sh-Vfg"/>
                             <constraint firstItem="S06-Wp-DHM" firstAttribute="leading" secondItem="Ig6-Vs-M7D" secondAttribute="leading" id="AMQ-rT-5OQ"/>
                             <constraint firstItem="S06-Wp-DHM" firstAttribute="top" secondItem="Ig6-Vs-M7D" secondAttribute="top" id="UD3-af-fUQ"/>
-                            <constraint firstItem="LJM-Rt-BPy" firstAttribute="top" secondItem="S06-Wp-DHM" secondAttribute="bottom" id="ocJ-Uo-ito"/>
+                            <constraint firstAttribute="bottom" secondItem="S06-Wp-DHM" secondAttribute="bottom" id="sZF-UR-SAQ"/>
                         </constraints>
                     </view>
                     <toolbarItems>
