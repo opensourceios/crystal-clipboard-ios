@@ -11,7 +11,7 @@ import ReactiveSwift
 struct ResetPasswordViewModel: ViewModelType {
     // MARK: Inputs
     
-    let email: MutableProperty<String>
+    let email = MutableProperty("")
     
     // MARK: Actions
     
@@ -20,8 +20,6 @@ struct ResetPasswordViewModel: ViewModelType {
     // MARK: Initialization
     
     init(provider: APIProvider) {
-        email = MutableProperty("")
-        
         let validInput: Property<String?> = email.map { $0.count > 0 ? $0 : nil }
         
         submit = Action(unwrapping: validInput) { validEmail in
