@@ -9,58 +9,53 @@
 import UIKit
 import ReactiveSwift
 
-private let transitionDuration: TimeInterval = 0.5
-
-class RootViewController: ModeledViewController<RootViewModel> {
-    private let rootViewModel = RootViewModel()
-    override var viewModel: RootViewModel! {
-        get { return rootViewModel }
-        set {}
-    }
-    fileprivate var currentController: UIViewController!
+class RootViewController: UIViewController {
+    private let viewModel = RootViewModel()
+    private var currentViewController: UIViewController!
+    
+    private static let transitionDuration: TimeInterval = 0.5
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let transition = viewModel.transitionTo.value
-        let storyboard = UIStoryboard(name: transition.storyboardName)
-        let controller = storyboard.instantiateViewController(withIdentifier: transition.controllerIdentifier)
-        if var modeledViewcontroller = controller as? _ViewModelSettable {
-            modeledViewcontroller._viewModel = transition.viewModel
-        }
-        let navigationController = wrappingNavigation(forController: controller)
-        addChildViewController(navigationController)
-        view.addSubview(navigationController.view)
-        navigationController.didMove(toParentViewController: self)
-        currentController = navigationController
+
+        let initialViewController = viewControllerForTransition(viewModel.transitionTo.value)
+        performTransition(fromViewController: nil, toViewController: initialViewController)
         
         viewModel.transitionTo.signal.observe(on: UIScheduler()).observeValues { [unowned self] in
-            let viewController = UIStoryboard(name: $0.storyboardName).instantiateViewController(withIdentifier: $0.controllerIdentifier)
-            if var modeledViewcontroller = viewController as? _ViewModelSettable {
-                modeledViewcontroller._viewModel = $0.viewModel
-            }
-            let navigationController = self.wrappingNavigation(forController: viewController)
-            self.performTransition(fromViewController: self.currentController, toViewController: navigationController)
+            let toViewController = self.viewControllerForTransition($0)
+            self.performTransition(fromViewController: self.currentViewController, toViewController: toViewController)
         }
     }
 }
 
-fileprivate extension RootViewController {
-    func wrappingNavigation(forController: UIViewController) -> UINavigationController {
-        let navigationController = UINavigationController(rootViewController: forController)
+private extension RootViewController {
+    private func viewControllerForTransition(_ transition: TransitionType) -> UIViewController {
+        let storyboard = UIStoryboard(name: transition.storyboardName)
+        let controller = storyboard.instantiateViewController(withIdentifier: transition.controllerIdentifier)
+        if var modeledViewController = controller as? _ViewModelSettable {
+            modeledViewController._viewModel = transition.viewModel
+        }
+        let navigationController = UINavigationController(rootViewController: controller)
         navigationController.view.frame = view.bounds
+        
         return navigationController
     }
     
-    func performTransition(fromViewController: UIViewController, toViewController: UIViewController) {
-        self.currentController = toViewController
-        fromViewController.willMove(toParentViewController: nil)
+    private func performTransition(fromViewController: UIViewController?, toViewController: UIViewController) {
+        currentViewController = toViewController
+        fromViewController?.willMove(toParentViewController: nil)
         addChildViewController(toViewController)
-        transition(from: fromViewController,
-                   to: toViewController,
-                   duration: transitionDuration,
-                   options: .transitionCrossDissolve,
-                   animations: nil) { _ in
-            fromViewController.removeFromParentViewController()
+        if let fromViewController = fromViewController {
+            transition(from: fromViewController,
+                       to: toViewController,
+                       duration: RootViewController.transitionDuration,
+                       options: .transitionCrossDissolve,
+                       animations: nil) { _ in
+                        fromViewController.removeFromParentViewController()
+                        toViewController.didMove(toParentViewController: self)
+            }
+        } else {
+            view.addSubview(toViewController.view)
             toViewController.didMove(toParentViewController: self)
         }
     }
