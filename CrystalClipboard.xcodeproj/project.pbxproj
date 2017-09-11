@@ -10,7 +10,6 @@
 		071DD13392D6F63A9C9E6577 /* Pods_CrystalClipboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD82DAABCF3EFB0DB952AD3 /* Pods_CrystalClipboard.framework */; };
 		5139455BEAD1A38DFBEC3EFE /* Pods_CrystalClipboard_CrystalClipboardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB6D1252A5CFB8E0A71638C /* Pods_CrystalClipboard_CrystalClipboardUITests.framework */; };
 		AC34E29D5531A22239EC7F0A /* Pods_CrystalClipboard_CrystalClipboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6AEB327ECEAE3823D0BFB96 /* Pods_CrystalClipboard_CrystalClipboardTests.framework */; };
-		D00A00841F61AC9300B11866 /* ISO8601JSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A00831F61AC9300B11866 /* ISO8601JSONEncoder.swift */; };
 		D00A00891F61C35B00B11866 /* TestRemoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A00881F61C35B00B11866 /* TestRemoteData.swift */; };
 		D00A008E1F61C49000B11866 /* CoreDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A008A1F61C49000B11866 /* CoreDataTestCase.swift */; };
 		D00A008F1F61C49000B11866 /* XCTestCase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A008B1F61C49000B11866 /* XCTestCase+Extensions.swift */; };
@@ -44,6 +43,7 @@
 		D01A12DE1F5E1CEB00197ECA /* NoClipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A12DD1F5E1CEB00197ECA /* NoClipsView.swift */; };
 		D01A12E01F5E1D1600197ECA /* NoClipsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */; };
 		D021CD931F67175600F0C05E /* CreateClipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021CD921F67175600F0C05E /* CreateClipViewModel.swift */; };
+		D021CD951F671BC000F0C05E /* ISO8601JSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021CD941F671BC000F0C05E /* ISO8601JSONEncoder.swift */; };
 		D0253F8F1F5A83B60066B444 /* ISO8601JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0253F8E1F5A83B60066B444 /* ISO8601JSONDecoder.swift */; };
 		D0334CCF1F64A9280004CB14 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0334CCE1F64A9280004CB14 /* APIProvider.swift */; };
 		D0340BC91F6038A50030CD82 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0340BC81F6038A50030CD82 /* ResponseError.swift */; };
@@ -118,7 +118,6 @@
 		AAB6D1252A5CFB8E0A71638C /* Pods_CrystalClipboard_CrystalClipboardUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrystalClipboard_CrystalClipboardUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C526E4CC18C0F90CF02AF061 /* Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.production.xcconfig"; sourceTree = "<group>"; };
 		C6AEB327ECEAE3823D0BFB96 /* Pods_CrystalClipboard_CrystalClipboardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrystalClipboard_CrystalClipboardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D00A00831F61AC9300B11866 /* ISO8601JSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISO8601JSONEncoder.swift; sourceTree = "<group>"; };
 		D00A00881F61C35B00B11866 /* TestRemoteData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestRemoteData.swift; path = Utilities/TestRemoteData.swift; sourceTree = "<group>"; };
 		D00A008A1F61C49000B11866 /* CoreDataTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataTestCase.swift; path = Utilities/CoreDataTestCase.swift; sourceTree = "<group>"; };
 		D00A008B1F61C49000B11866 /* XCTestCase+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "XCTestCase+Extensions.swift"; path = "Utilities/XCTestCase+Extensions.swift"; sourceTree = "<group>"; };
@@ -152,6 +151,7 @@
 		D01A12DD1F5E1CEB00197ECA /* NoClipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoClipsView.swift; path = Views/NoClipsView.swift; sourceTree = "<group>"; };
 		D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NoClipsView.xib; path = Views/NoClipsView.xib; sourceTree = "<group>"; };
 		D021CD921F67175600F0C05E /* CreateClipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateClipViewModel.swift; path = "View Models/CreateClipViewModel.swift"; sourceTree = "<group>"; };
+		D021CD941F671BC000F0C05E /* ISO8601JSONEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ISO8601JSONEncoder.swift; path = Networking/ISO8601JSONEncoder.swift; sourceTree = "<group>"; };
 		D0253F8E1F5A83B60066B444 /* ISO8601JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ISO8601JSONDecoder.swift; path = Networking/ISO8601JSONDecoder.swift; sourceTree = "<group>"; };
 		D0334CCE1F64A9280004CB14 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIProvider.swift; path = Networking/APIProvider.swift; sourceTree = "<group>"; };
 		D0340BC81F6038A50030CD82 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResponseError.swift; path = Errors/ResponseError.swift; sourceTree = "<group>"; };
@@ -370,7 +370,7 @@
 				D0B37EC41F66281F00CA8B1A /* ClipChannelMessage.swift */,
 				D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */,
 				D0253F8E1F5A83B60066B444 /* ISO8601JSONDecoder.swift */,
-				D00A00831F61AC9300B11866 /* ISO8601JSONEncoder.swift */,
+				D021CD941F671BC000F0C05E /* ISO8601JSONEncoder.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -912,6 +912,7 @@
 				D01A12DA1F5E19B200197ECA /* SpacingHeaderFooterView.swift in Sources */,
 				D0C1F6561F590A3700E49B77 /* UIView+Extensions.swift in Sources */,
 				D055ECBE1F66E6A400D9C49B /* SegueingViewModel.swift in Sources */,
+				D021CD951F671BC000F0C05E /* ISO8601JSONEncoder.swift in Sources */,
 				D00D685C1F5762EE0029BC79 /* ResetPasswordViewModel.swift in Sources */,
 				D0334CCF1F64A9280004CB14 /* APIProvider.swift in Sources */,
 				D00D68501F5733BF0029BC79 /* SignInViewModel.swift in Sources */,
@@ -924,7 +925,6 @@
 				D0B37EC51F66281F00CA8B1A /* ClipChannelMessage.swift in Sources */,
 				D00D68421F55DA210029BC79 /* UIStoryboard+Extensions.swift in Sources */,
 				D0C1F6111F578FC100E49B77 /* ClipsViewModel.swift in Sources */,
-				D00A00841F61AC9300B11866 /* ISO8601JSONEncoder.swift in Sources */,
 				D08263F61F66E14A00091E9A /* ViewModelType.swift in Sources */,
 				D00D684E1F5733660029BC79 /* SignInViewController.swift in Sources */,
 				D00D68461F55E5140029BC79 /* RootViewModel.swift in Sources */,
