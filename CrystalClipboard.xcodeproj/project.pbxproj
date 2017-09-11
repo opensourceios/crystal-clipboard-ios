@@ -80,6 +80,7 @@
 		D0B0CDF51F4671E8006201CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B0CDF31F4671E8006201CE /* LaunchScreen.storyboard */; };
 		D0B0CE0B1F4671E8006201CE /* CrystalClipboardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */; };
 		D0B37EC51F66281F00CA8B1A /* ClipChannelMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B37EC41F66281F00CA8B1A /* ClipChannelMessage.swift */; };
+		D0B61B231F67315E00838D21 /* UIViewController+ReactiveExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B61B221F67315E00838D21 /* UIViewController+ReactiveExtensions.swift */; };
 		D0C1F6111F578FC100E49B77 /* ClipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6101F578FC100E49B77 /* ClipsViewModel.swift */; };
 		D0C1F6131F578FE600E49B77 /* ClipsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6121F578FE600E49B77 /* ClipsViewModelTests.swift */; };
 		D0C1F6561F590A3700E49B77 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6551F590A3700E49B77 /* UIView+Extensions.swift */; };
@@ -195,6 +196,7 @@
 		D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrystalClipboardUITests.swift; sourceTree = "<group>"; };
 		D0B0CE0C1F4671E8006201CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0B37EC41F66281F00CA8B1A /* ClipChannelMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClipChannelMessage.swift; path = Networking/ClipChannelMessage.swift; sourceTree = "<group>"; };
+		D0B61B221F67315E00838D21 /* UIViewController+ReactiveExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIViewController+ReactiveExtensions.swift"; path = "Extensions/UIViewController+ReactiveExtensions.swift"; sourceTree = "<group>"; };
 		D0C1F6101F578FC100E49B77 /* ClipsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipsViewModel.swift; path = "View Models/ClipsViewModel.swift"; sourceTree = "<group>"; };
 		D0C1F6121F578FE600E49B77 /* ClipsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipsViewModelTests.swift; path = "View Models/ClipsViewModelTests.swift"; sourceTree = "<group>"; };
 		D0C1F6551F590A3700E49B77 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Extensions.swift"; path = "Extensions/UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 				D00D68411F55DA210029BC79 /* UIStoryboard+Extensions.swift */,
 				D0C1F6551F590A3700E49B77 /* UIView+Extensions.swift */,
 				D00D684B1F5712F40029BC79 /* UIViewController+Extensions.swift */,
+				D0B61B221F67315E00838D21 /* UIViewController+ReactiveExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -941,6 +944,7 @@
 				D0D59B701F4A0A0100200ABD /* Cable.swift in Sources */,
 				D00D68481F55E8260029BC79 /* ClipsViewController.swift in Sources */,
 				D0979B691F4B325300B8407F /* SignUpViewModel.swift in Sources */,
+				D0B61B231F67315E00838D21 /* UIViewController+ReactiveExtensions.swift in Sources */,
 				D0979B6D1F4B341200B8407F /* LandingViewModel.swift in Sources */,
 				D00D68561F574FF50029BC79 /* AuthenticatingViewModel.swift in Sources */,
 				D00D68371F55CAF80029BC79 /* Identifiers.swift in Sources */,

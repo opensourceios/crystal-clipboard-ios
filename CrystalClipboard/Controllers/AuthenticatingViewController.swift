@@ -9,7 +9,6 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
-import PKHUD
 
 class AuthenticatingViewController: ModeledViewController<AuthenticatingViewModel>, UITextFieldDelegate {
     @IBOutlet fileprivate weak var emailTextField: UITextField!
@@ -19,19 +18,17 @@ class AuthenticatingViewController: ModeledViewController<AuthenticatingViewMode
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let submitAction = CocoaAction<UIButton>(viewModel.submit)
-        
         // View model inputs
         
         viewModel.email <~ emailTextField.reactive.continuousTextValues.skipNil()
         viewModel.password <~ passwordTextField.reactive.continuousTextValues.skipNil()
-        submitButton.reactive.pressed = submitAction
+        submitButton.reactive.pressed = CocoaAction(viewModel.submit)
         
         // View model outputs
         
         submitButton.reactive.isEnabled <~ viewModel.submit.isEnabled
-        viewModel.submit.errors.observe(on: UIScheduler()).observeValues { [unowned self] in self.presentAlert(message: $0.message) }
-        submitAction.isExecuting.signal.observeValues { $0 ? HUD.show(.progress) : HUD.hide() }
+        reactive.alertMessage <~ viewModel.submit.errors.map { $0.message }
+        reactive.showLoadingHUD <~ viewModel.submit.isExecuting
         
         // Other setup
         

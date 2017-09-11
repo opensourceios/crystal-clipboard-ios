@@ -9,7 +9,6 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
-import PKHUD
 
 class ResetPasswordViewController: ModeledViewController<ResetPasswordViewModel>, UITextFieldDelegate {
     @IBOutlet fileprivate weak var emailTextField: UITextField!
@@ -27,7 +26,7 @@ class ResetPasswordViewController: ModeledViewController<ResetPasswordViewModel>
         
         submitButton.reactive.isEnabled <~ viewModel.submit.isEnabled
         reactive.showLoadingHUD <~ viewModel.submit.isExecuting
-        reactive.errorAlert <~ viewModel.submit.errors
+        reactive.alertMessage <~ viewModel.submit.errors.map { $0.message }
         reactive.successAlert <~ viewModel.submit.values
         
         // Other setup
@@ -44,14 +43,6 @@ class ResetPasswordViewController: ModeledViewController<ResetPasswordViewModel>
 }
 
 fileprivate extension Reactive where Base: ResetPasswordViewController {
-    fileprivate var showLoadingHUD: BindingTarget<Bool> {
-        return makeBindingTarget { $1 ? HUD.show(.progress) : HUD.hide() }
-    }
-    
-    fileprivate var errorAlert: BindingTarget<SubmissionError> {
-        return makeBindingTarget { $0.presentAlert(message: $1.message) }
-    }
-    
     fileprivate var successAlert: BindingTarget<String> {
         return makeBindingTarget { controller, message in
             let action = UIAlertAction(title: "ok".localized, style: .default) { _ in
