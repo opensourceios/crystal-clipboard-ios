@@ -18,26 +18,17 @@ class ResetPasswordViewController: ModeledViewController<ResetPasswordViewModel>
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let submitAction = CocoaAction<UIButton>(viewModel.submit)
-        let scheduler = UIScheduler()
-        
         // View model inputs
         
         viewModel.email <~ emailTextField.reactive.continuousTextValues.skipNil()
-        submitButton.reactive.pressed = submitAction
+        submitButton.reactive.pressed = CocoaAction(viewModel.submit)
         
         // View model outputs
         
         submitButton.reactive.isEnabled <~ viewModel.submit.isEnabled
-        submitAction.isExecuting.signal.observeValues { $0 ? HUD.show(.progress) : HUD.hide() }
-        
-        viewModel.submit.errors.observe(on: scheduler).observeValues { [unowned self] in self.presentAlert(message: $0.message) }
-        viewModel.submit.values.observe(on: scheduler).observeValues { [unowned self] in
-            let action = UIAlertAction(title: "ok".localized, style: .default) { [unowned self] _ in
-                self.navigationController?.popViewController(animated: true)
-            }
-            self.presentAlert(message: $0, actions: [action])
-        }
+        reactive.showLoadingHUD <~ viewModel.submit.isExecuting
+        reactive.errorAlert <~ viewModel.submit.errors
+        reactive.successAlert <~ viewModel.submit.values
         
         // Other setup
         
@@ -49,5 +40,24 @@ class ResetPasswordViewController: ModeledViewController<ResetPasswordViewModel>
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         viewModel.submit.apply().start()
         return false
+    }
+}
+
+fileprivate extension Reactive where Base: ResetPasswordViewController {
+    fileprivate var showLoadingHUD: BindingTarget<Bool> {
+        return makeBindingTarget { $1 ? HUD.show(.progress) : HUD.hide() }
+    }
+    
+    fileprivate var errorAlert: BindingTarget<SubmissionError> {
+        return makeBindingTarget { $0.presentAlert(message: $1.message) }
+    }
+    
+    fileprivate var successAlert: BindingTarget<String> {
+        return makeBindingTarget { controller, message in
+            let action = UIAlertAction(title: "ok".localized, style: .default) { _ in
+                controller.navigationController?.popViewController(animated: true)
+            }
+            controller.presentAlert(message: message, actions: [action])
+        }
     }
 }
