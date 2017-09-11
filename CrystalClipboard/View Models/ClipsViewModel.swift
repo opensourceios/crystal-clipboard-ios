@@ -18,6 +18,7 @@ class ClipsViewModel: NSObject {
     // MARK: Inputs
     
     let pageViewed: Action<Int, Void, ClipDisplayError>
+    let deleteAtIndexPath: Action<IndexPath, Void, ClipDisplayError>
     
     // MARK: Outputs
     
@@ -81,6 +82,17 @@ class ClipsViewModel: NSObject {
             }
         }
         showLoadingFooter = pageViewed.isExecuting
+        
+        deleteAtIndexPath = Action() { indexPath in
+            let clipID = dataProvider.fetchedResultsController.object(at: indexPath).id
+            return provider.reactive.request(.deleteClip(id: clipID))
+                .filterSuccessfulStatusCodes()
+                .mapError { ClipDisplayError($0) }
+                .attemptMap { _ in
+                    let deletionPredicate = NSPredicate(format: "%K = %i", #keyPath(ManagedClip.id), clipID)
+                    try ClipsViewModel.persistClips([], inPersistentContainer: persistentContainer, deletionPredicate: deletionPredicate)
+                }
+        }
         
         super.init()
         

@@ -54,6 +54,10 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         
         viewModel.changeSets.observe(on: scheduler).observeValues { [unowned self] in self.tableView.performUpdates(fromChangeSet: $0) }
         
+        viewModel.deleteAtIndexPath.errors.observeValues { [unowned self] _ in
+            self.presentAlert(message: "clips.could-not-be-deleted".localized)
+        }
+        
         tableView.dataSource = viewModel.dataSource
         tableView.delegate = self
     }
@@ -62,6 +66,14 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
 extension ClipsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         pageScrolledTo.value = (indexPath.row + 1) / viewModel.pageSize
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "clips.delete".localized) { action, indexPath in
+            self.viewModel.deleteAtIndexPath.apply(indexPath).start()
+        }
+        
+        return [delete]
     }
 }
 
