@@ -91,11 +91,11 @@ private extension ClipsViewModel {
         let context = persistentContainer.newBackgroundContext()
         context.mergePolicy = NSMergePolicy.rollback
         for clip in clips { ManagedClip(from: clip, context: context) }
-        let fetchedClipIDs = clips.map { $0.id }
-        if let firstID = fetchedClipIDs.first, let lastID = fetchedClipIDs.last {
+        let clipIDs = clips.map { $0.id }
+        if let firstID = clipIDs.first, let lastID = clipIDs.last {
             let idKeyPath = #keyPath(ManagedClip.id)
             let predicateFormat = "%K < %i AND %K > %i AND NOT (%K IN %@)"
-            let predicateArguments: [Any] = [idKeyPath, firstID, idKeyPath, lastID, idKeyPath, fetchedClipIDs, idKeyPath]
+            let predicateArguments: [Any] = [idKeyPath, firstID, idKeyPath, lastID, idKeyPath, clipIDs, idKeyPath]
             var predicate = NSPredicate(format: predicateFormat, argumentArray: predicateArguments)
             if maxID == nil {
                 let orPredicateFormat = "%K > %i"
