@@ -45,4 +45,5 @@ struct Constants {
     static let environment = Environment(rawValue: Bundle.main.infoDictionary!["com.jzzocc.crystal-clipboard.environment"] as! String)!
     static let keychainService = "com.jzzocc.crystal-clipboard"
     static let iso8601DateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ" // Apple's ISO8601DateFormatter can only do milliseconds on iOS 11
+    static let clipboardChannelIdentifier = "{\"channel\":\"ClipboardChannel\"}"
 }
