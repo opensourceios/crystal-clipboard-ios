@@ -9,7 +9,7 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
-import CellHelpers
+import struct CellHelpers.ChangeSet
 import PKHUD
 
 class ClipsViewController: ModeledViewController<ClipsViewModel>, UITableViewDelegate {
