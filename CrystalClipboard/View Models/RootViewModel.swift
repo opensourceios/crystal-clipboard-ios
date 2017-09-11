@@ -45,7 +45,7 @@ fileprivate enum Transition: TransitionType {
     }
 }
 
-class RootViewModel: ViewModelType {
+struct RootViewModel: ViewModelType {
     // MARK: Outputs
     
     let transitionTo: Property<TransitionType>
