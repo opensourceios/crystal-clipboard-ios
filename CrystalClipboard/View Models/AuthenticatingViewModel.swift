@@ -8,7 +8,7 @@
 
 import ReactiveSwift
 
-class AuthenticatingViewModel {
+class AuthenticatingViewModel: ViewModelType {
     // MARK: Inputs
     
     let email = MutableProperty("")

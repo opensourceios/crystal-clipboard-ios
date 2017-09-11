@@ -7,18 +7,11 @@
 //
 
 import UIKit
-import CoreData
 import ReactiveSwift
 import ReactiveCocoa
-import enum Result.NoError
 import PKHUD
-import CellHelpers
 
-class ClipsViewController: UIViewController, PersistentContainerSettable, ProviderSettable {
-    var persistentContainer: NSPersistentContainer!
-    var provider: APIProvider!
-    
-    private lazy var viewModel: ClipsViewModel = ClipsViewModel(provider: self.provider, persistentContainer: self.persistentContainer, pageSize: 25)
+class ClipsViewController: ModeledViewController<ClipsViewModel>, UITableViewDelegate {
     private var pageScrolledTo = MutableProperty(0)
     @IBOutlet private weak var tableView: UITableView!
     
@@ -62,9 +55,9 @@ class ClipsViewController: UIViewController, PersistentContainerSettable, Provid
         tableView.delegate = self
         tableView.tableHeaderView = ClipsViewController.spacingHeaderFooterView
     }
-}
-
-extension ClipsViewController: UITableViewDelegate {
+    
+    // MARK: UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         pageScrolledTo.value = (indexPath.row + 1) / viewModel.pageSize
     }

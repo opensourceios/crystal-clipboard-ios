@@ -9,11 +9,7 @@
 import ReactiveSwift
 import enum Result.NoError
 
-protocol ClipCellViewModelSettable {
-    func setViewModel(_ viewModel: ClipCellViewModel)
-}
-
-struct ClipCellViewModel {
+struct ClipCellViewModel: ViewModelType {
     // MARK: Outputs
     
     let text: Property<String>

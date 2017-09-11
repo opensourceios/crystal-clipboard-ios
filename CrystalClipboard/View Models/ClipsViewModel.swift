@@ -14,7 +14,7 @@ import CellHelpers
 
 typealias ClipDisplayError = AnyError
 
-class ClipsViewModel: NSObject {
+class ClipsViewModel: NSObject, ViewModelType {
     // MARK: Inputs
     
     let pageViewed: Action<Int, Void, ClipDisplayError>
@@ -203,10 +203,10 @@ extension ClipsViewModel: DataSourceDelegate {
     }
     
     func configure(cell: ViewCell, fromDataSource dataSource: DataSource, atIndexPath indexPath: IndexPath, forItem item: Any) {
-        guard let clipCell = cell as? ClipCellViewModelSettable else { fatalError("Wrong cell type") }
+        guard var modeledCell = cell as? _ViewModelSettable, modeledCell.viewModelType == ClipCellViewModel.self else { fatalError("Wrong cell type") }
         guard let clip = item as? ClipType else { fatalError("Wrong object type") }
         let clipCellViewModel = ClipCellViewModel(clip: clip)
         copyObserver.send(value: clipCellViewModel.copy.values)
-        clipCell.setViewModel(clipCellViewModel)
+        modeledCell._viewModel = clipCellViewModel
     }
 }

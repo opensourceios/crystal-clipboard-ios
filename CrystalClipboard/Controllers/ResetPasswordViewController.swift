@@ -11,11 +11,7 @@ import ReactiveSwift
 import ReactiveCocoa
 import PKHUD
 
-class ResetPasswordViewController: UIViewController, ProviderSettable {
-    var provider: APIProvider!
-    
-    fileprivate lazy var viewModel: ResetPasswordViewModel = ResetPasswordViewModel(provider: self.provider)
-    
+class ResetPasswordViewController: ModeledViewController<ResetPasswordViewModel>, UITextFieldDelegate {
     @IBOutlet fileprivate weak var emailTextField: UITextField!
     @IBOutlet fileprivate weak var submitButton: UIButton!
     
@@ -47,9 +43,9 @@ class ResetPasswordViewController: UIViewController, ProviderSettable {
         
         emailTextField.becomeFirstResponder()
     }
-}
-
-extension ResetPasswordViewController: UITextFieldDelegate {
+    
+    // MARK: UITextFieldDelegate
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         viewModel.submit.apply().start()
         return false

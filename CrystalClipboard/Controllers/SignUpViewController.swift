@@ -6,8 +6,4 @@
 //  Copyright © 2017 Justin Mazzocchi. All rights reserved.
 //
 
-class SignUpViewController: AuthenticatingViewController {
-    override lazy var viewModel: AuthenticatingViewModel = {
-        return SignUpViewModel(provider: provider)
-    }()
-}
+class SignUpViewController: AuthenticatingViewController {}

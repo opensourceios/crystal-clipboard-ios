@@ -7,27 +7,26 @@
 //
 
 import UIKit
-import CoreData
 import ReactiveSwift
 
 private let transitionDuration: TimeInterval = 0.5
 
-class RootViewController: UIViewController, PersistentContainerSettable {
-    var persistentContainer: NSPersistentContainer!
-    
-    private let viewModel = RootViewModel()
-    fileprivate var currentController: UIViewController! {
-        didSet {
-            (currentController.childViewControllers.first as? PersistentContainerSettable)?.persistentContainer = persistentContainer
-        }
+class RootViewController: ModeledViewController<RootViewModel> {
+    private let rootViewModel = RootViewModel()
+    override var viewModel: RootViewModel! {
+        get { return rootViewModel }
+        set {}
     }
+    fileprivate var currentController: UIViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let transition = viewModel.transitionTo.value
         let storyboard = UIStoryboard(name: transition.storyboardName)
         let controller = storyboard.instantiateViewController(withIdentifier: transition.controllerIdentifier)
-        (controller as? ProviderSettable)?.provider = transition.provider
+        if var modeledViewcontroller = controller as? _ViewModelSettable {
+            modeledViewcontroller._viewModel = transition.viewModel
+        }
         let navigationController = wrappingNavigation(forController: controller)
         addChildViewController(navigationController)
         view.addSubview(navigationController.view)
@@ -36,7 +35,9 @@ class RootViewController: UIViewController, PersistentContainerSettable {
         
         viewModel.transitionTo.signal.observe(on: UIScheduler()).observeValues { [unowned self] in
             let viewController = UIStoryboard(name: $0.storyboardName).instantiateViewController(withIdentifier: $0.controllerIdentifier)
-            (viewController as? ProviderSettable)?.provider = $0.provider
+            if var modeledViewcontroller = viewController as? _ViewModelSettable {
+                modeledViewcontroller._viewModel = $0.viewModel
+            }
             let navigationController = self.wrappingNavigation(forController: viewController)
             self.performTransition(fromViewController: self.currentController, toViewController: navigationController)
         }

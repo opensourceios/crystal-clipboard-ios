@@ -6,16 +6,17 @@
 //  Copyright © 2017 Justin Mazzocchi. All rights reserved.
 //
 
+import CoreData
 import ReactiveSwift
 
 protocol TransitionType {
     var storyboardName: StoryboardNames { get }
     var controllerIdentifier: ViewControllerStoryboardIdentifier { get }
-    var provider: APIProvider { get }
+    var viewModel: ViewModelType { get }
 }
 
 fileprivate enum Transition: TransitionType {
-    case signIn(authToken: User.AuthToken)
+    case signIn(authToken: User.AuthToken, persistentContainer: NSPersistentContainer)
     case signOut
     
     var storyboardName: StoryboardNames {
@@ -32,16 +33,19 @@ fileprivate enum Transition: TransitionType {
         }
     }
     
-    var provider: APIProvider {
+    var viewModel: ViewModelType {
         switch self {
-        case let .signIn(authToken):
-            return APIProvider(token: authToken.token)
-        case .signOut: return APIProvider(token: User.AuthToken.admin.token)
+        case let .signIn(authToken, persistentContainer):
+            let provider = APIProvider(token: authToken.token)
+            return ClipsViewModel(provider: provider, persistentContainer: persistentContainer, pageSize: 25)
+        case .signOut:
+            let provider = APIProvider(token: User.AuthToken.admin.token)
+            return LandingViewModel(provider: provider)
         }
     }
 }
 
-class RootViewModel {
+class RootViewModel: ViewModelType {
     // MARK: Outputs
     
     let transitionTo: Property<TransitionType>
@@ -49,6 +53,14 @@ class RootViewModel {
     // MARK: Private
     
     private let (lifetime, token) = Lifetime.make()
+    private static var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "CrystalClipboard")
+        container.loadPersistentStores { storeDescription, error in
+            if let error = error { fatalError("Could not load store: \(error)") }
+        }
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        return container
+    }()
     
     // MARK: Initialization
     
@@ -61,14 +73,14 @@ class RootViewModel {
             switch notification.name {
             case Notification.Name.userSignedIn:
                 guard let authToken = (notification.object as? User)?.authToken else { fatalError("A signed in user should have an auth token") }
-                return Transition.signIn(authToken: authToken)
+                return Transition.signIn(authToken: authToken, persistentContainer: RootViewModel.persistentContainer)
             case Notification.Name.userSignedOut: return Transition.signOut
             default: fatalError("Wrong notification observed")
             }
         }
         let initial: Transition
         if let authToken = User.current?.authToken {
-            initial = .signIn(authToken: authToken)
+            initial = .signIn(authToken: authToken, persistentContainer: RootViewModel.persistentContainer)
         } else {
             initial = .signOut
         }

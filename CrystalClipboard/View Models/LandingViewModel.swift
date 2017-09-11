@@ -6,8 +6,17 @@
 //  Copyright © 2017 Justin Mazzocchi. All rights reserved.
 //
 
-import UIKit
+struct LandingViewModel: ViewModelType {
+    var provider: APIProvider
+}
 
-class LandingViewModel: NSObject {
-
+extension LandingViewModel: SegueingViewModel {
+    func viewModel(segueIdentifier: SegueIdentifier?) -> ViewModelType? {
+        guard let segueIdentifier = segueIdentifier else { return nil }
+        switch segueIdentifier {
+        case .PushSignIn: return SignInViewModel(provider: provider)
+        case .PushSignUp: return SignUpViewModel(provider: provider)
+        default: return nil
+        }
+    }
 }

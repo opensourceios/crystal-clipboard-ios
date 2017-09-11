@@ -8,7 +8,7 @@
 
 import ReactiveSwift
 
-class ResetPasswordViewModel {
+class ResetPasswordViewModel: ViewModelType {
     // MARK: Inputs
     
     let email: MutableProperty<String>

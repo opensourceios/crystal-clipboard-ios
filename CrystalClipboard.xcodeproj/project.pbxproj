@@ -32,7 +32,6 @@
 		D00D685A1F5761330029BC79 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68591F5761330029BC79 /* ResetPasswordViewController.swift */; };
 		D00D685C1F5762EE0029BC79 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D685B1F5762EE0029BC79 /* ResetPasswordViewModel.swift */; };
 		D00D685E1F57631A0029BC79 /* ResetPasswordViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D685D1F57631A0029BC79 /* ResetPasswordViewModelTests.swift */; };
-		D00D68601F589AC10029BC79 /* PersistentContainerSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D685F1F589AC10029BC79 /* PersistentContainerSettable.swift */; };
 		D00D68631F58A3680029BC79 /* ClipsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68621F58A3680029BC79 /* ClipsDataProvider.swift */; };
 		D00D68681F58A55C0029BC79 /* ClipsDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68671F58A55C0029BC79 /* ClipsDataProviderTests.swift */; };
 		D00D68711F58B2560029BC79 /* ClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68701F58B2560029BC79 /* ClipTableViewCell.swift */; };
@@ -53,9 +52,14 @@
 		D04460BD1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */; };
 		D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */; };
 		D05335FC1F4A861A0077B1F9 /* ManagedClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */; };
+		D055ECBE1F66E6A400D9C49B /* SegueingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055ECBD1F66E6A400D9C49B /* SegueingViewModel.swift */; };
 		D06EF5CF1F5B62970093C87D /* SignalProducer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06EF5CE1F5B62970093C87D /* SignalProducer+Extensions.swift */; };
 		D06EF5D21F5B650F0093C87D /* Response+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06EF5D11F5B650F0093C87D /* Response+ExtensionsTests.swift */; };
 		D08263F41F62FCCA00091E9A /* RemoteErrors+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08263F31F62FCCA00091E9A /* RemoteErrors+Equatable.swift */; };
+		D08263F61F66E14A00091E9A /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08263F51F66E14A00091E9A /* ViewModelType.swift */; };
+		D08263F81F66E1E200091E9A /* _ViewModelSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08263F71F66E1E200091E9A /* _ViewModelSettable.swift */; };
+		D08263FA1F66E23800091E9A /* ViewModelSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08263F91F66E23800091E9A /* ViewModelSettable.swift */; };
+		D08263FC1F66E43900091E9A /* ModeledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08263FB1F66E43900091E9A /* ModeledViewController.swift */; };
 		D0909B6D1F4D2513000F584B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0909B6C1F4D2513000F584B /* Localizable.strings */; };
 		D0909B701F4D282C000F584B /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0909B6F1F4D282C000F584B /* String+Localized.swift */; };
 		D095D8C21F4E260800D15CE4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095D8C11F4E260800D15CE4 /* User.swift */; };
@@ -75,7 +79,6 @@
 		D0B37EC51F66281F00CA8B1A /* ClipChannelMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B37EC41F66281F00CA8B1A /* ClipChannelMessage.swift */; };
 		D0C1F6111F578FC100E49B77 /* ClipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6101F578FC100E49B77 /* ClipsViewModel.swift */; };
 		D0C1F6131F578FE600E49B77 /* ClipsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6121F578FE600E49B77 /* ClipsViewModelTests.swift */; };
-		D0C1F6171F579D8700E49B77 /* ProviderSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6161F579D8700E49B77 /* ProviderSettable.swift */; };
 		D0C1F6561F590A3700E49B77 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6551F590A3700E49B77 /* UIView+Extensions.swift */; };
 		D0C1F6581F590D5E00E49B77 /* MarginSettableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6571F590D5E00E49B77 /* MarginSettableTextField.swift */; };
 		D0C1F65A1F592DD600E49B77 /* ClipCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6591F592DD600E49B77 /* ClipCellViewModel.swift */; };
@@ -135,7 +138,6 @@
 		D00D68591F5761330029BC79 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		D00D685B1F5762EE0029BC79 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewModel.swift; path = "View Models/ResetPasswordViewModel.swift"; sourceTree = "<group>"; };
 		D00D685D1F57631A0029BC79 /* ResetPasswordViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewModelTests.swift; path = "View Models/ResetPasswordViewModelTests.swift"; sourceTree = "<group>"; };
-		D00D685F1F589AC10029BC79 /* PersistentContainerSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentContainerSettable.swift; path = Protocols/PersistentContainerSettable.swift; sourceTree = "<group>"; };
 		D00D68621F58A3680029BC79 /* ClipsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipsDataProvider.swift; path = "Data Providers/ClipsDataProvider.swift"; sourceTree = "<group>"; };
 		D00D68671F58A55C0029BC79 /* ClipsDataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipsDataProviderTests.swift; path = "Data Providers/ClipsDataProviderTests.swift"; sourceTree = "<group>"; };
 		D00D68701F58B2560029BC79 /* ClipTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTableViewCell.swift; path = Views/ClipTableViewCell.swift; sourceTree = "<group>"; };
@@ -156,9 +158,14 @@
 		D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SignalProducer+ExtensionsTests.swift"; path = "Extensions/SignalProducer+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrystalClipboardAPI.swift; path = Networking/CrystalClipboardAPI.swift; sourceTree = "<group>"; };
 		D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedClipTests.swift; path = Model/ManagedClipTests.swift; sourceTree = "<group>"; };
+		D055ECBD1F66E6A400D9C49B /* SegueingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SegueingViewModel.swift; path = Protocols/SegueingViewModel.swift; sourceTree = "<group>"; };
 		D06EF5CE1F5B62970093C87D /* SignalProducer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SignalProducer+Extensions.swift"; path = "Extensions/SignalProducer+Extensions.swift"; sourceTree = "<group>"; };
 		D06EF5D11F5B650F0093C87D /* Response+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Response+ExtensionsTests.swift"; path = "Extensions/Response+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		D08263F31F62FCCA00091E9A /* RemoteErrors+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RemoteErrors+Equatable.swift"; path = "Utilities/RemoteErrors+Equatable.swift"; sourceTree = "<group>"; };
+		D08263F51F66E14A00091E9A /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewModelType.swift; path = Protocols/ViewModelType.swift; sourceTree = "<group>"; };
+		D08263F71F66E1E200091E9A /* _ViewModelSettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = _ViewModelSettable.swift; path = Protocols/_ViewModelSettable.swift; sourceTree = "<group>"; };
+		D08263F91F66E23800091E9A /* ViewModelSettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewModelSettable.swift; path = Protocols/ViewModelSettable.swift; sourceTree = "<group>"; };
+		D08263FB1F66E43900091E9A /* ModeledViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeledViewController.swift; sourceTree = "<group>"; };
 		D0909B6C1F4D2513000F584B /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		D0909B6F1F4D282C000F584B /* String+Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Localized.swift"; path = "Extensions/String+Localized.swift"; sourceTree = "<group>"; };
 		D095D8C11F4E260800D15CE4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
@@ -184,7 +191,6 @@
 		D0B37EC41F66281F00CA8B1A /* ClipChannelMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClipChannelMessage.swift; path = Networking/ClipChannelMessage.swift; sourceTree = "<group>"; };
 		D0C1F6101F578FC100E49B77 /* ClipsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipsViewModel.swift; path = "View Models/ClipsViewModel.swift"; sourceTree = "<group>"; };
 		D0C1F6121F578FE600E49B77 /* ClipsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipsViewModelTests.swift; path = "View Models/ClipsViewModelTests.swift"; sourceTree = "<group>"; };
-		D0C1F6161F579D8700E49B77 /* ProviderSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProviderSettable.swift; path = Protocols/ProviderSettable.swift; sourceTree = "<group>"; };
 		D0C1F6551F590A3700E49B77 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Extensions.swift"; path = "Extensions/UIView+Extensions.swift"; sourceTree = "<group>"; };
 		D0C1F6571F590D5E00E49B77 /* MarginSettableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarginSettableTextField.swift; path = Views/MarginSettableTextField.swift; sourceTree = "<group>"; };
 		D0C1F6591F592DD600E49B77 /* ClipCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipCellViewModel.swift; path = "View Models/ClipCellViewModel.swift"; sourceTree = "<group>"; };
@@ -326,6 +332,7 @@
 				D00D68571F575AB80029BC79 /* AuthenticatingViewController.swift */,
 				D00D68471F55E8260029BC79 /* ClipsViewController.swift */,
 				D0979B6A1F4B33F300B8407F /* LandingViewController.swift */,
+				D08263FB1F66E43900091E9A /* ModeledViewController.swift */,
 				D00D68591F5761330029BC79 /* ResetPasswordViewController.swift */,
 				D0979B621F4B306100B8407F /* RootViewController.swift */,
 				D00D684D1F5733660029BC79 /* SignInViewController.swift */,
@@ -398,9 +405,11 @@
 		D095D8C51F4E268700D15CE4 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				D08263F71F66E1E200091E9A /* _ViewModelSettable.swift */,
 				D0C1F65B1F592EFB00E49B77 /* ClipType.swift */,
-				D00D685F1F589AC10029BC79 /* PersistentContainerSettable.swift */,
-				D0C1F6161F579D8700E49B77 /* ProviderSettable.swift */,
+				D055ECBD1F66E6A400D9C49B /* SegueingViewModel.swift */,
+				D08263F91F66E23800091E9A /* ViewModelSettable.swift */,
+				D08263F51F66E14A00091E9A /* ViewModelType.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -895,19 +904,21 @@
 				D0340BC91F6038A50030CD82 /* ResponseError.swift in Sources */,
 				D01A12DA1F5E19B200197ECA /* SpacingHeaderFooterView.swift in Sources */,
 				D0C1F6561F590A3700E49B77 /* UIView+Extensions.swift in Sources */,
+				D055ECBE1F66E6A400D9C49B /* SegueingViewModel.swift in Sources */,
 				D00D685C1F5762EE0029BC79 /* ResetPasswordViewModel.swift in Sources */,
 				D0334CCF1F64A9280004CB14 /* APIProvider.swift in Sources */,
 				D00D68501F5733BF0029BC79 /* SignInViewModel.swift in Sources */,
+				D08263FA1F66E23800091E9A /* ViewModelSettable.swift in Sources */,
 				D00D684C1F5712F40029BC79 /* UIViewController+Extensions.swift in Sources */,
 				D0979B671F4B31EB00B8407F /* SignUpViewController.swift in Sources */,
-				D00D68601F589AC10029BC79 /* PersistentContainerSettable.swift in Sources */,
+				D08263F81F66E1E200091E9A /* _ViewModelSettable.swift in Sources */,
 				D095D8C21F4E260800D15CE4 /* User.swift in Sources */,
 				D00D68581F575AB80029BC79 /* AuthenticatingViewController.swift in Sources */,
 				D0B37EC51F66281F00CA8B1A /* ClipChannelMessage.swift in Sources */,
-				D0C1F6171F579D8700E49B77 /* ProviderSettable.swift in Sources */,
 				D00D68421F55DA210029BC79 /* UIStoryboard+Extensions.swift in Sources */,
 				D0C1F6111F578FC100E49B77 /* ClipsViewModel.swift in Sources */,
 				D00A00841F61AC9300B11866 /* ISO8601JSONEncoder.swift in Sources */,
+				D08263F61F66E14A00091E9A /* ViewModelType.swift in Sources */,
 				D00D684E1F5733660029BC79 /* SignInViewController.swift in Sources */,
 				D00D68461F55E5140029BC79 /* RootViewModel.swift in Sources */,
 				D0909B701F4D282C000F584B /* String+Localized.swift in Sources */,
@@ -921,6 +932,7 @@
 				D0979B6D1F4B341200B8407F /* LandingViewModel.swift in Sources */,
 				D00D68561F574FF50029BC79 /* AuthenticatingViewModel.swift in Sources */,
 				D00D68371F55CAF80029BC79 /* Identifiers.swift in Sources */,
+				D08263FC1F66E43900091E9A /* ModeledViewController.swift in Sources */,
 				D0C1F65A1F592DD600E49B77 /* ClipCellViewModel.swift in Sources */,
 				D0FD1CFE1F5B5A590061535C /* Response+Extensions.swift in Sources */,
 				D09DCFF21F5CD4C4000D4B10 /* SubmissionError.swift in Sources */,

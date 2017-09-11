@@ -11,12 +11,7 @@ import ReactiveSwift
 import ReactiveCocoa
 import PKHUD
 
-class AuthenticatingViewController: UIViewController, ProviderSettable {
-    var provider: APIProvider!
-    lazy var viewModel: AuthenticatingViewModel = {
-        fatalError("Only subclasses of AuthenticatingViewController should be used")
-    }()
-    
+class AuthenticatingViewController: ModeledViewController<AuthenticatingViewModel>, UITextFieldDelegate {
     @IBOutlet fileprivate weak var emailTextField: UITextField!
     @IBOutlet fileprivate weak var passwordTextField: UITextField!
     @IBOutlet fileprivate weak var submitButton: UIButton!
@@ -42,9 +37,9 @@ class AuthenticatingViewController: UIViewController, ProviderSettable {
         
         emailTextField.becomeFirstResponder()
     }
-}
-
-extension AuthenticatingViewController: UITextFieldDelegate {
+    
+    // MARK: UITextFieldDelegate
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case emailTextField: passwordTextField.becomeFirstResponder()
