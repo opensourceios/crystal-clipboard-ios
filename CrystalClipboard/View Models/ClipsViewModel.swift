@@ -67,7 +67,6 @@ class ClipsViewModel: NSObject {
                                                    maxFetchedClipID: &maxFetchedClipID)
                 }
                 .mapError { ClipDisplayError.persistence(underlying: $0) }
-                .map { _ in () }
         }
         showLoadingFooter = pageViewed.isExecuting
         
