@@ -11,7 +11,7 @@ import ReactiveSwift
 
 class RootViewController: UIViewController {
     private let viewModel = RootViewModel()
-    private var currentViewController: UIViewController!
+    fileprivate var currentViewController: UIViewController!
     
     private static let transitionDuration: TimeInterval = 0.5
     
@@ -21,15 +21,12 @@ class RootViewController: UIViewController {
         let initialViewController = viewControllerForTransition(viewModel.transitionTo.value)
         performTransition(fromViewController: nil, toViewController: initialViewController)
         
-        viewModel.transitionTo.signal.observe(on: UIScheduler()).observeValues { [unowned self] in
-            let toViewController = self.viewControllerForTransition($0)
-            self.performTransition(fromViewController: self.currentViewController, toViewController: toViewController)
-        }
+        reactive.transition <~ viewModel.transitionTo
     }
 }
 
-private extension RootViewController {
-    private func viewControllerForTransition(_ transition: TransitionType) -> UIViewController {
+fileprivate extension RootViewController {
+    fileprivate func viewControllerForTransition(_ transition: TransitionType) -> UIViewController {
         let storyboard = UIStoryboard(name: transition.storyboardName)
         let controller = storyboard.instantiateViewController(withIdentifier: transition.controllerIdentifier)
         if var modeledViewController = controller as? _ViewModelSettable {
@@ -41,7 +38,7 @@ private extension RootViewController {
         return navigationController
     }
     
-    private func performTransition(fromViewController: UIViewController?, toViewController: UIViewController) {
+    fileprivate func performTransition(fromViewController: UIViewController?, toViewController: UIViewController) {
         currentViewController = toViewController
         fromViewController?.willMove(toParentViewController: nil)
         addChildViewController(toViewController)
@@ -57,6 +54,15 @@ private extension RootViewController {
         } else {
             view.addSubview(toViewController.view)
             toViewController.didMove(toParentViewController: self)
+        }
+    }
+}
+
+fileprivate extension Reactive where Base: RootViewController {
+    fileprivate var transition: BindingTarget<TransitionType> {
+        return makeBindingTarget {
+            let toViewController = $0.viewControllerForTransition($1)
+            $0.performTransition(fromViewController: $0.currentViewController, toViewController: toViewController)
         }
     }
 }
