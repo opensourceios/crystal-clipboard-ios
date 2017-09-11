@@ -29,12 +29,6 @@ struct User: Codable {
     let id: Int
     let email: String
     let authToken: AuthToken?
-    
-    init(id: Int, email: String, authToken: AuthToken? = nil) {
-        self.id = id
-        self.email = email
-        self.authToken = authToken
-    }
 }
 
 extension User {

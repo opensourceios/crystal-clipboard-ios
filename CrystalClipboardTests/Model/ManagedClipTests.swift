@@ -13,7 +13,7 @@ import CoreData
 class ManagedClipTests: CoreDataTestCase {
     func testInsert() {
         let context = persistentContainer.viewContext
-        let user = User(id: generateNumber(), email: generateEmail())
+        let user = User(id: generateNumber(), email: generateEmail(), authToken: nil)
         let clip = Clip(id: generateNumber(), text: generateString(), userID: user.id, createdAt: Date())
         ManagedClip(from: clip, context: context)
         try! context.save()

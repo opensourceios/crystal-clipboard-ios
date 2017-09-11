@@ -56,7 +56,7 @@ class ClipsDataProviderTests: CoreDataTestCase {
     
     func testDataProvided() {
         let context = persistentContainer.viewContext
-        let user = User(id: generateNumber(), email: generateEmail())
+        let user = User(id: generateNumber(), email: generateEmail(), authToken: nil)
         let clip1 = Clip(id: 1, text: generateString(), userID: user.id, createdAt: Date())
         let clip2 = Clip(id: 2, text: generateString(), userID: user.id, createdAt: Date())
         let clip3 = Clip(id: 3, text: generateString(), userID: user.id, createdAt: Date())

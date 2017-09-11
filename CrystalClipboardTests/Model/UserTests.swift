@@ -68,7 +68,7 @@ class UserTests: XCTestCase {
     func testNotifiesUserUpdated() {
         User.current = user
         expectation(forNotification: Notification.Name.userUpdated, object: nil, handler: nil)
-        User.current = User(id: user.id, email: generateEmail())
+        User.current = User(id: user.id, email: generateEmail(), authToken: nil)
         waitForExpectations(timeout: 1, handler: nil)
     }
 }
