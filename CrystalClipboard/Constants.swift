@@ -9,7 +9,7 @@
 import Foundation
 import Keys
 
-fileprivate let keys = CrystalClipboardKeys()
+private let keys = CrystalClipboardKeys()
 
 enum Environment: String {
     case staging, production

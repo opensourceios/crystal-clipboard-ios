@@ -11,9 +11,9 @@ import ReactiveSwift
 import ReactiveCocoa
 
 class AuthenticatingViewController: ModeledViewController<AuthenticatingViewModel>, UITextFieldDelegate {
-    @IBOutlet fileprivate weak var emailTextField: UITextField!
-    @IBOutlet fileprivate weak var passwordTextField: UITextField!
-    @IBOutlet fileprivate weak var submitButton: UIButton!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var submitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

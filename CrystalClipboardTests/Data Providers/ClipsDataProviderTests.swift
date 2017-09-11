@@ -12,7 +12,7 @@ import CoreData
 import CellHelpers
 @testable import CrystalClipboard
 
-fileprivate let reuseIdentifier = "reuseIdentifier"
+private let reuseIdentifier = "reuseIdentifier"
 
 class ClipsDataProviderTests: CoreDataTestCase {
     class Controller: UITableViewController, DataSourceDelegate, FetchedResultsChangeSetProducerDelegate {

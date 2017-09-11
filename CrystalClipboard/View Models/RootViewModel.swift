@@ -15,7 +15,7 @@ protocol TransitionType {
     var viewModel: ViewModelType { get }
 }
 
-fileprivate enum Transition: TransitionType {
+private enum Transition: TransitionType {
     case signIn(authToken: User.AuthToken, persistentContainer: NSPersistentContainer)
     case signOut
     

@@ -14,7 +14,7 @@ import PKHUD
 
 class ClipsViewController: ModeledViewController<ClipsViewModel>, UITableViewDelegate {
     private var pageScrolledTo = MutableProperty(0)
-    @IBOutlet fileprivate weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

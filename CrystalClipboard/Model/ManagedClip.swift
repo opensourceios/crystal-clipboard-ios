@@ -9,9 +9,9 @@
 import CoreData
 
 class ManagedClip: NSManagedObject, ClipType {
-    @NSManaged fileprivate(set) var id: Int
-    @NSManaged fileprivate(set) var text: String
-    @NSManaged fileprivate(set) var createdAt: Date
+    @NSManaged private(set) var id: Int
+    @NSManaged private(set) var text: String
+    @NSManaged private(set) var createdAt: Date
     
     @discardableResult
     convenience init(from clip: Clip, context: NSManagedObjectContext) {

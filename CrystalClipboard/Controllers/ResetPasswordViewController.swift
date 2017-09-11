@@ -11,8 +11,8 @@ import ReactiveSwift
 import ReactiveCocoa
 
 class ResetPasswordViewController: ModeledViewController<ResetPasswordViewModel>, UITextFieldDelegate {
-    @IBOutlet fileprivate weak var emailTextField: UITextField!
-    @IBOutlet fileprivate weak var submitButton: UIButton!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var submitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

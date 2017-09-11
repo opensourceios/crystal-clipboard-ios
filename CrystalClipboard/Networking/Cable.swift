@@ -72,9 +72,9 @@ class Cable {
     
     private let socket: WebSocket
     private let encoder = JSONEncoder()
-    fileprivate var connectionInput: Connection.Observer?
-    fileprivate var channelInputs = [String: Channel.Observer]()
-    fileprivate let queue = DispatchQueue(label: "com.jzzocc.crystal-clipboard.cable-queue", attributes: .concurrent)
+    private var connectionInput: Connection.Observer?
+    private var channelInputs = [String: Channel.Observer]()
+    private static let queue = DispatchQueue(label: "com.jzzocc.crystal-clipboard.cable-queue", attributes: .concurrent)
     
     init(url: URL, origin: String?, token: String?) {
         socket = WebSocket(url: url)
@@ -83,7 +83,7 @@ class Cable {
         }
         socket.origin = origin
         socket.delegate = self
-        socket.callbackQueue = queue
+        socket.callbackQueue = Cable.queue
     }
     
     func connect() -> Connection {
@@ -102,7 +102,7 @@ class Cable {
     }
     
     func subscribe(channelIdentifier: String) -> Channel {
-        queue.async { [unowned self] in
+        Cable.queue.async { [unowned self] in
             self.command(Command(command: .subscribe, identifier: channelIdentifier))
         }
         let channel = Channel.pipe()
@@ -111,7 +111,7 @@ class Cable {
     }
     
     func unsubscribe(channelIdentifier: String) {
-        queue.async { [unowned self] in
+        Cable.queue.async { [unowned self] in
             self.command(Command(command: .unsubscribe, identifier: channelIdentifier))
         }
     }

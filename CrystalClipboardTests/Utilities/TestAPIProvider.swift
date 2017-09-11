@@ -49,7 +49,7 @@ class TestAPIProvider: APIProvider {
     }
 }
 
-extension CrystalClipboardAPI {
+fileprivate extension CrystalClipboardAPI {
     private static let encoder = ISO8601JSONEncoder()
     
     private func encode<T>(_ value: T) -> Data where T : Encodable {
