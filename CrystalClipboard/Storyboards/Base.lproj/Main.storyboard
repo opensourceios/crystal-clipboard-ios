@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,14 +15,11 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="Root" id="BYZ-38-t0r" customClass="RootViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="2ho-Om-Ryw"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -32,10 +30,6 @@
         <scene sceneID="tHx-9y-Irj">
             <objects>
                 <viewController storyboardIdentifier="Clips" id="1Kn-Ww-pD6" customClass="ClipsViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0pf-WZ-Qw1"/>
-                        <viewControllerLayoutGuide type="bottom" id="LJM-Rt-BPy"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ig6-Vs-M7D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,11 +124,12 @@
                             </tableView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="S06-Wp-DHM" secondAttribute="trailing" id="34Q-sh-Vfg"/>
-                            <constraint firstItem="S06-Wp-DHM" firstAttribute="leading" secondItem="Ig6-Vs-M7D" secondAttribute="leading" id="AMQ-rT-5OQ"/>
+                            <constraint firstItem="qAh-4P-g1y" firstAttribute="trailing" secondItem="S06-Wp-DHM" secondAttribute="trailing" id="34Q-sh-Vfg"/>
+                            <constraint firstItem="S06-Wp-DHM" firstAttribute="leading" secondItem="qAh-4P-g1y" secondAttribute="leading" id="AMQ-rT-5OQ"/>
                             <constraint firstItem="S06-Wp-DHM" firstAttribute="top" secondItem="Ig6-Vs-M7D" secondAttribute="top" id="UD3-af-fUQ"/>
                             <constraint firstAttribute="bottom" secondItem="S06-Wp-DHM" secondAttribute="bottom" id="sZF-UR-SAQ"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="qAh-4P-g1y"/>
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="xGj-d2-aoR"/>
@@ -181,14 +176,11 @@
         <scene sceneID="OW0-bP-D47">
             <objects>
                 <viewController id="oay-8N-Pib" customClass="SettingsViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Tap-D9-QEn"/>
-                        <viewControllerLayoutGuide type="bottom" id="44q-ey-HL3"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mjT-xE-QTM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="X0H-ic-WNi"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="YzL-oT-iC2">
                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="mE6-RR-Mw3">
@@ -222,10 +214,6 @@
         <scene sceneID="pSU-A3-6oi">
             <objects>
                 <viewController id="T9j-p5-0J3" customClass="CreateClipViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XTY-Xs-yg6"/>
-                        <viewControllerLayoutGuide type="bottom" id="j1g-TO-cT2"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rol-DX-DwV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -240,10 +228,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fwp-ip-jr6" firstAttribute="top" secondItem="rol-DX-DwV" secondAttribute="top" id="7QQ-7B-XCT"/>
-                            <constraint firstItem="fwp-ip-jr6" firstAttribute="trailing" secondItem="rol-DX-DwV" secondAttribute="trailing" id="j86-wp-SOs"/>
+                            <constraint firstItem="fwp-ip-jr6" firstAttribute="trailing" secondItem="3Zs-uz-8we" secondAttribute="trailing" id="j86-wp-SOs"/>
                             <constraint firstAttribute="bottom" secondItem="fwp-ip-jr6" secondAttribute="bottom" id="ozB-sx-RbD"/>
-                            <constraint firstItem="fwp-ip-jr6" firstAttribute="leading" secondItem="rol-DX-DwV" secondAttribute="leading" id="pM6-ZX-BDk"/>
+                            <constraint firstItem="fwp-ip-jr6" firstAttribute="leading" secondItem="3Zs-uz-8we" secondAttribute="leading" id="pM6-ZX-BDk"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="3Zs-uz-8we"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add" id="Wv6-pl-bep">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WU4-J2-WRg">

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,10 +14,6 @@
         <scene sceneID="W50-3k-E1R">
             <objects>
                 <viewController storyboardIdentifier="Sign Up" id="NzU-ms-CNf" customClass="SignUpViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sAS-uw-QbG"/>
-                        <viewControllerLayoutGuide type="bottom" id="Dk6-Q0-zT9"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kjT-cH-IH9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -103,11 +99,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Dk6-Q0-zT9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="sYx-14-fjI" secondAttribute="bottom" id="EFm-Qm-9Lg"/>
-                            <constraint firstItem="sYx-14-fjI" firstAttribute="top" secondItem="sAS-uw-QbG" secondAttribute="bottom" id="H77-uK-Lef"/>
+                            <constraint firstItem="HaW-LA-qcL" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="sYx-14-fjI" secondAttribute="bottom" id="EFm-Qm-9Lg"/>
+                            <constraint firstItem="sYx-14-fjI" firstAttribute="top" secondItem="HaW-LA-qcL" secondAttribute="top" id="H77-uK-Lef"/>
                             <constraint firstItem="sYx-14-fjI" firstAttribute="trailing" secondItem="kjT-cH-IH9" secondAttribute="trailingMargin" id="MBS-aI-u7i"/>
                             <constraint firstItem="sYx-14-fjI" firstAttribute="leading" secondItem="kjT-cH-IH9" secondAttribute="leadingMargin" id="kfh-h9-4ST"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="HaW-LA-qcL"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sign Up" id="9Ov-K6-oNw"/>
                     <connections>
@@ -124,10 +121,6 @@
         <scene sceneID="qtY-eT-KcA">
             <objects>
                 <viewController id="UW5-9f-cUJ" customClass="SignInViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yqo-5g-2yG"/>
-                        <viewControllerLayoutGuide type="bottom" id="VG1-Oy-IgA"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kv4-3G-2M0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -221,11 +214,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9jI-cO-ig8" firstAttribute="top" secondItem="yqo-5g-2yG" secondAttribute="bottom" id="JBD-2B-ER9"/>
+                            <constraint firstItem="9jI-cO-ig8" firstAttribute="top" secondItem="Ana-3T-HiB" secondAttribute="top" id="JBD-2B-ER9"/>
                             <constraint firstItem="9jI-cO-ig8" firstAttribute="trailing" secondItem="kv4-3G-2M0" secondAttribute="trailingMargin" id="Kf0-XI-Ahj"/>
-                            <constraint firstItem="VG1-Oy-IgA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9jI-cO-ig8" secondAttribute="bottom" id="QGv-Is-vd9"/>
+                            <constraint firstItem="Ana-3T-HiB" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9jI-cO-ig8" secondAttribute="bottom" id="QGv-Is-vd9"/>
                             <constraint firstItem="9jI-cO-ig8" firstAttribute="leading" secondItem="kv4-3G-2M0" secondAttribute="leadingMargin" id="sUF-dR-f2M"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ana-3T-HiB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sign In" id="8dJ-so-BV3"/>
                     <connections>
@@ -242,10 +236,6 @@
         <scene sceneID="rka-9D-DMf">
             <objects>
                 <viewController id="Vlb-LE-4I9" customClass="ResetPasswordViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="l8i-dK-LPT"/>
-                        <viewControllerLayoutGuide type="bottom" id="dc1-dg-Dea"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uO5-Ts-fqE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -297,11 +287,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6ja-01-cCo" firstAttribute="top" secondItem="l8i-dK-LPT" secondAttribute="bottom" id="8ff-tH-5HI"/>
+                            <constraint firstItem="6ja-01-cCo" firstAttribute="top" secondItem="OLz-Y5-u7b" secondAttribute="top" id="8ff-tH-5HI"/>
                             <constraint firstItem="6ja-01-cCo" firstAttribute="leading" secondItem="uO5-Ts-fqE" secondAttribute="leadingMargin" id="9gN-yv-Hjl"/>
                             <constraint firstItem="6ja-01-cCo" firstAttribute="trailing" secondItem="uO5-Ts-fqE" secondAttribute="trailingMargin" id="XsD-Q3-7Od"/>
-                            <constraint firstItem="dc1-dg-Dea" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6ja-01-cCo" secondAttribute="bottom" id="who-24-yBb"/>
+                            <constraint firstItem="OLz-Y5-u7b" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6ja-01-cCo" secondAttribute="bottom" id="who-24-yBb"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="OLz-Y5-u7b"/>
                     </view>
                     <navigationItem key="navigationItem" title="Reset Password" id="s5h-N1-XMf"/>
                     <connections>
@@ -317,10 +308,6 @@
         <scene sceneID="MHj-IL-aqN">
             <objects>
                 <viewController storyboardIdentifier="Landing" id="nrO-M0-xbo" customClass="LandingViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Got-cO-T0f"/>
-                        <viewControllerLayoutGuide type="bottom" id="uAJ-Wg-oFe"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jHx-mD-ELY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -351,11 +338,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1Re-7W-u9Y" firstAttribute="top" secondItem="Got-cO-T0f" secondAttribute="bottom" id="7fR-gJ-JQU"/>
+                            <constraint firstItem="1Re-7W-u9Y" firstAttribute="top" secondItem="8kQ-4F-Oc6" secondAttribute="top" id="7fR-gJ-JQU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1Re-7W-u9Y" secondAttribute="trailing" id="DxJ-DS-VyD"/>
-                            <constraint firstItem="uAJ-Wg-oFe" firstAttribute="top" secondItem="1Re-7W-u9Y" secondAttribute="bottom" id="nne-d4-gOO"/>
+                            <constraint firstItem="8kQ-4F-Oc6" firstAttribute="bottom" secondItem="1Re-7W-u9Y" secondAttribute="bottom" id="nne-d4-gOO"/>
                             <constraint firstItem="1Re-7W-u9Y" firstAttribute="leading" secondItem="jHx-mD-ELY" secondAttribute="leadingMargin" id="uJw-yd-ovy"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="8kQ-4F-Oc6"/>
                     </view>
                     <navigationItem key="navigationItem" id="zwi-r6-TIO"/>
                 </viewController>
