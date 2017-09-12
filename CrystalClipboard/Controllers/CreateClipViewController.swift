@@ -21,7 +21,9 @@ class CreateClipViewController: ModeledViewController<CreateClipViewModel> {
         let keyboardHeightChanges = notificationCenter.notifications(forName: .UIKeyboardDidChangeFrame)
             .take(during: reactive.lifetime)
             .map { ($0.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? CGRect)?.height ?? 0 }
-        let keyboardHides = notificationCenter.notifications(forName: .UIKeyboardDidHide).map { _ in CGFloat(0) }
+        let keyboardHides = notificationCenter.notifications(forName: .UIKeyboardDidHide)
+            .take(during: reactive.lifetime)
+            .map { _ in CGFloat(0) }
         let keyboardHeight = SignalProducer(values: keyboardHeightChanges, keyboardHides).flatten(.merge)
         textView.reactive.contentInsetBottom <~ keyboardHeight
         
