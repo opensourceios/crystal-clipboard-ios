@@ -181,7 +181,22 @@
                     <view key="view" contentMode="scaleToFill" id="rol-DX-DwV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fwp-ip-jr6">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fwp-ip-jr6" firstAttribute="top" secondItem="rol-DX-DwV" secondAttribute="top" id="7QQ-7B-XCT"/>
+                            <constraint firstItem="fwp-ip-jr6" firstAttribute="trailing" secondItem="rol-DX-DwV" secondAttribute="trailing" id="j86-wp-SOs"/>
+                            <constraint firstAttribute="bottom" secondItem="fwp-ip-jr6" secondAttribute="bottom" id="ozB-sx-RbD"/>
+                            <constraint firstItem="fwp-ip-jr6" firstAttribute="leading" secondItem="rol-DX-DwV" secondAttribute="leading" id="pM6-ZX-BDk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Wv6-pl-bep">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WU4-J2-WRg">
@@ -190,10 +205,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="fwp-ip-jr6" id="b15-uA-5kl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kc5-fw-MTm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2495" y="139"/>
+            <point key="canvasLocation" x="2493.5999999999999" y="138.98050974512745"/>
         </scene>
     </scenes>
     <resources>
