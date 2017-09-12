@@ -2,6 +2,7 @@
 
 public enum SegueIdentifier : String {
     case PresentCreateClip
+    case PresentSettings
     case PushForgotPassword
     case PushSignIn
     case PushSignUp

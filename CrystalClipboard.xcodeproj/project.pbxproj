@@ -45,6 +45,8 @@
 		D021CD931F67175600F0C05E /* CreateClipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021CD921F67175600F0C05E /* CreateClipViewModel.swift */; };
 		D021CD951F671BC000F0C05E /* ISO8601JSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021CD941F671BC000F0C05E /* ISO8601JSONEncoder.swift */; };
 		D021CD971F671C2100F0C05E /* NamedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021CD961F671C2100F0C05E /* NamedColors.swift */; };
+		D021E2CE1F687EFD0021905E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021E2CD1F687EFD0021905E /* SettingsViewController.swift */; };
+		D021E2D01F687F270021905E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021E2CF1F687F270021905E /* SettingsViewModel.swift */; };
 		D0253F8F1F5A83B60066B444 /* ISO8601JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0253F8E1F5A83B60066B444 /* ISO8601JSONDecoder.swift */; };
 		D0334CCF1F64A9280004CB14 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0334CCE1F64A9280004CB14 /* APIProvider.swift */; };
 		D0340BC91F6038A50030CD82 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0340BC81F6038A50030CD82 /* ResponseError.swift */; };
@@ -155,6 +157,8 @@
 		D021CD921F67175600F0C05E /* CreateClipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateClipViewModel.swift; path = "View Models/CreateClipViewModel.swift"; sourceTree = "<group>"; };
 		D021CD941F671BC000F0C05E /* ISO8601JSONEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ISO8601JSONEncoder.swift; path = Networking/ISO8601JSONEncoder.swift; sourceTree = "<group>"; };
 		D021CD961F671C2100F0C05E /* NamedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamedColors.swift; sourceTree = "<group>"; };
+		D021E2CD1F687EFD0021905E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D021E2CF1F687F270021905E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewModel.swift; path = "View Models/SettingsViewModel.swift"; sourceTree = "<group>"; };
 		D0253F8E1F5A83B60066B444 /* ISO8601JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ISO8601JSONDecoder.swift; path = Networking/ISO8601JSONDecoder.swift; sourceTree = "<group>"; };
 		D0334CCE1F64A9280004CB14 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIProvider.swift; path = Networking/APIProvider.swift; sourceTree = "<group>"; };
 		D0340BC81F6038A50030CD82 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResponseError.swift; path = Errors/ResponseError.swift; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 				D08263FB1F66E43900091E9A /* ModeledViewController.swift */,
 				D00D68591F5761330029BC79 /* ResetPasswordViewController.swift */,
 				D0979B621F4B306100B8407F /* RootViewController.swift */,
+				D021E2CD1F687EFD0021905E /* SettingsViewController.swift */,
 				D00D684D1F5733660029BC79 /* SignInViewController.swift */,
 				D0979B661F4B31EB00B8407F /* SignUpViewController.swift */,
 			);
@@ -435,6 +440,7 @@
 				D0979B6C1F4B341200B8407F /* LandingViewModel.swift */,
 				D00D685B1F5762EE0029BC79 /* ResetPasswordViewModel.swift */,
 				D00D68451F55E5140029BC79 /* RootViewModel.swift */,
+				D021E2CF1F687F270021905E /* SettingsViewModel.swift */,
 				D00D684F1F5733BF0029BC79 /* SignInViewModel.swift */,
 				D0979B681F4B325300B8407F /* SignUpViewModel.swift */,
 			);
@@ -944,6 +950,7 @@
 				D0D59B701F4A0A0100200ABD /* Cable.swift in Sources */,
 				D00D68481F55E8260029BC79 /* ClipsViewController.swift in Sources */,
 				D0979B691F4B325300B8407F /* SignUpViewModel.swift in Sources */,
+				D021E2CE1F687EFD0021905E /* SettingsViewController.swift in Sources */,
 				D0B61B231F67315E00838D21 /* UIViewController+ReactiveExtensions.swift in Sources */,
 				D0979B6D1F4B341200B8407F /* LandingViewModel.swift in Sources */,
 				D00D68561F574FF50029BC79 /* AuthenticatingViewModel.swift in Sources */,
@@ -953,6 +960,7 @@
 				D0FD1CFE1F5B5A590061535C /* Response+Extensions.swift in Sources */,
 				D09DCFF21F5CD4C4000D4B10 /* SubmissionError.swift in Sources */,
 				D0979B6B1F4B33F300B8407F /* LandingViewController.swift in Sources */,
+				D021E2D01F687F270021905E /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

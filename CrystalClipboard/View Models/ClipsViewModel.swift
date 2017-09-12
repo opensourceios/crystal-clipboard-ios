@@ -217,10 +217,14 @@ extension ClipsViewModel: DataSourceDelegate {
 
 extension ClipsViewModel: SegueingViewModel {
     func viewModel(segueIdentifier: SegueIdentifier?) -> ViewModelType? {
-        if segueIdentifier == .PresentCreateClip {
+        guard let segueIdentifier = segueIdentifier else { return nil }
+        switch segueIdentifier {
+        case .PresentCreateClip:
             return CreateClipViewModel(provider: provider, persistentContainer: persistentContainer)
+        case .PresentSettings:
+            return SettingsViewModel(provider: provider)
+        default:
+            return nil
         }
-        
-        return nil
     }
 }
