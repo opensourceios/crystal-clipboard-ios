@@ -206,6 +206,8 @@
                         <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="QiO-bn-Mls"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelBarButtonItem" destination="WU4-J2-WRg" id="Hx0-R1-kQ6"/>
+                        <outlet property="doneBarButtonItem" destination="QiO-bn-Mls" id="QzB-gH-jB9"/>
                         <outlet property="textView" destination="fwp-ip-jr6" id="b15-uA-5kl"/>
                     </connections>
                 </viewController>

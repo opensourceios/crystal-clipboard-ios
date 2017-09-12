@@ -29,16 +29,7 @@ class AuthenticatingViewModel: ViewModelType {
             provider.reactive.request(request(validEmail, validPassword))
                 .decode(to: User.self)
                 .on(value: { User.current = $0 })
-                .mapError {
-                    if case let .with(response: _, remoteErrors: remoteErrors) = $0 {
-                        let messages = remoteErrors.map { $0.message }
-                        if messages.count > 0 {
-                            return SubmissionError(message: messages.joined(separator: "\n\n"))
-                        }
-                    }
-                    
-                    return SubmissionError(message: defaultAlertMessage)
-                }
+                .mapError { SubmissionError(responseError: $0) ?? SubmissionError(message: defaultAlertMessage) }
                 .map { _ in Void() }
         }
     }

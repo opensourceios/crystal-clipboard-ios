@@ -31,6 +31,8 @@ class ClipsViewModel: NSObject, ViewModelType {
     
     // MARK: Private
     
+    private let provider: APIProvider
+    private let persistentContainer: NSPersistentContainer
     private let dataProvider: ClipsDataProvider
     private let copyObserver: Signal<Signal<String, NoError>, NoError>.Observer
     private let fetchedResultsChangeSetProducer: FetchedResultsChangeSetProducer
@@ -47,6 +49,8 @@ class ClipsViewModel: NSObject, ViewModelType {
     // MARK: Initialization
     
     init(provider: APIProvider, persistentContainer: NSPersistentContainer, pageSize: Int) {
+        self.provider = provider
+        self.persistentContainer = persistentContainer
         self.pageSize = pageSize
         
         let dataProvider = ClipsDataProvider(managedObjectContext: persistentContainer.viewContext)
@@ -214,7 +218,7 @@ extension ClipsViewModel: DataSourceDelegate {
 extension ClipsViewModel: SegueingViewModel {
     func viewModel(segueIdentifier: SegueIdentifier?) -> ViewModelType? {
         if segueIdentifier == .PresentCreateClip {
-            return CreateClipViewModel()
+            return CreateClipViewModel(provider: provider, persistentContainer: persistentContainer)
         }
         
         return nil

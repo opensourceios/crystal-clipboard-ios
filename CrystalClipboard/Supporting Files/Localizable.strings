@@ -23,4 +23,5 @@
 // Clips
 "clips.copied" = "Copied!";
 "clips.delete" = "Delete";
+"clips.could-not-be-added" = "The clip could not be added at this time.";
 "clips.could-not-be-deleted" = "The clip could not be deleted at this time.";
