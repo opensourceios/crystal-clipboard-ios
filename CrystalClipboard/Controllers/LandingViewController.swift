@@ -6,4 +6,8 @@
 //  Copyright © 2017 Justin Mazzocchi. All rights reserved.
 //
 
-class LandingViewController: ModeledViewController<LandingViewModel> {}
+class LandingViewController: ModeledViewController<LandingViewModel> {
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+}

@@ -35,6 +35,10 @@ class AuthenticatingViewController: ModeledViewController<AuthenticatingViewMode
         emailTextField.becomeFirstResponder()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+    }
+    
     // MARK: UITextFieldDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
