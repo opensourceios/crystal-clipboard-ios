@@ -13,8 +13,16 @@ import struct CellHelpers.ChangeSet
 import PKHUD
 
 class ClipsViewController: ModeledViewController<ClipsViewModel>, UITableViewDelegate {
+    
+    // MARK: Private properties
+    
     private var pageScrolledTo = MutableProperty(0)
+    
+    // MARK: IBOutlets
+    
     @IBOutlet private weak var tableView: UITableView!
+    
+    // MARK: Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,12 +70,16 @@ class ClipsViewController: ModeledViewController<ClipsViewModel>, UITableViewDel
     }
 }
 
+// MARK: Fileprivate static properties
+
 fileprivate extension ClipsViewController {
     fileprivate static let noClipsView = NoClipsView.fromNib()!
     fileprivate static let loadingFooterView = LoadingFooterView.fromNib()!
     fileprivate static let spacingHeaderFooterView = SpacingHeaderFooterView.fromNib()!
     fileprivate static let copiedHUDFlashDelay: TimeInterval = 0.5
 }
+
+// MARK: Fileprivate UITableView reactive extensions
 
 fileprivate extension Reactive where Base: UITableView {
     fileprivate var showNoClipsMessage: BindingTarget<Bool> {
@@ -82,6 +94,8 @@ fileprivate extension Reactive where Base: UITableView {
         return makeBindingTarget { $0.performUpdates(fromChangeSet: $1) }
     }
 }
+
+// MARK: Fileprivate reactive extensions
 
 fileprivate extension Reactive where Base: ClipsViewController {
     fileprivate var textToCopy: BindingTarget<String> {

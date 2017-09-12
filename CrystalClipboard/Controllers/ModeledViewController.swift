@@ -9,8 +9,16 @@
 import UIKit
 
 class ModeledViewController<VM: ViewModelType>: UIViewController, ViewModelSettable {
+    
+    // MARK: Typealiases
+    
     typealias ViewModel = VM
+    
+    // MARK: Internal properties
+    
     var viewModel: VM!
+    
+    // MARK: Overrides
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let segueIdentifier: SegueIdentifier?

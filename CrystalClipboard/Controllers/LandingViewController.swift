@@ -7,6 +7,9 @@
 //
 
 class LandingViewController: ModeledViewController<LandingViewModel> {
+    
+    // MARK: Overrides
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
     }

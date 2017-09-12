@@ -12,9 +12,13 @@ import ReactiveCocoa
 
 class CreateClipViewController: ModeledViewController<CreateClipViewModel> {
     
+    // MARK: IBOutlets
+    
     @IBOutlet private weak var textView: UITextView!
     @IBOutlet private weak var cancelBarButtonItem: UIBarButtonItem!
     @IBOutlet private weak var doneBarButtonItem: UIBarButtonItem!
+    
+    // MARK: Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +44,14 @@ class CreateClipViewController: ModeledViewController<CreateClipViewModel> {
         textView.becomeFirstResponder()
     }
     
-    @IBAction func cancelTapped(_ sender: Any) {
+    // MARK: IBActions
+    
+    @IBAction private func cancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 }
+
+// MARK: Fileprivate UIScrollView reactive extensions
 
 fileprivate extension Reactive where Base: UIScrollView {
     fileprivate var contentInsetBottom: BindingTarget<CGFloat> {
@@ -55,6 +63,8 @@ fileprivate extension Reactive where Base: UIScrollView {
         }
     }
 }
+
+// MARK: Fileprivate reactive extensions
 
 fileprivate extension Reactive where Base: CreateClipViewController {
     fileprivate var dismiss: BindingTarget<Void> {

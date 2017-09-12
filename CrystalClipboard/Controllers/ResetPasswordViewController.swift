@@ -11,8 +11,13 @@ import ReactiveSwift
 import ReactiveCocoa
 
 class ResetPasswordViewController: ModeledViewController<ResetPasswordViewModel>, UITextFieldDelegate {
+    
+    // MARK: IBOutlets
+    
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var submitButton: UIButton!
+    
+    // MARK: Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +46,8 @@ class ResetPasswordViewController: ModeledViewController<ResetPasswordViewModel>
         return false
     }
 }
+
+// MARK: Fileprivate reactive extensions
 
 fileprivate extension Reactive where Base: ResetPasswordViewController {
     fileprivate var successAlert: BindingTarget<String> {
