@@ -31,6 +31,10 @@ class CreateClipViewController: ModeledViewController<CreateClipViewModel> {
             textView.reactive.contentInsetBottom <~ SignalProducer(values: keyboardHeightChanges, keyboardHides).flatten(.merge)
         }
         
+        if let doneBarButtonItem = navigationItem.rightBarButtonItem {
+            doneBarButtonItem.reactive.isEnabled <~ textView.reactive.continuousTextValues.skipNil().map { $0.count > 0 }
+        }
+        
         textView.becomeFirstResponder()
     }
     
