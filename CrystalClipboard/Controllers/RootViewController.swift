@@ -21,7 +21,7 @@ class RootViewController: UIViewController {
     
     // MARK: Fileprivate stored properties
     
-    fileprivate var currentViewController: UIViewController!
+    fileprivate var currentViewController: UIViewController?
     
     // MARK: UIViewController internal overridden computed properties
     
