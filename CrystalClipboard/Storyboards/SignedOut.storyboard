@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="Sign Up" id="NzU-ms-CNf" customClass="SignUpViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kjT-cH-IH9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="sYx-14-fjI">
-                                <rect key="frame" x="16" y="20" width="343" height="143"/>
+                                <rect key="frame" x="16" y="44" width="343" height="143"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ihe-od-pd0">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="39"/>
@@ -122,11 +122,11 @@
             <objects>
                 <viewController id="UW5-9f-cUJ" customClass="SignInViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kv4-3G-2M0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="9jI-cO-ig8">
-                                <rect key="frame" x="16" y="20" width="343" height="192"/>
+                                <rect key="frame" x="16" y="44" width="343" height="192"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="43z-cg-9lk">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="39"/>
@@ -237,11 +237,11 @@
             <objects>
                 <viewController id="Vlb-LE-4I9" customClass="ResetPasswordViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uO5-Ts-fqE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6ja-01-cCo">
-                                <rect key="frame" x="16" y="20" width="343" height="88"/>
+                                <rect key="frame" x="16" y="44" width="343" height="88"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7tk-5T-yRc">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="39"/>
@@ -309,39 +309,84 @@
             <objects>
                 <viewController storyboardIdentifier="Landing" id="nrO-M0-xbo" customClass="LandingViewController" customModule="CrystalClipboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jHx-mD-ELY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1Re-7W-u9Y">
-                                <rect key="frame" x="16" y="20" width="343" height="647"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZ8-Vu-Y1n" customClass="CrystalView" customModule="CrystalClipboard" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pwc-nP-zdj">
+                                <rect key="frame" x="44.333333333333343" y="294.33333333333337" width="286.66666666666663" height="224.00000000000011"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6D-Hz-WU9">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="614"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <state key="normal" title="Sign Up"/>
-                                        <connections>
-                                            <segue destination="NzU-ms-CNf" kind="show" identifier="PushSignUp" id="h4B-lG-5Xr">
-                                                <nil key="action"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oh6-TU-Dox">
-                                        <rect key="frame" x="0.0" y="614" width="343" height="33"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <state key="normal" title="Sign In"/>
-                                        <connections>
-                                            <segue destination="UW5-9f-cUJ" kind="show" identifier="PushSignIn" id="exF-II-H6Z"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="1Re-7W-u9Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="286.66666666666669" height="224.00000000000006"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crystal Clipboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJ2-lS-qaU">
+                                                <rect key="frame" x="0.0" y="0.0" width="286.66666666666669" height="48"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6D-Hz-WU9">
+                                                <rect key="frame" x="0.0" y="92" width="286.66666666666669" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="xSc-QE-muO"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <state key="normal" title="Sign Up"/>
+                                                <connections>
+                                                    <segue destination="NzU-ms-CNf" kind="show" identifier="PushSignUp" id="h4B-lG-5Xr">
+                                                        <nil key="action"/>
+                                                    </segue>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oh6-TU-Dox">
+                                                <rect key="frame" x="0.0" y="180" width="286.66666666666669" height="44.000000000000057"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="Dac-0N-yAM"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <state key="normal" title="Sign In"/>
+                                                <connections>
+                                                    <segue destination="UW5-9f-cUJ" kind="show" identifier="PushSignIn" id="exF-II-H6Z"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="1Re-7W-u9Y" firstAttribute="leading" secondItem="pwc-nP-zdj" secondAttribute="leading" id="2V0-rf-xen"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Re-7W-u9Y" secondAttribute="bottom" id="50F-hR-M9S"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Re-7W-u9Y" secondAttribute="trailing" id="98I-4a-QXZ"/>
+                                    <constraint firstItem="1Re-7W-u9Y" firstAttribute="top" secondItem="pwc-nP-zdj" secondAttribute="top" id="FY1-Kc-ibK"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1Re-7W-u9Y" firstAttribute="top" secondItem="8kQ-4F-Oc6" secondAttribute="top" id="7fR-gJ-JQU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="1Re-7W-u9Y" secondAttribute="trailing" id="DxJ-DS-VyD"/>
-                            <constraint firstItem="8kQ-4F-Oc6" firstAttribute="bottom" secondItem="1Re-7W-u9Y" secondAttribute="bottom" id="nne-d4-gOO"/>
-                            <constraint firstItem="1Re-7W-u9Y" firstAttribute="leading" secondItem="jHx-mD-ELY" secondAttribute="leadingMargin" id="uJw-yd-ovy"/>
+                            <constraint firstItem="QZ8-Vu-Y1n" firstAttribute="leading" secondItem="jHx-mD-ELY" secondAttribute="leading" id="3iC-n3-tPx"/>
+                            <constraint firstItem="QZ8-Vu-Y1n" firstAttribute="trailing" secondItem="jHx-mD-ELY" secondAttribute="trailing" id="BQv-KE-AhN"/>
+                            <constraint firstItem="QZ8-Vu-Y1n" firstAttribute="top" secondItem="jHx-mD-ELY" secondAttribute="top" id="T5I-Ez-MfQ"/>
+                            <constraint firstItem="pwc-nP-zdj" firstAttribute="centerY" secondItem="jHx-mD-ELY" secondAttribute="centerY" id="bgw-Oj-7tD"/>
+                            <constraint firstItem="pwc-nP-zdj" firstAttribute="centerX" secondItem="jHx-mD-ELY" secondAttribute="centerX" id="n1Q-G5-Qic"/>
+                            <constraint firstItem="QZ8-Vu-Y1n" firstAttribute="bottom" secondItem="jHx-mD-ELY" secondAttribute="bottom" id="y7x-ik-6A5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8kQ-4F-Oc6"/>
                     </view>
