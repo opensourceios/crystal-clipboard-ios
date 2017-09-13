@@ -30,12 +30,11 @@ class ManagedClip: NSManagedObject, ClipType {
         text = clip.text
         createdAt = clip.createdAt
     }
-    
 }
 
 extension ManagedClip {
     
-    // MARK: NSManagedOBject overridden class methods
+    // MARK: NSManagedObject overridden class methods
     
     override class func fetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
         return NSFetchRequest<NSFetchRequestResult>(entityName: "ManagedClip")
