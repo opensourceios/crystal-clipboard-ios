@@ -23,6 +23,12 @@ class RootViewController: UIViewController {
     
     fileprivate var currentViewController: UIViewController!
     
+    // MARK: UIViewController internal overridden computed properties
+    
+    override var childViewControllerForStatusBarStyle: UIViewController? {
+        return (childViewControllers.first as? UINavigationController)?.visibleViewController ?? super.childViewControllerForStatusBarStyle
+    }
+    
     // MARK: UIViewController internal overridden methods
     
     override func viewDidLoad() {
