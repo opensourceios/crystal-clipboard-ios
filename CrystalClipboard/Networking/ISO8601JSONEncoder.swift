@@ -15,17 +15,6 @@ class ISO8601JSONEncoder: JSONEncoder {
     
     override init() {
         super.init()
-        dateEncodingStrategy = .formatted(type(of: self).dateFormatter)
+        dateEncodingStrategy = .formatted(Constants.ISO8601DateFormatter)
     }
-}
-
-private extension ISO8601JSONEncoder {
-    
-    // MARK: Private constants
-    
-    private static let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = Constants.iso8601DateFormat
-        return dateFormatter
-    }()
 }

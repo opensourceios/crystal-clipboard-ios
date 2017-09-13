@@ -13,14 +13,14 @@ class ClipTests: XCTestCase {
     func testDecoding() {
         let id = generateNumber()
         let text = generateString()
-        let createdAt = XCTestCase.dateFormatter.string(from: Date())
+        let createdAt = Constants.ISO8601DateFormatter.string(from: Date())
         let userID = generateNumber()
         let jsonString = "{\"id\":\(id),\"text\":\"\(text)\",\"created_at\":\"\(createdAt)\",\"user_id\":\(userID)}"
         let jsonData = jsonString.data(using: .utf8)!
         let clip = try! ISO8601JSONDecoder().decode(Clip.self, from: jsonData)
         XCTAssertEqual(clip.id, id)
         XCTAssertEqual(clip.text, text)
-        XCTAssertEqual(XCTestCase.dateFormatter.string(from: clip.createdAt), createdAt)
+        XCTAssertEqual(Constants.ISO8601DateFormatter.string(from: clip.createdAt), createdAt)
         XCTAssertEqual(clip.userID, userID)
     }
 }

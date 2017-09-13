@@ -11,14 +11,6 @@ import XCTest
 
 extension XCTestCase {
     
-    // MARK: Internal constants
-    
-    static let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = Constants.iso8601DateFormat
-        return dateFormatter
-    }()
-    
     // MARK: Internal methods
     
     func generateString(length: Int? = nil) -> String {

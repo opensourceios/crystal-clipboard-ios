@@ -60,6 +60,13 @@ struct Constants {
     
     static let environment = Environment(rawValue: Bundle.main.infoDictionary!["com.jzzocc.crystal-clipboard.environment"] as! String)!
     static let keychainService = "com.jzzocc.crystal-clipboard"
-    static let iso8601DateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ" // Apple's ISO8601DateFormatter can only do milliseconds on iOS 11
     static let clipboardChannelIdentifier = "{\"channel\":\"ClipboardChannel\"}"
+    
+    // Apple's ISO8601DateFormatter class isn't a subclass of NSDateFormatter,
+    // and therefore can't be used with setting the date strategy on encoders/decoders
+    static let ISO8601DateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        return dateFormatter
+    }()
 }
