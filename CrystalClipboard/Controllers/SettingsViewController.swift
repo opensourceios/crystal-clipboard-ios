@@ -14,7 +14,9 @@ class SettingsViewController: ModeledViewController<SettingsViewModel> {
         
     }
     
-    @IBAction func doneTapped(_ sender: Any) {
+    // MARK: IBActions
+    
+    @IBAction private func doneTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 }

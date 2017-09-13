@@ -10,10 +10,20 @@ import UIKit
 import ReactiveSwift
 
 class RootViewController: UIViewController {
+    
+    // MARK: Private properties
+    
     private let viewModel = RootViewModel()
-    fileprivate var currentViewController: UIViewController!
+    
+    // MARK: Private constants
     
     private static let transitionDuration: TimeInterval = 0.5
+    
+    // MARK: Fileprivate properties
+    
+    fileprivate var currentViewController: UIViewController!
+    
+    // MARK: Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +31,8 @@ class RootViewController: UIViewController {
         reactive.transition <~ viewModel.transitionTo
     }
 }
+
+// MARK: Fileprivate methods
 
 fileprivate extension RootViewController {
     fileprivate func viewControllerForTransition(_ transition: TransitionType) -> UIViewController {
@@ -54,6 +66,8 @@ fileprivate extension RootViewController {
         }
     }
 }
+
+// MARK: Fileprivate reactive extensions
 
 fileprivate extension Reactive where Base: RootViewController {
     fileprivate var transition: BindingTarget<TransitionType> {
