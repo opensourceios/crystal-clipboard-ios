@@ -325,7 +325,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="1Re-7W-u9Y">
                                         <rect key="frame" x="0.0" y="0.0" width="286.66666666666669" height="224.00000000000006"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crystal Clipboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJ2-lS-qaU">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crystal Clipboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJ2-lS-qaU">
                                                 <rect key="frame" x="0.0" y="0.0" width="286.66666666666669" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
                                                 <nil key="textColor"/>
