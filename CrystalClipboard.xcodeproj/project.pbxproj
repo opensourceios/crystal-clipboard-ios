@@ -36,6 +36,7 @@
 		D00D68711F58B2560029BC79 /* ClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D68701F58B2560029BC79 /* ClipTableViewCell.swift */; };
 		D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0112B7F1F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld */; };
 		D0112B851F4A7E8400999761 /* ManagedClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0112B841F4A7E8400999761 /* ManagedClip.swift */; };
+		D0116B391F6997C000ED6DE7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0116B381F6997C000ED6DE7 /* Constants.swift */; };
 		D01A12D61F5E0AA100197ECA /* LoadingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A12D51F5E0AA100197ECA /* LoadingFooterView.swift */; };
 		D01A12D81F5E0B9000197ECA /* LoadingFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A12D71F5E0B9000197ECA /* LoadingFooterView.xib */; };
 		D01A12DA1F5E19B200197ECA /* SpacingHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A12D91F5E19B200197ECA /* SpacingHeaderFooterView.swift */; };
@@ -50,7 +51,6 @@
 		D0253F8F1F5A83B60066B444 /* ISO8601JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0253F8E1F5A83B60066B444 /* ISO8601JSONDecoder.swift */; };
 		D0334CCF1F64A9280004CB14 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0334CCE1F64A9280004CB14 /* APIProvider.swift */; };
 		D0340BC91F6038A50030CD82 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0340BC81F6038A50030CD82 /* ResponseError.swift */; };
-		D03ABD3E1F4D37F000A7D473 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3D1F4D37F000A7D473 /* Constants.swift */; };
 		D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3F1F4E8FF600A7D473 /* Clip.swift */; };
 		D03ABD421F4E902400A7D473 /* ClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD411F4E902400A7D473 /* ClipTests.swift */; };
 		D04460BD1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */; };
@@ -150,6 +150,7 @@
 		D00D68701F58B2560029BC79 /* ClipTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTableViewCell.swift; path = Views/ClipTableViewCell.swift; sourceTree = "<group>"; };
 		D0112B801F4A7BAE00999761 /* CrystalClipboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CrystalClipboard.xcdatamodel; sourceTree = "<group>"; };
 		D0112B841F4A7E8400999761 /* ManagedClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedClip.swift; path = Model/ManagedClip.swift; sourceTree = "<group>"; };
+		D0116B381F6997C000ED6DE7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D01A12D51F5E0AA100197ECA /* LoadingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadingFooterView.swift; path = Views/LoadingFooterView.swift; sourceTree = "<group>"; };
 		D01A12D71F5E0B9000197ECA /* LoadingFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LoadingFooterView.xib; path = Views/LoadingFooterView.xib; sourceTree = "<group>"; };
 		D01A12D91F5E19B200197ECA /* SpacingHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpacingHeaderFooterView.swift; path = Views/SpacingHeaderFooterView.swift; sourceTree = "<group>"; };
@@ -164,7 +165,6 @@
 		D0253F8E1F5A83B60066B444 /* ISO8601JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ISO8601JSONDecoder.swift; path = Networking/ISO8601JSONDecoder.swift; sourceTree = "<group>"; };
 		D0334CCE1F64A9280004CB14 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIProvider.swift; path = Networking/APIProvider.swift; sourceTree = "<group>"; };
 		D0340BC81F6038A50030CD82 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResponseError.swift; path = Errors/ResponseError.swift; sourceTree = "<group>"; };
-		D03ABD3D1F4D37F000A7D473 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D03ABD3F1F4E8FF600A7D473 /* Clip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clip.swift; path = Model/Clip.swift; sourceTree = "<group>"; };
 		D03ABD411F4E902400A7D473 /* ClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTests.swift; path = Model/ClipTests.swift; sourceTree = "<group>"; };
 		D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SignalProducer+ExtensionsTests.swift"; path = "Extensions/SignalProducer+ExtensionsTests.swift"; sourceTree = "<group>"; };
@@ -327,6 +327,7 @@
 		D035A2C31F46921000B6887B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D0116B381F6997C000ED6DE7 /* Constants.swift */,
 				D0B0CDF61F4671E8006201CE /* Info.plist */,
 				D0909B6C1F4D2513000F584B /* Localizable.strings */,
 				D021CD961F671C2100F0C05E /* NamedColors.swift */,
@@ -501,7 +502,6 @@
 			children = (
 				D0B0CDEA1F4671E8006201CE /* AppDelegate.swift */,
 				D0B0CDF11F4671E8006201CE /* Assets.xcassets */,
-				D03ABD3D1F4D37F000A7D473 /* Constants.swift */,
 				D035A2C51F46928600B6887B /* Controllers */,
 				D00D68611F58A33F0029BC79 /* Data Providers */,
 				D09DCFF01F5CD49F000D4B10 /* Errors */,
@@ -949,7 +949,6 @@
 				D00D68461F55E5140029BC79 /* RootViewModel.swift in Sources */,
 				D0909B701F4D282C000F584B /* String+Localized.swift in Sources */,
 				D0112B811F4A7BAE00999761 /* CrystalClipboard.xcdatamodeld in Sources */,
-				D03ABD3E1F4D37F000A7D473 /* Constants.swift in Sources */,
 				D0B0CDEB1F4671E8006201CE /* AppDelegate.swift in Sources */,
 				D00D68631F58A3680029BC79 /* ClipsDataProvider.swift in Sources */,
 				D055ECC21F67149A00D9C49B /* CreateClipViewController.swift in Sources */,
@@ -959,6 +958,7 @@
 				D021E2CE1F687EFD0021905E /* SettingsViewController.swift in Sources */,
 				D0B61B231F67315E00838D21 /* UIViewController+ReactiveExtensions.swift in Sources */,
 				D0979B6D1F4B341200B8407F /* LandingViewModel.swift in Sources */,
+				D0116B391F6997C000ED6DE7 /* Constants.swift in Sources */,
 				D00D68561F574FF50029BC79 /* AuthenticatingViewModel.swift in Sources */,
 				D06A61151F68BC4300D27DD1 /* AnimatingSeamlessTileView.swift in Sources */,
 				D00D68371F55CAF80029BC79 /* Identifiers.swift in Sources */,
