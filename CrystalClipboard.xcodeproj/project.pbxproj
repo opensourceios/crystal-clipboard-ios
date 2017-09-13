@@ -58,7 +58,7 @@
 		D05335FC1F4A861A0077B1F9 /* ManagedClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */; };
 		D055ECBE1F66E6A400D9C49B /* SegueingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055ECBD1F66E6A400D9C49B /* SegueingViewModel.swift */; };
 		D055ECC21F67149A00D9C49B /* CreateClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055ECC11F67149A00D9C49B /* CreateClipViewController.swift */; };
-		D06A61151F68BC4300D27DD1 /* CrystalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06A61141F68BC4300D27DD1 /* CrystalView.swift */; };
+		D06A61151F68BC4300D27DD1 /* AnimatingSeamlessTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06A61141F68BC4300D27DD1 /* AnimatingSeamlessTileView.swift */; };
 		D06EF5CF1F5B62970093C87D /* SignalProducer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06EF5CE1F5B62970093C87D /* SignalProducer+Extensions.swift */; };
 		D06EF5D21F5B650F0093C87D /* Response+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06EF5D11F5B650F0093C87D /* Response+ExtensionsTests.swift */; };
 		D08263F41F62FCCA00091E9A /* RemoteErrors+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08263F31F62FCCA00091E9A /* RemoteErrors+Equatable.swift */; };
@@ -171,7 +171,7 @@
 		D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedClipTests.swift; path = Model/ManagedClipTests.swift; sourceTree = "<group>"; };
 		D055ECBD1F66E6A400D9C49B /* SegueingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SegueingViewModel.swift; path = Protocols/SegueingViewModel.swift; sourceTree = "<group>"; };
 		D055ECC11F67149A00D9C49B /* CreateClipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClipViewController.swift; sourceTree = "<group>"; };
-		D06A61141F68BC4300D27DD1 /* CrystalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrystalView.swift; path = Views/CrystalView.swift; sourceTree = "<group>"; };
+		D06A61141F68BC4300D27DD1 /* AnimatingSeamlessTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimatingSeamlessTileView.swift; path = Views/AnimatingSeamlessTileView.swift; sourceTree = "<group>"; };
 		D06EF5CE1F5B62970093C87D /* SignalProducer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SignalProducer+Extensions.swift"; path = "Extensions/SignalProducer+Extensions.swift"; sourceTree = "<group>"; };
 		D06EF5D11F5B650F0093C87D /* Response+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Response+ExtensionsTests.swift"; path = "Extensions/Response+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		D08263F31F62FCCA00091E9A /* RemoteErrors+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RemoteErrors+Equatable.swift"; path = "Utilities/RemoteErrors+Equatable.swift"; sourceTree = "<group>"; };
@@ -305,7 +305,7 @@
 				D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */,
 				D01A12D91F5E19B200197ECA /* SpacingHeaderFooterView.swift */,
 				D01A12DB1F5E19DC00197ECA /* SpacingHeaderFooterView.xib */,
-				D06A61141F68BC4300D27DD1 /* CrystalView.swift */,
+				D06A61141F68BC4300D27DD1 /* AnimatingSeamlessTileView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -957,7 +957,7 @@
 				D0B61B231F67315E00838D21 /* UIViewController+ReactiveExtensions.swift in Sources */,
 				D0979B6D1F4B341200B8407F /* LandingViewModel.swift in Sources */,
 				D00D68561F574FF50029BC79 /* AuthenticatingViewModel.swift in Sources */,
-				D06A61151F68BC4300D27DD1 /* CrystalView.swift in Sources */,
+				D06A61151F68BC4300D27DD1 /* AnimatingSeamlessTileView.swift in Sources */,
 				D00D68371F55CAF80029BC79 /* Identifiers.swift in Sources */,
 				D08263FC1F66E43900091E9A /* ModeledViewController.swift in Sources */,
 				D0C1F65A1F592DD600E49B77 /* ClipCellViewModel.swift in Sources */,

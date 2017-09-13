@@ -312,9 +312,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZ8-Vu-Y1n" customClass="CrystalView" customModule="CrystalClipboard" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZ8-Vu-Y1n" customClass="AnimatingSeamlessTileView" customModule="CrystalClipboard" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="SeamlessAmethyst"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pwc-nP-zdj">
                                 <rect key="frame" x="44.333333333333343" y="294.33333333333337" width="286.66666666666663" height="224.00000000000011"/>
@@ -397,4 +400,7 @@
             <point key="canvasLocation" x="1816.8" y="857.72113943028489"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="SeamlessAmethyst" width="256" height="256"/>
+    </resources>
 </document>
