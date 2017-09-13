@@ -21,12 +21,12 @@ class RootViewController: UIViewController {
     
     // MARK: Fileprivate stored properties
     
-    fileprivate var currentViewController: UIViewController?
+    fileprivate var currentViewController: UINavigationController?
     
     // MARK: UIViewController internal overridden computed properties
     
     override var childViewControllerForStatusBarStyle: UIViewController? {
-        return (childViewControllers.first as? UINavigationController)?.visibleViewController ?? super.childViewControllerForStatusBarStyle
+        return currentViewController?.visibleViewController ?? super.childViewControllerForStatusBarStyle
     }
     
     // MARK: UIViewController internal overridden methods
@@ -42,7 +42,7 @@ fileprivate extension RootViewController {
     
     // MARK: Fileprivate methods
     
-    fileprivate func viewControllerForTransition(_ transition: TransitionType) -> UIViewController {
+    fileprivate func navigationControllerForTransition(_ transition: TransitionType) -> UINavigationController {
         let storyboard = UIStoryboard(name: transition.storyboardName)
         let controller = storyboard.instantiateViewController(withIdentifier: transition.controllerIdentifier)
         if var modeledViewController = controller as? _ViewModelSettable {
@@ -54,7 +54,7 @@ fileprivate extension RootViewController {
         return navigationController
     }
     
-    fileprivate func performTransition(fromViewController: UIViewController?, toViewController: UIViewController) {
+    fileprivate func performTransition(fromViewController: UINavigationController?, toViewController: UINavigationController) {
         currentViewController = toViewController
         fromViewController?.willMove(toParentViewController: nil)
         addChildViewController(toViewController)
@@ -79,7 +79,7 @@ fileprivate extension RootViewController {
 fileprivate extension Reactive where Base: RootViewController {
     fileprivate var transition: BindingTarget<TransitionType> {
         return makeBindingTarget {
-            let toViewController = $0.viewControllerForTransition($1)
+            let toViewController = $0.navigationControllerForTransition($1)
             $0.performTransition(fromViewController: $0.currentViewController, toViewController: toViewController)
         }
     }
