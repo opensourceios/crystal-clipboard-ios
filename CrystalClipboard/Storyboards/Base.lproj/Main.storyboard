@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -218,19 +217,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fwp-ip-jr6">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpC-IB-Qpm">
+                                <rect key="frame" x="0.0" y="64" width="375" height="120"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="100" keyboardDismissMode="interactive" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fwp-ip-jr6" customClass="IntrinsicallySizedTextView" customModule="CrystalClipboard" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fwp-ip-jr6" secondAttribute="trailing" id="0FE-6d-irR"/>
+                                    <constraint firstItem="fwp-ip-jr6" firstAttribute="leading" secondItem="hpC-IB-Qpm" secondAttribute="leading" id="1dn-Qv-0N7"/>
+                                    <constraint firstItem="fwp-ip-jr6" firstAttribute="top" secondItem="hpC-IB-Qpm" secondAttribute="top" id="gvI-bd-oXn"/>
+                                    <constraint firstAttribute="bottom" secondItem="fwp-ip-jr6" secondAttribute="bottom" constant="20" id="mHC-vl-L6y"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" name="Crystal Clipboard Purple"/>
                         <constraints>
-                            <constraint firstItem="fwp-ip-jr6" firstAttribute="top" secondItem="rol-DX-DwV" secondAttribute="top" id="7QQ-7B-XCT"/>
-                            <constraint firstItem="fwp-ip-jr6" firstAttribute="trailing" secondItem="3Zs-uz-8we" secondAttribute="trailing" id="j86-wp-SOs"/>
-                            <constraint firstAttribute="bottom" secondItem="fwp-ip-jr6" secondAttribute="bottom" id="ozB-sx-RbD"/>
-                            <constraint firstItem="fwp-ip-jr6" firstAttribute="leading" secondItem="3Zs-uz-8we" secondAttribute="leading" id="pM6-ZX-BDk"/>
+                            <constraint firstItem="hpC-IB-Qpm" firstAttribute="trailing" secondItem="3Zs-uz-8we" secondAttribute="trailing" id="BlZ-F3-e7a"/>
+                            <constraint firstItem="hpC-IB-Qpm" firstAttribute="top" secondItem="3Zs-uz-8we" secondAttribute="top" id="b6v-Ai-5Sz"/>
+                            <constraint firstItem="hpC-IB-Qpm" firstAttribute="leading" secondItem="3Zs-uz-8we" secondAttribute="leading" id="orG-3r-yKi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3Zs-uz-8we"/>
                     </view>
@@ -255,7 +279,10 @@
     </scenes>
     <resources>
         <image name="Clippy" width="28" height="30"/>
-        <image name="Gear" width="25" height="25"/>
+        <image name="Gear" width="22" height="22"/>
+        <namedColor name="Crystal Clipboard Purple">
+            <color red="0.30199998617172241" green="0.10599999874830246" blue="0.46700000762939453" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="Crystal Clipboard Purple">
             <color red="0.30199998617172241" green="0.10599999874830246" blue="0.46700000762939453" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

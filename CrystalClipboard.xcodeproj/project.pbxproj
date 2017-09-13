@@ -53,6 +53,7 @@
 		D0340BC91F6038A50030CD82 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0340BC81F6038A50030CD82 /* ResponseError.swift */; };
 		D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3F1F4E8FF600A7D473 /* Clip.swift */; };
 		D03ABD421F4E902400A7D473 /* ClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD411F4E902400A7D473 /* ClipTests.swift */; };
+		D03DDCFF1F69D6AD00CCEB4D /* IntrinsicallySizedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DDCFE1F69D6AD00CCEB4D /* IntrinsicallySizedTextView.swift */; };
 		D04460BD1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */; };
 		D0474D361F697D4D00003EAC /* SubmissionError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0474D351F697D4D00003EAC /* SubmissionError+Equatable.swift */; };
 		D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */; };
@@ -167,6 +168,7 @@
 		D0340BC81F6038A50030CD82 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResponseError.swift; path = Errors/ResponseError.swift; sourceTree = "<group>"; };
 		D03ABD3F1F4E8FF600A7D473 /* Clip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clip.swift; path = Model/Clip.swift; sourceTree = "<group>"; };
 		D03ABD411F4E902400A7D473 /* ClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTests.swift; path = Model/ClipTests.swift; sourceTree = "<group>"; };
+		D03DDCFE1F69D6AD00CCEB4D /* IntrinsicallySizedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IntrinsicallySizedTextView.swift; path = Views/IntrinsicallySizedTextView.swift; sourceTree = "<group>"; };
 		D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SignalProducer+ExtensionsTests.swift"; path = "Extensions/SignalProducer+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		D0474D351F697D4D00003EAC /* SubmissionError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SubmissionError+Equatable.swift"; path = "Utilities/SubmissionError+Equatable.swift"; sourceTree = "<group>"; };
 		D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrystalClipboardAPI.swift; path = Networking/CrystalClipboardAPI.swift; sourceTree = "<group>"; };
@@ -300,7 +302,9 @@
 		D00D686F1F58B2230029BC79 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D06A61141F68BC4300D27DD1 /* AnimatingSeamlessTileView.swift */,
 				D00D68701F58B2560029BC79 /* ClipTableViewCell.swift */,
+				D03DDCFE1F69D6AD00CCEB4D /* IntrinsicallySizedTextView.swift */,
 				D01A12D51F5E0AA100197ECA /* LoadingFooterView.swift */,
 				D01A12D71F5E0B9000197ECA /* LoadingFooterView.xib */,
 				D0C1F6571F590D5E00E49B77 /* MarginSettableTextField.swift */,
@@ -308,7 +312,6 @@
 				D01A12DF1F5E1D1600197ECA /* NoClipsView.xib */,
 				D01A12D91F5E19B200197ECA /* SpacingHeaderFooterView.swift */,
 				D01A12DB1F5E19DC00197ECA /* SpacingHeaderFooterView.xib */,
-				D06A61141F68BC4300D27DD1 /* AnimatingSeamlessTileView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -967,6 +970,7 @@
 				D0FD1CFE1F5B5A590061535C /* Response+Extensions.swift in Sources */,
 				D09DCFF21F5CD4C4000D4B10 /* SubmissionError.swift in Sources */,
 				D0979B6B1F4B33F300B8407F /* LandingViewController.swift in Sources */,
+				D03DDCFF1F69D6AD00CCEB4D /* IntrinsicallySizedTextView.swift in Sources */,
 				D021E2D01F687F270021905E /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
