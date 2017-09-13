@@ -10,16 +10,17 @@ import ReactiveSwift
 import enum Result.NoError
 
 struct ClipCellViewModel: ViewModelType {
-    // MARK: Outputs
+    
+    // MARK: Output internal stored properties
     
     let text: Property<String>
     let createdAt: Property<String>
     
-    // MARK: Actions
+    // MARK: Action internal stored properties
     
     let copy: Action<Void, String, NoError>
     
-    // MARK: Initialization
+    // MARK: Internal initializers
     
     init(clip: ClipType) {
         text = Property(value: clip.text)
@@ -29,6 +30,9 @@ struct ClipCellViewModel: ViewModelType {
 }
 
 private extension ClipCellViewModel {
+    
+    // MARK: Private constants
+    
     private static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short

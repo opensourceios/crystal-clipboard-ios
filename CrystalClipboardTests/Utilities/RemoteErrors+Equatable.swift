@@ -9,12 +9,18 @@
 @testable import CrystalClipboard
 
 extension RemoteError: Equatable {
+    
+    // MARK: Equatable public static methods
+    
     public static func ==(lhs: RemoteError, rhs: RemoteError) -> Bool {
         return lhs.message == rhs.message
     }
 }
 
 extension RemoteErrors: Equatable {
+    
+    // MARK: Equatable public static methods
+    
     public static func ==(lhs: RemoteErrors, rhs: RemoteErrors) -> Bool {
         return lhs.errors == rhs.errors
     }

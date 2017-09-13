@@ -12,13 +12,18 @@ import ReactiveCocoa
 
 class AuthenticatingViewController: ModeledViewController<AuthenticatingViewModel>, UITextFieldDelegate {
     
-    // MARK: IBOutlets
+    // MARK: IBOutlet private stored properties
     
-    @IBOutlet private weak var emailTextField: UITextField!
-    @IBOutlet private weak var passwordTextField: UITextField!
-    @IBOutlet private weak var submitButton: UIButton!
+    @IBOutlet
+    private weak var emailTextField: UITextField!
     
-    // MARK: Overrides
+    @IBOutlet
+    private weak var passwordTextField: UITextField!
+    
+    @IBOutlet
+    private weak var submitButton: UIButton!
+    
+    // MARK: UIViewController internal overridden methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +49,7 @@ class AuthenticatingViewController: ModeledViewController<AuthenticatingViewMode
         navigationController?.isNavigationBarHidden = false
     }
     
-    // MARK: UITextFieldDelegate
+    // MARK: UITextFieldDelegate internal methods
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {

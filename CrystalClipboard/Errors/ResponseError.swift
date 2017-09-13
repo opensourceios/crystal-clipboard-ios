@@ -10,14 +10,23 @@ import Foundation
 import class Moya.Response
 
 struct RemoteError: Error, Codable {
+    
+    // MARK: Internal stored properties
+    
     let message: String
 }
 
 struct RemoteErrors: Error, Codable {
+    
+    // MARK: Internal stored properties
+    
     let errors: [RemoteError]
 }
 
 enum ResponseError: Error {
+    
+    // MARK: Cases
+    
     case with(response: Response, remoteErrors: [RemoteError])
     case underlying(Error)
 }

@@ -9,7 +9,8 @@
 import Moya
 
 extension Response {
-    private static let decoder = ISO8601JSONDecoder()
+    
+    // MARK: Internal methods
     
     func decode<T: Decodable>(to: T.Type) throws -> T {
         do {
@@ -19,4 +20,11 @@ extension Response {
             throw ResponseError.with(response: self, remoteErrors: remoteErrors)
         }
     }
+}
+
+private extension Response {
+    
+    // MARK: Private constants
+    
+    private static let decoder = ISO8601JSONDecoder()
 }

@@ -9,7 +9,12 @@
 import XCTest
 
 class ProviderTestCase: TestRemoteDataTestCase {
+    
+    // MARK: Internal stored properties
+    
     var provider: TestAPIProvider!
+    
+    // MARK: TestRemoteDataTestCase internal overridden methods
     
     override func setUp() {
         super.setUp()

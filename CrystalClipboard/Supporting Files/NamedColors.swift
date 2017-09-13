@@ -9,6 +9,9 @@
 import UIKit
 
 extension UIColor {
+    
+    // MARK: Internal class computed properties
+    
     class var crystalClipboardPurple: UIColor {
         return UIColor(named: "Crystal Clipboard Purple")!
     }

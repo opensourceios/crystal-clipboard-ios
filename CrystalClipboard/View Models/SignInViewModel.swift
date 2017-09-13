@@ -7,7 +7,12 @@
 //
 
 class SignInViewModel: AuthenticatingViewModel {
+    
+    // MARK: Private stored properties
+    
     private let provider: APIProvider
+    
+    // MARK: Internal initializers
     
     init(provider: APIProvider) {
         self.provider = provider
@@ -16,6 +21,9 @@ class SignInViewModel: AuthenticatingViewModel {
 }
 
 extension SignInViewModel: SegueingViewModel {
+    
+    // MARK: SegueingViewModel internal methods
+    
     func viewModel(segueIdentifier: SegueIdentifier?) -> ViewModelType? {
         if let segueIdentifier = segueIdentifier,
             segueIdentifier == .PushForgotPassword {

@@ -11,6 +11,9 @@ import ReactiveSwift
 import PKHUD
 
 extension Reactive where Base: UIViewController {
+    
+    // MARK: Internal reactive extensions
+    
     var showLoadingHUD: BindingTarget<Bool> {
         return makeBindingTarget { $1 ? HUD.show(.progress) : HUD.hide() }
     }

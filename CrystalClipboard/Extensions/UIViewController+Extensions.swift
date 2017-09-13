@@ -9,6 +9,9 @@
 import UIKit
 
 extension UIViewController {
+    
+    // MARK: Internal methods
+    
     func presentAlert(title: String? = nil,
                       message: String? = nil,
                       preferredStyle: UIAlertControllerStyle = .alert,

@@ -11,15 +11,15 @@ import ReactiveSwift
 
 struct CreateClipViewModel: ViewModelType {
     
-    // MARK: Inputs
+    // MARK: Input internal stored properties
     
     let text: MutableProperty<String>
     
-    // MARK: Actions
+    // MARK: Action internal stored properties
     
     let createClip: Action<Void, Void, SubmissionError>
     
-    // MARK: Initialization
+    // MARK: Internal initializers
     
     init(provider: APIProvider, persistentContainer: NSPersistentContainer) {
         let text = MutableProperty("")

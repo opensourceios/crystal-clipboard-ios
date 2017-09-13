@@ -10,13 +10,7 @@ import UIKit
 
 class AnimatingSeamlessTileView: UIView {
     
-    // MARK: Private properties
-    
-    private let seamlessTileView = UIView()
-    private let offsetSeamlessTileView = UIView()
-    private var imageHeight: CGFloat = 0
-    
-    // MARK: IBInspectable
+    // MARK: IBInspectable internal stored properties
     
     @IBInspectable
     var image: UIImage? {
@@ -33,7 +27,13 @@ class AnimatingSeamlessTileView: UIView {
     @IBInspectable
     var speed: CGFloat = 100
     
-    // MARK: Overrides
+    // MARK: Private stored properties
+    
+    private let seamlessTileView = UIView()
+    private let offsetSeamlessTileView = UIView()
+    private var imageHeight: CGFloat = 0
+    
+    // MARK: Internal initializers
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -41,6 +41,8 @@ class AnimatingSeamlessTileView: UIView {
         addSubview(seamlessTileView)
         addSubview(offsetSeamlessTileView)
     }
+    
+    // MARK: UIView internal overridden methods
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -58,11 +60,14 @@ class AnimatingSeamlessTileView: UIView {
     }
 }
 
-// MARK: Private
-
 private extension AnimatingSeamlessTileView {
+    
+    // MARK: Private constants
+    
     private static let yPositionKeyPath = "position.y"
     private static let backgroundAnimationKey = "com.jzzocc.crystal-clipboard.animating-seamless-tile-view-background-animation-key"
+    
+    // MARK: Private methods
     
     private func backgroundAnimation(layer: CALayer) -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: AnimatingSeamlessTileView.yPositionKeyPath)

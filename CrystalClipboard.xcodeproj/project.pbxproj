@@ -54,6 +54,7 @@
 		D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3F1F4E8FF600A7D473 /* Clip.swift */; };
 		D03ABD421F4E902400A7D473 /* ClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD411F4E902400A7D473 /* ClipTests.swift */; };
 		D04460BD1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */; };
+		D0474D361F697D4D00003EAC /* SubmissionError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0474D351F697D4D00003EAC /* SubmissionError+Equatable.swift */; };
 		D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */; };
 		D05335FC1F4A861A0077B1F9 /* ManagedClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */; };
 		D055ECBE1F66E6A400D9C49B /* SegueingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055ECBD1F66E6A400D9C49B /* SegueingViewModel.swift */; };
@@ -167,6 +168,7 @@
 		D03ABD3F1F4E8FF600A7D473 /* Clip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clip.swift; path = Model/Clip.swift; sourceTree = "<group>"; };
 		D03ABD411F4E902400A7D473 /* ClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTests.swift; path = Model/ClipTests.swift; sourceTree = "<group>"; };
 		D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SignalProducer+ExtensionsTests.swift"; path = "Extensions/SignalProducer+ExtensionsTests.swift"; sourceTree = "<group>"; };
+		D0474D351F697D4D00003EAC /* SubmissionError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SubmissionError+Equatable.swift"; path = "Utilities/SubmissionError+Equatable.swift"; sourceTree = "<group>"; };
 		D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrystalClipboardAPI.swift; path = Networking/CrystalClipboardAPI.swift; sourceTree = "<group>"; };
 		D05335FB1F4A861A0077B1F9 /* ManagedClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedClipTests.swift; path = Model/ManagedClipTests.swift; sourceTree = "<group>"; };
 		D055ECBD1F66E6A400D9C49B /* SegueingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SegueingViewModel.swift; path = Protocols/SegueingViewModel.swift; sourceTree = "<group>"; };
@@ -268,12 +270,13 @@
 			isa = PBXGroup;
 			children = (
 				D00A008A1F61C49000B11866 /* CoreDataTestCase.swift */,
-				D00A00941F61C66500B11866 /* TestRemoteDataTestCase.swift */,
 				D00A00961F61C8D300B11866 /* ProviderTestCase.swift */,
+				D08263F31F62FCCA00091E9A /* RemoteErrors+Equatable.swift */,
+				D0474D351F697D4D00003EAC /* SubmissionError+Equatable.swift */,
 				D00A008D1F61C49000B11866 /* TestAPIProvider.swift */,
 				D00A00881F61C35B00B11866 /* TestRemoteData.swift */,
+				D00A00941F61C66500B11866 /* TestRemoteDataTestCase.swift */,
 				D00A008B1F61C49000B11866 /* XCTestCase+Extensions.swift */,
-				D08263F31F62FCCA00091E9A /* RemoteErrors+Equatable.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -987,6 +990,7 @@
 				D06EF5D21F5B650F0093C87D /* Response+ExtensionsTests.swift in Sources */,
 				D00D684A1F55E8D70029BC79 /* RootViewModelTests.swift in Sources */,
 				D00D685E1F57631A0029BC79 /* ResetPasswordViewModelTests.swift in Sources */,
+				D0474D361F697D4D00003EAC /* SubmissionError+Equatable.swift in Sources */,
 				D03ABD421F4E902400A7D473 /* ClipTests.swift in Sources */,
 				D08263F41F62FCCA00091E9A /* RemoteErrors+Equatable.swift in Sources */,
 				D04460BD1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift in Sources */,

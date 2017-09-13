@@ -9,9 +9,14 @@
 import UIKit
 
 extension UIStoryboard {
+    
+    // MARK: Internal initializers
+    
     convenience init(name: StoryboardNames) {
         self.init(name: name.rawValue, bundle: nil)
     }
+    
+    // MARK: Internal methods
     
     func instantiateViewController(withIdentifier identifier: ViewControllerStoryboardIdentifier) -> UIViewController {
         return self.instantiateViewController(withIdentifier: identifier.rawValue)

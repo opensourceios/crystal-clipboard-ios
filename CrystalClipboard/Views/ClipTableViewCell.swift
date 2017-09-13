@@ -11,11 +11,23 @@ import ReactiveSwift
 import ReactiveCocoa
 
 class ClipTableViewCell: UITableViewCell, ViewModelSettable {
+    
+    // MARK: Type aliases
+    
     typealias ViewModel = ClipCellViewModel
     
-    @IBOutlet private weak var clipTextLabel: UILabel!
-    @IBOutlet private weak var createdAtLabel: UILabel!
-    @IBOutlet private weak var copyButton: UIButton!
+    // MARK: IBOutlet private stored properties
+    
+    @IBOutlet
+    private weak var clipTextLabel: UILabel!
+    
+    @IBOutlet
+    private weak var createdAtLabel: UILabel!
+    
+    @IBOutlet
+    private weak var copyButton: UIButton!
+    
+    // MARK: ViewModelSettable internal stored properties
     
     var viewModel: ClipCellViewModel! {
         didSet {

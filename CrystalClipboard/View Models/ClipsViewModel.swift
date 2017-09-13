@@ -15,12 +15,13 @@ import CellHelpers
 typealias ClipDisplayError = AnyError
 
 class ClipsViewModel: NSObject, ViewModelType {
-    // MARK: Inputs
+    
+    // MARK: Input internal stored properties
     
     let pageViewed: Action<Int, Void, ClipDisplayError>
     let deleteAtIndexPath: Action<IndexPath, Void, ClipDisplayError>
     
-    // MARK: Outputs
+    // MARK: Output internal stored properties
     
     let pageSize: Int
     private(set) lazy var dataSource: DataSource = DataSource(dataProvider: self.dataProvider, delegate: self)
@@ -29,7 +30,7 @@ class ClipsViewModel: NSObject, ViewModelType {
     let showNoClipsMessage: Property<Bool>
     let showLoadingFooter: Property<Bool>
     
-    // MARK: Private
+    // MARK: Private stored properties
     
     private let provider: APIProvider
     private let persistentContainer: NSPersistentContainer
@@ -44,9 +45,8 @@ class ClipsViewModel: NSObject, ViewModelType {
     private var connection: Cable.Connection?
     private var channel: Channel?
     private var channelReconnectInterval: Int = 0
-    private static var maxCableReconnectTries = 10
     
-    // MARK: Initialization
+    // MARK: Internal initializers
     
     init(provider: APIProvider, persistentContainer: NSPersistentContainer, pageSize: Int) {
         self.provider = provider
@@ -144,8 +144,14 @@ class ClipsViewModel: NSObject, ViewModelType {
 }
 
 private extension ClipsViewModel {
-    // this is separated out to keep init from being too long
-    private static func persistClips(_ clips: [Clip],
+    
+    // MARK: Private constants
+    
+    private static var maxCableReconnectTries = 10
+    
+    // MARK: Private class methods
+    
+    private class func persistClips(_ clips: [Clip],
                                      inPersistentContainer persistentContainer: NSPersistentContainer,
                                      deletionPredicate: NSPredicate?) throws {
         let context = persistentContainer.newBackgroundContext()
@@ -163,7 +169,7 @@ private extension ClipsViewModel {
         try context.save()
     }
     
-    private static func clipDeletionPredicate(clipIDs: [Int], maxID: Int?, maxFetchedClipID: inout Int?) -> NSPredicate? {
+    private class func clipDeletionPredicate(clipIDs: [Int], maxID: Int?, maxFetchedClipID: inout Int?) -> NSPredicate? {
         let previousMaxFetchedClipID = maxFetchedClipID
         maxFetchedClipID = clipIDs.last ?? maxFetchedClipID
         if let firstID = clipIDs.first, let lastID = clipIDs.last {
@@ -190,18 +196,27 @@ private extension ClipsViewModel {
 }
 
 extension ClipsViewModel: FetchedResultsChangeSetProducerDelegate {
+    
+    // MARK: FetchedResultsChangeSetProducerDelegate internal methods
+    
     func fetchedResultsChangeSetProducer(_ fetchedResultsChangeSetProducer: FetchedResultsChangeSetProducer, didProduceChangeSet changeSet: ChangeSet) {
         changeSetsObserver.send(value: changeSet)
     }
 }
 
 extension ClipsViewModel: FetchedResultsChangeSetProducerForwardingDelegate {
+    
+    // MARK: FetchedResultsChangeSetProducerForwardingDelegate internal methods
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         clipCount.value = controller.fetchedObjects!.count
     }
 }
 
 extension ClipsViewModel: DataSourceDelegate {
+    
+    // MARK: DataSourceDelegate internal methods
+    
     func dataSource(_ dataSource: DataSource, reuseIdentifierForItem item: Any, atIndexPath indexPath: IndexPath) -> String {
         return TableViewCellReuseIdentifier.ClipTableViewCell.rawValue
     }
@@ -216,6 +231,9 @@ extension ClipsViewModel: DataSourceDelegate {
 }
 
 extension ClipsViewModel: SegueingViewModel {
+    
+    // MARK: SegueingViewModel internal methods
+    
     func viewModel(segueIdentifier: SegueIdentifier?) -> ViewModelType? {
         guard let segueIdentifier = segueIdentifier else { return nil }
         switch segueIdentifier {

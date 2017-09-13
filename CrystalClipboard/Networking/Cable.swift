@@ -11,13 +11,21 @@ import ReactiveSwift
 import Starscream
 
 enum ChannelError: Error {
+    
+    // MARK: Cases
+    
     case cableDisconnected
 }
 
 enum ChannelEvent {
+    
+    // MARK: Cases
+    
     case confirmSubscription
     case message(message: Any)
     case unknown(dictionary: [String: Any])
+    
+    // MARK: Internal initializers
     
     init(dictionary: [String: Any]) {
         if let type = dictionary["type"] as? String {
@@ -36,13 +44,23 @@ enum ChannelEvent {
 typealias Channel = Signal<ChannelEvent, ChannelError>
 
 class Cable {
+    
+    // MARK: Type aliases
+    
     typealias Connection = Signal<Event, Error>
     
+    // MARK: Internal enums
+    
     enum Event {
+        
+        // MARK: Cases
+        
         case connected
         case welcome
         case ping(message: Int)
         case unknown(dictionary: [String: Any])
+        
+        // MARK: Internal initializers
         
         init(dictionary: [String: Any]) {
             guard let type = dictionary["type"] as? String else {
@@ -58,23 +76,39 @@ class Cable {
     }
     
     enum Error: Swift.Error {
+        
+        // MARK: Cases
+        
         case disconnected(underlying: Swift.Error)
     }
     
+    // MARK: Private structs
+    
     private struct Command: Codable {
+        
+        // MARK: Internal enums
+        
         enum Command: String, Codable {
+            
+            // MARK: Cases
+            
             case subscribe, unsubscribe
         }
+        
+        // MARK: Internal stored properties
         
         let command: Command
         let identifier: String
     }
     
+    // MARK: Private stored properties
+    
     private let socket: WebSocket
     private let encoder = JSONEncoder()
     private var connectionInput: Connection.Observer?
     private var channelInputs = [String: Channel.Observer]()
-    private static let queue = DispatchQueue(label: "com.jzzocc.crystal-clipboard.cable-queue", attributes: .concurrent)
+    
+    // MARK: Internal initializers
     
     init(url: URL, origin: String?, token: String?) {
         socket = WebSocket(url: url)
@@ -85,16 +119,23 @@ class Cable {
         socket.delegate = self
         socket.callbackQueue = Cable.queue
     }
+}
+
+extension Cable {
+    
+    // MARK: Internal computed properties
+    
+    var isConnected: Bool {
+        return socket.isConnected
+    }
+    
+    // MARK: Internal methods
     
     func connect() -> Connection {
         socket.connect()
         let connection = Connection.pipe()
         connectionInput = connection.input
         return connection.output
-    }
-    
-    var isConnected: Bool {
-        return socket.isConnected
     }
     
     func disconnect() {
@@ -115,6 +156,15 @@ class Cable {
             self.command(Command(command: .unsubscribe, identifier: channelIdentifier))
         }
     }
+}
+
+private extension Cable {
+    
+    // MARK: Private constants
+    
+    private static let queue = DispatchQueue(label: "com.jzzocc.crystal-clipboard.cable-queue", attributes: .concurrent)
+    
+    // MARK: Private methods
     
     private func command(_ command: Command) {
         guard let data = try? encoder.encode(command) else { fatalError("Command should be serializable to JSON") }
@@ -131,6 +181,9 @@ class Cable {
 }
 
 extension Cable: WebSocketDelegate {
+    
+    // MARK: WebSocketDelegate internal methods
+    
     func websocketDidConnect(socket: WebSocket) {
         connectionInput?.send(value: .connected)
     }

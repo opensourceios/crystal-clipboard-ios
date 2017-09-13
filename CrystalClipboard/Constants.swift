@@ -9,10 +9,16 @@
 import Foundation
 import Keys
 
-private let keys = CrystalClipboardKeys()
-
 enum Environment: String {
+    
+    // MARK: Cases
+    
     case staging, production
+}
+
+extension Environment {
+    
+    // MARK: Internal computed properties
     
     var host: String {
         switch self {
@@ -35,13 +41,23 @@ enum Environment: String {
     
     var adminToken: String {
         switch self {
-        case .staging: return keys.crystalClipboardStagingAdminAuthToken
-        case .production: return keys.crystalClipboardProductionAdminAuthToken
+        case .staging: return Environment.keys.crystalClipboardStagingAdminAuthToken
+        case .production: return Environment.keys.crystalClipboardProductionAdminAuthToken
         }
     }
 }
 
+private extension Environment {
+    
+    // MARK: Private constants
+    
+    private static let keys = CrystalClipboardKeys()
+}
+
 struct Constants {
+    
+    // MARK: Internal constants
+    
     static let environment = Environment(rawValue: Bundle.main.infoDictionary!["com.jzzocc.crystal-clipboard.environment"] as! String)!
     static let keychainService = "com.jzzocc.crystal-clipboard"
     static let iso8601DateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ" // Apple's ISO8601DateFormatter can only do milliseconds on iOS 11

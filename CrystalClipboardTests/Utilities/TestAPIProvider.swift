@@ -10,6 +10,9 @@ import Moya
 @testable import CrystalClipboard
 
 class TestAPIProvider: APIProvider {
+    
+    // MARK: Internal initializers
+    
     required init(testRemoteData: TestRemoteData,
                   online: Bool = true,
                   requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping,
@@ -49,12 +52,22 @@ class TestAPIProvider: APIProvider {
     }
 }
 
-fileprivate extension CrystalClipboardAPI {
+private extension CrystalClipboardAPI {
+    
+    // MARK: Private constants
+    
     private static let encoder = ISO8601JSONEncoder()
+    
+    // MARK: Private methods
     
     private func encode<T>(_ value: T) -> Data where T : Encodable {
         return try! CrystalClipboardAPI.encoder.encode(value)
     }
+}
+
+fileprivate extension CrystalClipboardAPI {
+    
+    // MARK: Fileprivate methods
     
     fileprivate func sampleResponse(testRemoteData: TestRemoteData) -> EndpointSampleResponse {
         switch self {

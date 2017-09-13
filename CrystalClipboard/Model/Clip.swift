@@ -9,9 +9,14 @@
 import Foundation
 
 struct Clip: ClipType, Codable {
+    
+    // MARK: Coding key overrides
+    
     enum CodingKeys: String, CodingKey {
         case id, text, userID = "user_id", createdAt = "created_at"
     }
+    
+    // MARK: Internal stored properties
     
     let id: Int
     let text: String

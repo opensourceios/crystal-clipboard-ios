@@ -10,6 +10,9 @@ import ReactiveSwift
 import Moya
 
 extension SignalProducerProtocol where Value == Response {
+    
+    // MARK: Internal methods
+    
     func decode<T: Decodable>(to: T.Type) -> SignalProducer<T, ResponseError> {
         return producer
             .mapError { ResponseError.underlying($0) }

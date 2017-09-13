@@ -10,15 +10,15 @@ import UIKit
 
 class ModeledViewController<VM: ViewModelType>: UIViewController, ViewModelSettable {
     
-    // MARK: Typealiases
+    // MARK: Type aliases
     
     typealias ViewModel = VM
     
-    // MARK: Internal properties
+    // MARK: Internal stored properties
     
     var viewModel: VM!
     
-    // MARK: Overrides
+    // MARK: UIViewController internal overridden methods
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let segueIdentifier: SegueIdentifier?

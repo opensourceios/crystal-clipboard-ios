@@ -9,7 +9,13 @@
 import UIKit
 
 class MarginSettableTextField: UITextField {
-    @IBInspectable var margin: CGFloat = 0
+    
+    // MARK: IBInspectable internal stored properties
+    
+    @IBInspectable
+    var margin: CGFloat = 0
+    
+    // MARK: UITextField internal overridden methods
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.insetBy(dx: margin, dy: margin)

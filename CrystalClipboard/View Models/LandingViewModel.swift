@@ -7,10 +7,22 @@
 //
 
 struct LandingViewModel: ViewModelType {
-    var provider: APIProvider
+    
+    // MARK: Private stored properties
+    
+    private var provider: APIProvider
+    
+    // MARK: Internal initializers
+    
+    init(provider: APIProvider) {
+        self.provider = provider
+    }
 }
 
 extension LandingViewModel: SegueingViewModel {
+    
+    // MARK: SegueingViewModel internal methods
+    
     func viewModel(segueIdentifier: SegueIdentifier?) -> ViewModelType? {
         guard let segueIdentifier = segueIdentifier else { return nil }
         switch segueIdentifier {

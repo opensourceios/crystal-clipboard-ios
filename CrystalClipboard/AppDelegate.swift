@@ -9,9 +9,17 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder {
+    
+    // MARK: Internal stored properties
+    
     var window: UIWindow?
+}
 
+extension AppDelegate: UIApplicationDelegate {
+    
+    // MARK: UIApplicationDelegate internal methods
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window?.tintColor = UIColor.crystalClipboardPurple
         return true

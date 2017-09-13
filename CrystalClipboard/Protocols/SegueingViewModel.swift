@@ -7,5 +7,8 @@
 //
 
 protocol SegueingViewModel: ViewModelType {
+    
+    // MARK: Methods
+    
     func viewModel(segueIdentifier: SegueIdentifier?) -> ViewModelType?
 }

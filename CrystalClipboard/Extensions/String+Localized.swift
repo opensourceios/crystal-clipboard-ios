@@ -9,6 +9,9 @@
 import Foundation
 
 extension String {
+    
+    // MARK: Internal computed properties
+    
     var localized: String {
         return NSLocalizedString(self, comment: "")
     }

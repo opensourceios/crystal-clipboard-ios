@@ -10,7 +10,12 @@ import CoreData
 import CellHelpers
 
 struct ClipsDataProvider: FetchedDataProvider {
+    
+    // MARK: Internal stored properties
+    
     let fetchedResultsController: NSFetchedResultsController<ManagedClip>
+    
+    // MARK: Internal initializers
     
     init(managedObjectContext: NSManagedObjectContext) {
         let fetchRequest = ManagedClip.fetchRequest() as! NSFetchRequest<ManagedClip>

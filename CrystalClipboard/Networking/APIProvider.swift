@@ -9,7 +9,8 @@
 import Moya
 
 class APIProvider: MoyaProvider<CrystalClipboardAPI> {
-    private static let responseProcessingQueue = DispatchQueue(label: "com.jzzocc.crystal-clipboard.response-processing-queue",  attributes: .concurrent)
+    
+    // MARK: Internal MoyaProvider overridden initializers
     
     override init(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping,
          requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping,
@@ -31,4 +32,11 @@ class APIProvider: MoyaProvider<CrystalClipboardAPI> {
     convenience init(token: String) {
         self.init(plugins: [AccessTokenPlugin(tokenClosure: token)])
     }
+}
+
+private extension APIProvider {
+    
+    // MARK: Private constants
+    
+    private static let responseProcessingQueue = DispatchQueue(label: "com.jzzocc.crystal-clipboard.response-processing-queue",  attributes: .concurrent)
 }

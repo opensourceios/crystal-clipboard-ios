@@ -7,11 +7,20 @@
 //
 
 protocol ViewModelSettable: _ViewModelSettable {
+    
+    // MARK: Associated types
+    
     associatedtype ViewModel: ViewModelType
+    
+    // MARK: Properties
+    
     var viewModel: ViewModel! { get set }
 }
 
 extension ViewModelSettable {
+    
+    // MARK: _ViewModelSettable internal properties
+    
     var _viewModel: ViewModelType! {
         set {
            guard let viewModel = newValue as? ViewModel else { fatalError("Wrong view model type") }

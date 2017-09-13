@@ -28,6 +28,9 @@
  */
 
 protocol _ViewModelSettable {
+    
+    // MARK: Properties
+    
     var _viewModel: ViewModelType! { get set }
     var viewModelType: ViewModelType.Type { get }
 }

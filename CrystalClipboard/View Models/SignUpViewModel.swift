@@ -7,6 +7,9 @@
 //
 
 class SignUpViewModel: AuthenticatingViewModel {
+    
+    // MARK: Internal initializers
+    
     init(provider: APIProvider) {
         super.init(provider: provider, defaultAlertMessage: "sign-up.could-not".localized) { .createUser(email: $0, password: $1) }
     }

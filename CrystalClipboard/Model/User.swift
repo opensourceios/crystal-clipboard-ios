@@ -10,31 +10,41 @@ import Foundation
 import KeychainAccess
 
 extension Notification.Name {
+    
+    // MARK: Internal constants
+    
     static let userSignedIn = Notification.Name("com.jzzocc.crystal-clipboard.notifications.user-signed-in")
     static let userSignedOut = Notification.Name("com.jzzocc.crystal-clipboard.notifications.user-signed-out")
     static let userUpdated = Notification.Name("com.jzzocc.crystal-clipboard.notifications.user-updated")
 }
 
 struct User: Codable {
+    
+    // MARK: Coding key overrides
+    
     enum CodingKeys: String, CodingKey {
         case id, email, authToken = "auth_token"
     }
+    
+    // MARK: Internal structs
+    
     struct AuthToken: Codable {
-        let token: String
         
-        init(token: String) {
-            self.token = token
-        }
+        // MARK: Internal stored properties
+        
+        let token: String
     }
+    
+    // MARK: Internal stored properties
+    
     let id: Int
     let email: String
     let authToken: AuthToken?
 }
 
 extension User {
-    static private let idDefaultsKey = "com.jzzocc.crystal-clipboard.user-defaults.user-id"
-    static private let emailDefaultsKey = "com.jzzocc.crystal-clipboard.user-defaults.user-email"
-    static private var memoizedCurrentUser: User?
+    
+    // MARK: Internal methods
     
     static var current: User? {
         set {
@@ -75,15 +85,41 @@ extension User {
     }
 }
 
+private extension User {
+    
+    // MARK: Private constants
+    
+    static private let idDefaultsKey = "com.jzzocc.crystal-clipboard.user-defaults.user-id"
+    static private let emailDefaultsKey = "com.jzzocc.crystal-clipboard.user-defaults.user-email"
+    
+    // MARK: Private static stored properties
+    
+    static private var memoizedCurrentUser: User?
+}
+
 extension User.AuthToken {
+    
+    // MARK: Internal static computed properties
+    
     static var admin: User.AuthToken {
         return User.AuthToken(token: Constants.environment.adminToken)
     }
 }
 
-fileprivate extension User.AuthToken {
+private extension User.AuthToken {
+    
+    // MARK: Private constants
+    
     static private let keychainItem = "auth-token"
+    
+    // MARK: Private static stored properties
+    
     static private var memoizedCurrentAuthToken: User.AuthToken?
+}
+
+fileprivate extension User.AuthToken {
+    
+    // MARK: Fileprivate static computed properties
     
     static fileprivate var current: User.AuthToken? {
         set {

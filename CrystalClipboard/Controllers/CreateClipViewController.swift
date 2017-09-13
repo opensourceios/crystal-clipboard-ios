@@ -12,13 +12,18 @@ import ReactiveCocoa
 
 class CreateClipViewController: ModeledViewController<CreateClipViewModel> {
     
-    // MARK: IBOutlets
+    // MARK: IBOutlet private stored properties
     
-    @IBOutlet private weak var textView: UITextView!
-    @IBOutlet private weak var cancelBarButtonItem: UIBarButtonItem!
-    @IBOutlet private weak var doneBarButtonItem: UIBarButtonItem!
+    @IBOutlet
+    private weak var textView: UITextView!
     
-    // MARK: Overrides
+    @IBOutlet
+    private weak var cancelBarButtonItem: UIBarButtonItem!
+    
+    @IBOutlet
+    private weak var doneBarButtonItem: UIBarButtonItem!
+    
+    // MARK: UIViewController overridden methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,16 +49,18 @@ class CreateClipViewController: ModeledViewController<CreateClipViewModel> {
         textView.becomeFirstResponder()
     }
     
-    // MARK: IBActions
+    // MARK: IBAction private methods
     
-    @IBAction private func cancelTapped(_ sender: Any) {
+    @IBAction
+    private func cancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 }
 
-// MARK: Fileprivate UIScrollView reactive extensions
-
 fileprivate extension Reactive where Base: UIScrollView {
+    
+    // MARK: Fileprivate UIScrollView reactive extensions
+    
     fileprivate var contentInsetBottom: BindingTarget<CGFloat> {
         return makeBindingTarget {
             var edgeInsets = $0.contentInset
@@ -64,9 +71,10 @@ fileprivate extension Reactive where Base: UIScrollView {
     }
 }
 
-// MARK: Fileprivate reactive extensions
-
 fileprivate extension Reactive where Base: CreateClipViewController {
+    
+    // MARK: Fileprivate reactive extensions
+    
     fileprivate var dismiss: BindingTarget<Void> {
         return makeBindingTarget { controller, _ in controller.dismiss(animated: true, completion: nil)}
     }

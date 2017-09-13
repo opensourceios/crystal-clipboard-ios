@@ -10,22 +10,29 @@ import Foundation
 @testable import CrystalClipboard
 
 class TestRemoteData {
+    
+    // MARK: Internal stored properties
+    
+    private(set) var signedInUser: User?
+    
+    // MARK: Private stored properties
+    
+    private var users = [User]()
+    private var passwordsForUserIDs = [Int: String]()
+    private var clips = [Clip]()
+}
+
+extension TestRemoteData {
+    
+    // MARK: Internal constants
+    
     static let recordNotFoundError = RemoteErrors(errors: [RemoteError(message: "Record not found")])
     static let wrongEmailPasswordError = RemoteErrors(errors: [RemoteError(message: "The email or password provided was incorrect")])
     static let unauthenticatedError = RemoteErrors(errors: [RemoteError(message: "You need to sign up or sign in before continuing")])
     static let clipTextMissingError = RemoteErrors(errors: [RemoteError(message: "Text is too short (minimum is 1 character)")])
     static let clipTextTooLongError = RemoteErrors(errors: [RemoteError(message: "Text is too long (maximum is \(clipTextLimit) characters)")])
     
-    private static let minPasswordLength = 6
-    private static let clipTextLimit = 5000
-    private static let defaultCount = 25
-    private static let maxCount = 100
-    
-    private var users = [User]()
-    private var passwordsForUserIDs = [Int: String]()
-    private var clips = [Clip]()
-    
-    private(set) var signedInUser: User?
+    // MARK: Internal methods
     
     @discardableResult
     func createUser(email: String, password: String) throws -> User {
@@ -111,6 +118,16 @@ class TestRemoteData {
 }
 
 private extension TestRemoteData {
+    
+    // MARK: Private constants
+    
+    private static let minPasswordLength = 6
+    private static let clipTextLimit = 5000
+    private static let defaultCount = 25
+    private static let maxCount = 100
+    
+    // MARK: Private methods
+    
     @discardableResult
     private func authenticate() throws -> User {
         guard let user = signedInUser else { throw TestRemoteData.unauthenticatedError }

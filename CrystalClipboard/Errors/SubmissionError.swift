@@ -9,7 +9,12 @@
 import Foundation
 
 struct SubmissionError: Error {
+    
+    // MARK: Internal stored properties
+    
     let message: String
+    
+    // MARK: Internal initializers
     
     init(message: String) {
         self.message = message
@@ -21,11 +26,5 @@ struct SubmissionError: Error {
         guard messages.count > 0 else { return nil }
         
         self.init(message: messages.joined(separator: "\n\n"))
-    }
-}
-
-extension SubmissionError: Equatable {
-    static func ==(lhs: SubmissionError, rhs: SubmissionError) -> Bool {
-        return lhs.message == rhs.message
     }
 }

@@ -9,6 +9,9 @@
 import Foundation
 
 protocol ClipType {
+    
+    // MARK: Properties
+    
     var id: Int { get }
     var text: String { get }
     var createdAt: Date { get }

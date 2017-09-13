@@ -10,14 +10,25 @@ import CoreData
 import ReactiveSwift
 
 protocol TransitionType {
+    
+    // MARK: Properties
+    
     var storyboardName: StoryboardNames { get }
     var controllerIdentifier: ViewControllerStoryboardIdentifier { get }
     var viewModel: ViewModelType { get }
 }
 
-private enum Transition: TransitionType {
+private enum Transition {
+    
+    // MARK: Cases
+    
     case signIn(authToken: User.AuthToken, persistentContainer: NSPersistentContainer)
     case signOut
+}
+
+extension Transition: TransitionType {
+    
+    // MARK: TransitionType internal computed properties
     
     var storyboardName: StoryboardNames {
         switch self {
@@ -46,23 +57,16 @@ private enum Transition: TransitionType {
 }
 
 struct RootViewModel: ViewModelType {
-    // MARK: Outputs
+    
+    // MARK: Output internal stored properties
     
     let transitionTo: Property<TransitionType>
     
-    // MARK: Private
+    // MARK: Private stored properties
     
     private let (lifetime, token) = Lifetime.make()
-    private static var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "CrystalClipboard")
-        container.loadPersistentStores { storeDescription, error in
-            if let error = error { fatalError("Could not load store: \(error)") }
-        }
-        container.viewContext.automaticallyMergesChangesFromParent = true
-        return container
-    }()
     
-    // MARK: Initialization
+    // MARK: Internal initializers
     
     init() {
         let notificationCenter = NotificationCenter.default.reactive
@@ -86,4 +90,18 @@ struct RootViewModel: ViewModelType {
         }
         transitionTo = Property<TransitionType>(initial: initial, then: then)
     }
+}
+
+private extension RootViewModel {
+    
+    // MARK: Private constants
+    
+    private static var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "CrystalClipboard")
+        container.loadPersistentStores { storeDescription, error in
+            if let error = error { fatalError("Could not load store: \(error)") }
+        }
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        return container
+    }()
 }

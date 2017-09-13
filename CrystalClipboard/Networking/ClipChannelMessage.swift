@@ -9,10 +9,13 @@
 import Foundation
 
 enum ClipChannelMessage {
-    private static let decoder = ISO8601JSONDecoder()
+    
+    // MARK: Cases
     
     case clipCreated(clip: Clip)
     case clipDeleted(id: Int)
+    
+    // MARK: Internal initializers
     
     init?(dictionary: [String: Any]) {
         if let deletedID = (dictionary["clip_deleted"] as? [String: Int])?["id"] {
@@ -27,4 +30,11 @@ enum ClipChannelMessage {
             return nil
         }
     }
+}
+
+private extension ClipChannelMessage {
+    
+    // MARK: Private constants
+    
+    private static let decoder = ISO8601JSONDecoder()
 }

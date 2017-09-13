@@ -10,7 +10,12 @@ import XCTest
 import CoreData
 
 class CoreDataTestCase: ProviderTestCase {
+    
+    // MARK: Internal stored properties
+    
     var persistentContainer: NSPersistentContainer!
+    
+    // MARK: ProviderTestCase internal overridden methods
     
     override func setUp() {
         super.setUp()

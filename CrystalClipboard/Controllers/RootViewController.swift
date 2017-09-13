@@ -11,7 +11,7 @@ import ReactiveSwift
 
 class RootViewController: UIViewController {
     
-    // MARK: Private properties
+    // MARK: Private stored properties
     
     private let viewModel = RootViewModel()
     
@@ -19,11 +19,11 @@ class RootViewController: UIViewController {
     
     private static let transitionDuration: TimeInterval = 0.5
     
-    // MARK: Fileprivate properties
+    // MARK: Fileprivate stored properties
     
     fileprivate var currentViewController: UIViewController!
     
-    // MARK: Overrides
+    // MARK: UIViewController internal overridden methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +32,10 @@ class RootViewController: UIViewController {
     }
 }
 
-// MARK: Fileprivate methods
-
 fileprivate extension RootViewController {
+    
+    // MARK: Fileprivate methods
+    
     fileprivate func viewControllerForTransition(_ transition: TransitionType) -> UIViewController {
         let storyboard = UIStoryboard(name: transition.storyboardName)
         let controller = storyboard.instantiateViewController(withIdentifier: transition.controllerIdentifier)

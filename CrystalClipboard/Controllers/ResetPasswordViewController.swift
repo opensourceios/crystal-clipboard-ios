@@ -12,12 +12,15 @@ import ReactiveCocoa
 
 class ResetPasswordViewController: ModeledViewController<ResetPasswordViewModel>, UITextFieldDelegate {
     
-    // MARK: IBOutlets
+    // MARK: IBOutlet private stored properties
     
-    @IBOutlet private weak var emailTextField: UITextField!
-    @IBOutlet private weak var submitButton: UIButton!
+    @IBOutlet
+    private weak var emailTextField: UITextField!
     
-    // MARK: Overrides
+    @IBOutlet
+    private weak var submitButton: UIButton!
+    
+    // MARK: UIViewController internal overridden methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +42,7 @@ class ResetPasswordViewController: ModeledViewController<ResetPasswordViewModel>
         emailTextField.becomeFirstResponder()
     }
     
-    // MARK: UITextFieldDelegate
+    // MARK: UITextFieldDelegate internal methods
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         viewModel.submit.apply().start()
@@ -47,9 +50,10 @@ class ResetPasswordViewController: ModeledViewController<ResetPasswordViewModel>
     }
 }
 
-// MARK: Fileprivate reactive extensions
-
 fileprivate extension Reactive where Base: ResetPasswordViewController {
+    
+    // MARK: Fileprivate reactive extensions
+    
     fileprivate var successAlert: BindingTarget<String> {
         return makeBindingTarget { controller, message in
             let action = UIAlertAction(title: "ok".localized, style: .default) { _ in

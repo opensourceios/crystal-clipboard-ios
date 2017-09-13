@@ -9,16 +9,17 @@
 import ReactiveSwift
 
 class AuthenticatingViewModel: ViewModelType {
-    // MARK: Inputs
+    
+    // MARK: Input internal stored properties
     
     let email = MutableProperty("")
     let password = MutableProperty("")
     
-    // MARK: Actions
+    // MARK: Action internal stored properties
     
     let submit: Action<Void, Void, SubmissionError>
     
-    // MARK: Initialization
+    // MARK: Internal initializers
     
     init(provider: APIProvider, defaultAlertMessage: String, request: @escaping (String, String) -> CrystalClipboardAPI) {
         let validInput: Property<(String, String)?> = Property

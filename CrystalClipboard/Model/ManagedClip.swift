@@ -9,9 +9,19 @@
 import CoreData
 
 class ManagedClip: NSManagedObject, ClipType {
-    @NSManaged private(set) var id: Int
-    @NSManaged private(set) var text: String
-    @NSManaged private(set) var createdAt: Date
+    
+    // MARK: NSManaged internal stored properties
+    
+    @NSManaged
+    private(set) var id: Int
+    
+    @NSManaged
+    private(set) var text: String
+    
+    @NSManaged
+    private(set) var createdAt: Date
+    
+    //MARK: Internal initializers
     
     @discardableResult
     convenience init(from clip: Clip, context: NSManagedObjectContext) {
@@ -24,6 +34,9 @@ class ManagedClip: NSManagedObject, ClipType {
 }
 
 extension ManagedClip {
+    
+    // MARK: NSManagedOBject overridden class methods
+    
     override class func fetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
         return NSFetchRequest<NSFetchRequestResult>(entityName: "ManagedClip")
     }

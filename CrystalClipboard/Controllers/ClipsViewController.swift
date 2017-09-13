@@ -14,15 +14,16 @@ import PKHUD
 
 class ClipsViewController: ModeledViewController<ClipsViewModel>, UITableViewDelegate {
     
-    // MARK: Private properties
+    // MARK: Private stored properties
     
     private var pageScrolledTo = MutableProperty(0)
     
-    // MARK: IBOutlets
+    // MARK: IBOutlet private stored properties
     
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet
+    private weak var tableView: UITableView!
     
-    // MARK: Overrides
+    // MARK: UIViewController internal overridden methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +56,7 @@ class ClipsViewController: ModeledViewController<ClipsViewModel>, UITableViewDel
         navigationController?.isToolbarHidden = false
     }
     
-    // MARK: UITableViewDelegate
+    // MARK: UITableViewDelegate internal methods
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         pageScrolledTo.value = (indexPath.row + 1) / viewModel.pageSize
@@ -70,18 +71,20 @@ class ClipsViewController: ModeledViewController<ClipsViewModel>, UITableViewDel
     }
 }
 
-// MARK: Fileprivate static properties
-
 fileprivate extension ClipsViewController {
+    
+    // MARK: Fileprivate constants
+    
     fileprivate static let noClipsView = NoClipsView.fromNib()!
     fileprivate static let loadingFooterView = LoadingFooterView.fromNib()!
     fileprivate static let spacingHeaderFooterView = SpacingHeaderFooterView.fromNib()!
     fileprivate static let copiedHUDFlashDelay: TimeInterval = 0.5
 }
 
-// MARK: Fileprivate UITableView reactive extensions
-
 fileprivate extension Reactive where Base: UITableView {
+    
+    // MARK: UITableView fileprivate reactive extensions
+    
     fileprivate var showNoClipsMessage: BindingTarget<Bool> {
         return makeBindingTarget { $0.backgroundView = $1 ? ClipsViewController.noClipsView : nil }
     }
@@ -95,9 +98,10 @@ fileprivate extension Reactive where Base: UITableView {
     }
 }
 
-// MARK: Fileprivate reactive extensions
-
 fileprivate extension Reactive where Base: ClipsViewController {
+    
+    // MARK: Fileprivate reactive extensions
+    
     fileprivate var textToCopy: BindingTarget<String> {
         return makeBindingTarget { _, text in
             UIPasteboard.general.string = text

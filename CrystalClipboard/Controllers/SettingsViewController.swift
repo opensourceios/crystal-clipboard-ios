@@ -9,14 +9,18 @@
 import UIKit
 
 class SettingsViewController: ModeledViewController<SettingsViewModel> {
+    
+    // MARK: UIViewController internal overridden methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    // MARK: IBActions
+    // MARK: IBAction private methods
     
-    @IBAction private func doneTapped(_ sender: Any) {
+    @IBAction
+    private func doneTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 }

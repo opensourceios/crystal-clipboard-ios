@@ -9,6 +9,9 @@
 import Moya
 
 enum CrystalClipboardAPI {
+    
+    // MARK: Cases
+    
     case createUser(email: String, password: String)
     case signIn(email: String, password: String)
     case signOut
@@ -20,6 +23,9 @@ enum CrystalClipboardAPI {
 }
 
 extension CrystalClipboardAPI: TargetType {
+    
+    // MARK: TargetType internal computed properties
+    
     var baseURL: URL {
         return Constants.environment.apiURL
     }
@@ -85,5 +91,8 @@ extension CrystalClipboardAPI: TargetType {
 }
 
 extension CrystalClipboardAPI: AccessTokenAuthorizable {
+    
+    // MARK: AccessTokenAuthorizable internal computed properties
+    
     var authorizationType: AuthorizationType { return .bearer }
 }

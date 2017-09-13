@@ -7,7 +7,14 @@
 //
 
 struct SettingsViewModel: ViewModelType {
+    
+    // MARK: Private stored properties
+    
+    private let provider: APIProvider
+    
+    // MARK: Internal initializers
+    
     init(provider: APIProvider) {
-        
+        self.provider = provider
     }
 }
