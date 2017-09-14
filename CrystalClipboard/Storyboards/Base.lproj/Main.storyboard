@@ -136,7 +136,9 @@
                     <navigationItem key="navigationItem" title="Crystal Clipboard" id="IlV-KU-4Xa">
                         <barButtonItem key="leftBarButtonItem" image="Gear" id="Adm-HK-LQq">
                             <connections>
-                                <segue destination="uc0-IQ-83A" kind="presentation" identifier="PresentSettings" modalPresentationStyle="formSheet" id="71B-VQ-RYP"/>
+                                <segue destination="uc0-IQ-83A" kind="popoverPresentation" identifier="PresentSettings" popoverAnchorBarButtonItem="Adm-HK-LQq" id="71B-VQ-RYP">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Sam-QS-VYz">
