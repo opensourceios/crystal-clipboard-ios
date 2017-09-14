@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (4.5.1)
-  - CellHelpers (0.5.1)
+  - CellHelpers (0.5.2)
   - KeychainAccess (3.0.2)
   - Keys (1.0.0)
   - Moya/Core (9.0.0):
@@ -32,7 +32,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  CellHelpers: 1de49463a4afd81585d73cbe4c4592472afe9d52
+  CellHelpers: 6d80e64639333d35716b43280e7e087c8e116944
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
   Moya: cf5e6ee93af526532f92614004b8ad2ea60fd845

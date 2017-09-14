@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import enum Result.NoError
 import ReactiveSwift
 import ReactiveCocoa
 
@@ -27,6 +28,17 @@ class ClipTableViewCell: UITableViewCell, ViewModelSettable {
     @IBOutlet
     private weak var copyButton: UIButton!
     
+    // MARK: IBOutlet fileprivate stored properties
+    
+    @IBOutlet
+    fileprivate var textViewHeightConstraint: NSLayoutConstraint! // strong reference
+    
+    // MARK: Private stored properties
+    
+    private let expansionTapGestureRecognizer = UITapGestureRecognizer()
+    private var expandToggled: Signal<Void, NoError>!
+    private var expansionIndicationGradientLayer: CAGradientLayer!
+    
     // MARK: ViewModelSettable internal stored properties
     
     var viewModel: ClipCellViewModel! {
@@ -34,11 +46,52 @@ class ClipTableViewCell: UITableViewCell, ViewModelSettable {
             // View model inputs
 
             copyButton.reactive.pressed = CocoaAction(viewModel.copy)
+            viewModel.expanded <~ expansionTapGestureRecognizer.reactive.stateChanged.map { [unowned self] _ in !self.viewModel.expanded.value }
 
             // View model outputs
 
             textView.reactive.text <~ viewModel.text
             createdAtLabel.reactive.text <~ viewModel.createdAt
+            reactive.expanded <~ viewModel.expanded
+        }
+    }
+    
+    // MARK: UITableViewCell internal overridden methods
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        textView.addGestureRecognizer(expansionTapGestureRecognizer)
+        expandToggled = expansionTapGestureRecognizer.reactive.stateChanged.map { _ in () }
+        expansionIndicationGradientLayer = CAGradientLayer()
+        expansionIndicationGradientLayer.colors = [UIColor.white.withAlphaComponent(0).cgColor, UIColor.white.cgColor]
+        expansionIndicationGradientLayer.startPoint = CGPoint.zero
+        expansionIndicationGradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        textView.layer.addSublayer(expansionIndicationGradientLayer)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let expandable = textView.intrinsicContentSize.height > textViewHeightConstraint.constant
+        expansionTapGestureRecognizer.isEnabled = expandable
+        textView.setNeedsLayout()
+        textView.layoutIfNeeded()
+        expansionIndicationGradientLayer.frame = textView.bounds
+        expansionIndicationGradientLayer.isHidden = !(expandable && textViewHeightConstraint.isActive)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+    }
+}
+
+fileprivate extension Reactive where Base: ClipTableViewCell {
+    
+    // MARK: Fileprivate reactive extensions
+    
+    fileprivate var expanded: BindingTarget<Bool> {
+        return makeBindingTarget {
+            $0.textViewHeightConstraint.isActive = !$1
         }
     }
 }

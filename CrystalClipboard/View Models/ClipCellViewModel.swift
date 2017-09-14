@@ -11,6 +11,10 @@ import enum Result.NoError
 
 struct ClipCellViewModel: ViewModelType {
     
+    // MARK: Input/Output internal stored properties
+    
+    let expanded: MutableProperty<Bool>
+    
     // MARK: Output internal stored properties
     
     let text: Property<String>
@@ -22,7 +26,8 @@ struct ClipCellViewModel: ViewModelType {
     
     // MARK: Internal initializers
     
-    init(clip: ClipType) {
+    init(clip: ClipType, expanded: Bool) {
+        self.expanded = MutableProperty(expanded)
         text = Property(value: clip.text)
         createdAt = Property(value: ClipCellViewModel.dateFormatter.string(from: clip.createdAt))
         copy = Action() { SignalProducer<String, NoError>(value: clip.text) }

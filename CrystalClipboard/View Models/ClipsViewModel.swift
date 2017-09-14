@@ -29,13 +29,15 @@ class ClipsViewModel: NSObject, ViewModelType {
     let textToCopy: Signal<String, NoError>
     let showNoClipsMessage: Property<Bool>
     let showLoadingFooter: Property<Bool>
+    let expansionToggles: Signal<IndexPath, NoError>
     
     // MARK: Private stored properties
     
     private let provider: APIProvider
     private let persistentContainer: NSPersistentContainer
     private let dataProvider: ClipsDataProvider
-    private let copyObserver: Signal<Signal<String, NoError>, NoError>.Observer
+    private let (expansionToggleSignals, expansionToggleSignalsInput) = Signal<Signal<IndexPath, NoError>, NoError>.pipe()
+    private let textToCopyInput: Signal<Signal<String, NoError>, NoError>.Observer
     private let fetchedResultsChangeSetProducer: FetchedResultsChangeSetProducer
     private let changeSetsObserver: Signal<ChangeSet, NoError>.Observer
     private let clipCount: MutableProperty<Int>
@@ -45,6 +47,10 @@ class ClipsViewModel: NSObject, ViewModelType {
     private var connection: Cable.Connection?
     private var channel: Channel?
     private var channelReconnectInterval: Int = 0
+    
+    // MARK: Fileprivate stored properties
+    
+    fileprivate var expandedClipIDs = Set<Int>()
     
     // MARK: Internal initializers
     
@@ -62,7 +68,7 @@ class ClipsViewModel: NSObject, ViewModelType {
         
         let textToCopySignals = Signal<Signal<String, NoError>, NoError>.pipe()
         textToCopy = textToCopySignals.output.flatten(.merge)
-        copyObserver = textToCopySignals.input
+        textToCopyInput = textToCopySignals.input
         
         clipCount = MutableProperty(dataProvider.fetchedResultsController.fetchedObjects!.count)
         showNoClipsMessage = Property(initial: clipCount.value == 0, then: clipCount.signal.map { $0 == 0 })
@@ -97,6 +103,8 @@ class ClipsViewModel: NSObject, ViewModelType {
                     try ClipsViewModel.persistClips([], inPersistentContainer: persistentContainer, deletionPredicate: deletionPredicate)
                 }
         }
+        
+        expansionToggles = expansionToggleSignals.flatten(.merge)
         
         super.init()
         
@@ -224,8 +232,11 @@ extension ClipsViewModel: DataSourceDelegate {
     func configure(cell: ViewCell, fromDataSource dataSource: DataSource, atIndexPath indexPath: IndexPath, forItem item: Any) {
         guard var modeledCell = cell as? _ViewModelSettable, modeledCell.viewModelType == ClipCellViewModel.self else { fatalError("Wrong cell type") }
         guard let clip = item as? ClipType else { fatalError("Wrong object type") }
-        let clipCellViewModel = ClipCellViewModel(clip: clip)
-        copyObserver.send(value: clipCellViewModel.copy.values)
+        let clipCellViewModel = ClipCellViewModel(clip: clip, expanded: expandedClipIDs.contains(clip.id))
+        let expandedSignal = clipCellViewModel.expanded.signal
+        reactive.expandedClipIDs <~ expandedSignal.map { _ in clip.id }
+        expansionToggleSignalsInput.send(value: expandedSignal.map { _ in indexPath })
+        textToCopyInput.send(value: clipCellViewModel.copy.values)
         modeledCell._viewModel = clipCellViewModel
     }
 }
@@ -243,6 +254,22 @@ extension ClipsViewModel: SegueingViewModel {
             return SettingsViewModel(provider: provider, persistentContainer: persistentContainer)
         default:
             return nil
+        }
+    }
+}
+
+fileprivate extension Reactive where Base: ClipsViewModel {
+    
+    // MARK: Fileprivate reactive extensions
+    
+    fileprivate var expandedClipIDs: BindingTarget<Int> {
+        return makeBindingTarget {
+            if $0.expandedClipIDs.contains($1) {
+                $0.expandedClipIDs.remove($1)
+            } else {
+                $0.expandedClipIDs.insert($1)
+            }
+
         }
     }
 }

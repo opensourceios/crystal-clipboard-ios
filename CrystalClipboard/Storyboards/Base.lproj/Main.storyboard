@@ -49,6 +49,10 @@
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Text" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T9C-t2-tY8">
                                                             <rect key="frame" x="16" y="16" width="303" height="32"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <gestureRecognizers/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="hGp-Co-r9U"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
@@ -127,6 +131,7 @@
                                             <outlet property="copyButton" destination="Okj-y5-hx6" id="IIZ-AN-XL5"/>
                                             <outlet property="createdAtLabel" destination="bLw-jP-62e" id="96E-bw-Yjt"/>
                                             <outlet property="textView" destination="T9C-t2-tY8" id="UzE-MY-JqV"/>
+                                            <outlet property="textViewHeightConstraint" destination="hGp-Co-r9U" id="TOS-qV-Gnt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -45,6 +45,7 @@ class ClipsViewController: ModeledViewController<ClipsViewModel>, UITableViewDel
         tableView.reactive.showNoClipsMessage <~ viewModel.showNoClipsMessage
         tableView.reactive.showLoadingFooter <~ viewModel.showLoadingFooter
         tableView.reactive.changeSets <~ viewModel.changeSets
+        tableView.reactive.reloads <~ viewModel.expansionToggles
         tableView.dataSource = viewModel.dataSource
         reactive.textToCopy <~ viewModel.textToCopy
         reactive.alertMessage <~ viewModel.deleteAtIndexPath.errors.map { _ in "clips.could-not-be-deleted".localized }
@@ -93,7 +94,19 @@ fileprivate extension Reactive where Base: UITableView {
     }
     
     fileprivate var changeSets: BindingTarget<ChangeSet> {
-        return makeBindingTarget { $0.performUpdates(fromChangeSet: $1) }
+        return makeBindingTarget { tableView, changeSet in
+            tableView.performBatchUpdates({ tableView.performChangeSet(changeSet) }) { _ in
+                // account for expansion state
+                guard let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows else { return }
+                tableView.performBatchUpdates({ tableView.reloadRows(at: indexPathsForVisibleRows, with: .automatic) })
+            }
+        }
+    }
+    
+    fileprivate var reloads: BindingTarget<IndexPath> {
+        return makeBindingTarget { tableView, indexPath in
+            tableView.performBatchUpdates({ tableView.reloadRows(at: [indexPath], with: .automatic) })
+        }
     }
 }
 
