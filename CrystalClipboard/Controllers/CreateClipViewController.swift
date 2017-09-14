@@ -70,12 +70,3 @@ fileprivate extension Reactive where Base: UIScrollView {
         }
     }
 }
-
-fileprivate extension Reactive where Base: CreateClipViewController {
-    
-    // MARK: Fileprivate reactive extensions
-    
-    fileprivate var dismiss: BindingTarget<Void> {
-        return makeBindingTarget { controller, _ in controller.dismiss(animated: true, completion: nil)}
-    }
-}

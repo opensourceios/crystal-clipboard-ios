@@ -240,7 +240,7 @@ extension ClipsViewModel: SegueingViewModel {
         case .PresentCreateClip:
             return CreateClipViewModel(provider: provider, persistentContainer: persistentContainer)
         case .PresentSettings:
-            return SettingsViewModel(provider: provider)
+            return SettingsViewModel(provider: provider, persistentContainer: persistentContainer)
         default:
             return nil
         }

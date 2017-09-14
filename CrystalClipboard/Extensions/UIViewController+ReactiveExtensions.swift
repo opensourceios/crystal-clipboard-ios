@@ -21,4 +21,8 @@ extension Reactive where Base: UIViewController {
     var alertMessage: BindingTarget<String> {
         return makeBindingTarget { $0.presentAlert(message: $1) }
     }
+    
+    var dismiss: BindingTarget<Void> {
+        return makeBindingTarget { controller, _ in controller.dismiss(animated: true, completion: nil)}
+    }
 }
