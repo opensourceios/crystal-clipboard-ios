@@ -53,7 +53,6 @@ class ClipsViewController: ModeledViewController<ClipsViewModel>, UITableViewDel
         
         tableView.delegate = self
         tableView.tableHeaderView = ClipsViewController.spacingHeaderFooterView
-        navigationController?.isToolbarHidden = false
     }
     
     // MARK: UITableViewDelegate internal methods

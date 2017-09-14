@@ -132,11 +132,6 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="xGj-d2-aoR"/>
-                        <barButtonItem systemItem="compose" id="mDt-mo-Smx">
-                            <connections>
-                                <segue destination="zKj-Ph-fFR" kind="presentation" identifier="PresentCreateClip" modalPresentationStyle="formSheet" id="qz0-iH-VXS"/>
-                            </connections>
-                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Crystal Clipboard" id="IlV-KU-4Xa">
                         <barButtonItem key="leftBarButtonItem" image="Gear" id="Adm-HK-LQq">
@@ -144,9 +139,14 @@
                                 <segue destination="uc0-IQ-83A" kind="presentation" identifier="PresentSettings" modalPresentationStyle="formSheet" id="71B-VQ-RYP"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Sam-QS-VYz">
+                            <connections>
+                                <segue destination="zKj-Ph-fFR" kind="presentation" identifier="PresentCreateClip" modalPresentationStyle="formSheet" id="91r-BD-FH3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="S06-Wp-DHM" id="iDG-9S-09c"/>
                     </connections>
