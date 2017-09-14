@@ -19,7 +19,7 @@ class ClipTableViewCell: UITableViewCell, ViewModelSettable {
     // MARK: IBOutlet private stored properties
     
     @IBOutlet
-    private weak var clipTextLabel: UILabel!
+    private weak var textView: UITextView!
     
     @IBOutlet
     private weak var createdAtLabel: UILabel!
@@ -37,7 +37,7 @@ class ClipTableViewCell: UITableViewCell, ViewModelSettable {
 
             // View model outputs
 
-            clipTextLabel.reactive.text <~ viewModel.text
+            textView.reactive.text <~ viewModel.text
             createdAtLabel.reactive.text <~ viewModel.createdAt
         }
     }

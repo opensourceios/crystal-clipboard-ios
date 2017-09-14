@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,86 +36,97 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClipTableViewCell" rowHeight="107" id="u70-dM-u4B" customClass="ClipTableViewCell" customModule="CrystalClipboard" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="107"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClipTableViewCell" rowHeight="130" id="u70-dM-u4B" customClass="ClipTableViewCell" customModule="CrystalClipboard" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u70-dM-u4B" id="pYP-1y-bgh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EC0-FK-H9q">
-                                                    <rect key="frame" x="8" y="4" width="359" height="99"/>
+                                                    <rect key="frame" x="20" y="10" width="335" height="110"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TA6-4a-8QZ">
-                                                            <rect key="frame" x="8" y="8" width="263" height="51"/>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Text" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T9C-t2-tY8">
+                                                            <rect key="frame" x="16" y="16" width="303" height="32"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LjK-nM-FGW">
-                                                            <rect key="frame" x="0.0" y="67" width="279" height="32"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLw-jP-62e">
-                                                                    <rect key="frame" x="8" y="8" width="263" height="16"/>
-                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <color key="backgroundColor" red="0.96476286649703979" green="0.96446877717971802" blue="0.9729953408241272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="bLw-jP-62e" secondAttribute="trailing" constant="8" id="6py-UO-fL0"/>
-                                                                <constraint firstItem="bLw-jP-62e" firstAttribute="top" secondItem="LjK-nM-FGW" secondAttribute="top" constant="8" id="Pb2-Qi-CeQ"/>
-                                                                <constraint firstAttribute="bottom" secondItem="bLw-jP-62e" secondAttribute="bottom" constant="8" id="XZN-mg-q7G"/>
-                                                                <constraint firstItem="bLw-jP-62e" firstAttribute="leading" secondItem="LjK-nM-FGW" secondAttribute="leading" constant="8" id="zOB-h4-9E2"/>
-                                                            </constraints>
-                                                        </view>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="textContainerTopInset">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="textContainerLeftInset">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="textContainerBottomInset">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="textContainerRightInset">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="lineFragmentPadding">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </textView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okj-y5-hx6">
-                                                            <rect key="frame" x="279" y="0.0" width="80" height="99"/>
-                                                            <color key="backgroundColor" name="Crystal Clipboard Purple"/>
+                                                            <rect key="frame" x="281" y="56" width="44" height="44"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="hCa-B6-hSy"/>
-                                                                <constraint firstAttribute="width" constant="80" id="klR-DI-VNG"/>
+                                                                <constraint firstAttribute="height" constant="44" id="Du8-hv-IpW"/>
+                                                                <constraint firstAttribute="width" constant="44" id="z5T-cu-W72"/>
                                                             </constraints>
                                                             <state key="normal" image="Clippy"/>
                                                         </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLw-jP-62e">
+                                                            <rect key="frame" x="16" y="78" width="257" height="16"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="TA6-4a-8QZ" firstAttribute="top" secondItem="EC0-FK-H9q" secondAttribute="top" constant="8" id="A5l-dy-Sg4"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Okj-y5-hx6" secondAttribute="bottom" id="MdD-6h-cK5"/>
-                                                        <constraint firstItem="Okj-y5-hx6" firstAttribute="leading" secondItem="TA6-4a-8QZ" secondAttribute="trailing" constant="8" id="P7y-EO-sPC"/>
-                                                        <constraint firstItem="LjK-nM-FGW" firstAttribute="leading" secondItem="EC0-FK-H9q" secondAttribute="leading" id="fpu-fI-27g"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Okj-y5-hx6" secondAttribute="trailing" id="lbE-by-Fyc"/>
-                                                        <constraint firstItem="Okj-y5-hx6" firstAttribute="top" secondItem="EC0-FK-H9q" secondAttribute="top" id="oen-VH-F0A"/>
-                                                        <constraint firstItem="LjK-nM-FGW" firstAttribute="top" secondItem="TA6-4a-8QZ" secondAttribute="bottom" constant="8" id="sbc-dj-cHm"/>
-                                                        <constraint firstAttribute="bottom" secondItem="LjK-nM-FGW" secondAttribute="bottom" id="so4-QU-Lrp"/>
-                                                        <constraint firstItem="Okj-y5-hx6" firstAttribute="leading" secondItem="LjK-nM-FGW" secondAttribute="trailing" id="va7-5r-FVZ"/>
-                                                        <constraint firstItem="TA6-4a-8QZ" firstAttribute="leading" secondItem="EC0-FK-H9q" secondAttribute="leading" constant="8" id="zmx-en-onM"/>
+                                                        <constraint firstItem="Okj-y5-hx6" firstAttribute="leading" secondItem="bLw-jP-62e" secondAttribute="trailing" constant="8" id="4H0-kQ-aMH"/>
+                                                        <constraint firstItem="bLw-jP-62e" firstAttribute="leading" secondItem="EC0-FK-H9q" secondAttribute="leading" constant="16" id="HuA-KR-z99"/>
+                                                        <constraint firstItem="T9C-t2-tY8" firstAttribute="top" secondItem="EC0-FK-H9q" secondAttribute="top" constant="16" id="KRN-Wx-PVJ"/>
+                                                        <constraint firstItem="T9C-t2-tY8" firstAttribute="leading" secondItem="EC0-FK-H9q" secondAttribute="leading" constant="16" id="Sep-VS-acD"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Okj-y5-hx6" secondAttribute="trailing" constant="10" id="erP-HZ-WAy"/>
+                                                        <constraint firstAttribute="bottom" secondItem="bLw-jP-62e" secondAttribute="bottom" constant="16" id="frG-nv-qvE"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Okj-y5-hx6" secondAttribute="bottom" constant="10" id="kar-fN-ftw"/>
+                                                        <constraint firstAttribute="trailing" secondItem="T9C-t2-tY8" secondAttribute="trailing" constant="16" id="trl-jq-vsY"/>
+                                                        <constraint firstItem="Okj-y5-hx6" firstAttribute="top" secondItem="T9C-t2-tY8" secondAttribute="bottom" constant="8" id="y3o-Jg-bpT"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="5"/>
+                                                            <real key="value" value="20"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="0.5"/>
+                                                            <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                            <real key="value" value="0.10000000000000001"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                            <size key="value" width="0.0" height="0.0"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="EC0-FK-H9q" firstAttribute="leading" secondItem="pYP-1y-bgh" secondAttribute="leading" constant="8" id="DPA-3a-1qq"/>
-                                                <constraint firstAttribute="trailing" secondItem="EC0-FK-H9q" secondAttribute="trailing" constant="8" id="WgP-w9-M0Y"/>
-                                                <constraint firstItem="EC0-FK-H9q" firstAttribute="top" secondItem="pYP-1y-bgh" secondAttribute="top" constant="4" id="fjw-WM-eXb"/>
-                                                <constraint firstAttribute="bottom" secondItem="EC0-FK-H9q" secondAttribute="bottom" constant="4" id="rTc-XS-g4U"/>
+                                                <constraint firstItem="EC0-FK-H9q" firstAttribute="leading" secondItem="pYP-1y-bgh" secondAttribute="leading" constant="20" id="DPA-3a-1qq"/>
+                                                <constraint firstAttribute="trailing" secondItem="EC0-FK-H9q" secondAttribute="trailing" constant="20" id="WgP-w9-M0Y"/>
+                                                <constraint firstItem="EC0-FK-H9q" firstAttribute="top" secondItem="pYP-1y-bgh" secondAttribute="top" constant="10" id="fjw-WM-eXb"/>
+                                                <constraint firstAttribute="bottom" secondItem="EC0-FK-H9q" secondAttribute="bottom" constant="10" id="rTc-XS-g4U"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="clipTextLabel" destination="TA6-4a-8QZ" id="HdT-On-k20"/>
                                             <outlet property="copyButton" destination="Okj-y5-hx6" id="IIZ-AN-XL5"/>
                                             <outlet property="createdAtLabel" destination="bLw-jP-62e" id="96E-bw-Yjt"/>
+                                            <outlet property="textView" destination="T9C-t2-tY8" id="UzE-MY-JqV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -304,6 +314,23 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="textContainerTopInset">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="textContainerLeftInset">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="textContainerBottomInset">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="textContainerRightInset">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineFragmentPadding">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -375,8 +402,5 @@
         <image name="Clippy" width="28" height="30"/>
         <image name="Gear" width="22" height="22"/>
         <image name="SeamlessAmethyst" width="256" height="256"/>
-        <namedColor name="Crystal Clipboard Purple">
-            <color red="0.30199998617172241" green="0.10599999874830246" blue="0.46700000762939453" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
     </resources>
 </document>

@@ -53,6 +53,7 @@
 		D0340BC91F6038A50030CD82 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0340BC81F6038A50030CD82 /* ResponseError.swift */; };
 		D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3F1F4E8FF600A7D473 /* Clip.swift */; };
 		D03ABD421F4E902400A7D473 /* ClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD411F4E902400A7D473 /* ClipTests.swift */; };
+		D03DDD031F6ACCD200CCEB4D /* UITextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DDD021F6ACCD200CCEB4D /* UITextView+Extensions.swift */; };
 		D04460BD1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */; };
 		D0474D361F697D4D00003EAC /* SubmissionError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0474D351F697D4D00003EAC /* SubmissionError+Equatable.swift */; };
 		D04C144E1F4697A20068AEA0 /* CrystalClipboardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */; };
@@ -168,6 +169,7 @@
 		D0340BC81F6038A50030CD82 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResponseError.swift; path = Errors/ResponseError.swift; sourceTree = "<group>"; };
 		D03ABD3F1F4E8FF600A7D473 /* Clip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clip.swift; path = Model/Clip.swift; sourceTree = "<group>"; };
 		D03ABD411F4E902400A7D473 /* ClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTests.swift; path = Model/ClipTests.swift; sourceTree = "<group>"; };
+		D03DDD021F6ACCD200CCEB4D /* UITextView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+Extensions.swift"; path = "Extensions/UITextView+Extensions.swift"; sourceTree = "<group>"; };
 		D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SignalProducer+ExtensionsTests.swift"; path = "Extensions/SignalProducer+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		D0474D351F697D4D00003EAC /* SubmissionError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SubmissionError+Equatable.swift"; path = "Utilities/SubmissionError+Equatable.swift"; sourceTree = "<group>"; };
 		D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrystalClipboardAPI.swift; path = Networking/CrystalClipboardAPI.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				D06EF5CE1F5B62970093C87D /* SignalProducer+Extensions.swift */,
 				D0909B6F1F4D282C000F584B /* String+Localized.swift */,
 				D00D68411F55DA210029BC79 /* UIStoryboard+Extensions.swift */,
+				D03DDD021F6ACCD200CCEB4D /* UITextView+Extensions.swift */,
 				D0C1F6551F590A3700E49B77 /* UIView+Extensions.swift */,
 				D00D684B1F5712F40029BC79 /* UIViewController+Extensions.swift */,
 				D0B61B221F67315E00838D21 /* UIViewController+ReactiveExtensions.swift */,
@@ -965,6 +968,7 @@
 				D0116B391F6997C000ED6DE7 /* Constants.swift in Sources */,
 				D00D68561F574FF50029BC79 /* AuthenticatingViewModel.swift in Sources */,
 				D06A61151F68BC4300D27DD1 /* AnimatingSeamlessTileView.swift in Sources */,
+				D03DDD031F6ACCD200CCEB4D /* UITextView+Extensions.swift in Sources */,
 				D00D68371F55CAF80029BC79 /* Identifiers.swift in Sources */,
 				D08263FC1F66E43900091E9A /* ModeledViewController.swift in Sources */,
 				D0C1F65A1F592DD600E49B77 /* ClipCellViewModel.swift in Sources */,
