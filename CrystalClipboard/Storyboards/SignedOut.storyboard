@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,8 +19,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="sYx-14-fjI">
-                                <rect key="frame" x="16" y="44" width="343" height="143"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ryQ-Ve-tPb" customClass="AnimatingSeamlessTileView" customModule="CrystalClipboard" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="SeamlessAmethyst"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uXP-kt-kVo">
+                                <rect key="frame" x="0.0" y="-20" width="375" height="266"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sYx-14-fjI">
+                                <rect key="frame" x="16" y="64" width="343" height="162"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ihe-od-pd0">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="39"/>
@@ -56,7 +82,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iH5-PB-qgv">
-                                        <rect key="frame" x="0.0" y="55" width="343" height="39"/>
+                                        <rect key="frame" x="0.0" y="59" width="343" height="39"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPy-VD-Ffh">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="18"/>
@@ -90,18 +116,40 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKf-jv-CSh">
-                                        <rect key="frame" x="0.0" y="110" width="343" height="33"/>
+                                        <rect key="frame" x="0.0" y="118" width="343" height="44"/>
+                                        <color key="backgroundColor" name="Crystal Clipboard Purple"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="JXA-3x-weX"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <state key="normal" title="Sign up"/>
+                                        <state key="normal" title="Sign up">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ryQ-Ve-tPb" firstAttribute="top" secondItem="kjT-cH-IH9" secondAttribute="top" id="21r-yq-2n2"/>
+                            <constraint firstAttribute="bottom" secondItem="ryQ-Ve-tPb" secondAttribute="bottom" id="6bA-6x-hax"/>
                             <constraint firstItem="HaW-LA-qcL" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="sYx-14-fjI" secondAttribute="bottom" id="EFm-Qm-9Lg"/>
-                            <constraint firstItem="sYx-14-fjI" firstAttribute="top" secondItem="HaW-LA-qcL" secondAttribute="top" id="H77-uK-Lef"/>
+                            <constraint firstItem="uXP-kt-kVo" firstAttribute="trailing" secondItem="HaW-LA-qcL" secondAttribute="trailing" id="GvE-m3-gl6"/>
+                            <constraint firstItem="sYx-14-fjI" firstAttribute="top" secondItem="HaW-LA-qcL" secondAttribute="top" constant="20" id="H77-uK-Lef"/>
+                            <constraint firstItem="uXP-kt-kVo" firstAttribute="top" secondItem="kjT-cH-IH9" secondAttribute="top" constant="-20" id="I1v-Ni-qIo"/>
                             <constraint firstItem="sYx-14-fjI" firstAttribute="trailing" secondItem="kjT-cH-IH9" secondAttribute="trailingMargin" id="MBS-aI-u7i"/>
+                            <constraint firstItem="ryQ-Ve-tPb" firstAttribute="trailing" secondItem="kjT-cH-IH9" secondAttribute="trailing" id="OPW-vL-lrV"/>
+                            <constraint firstItem="uXP-kt-kVo" firstAttribute="bottom" secondItem="sYx-14-fjI" secondAttribute="bottom" constant="20" id="Oa5-kc-bpT"/>
+                            <constraint firstItem="ryQ-Ve-tPb" firstAttribute="leading" secondItem="kjT-cH-IH9" secondAttribute="leading" id="OzM-2c-mNg"/>
+                            <constraint firstItem="uXP-kt-kVo" firstAttribute="leading" secondItem="HaW-LA-qcL" secondAttribute="leading" id="fTo-Kx-TtC"/>
                             <constraint firstItem="sYx-14-fjI" firstAttribute="leading" secondItem="kjT-cH-IH9" secondAttribute="leadingMargin" id="kfh-h9-4ST"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HaW-LA-qcL"/>
@@ -115,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BfK-JT-Txu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2604" y="526.6866566716642"/>
+            <point key="canvasLocation" x="2604" y="526.10837438423653"/>
         </scene>
         <!--Sign In-->
         <scene sceneID="qtY-eT-KcA">
@@ -125,8 +173,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="9jI-cO-ig8">
-                                <rect key="frame" x="16" y="44" width="343" height="192"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7g6-Qb-eUv" customClass="AnimatingSeamlessTileView" customModule="CrystalClipboard" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="SeamlessAmethyst"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rkL-pn-44A">
+                                <rect key="frame" x="0.0" y="-20" width="375" height="330"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9jI-cO-ig8">
+                                <rect key="frame" x="16" y="64" width="343" height="226"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="43z-cg-9lk">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="39"/>
@@ -163,7 +236,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JhZ-WZ-pSn">
-                                        <rect key="frame" x="0.0" y="55" width="343" height="39"/>
+                                        <rect key="frame" x="0.0" y="59" width="343" height="39"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kf-6g-Ej4">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="18"/>
@@ -197,12 +270,29 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUr-vX-oJR">
-                                        <rect key="frame" x="0.0" y="110" width="343" height="33"/>
+                                        <rect key="frame" x="0.0" y="118" width="343" height="44"/>
+                                        <color key="backgroundColor" name="Crystal Clipboard Purple"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Fqi-VU-p7O"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <state key="normal" title="Sign In"/>
+                                        <state key="normal" title="Sign In">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAe-cj-GsJ">
-                                        <rect key="frame" x="0.0" y="159" width="343" height="33"/>
+                                        <rect key="frame" x="0.0" y="182" width="343" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="3P4-5u-jt7"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="Forgot your password?"/>
                                         <connections>
@@ -214,9 +304,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9jI-cO-ig8" firstAttribute="top" secondItem="Ana-3T-HiB" secondAttribute="top" id="JBD-2B-ER9"/>
+                            <constraint firstItem="7g6-Qb-eUv" firstAttribute="top" secondItem="kv4-3G-2M0" secondAttribute="top" id="GjD-eo-xYh"/>
+                            <constraint firstAttribute="bottom" secondItem="7g6-Qb-eUv" secondAttribute="bottom" id="HZ3-92-pp8"/>
+                            <constraint firstItem="9jI-cO-ig8" firstAttribute="top" secondItem="Ana-3T-HiB" secondAttribute="top" constant="20" id="JBD-2B-ER9"/>
                             <constraint firstItem="9jI-cO-ig8" firstAttribute="trailing" secondItem="kv4-3G-2M0" secondAttribute="trailingMargin" id="Kf0-XI-Ahj"/>
+                            <constraint firstItem="7g6-Qb-eUv" firstAttribute="trailing" secondItem="kv4-3G-2M0" secondAttribute="trailing" id="NAJ-3E-SGY"/>
                             <constraint firstItem="Ana-3T-HiB" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9jI-cO-ig8" secondAttribute="bottom" id="QGv-Is-vd9"/>
+                            <constraint firstItem="rkL-pn-44A" firstAttribute="leading" secondItem="Ana-3T-HiB" secondAttribute="leading" id="YqZ-4f-d05"/>
+                            <constraint firstItem="7g6-Qb-eUv" firstAttribute="leading" secondItem="kv4-3G-2M0" secondAttribute="leading" id="ZDJ-LL-rKG"/>
+                            <constraint firstItem="Ana-3T-HiB" firstAttribute="trailing" secondItem="rkL-pn-44A" secondAttribute="trailing" id="cOG-jT-Hgz"/>
+                            <constraint firstItem="rkL-pn-44A" firstAttribute="top" secondItem="kv4-3G-2M0" secondAttribute="top" constant="-20" id="jGQ-m0-d1k"/>
+                            <constraint firstItem="rkL-pn-44A" firstAttribute="bottom" secondItem="9jI-cO-ig8" secondAttribute="bottom" constant="20" id="jPu-fY-fwJ"/>
                             <constraint firstItem="9jI-cO-ig8" firstAttribute="leading" secondItem="kv4-3G-2M0" secondAttribute="leadingMargin" id="sUF-dR-f2M"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ana-3T-HiB"/>
@@ -230,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BgP-nd-BTd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2604" y="1187.8560719640182"/>
+            <point key="canvasLocation" x="2604" y="1187.4384236453202"/>
         </scene>
         <!--Reset Password-->
         <scene sceneID="rka-9D-DMf">
@@ -240,8 +338,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6ja-01-cCo">
-                                <rect key="frame" x="16" y="44" width="343" height="88"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zt9-hJ-ISE" customClass="AnimatingSeamlessTileView" customModule="CrystalClipboard" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="SeamlessAmethyst"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gua-BP-uUh">
+                                <rect key="frame" x="0.0" y="-20" width="375" height="207"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6ja-01-cCo">
+                                <rect key="frame" x="16" y="64" width="343" height="103"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7tk-5T-yRc">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="39"/>
@@ -278,19 +401,41 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIi-Pw-Oie">
-                                        <rect key="frame" x="0.0" y="55" width="343" height="33"/>
+                                        <rect key="frame" x="0.0" y="59" width="343" height="44"/>
+                                        <color key="backgroundColor" name="Crystal Clipboard Purple"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="91i-Gh-6m5"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <state key="normal" title="Reset Password"/>
+                                        <state key="normal" title="Reset Password">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6ja-01-cCo" firstAttribute="top" secondItem="OLz-Y5-u7b" secondAttribute="top" id="8ff-tH-5HI"/>
+                            <constraint firstItem="Gua-BP-uUh" firstAttribute="trailing" secondItem="OLz-Y5-u7b" secondAttribute="trailing" id="6HX-7S-Nag"/>
+                            <constraint firstItem="6ja-01-cCo" firstAttribute="top" secondItem="OLz-Y5-u7b" secondAttribute="top" constant="20" id="8ff-tH-5HI"/>
                             <constraint firstItem="6ja-01-cCo" firstAttribute="leading" secondItem="uO5-Ts-fqE" secondAttribute="leadingMargin" id="9gN-yv-Hjl"/>
+                            <constraint firstItem="zt9-hJ-ISE" firstAttribute="leading" secondItem="uO5-Ts-fqE" secondAttribute="leading" id="W8w-Zd-oec"/>
+                            <constraint firstItem="zt9-hJ-ISE" firstAttribute="top" secondItem="uO5-Ts-fqE" secondAttribute="top" id="XIR-St-LT6"/>
                             <constraint firstItem="6ja-01-cCo" firstAttribute="trailing" secondItem="uO5-Ts-fqE" secondAttribute="trailingMargin" id="XsD-Q3-7Od"/>
+                            <constraint firstItem="Gua-BP-uUh" firstAttribute="top" secondItem="uO5-Ts-fqE" secondAttribute="top" constant="-20" id="izx-nC-5jr"/>
+                            <constraint firstItem="Gua-BP-uUh" firstAttribute="leading" secondItem="OLz-Y5-u7b" secondAttribute="leading" id="qfX-iO-OwZ"/>
+                            <constraint firstAttribute="bottom" secondItem="zt9-hJ-ISE" secondAttribute="bottom" id="rEP-ei-6Ac"/>
+                            <constraint firstItem="Gua-BP-uUh" firstAttribute="bottom" secondItem="6ja-01-cCo" secondAttribute="bottom" constant="20" id="rXX-SN-UFB"/>
                             <constraint firstItem="OLz-Y5-u7b" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6ja-01-cCo" secondAttribute="bottom" id="who-24-yBb"/>
+                            <constraint firstItem="zt9-hJ-ISE" firstAttribute="trailing" secondItem="uO5-Ts-fqE" secondAttribute="trailing" id="y3W-cL-dMp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OLz-Y5-u7b"/>
                     </view>
@@ -302,7 +447,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOT-bW-4VG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3314.4000000000001" y="1187.8560719640182"/>
+            <point key="canvasLocation" x="3314.4000000000001" y="1187.4384236453202"/>
         </scene>
         <!--Landing View Controller-->
         <scene sceneID="MHj-IL-aqN">
@@ -320,24 +465,38 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pwc-nP-zdj">
-                                <rect key="frame" x="44.333333333333343" y="294.33333333333337" width="286.66666666666663" height="224.00000000000011"/>
+                                <rect key="frame" x="0.0" y="243" width="0.0" height="326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="1Re-7W-u9Y">
-                                        <rect key="frame" x="0.0" y="0.0" width="286.66666666666669" height="224.00000000000006"/>
+                                        <rect key="frame" x="0.0" y="20" width="0.0" height="286"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crystal Clipboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJ2-lS-qaU">
-                                                <rect key="frame" x="0.0" y="0.0" width="286.66666666666669" height="48"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crystal Clipboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hJ2-lS-qaU">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy and paste between devices instantly." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4G6-9Q-b1a">
+                                                <rect key="frame" x="0.0" y="92" width="0.0" height="18"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6D-Hz-WU9">
-                                                <rect key="frame" x="0.0" y="92" width="286.66666666666669" height="44"/>
+                                                <rect key="frame" x="0.0" y="154" width="0.0" height="44"/>
+                                                <color key="backgroundColor" name="Crystal Clipboard Purple"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="xSc-QE-muO"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <state key="normal" title="Sign Up"/>
+                                                <state key="normal" title="Sign Up">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="22"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <segue destination="NzU-ms-CNf" kind="show" identifier="PushSignUp" id="h4B-lG-5Xr">
                                                         <nil key="action"/>
@@ -345,7 +504,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oh6-TU-Dox">
-                                                <rect key="frame" x="0.0" y="180" width="286.66666666666669" height="44.000000000000057"/>
+                                                <rect key="frame" x="0.0" y="242" width="0.0" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="Dac-0N-yAM"/>
                                                 </constraints>
@@ -361,10 +520,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="1Re-7W-u9Y" firstAttribute="leading" secondItem="pwc-nP-zdj" secondAttribute="leading" id="2V0-rf-xen"/>
-                                    <constraint firstAttribute="bottom" secondItem="1Re-7W-u9Y" secondAttribute="bottom" id="50F-hR-M9S"/>
-                                    <constraint firstAttribute="trailing" secondItem="1Re-7W-u9Y" secondAttribute="trailing" id="98I-4a-QXZ"/>
-                                    <constraint firstItem="1Re-7W-u9Y" firstAttribute="top" secondItem="pwc-nP-zdj" secondAttribute="top" id="FY1-Kc-ibK"/>
+                                    <constraint firstItem="1Re-7W-u9Y" firstAttribute="leading" secondItem="pwc-nP-zdj" secondAttribute="leading" constant="20" id="2V0-rf-xen"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Re-7W-u9Y" secondAttribute="bottom" constant="20" id="50F-hR-M9S"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Re-7W-u9Y" secondAttribute="trailing" constant="20" id="98I-4a-QXZ"/>
+                                    <constraint firstItem="1Re-7W-u9Y" firstAttribute="top" secondItem="pwc-nP-zdj" secondAttribute="top" constant="20" id="FY1-Kc-ibK"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -374,7 +533,7 @@
                                         <size key="value" width="0.0" height="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="0.10000000000000001"/>
+                                        <real key="value" value="0.29999999999999999"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                         <real key="value" value="20"/>
@@ -386,9 +545,11 @@
                         <constraints>
                             <constraint firstItem="QZ8-Vu-Y1n" firstAttribute="leading" secondItem="jHx-mD-ELY" secondAttribute="leading" id="3iC-n3-tPx"/>
                             <constraint firstItem="QZ8-Vu-Y1n" firstAttribute="trailing" secondItem="jHx-mD-ELY" secondAttribute="trailing" id="BQv-KE-AhN"/>
+                            <constraint firstItem="8kQ-4F-Oc6" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pwc-nP-zdj" secondAttribute="trailing" constant="8" id="JFY-Di-hPH"/>
                             <constraint firstItem="QZ8-Vu-Y1n" firstAttribute="top" secondItem="jHx-mD-ELY" secondAttribute="top" id="T5I-Ez-MfQ"/>
                             <constraint firstItem="pwc-nP-zdj" firstAttribute="centerY" secondItem="jHx-mD-ELY" secondAttribute="centerY" id="bgw-Oj-7tD"/>
                             <constraint firstItem="pwc-nP-zdj" firstAttribute="centerX" secondItem="jHx-mD-ELY" secondAttribute="centerX" id="n1Q-G5-Qic"/>
+                            <constraint firstItem="pwc-nP-zdj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8kQ-4F-Oc6" secondAttribute="leading" constant="8" id="tvh-op-bs2"/>
                             <constraint firstItem="QZ8-Vu-Y1n" firstAttribute="bottom" secondItem="jHx-mD-ELY" secondAttribute="bottom" id="y7x-ik-6A5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8kQ-4F-Oc6"/>
@@ -397,10 +558,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QHt-Hg-EGE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1816.8" y="857.72113943028489"/>
+            <point key="canvasLocation" x="1816.8" y="857.14285714285722"/>
         </scene>
     </scenes>
     <resources>
         <image name="SeamlessAmethyst" width="256" height="256"/>
+        <namedColor name="Crystal Clipboard Purple">
+            <color red="0.30199998617172241" green="0.10599999874830246" blue="0.46700000762939453" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
     </resources>
 </document>
