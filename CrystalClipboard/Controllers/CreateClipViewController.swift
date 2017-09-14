@@ -10,7 +10,7 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 
-class CreateClipViewController: ModeledViewController<CreateClipViewModel> {
+class CreateClipViewController: KeyboardAwareModeledViewController<CreateClipViewModel> {
     
     // MARK: IBOutlet private stored properties
     
@@ -40,12 +40,6 @@ class CreateClipViewController: ModeledViewController<CreateClipViewModel> {
         
         // Other setup
         
-        let keyboardHeightChanges = NotificationCenter.default.reactive
-            .notifications(forName: .UIKeyboardDidChangeFrame)
-            .take(during: reactive.lifetime)
-            .map { ($0.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect)?.height ?? 0 }
-        textView.reactive.contentInsetBottom <~ keyboardHeightChanges
-        
         textView.becomeFirstResponder()
     }
     
@@ -54,19 +48,5 @@ class CreateClipViewController: ModeledViewController<CreateClipViewModel> {
     @IBAction
     private func cancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-    }
-}
-
-fileprivate extension Reactive where Base: UIScrollView {
-    
-    // MARK: Fileprivate UIScrollView reactive extensions
-    
-    fileprivate var contentInsetBottom: BindingTarget<CGFloat> {
-        return makeBindingTarget {
-            var edgeInsets = $0.contentInset
-            edgeInsets.bottom = $1
-            $0.contentInset = edgeInsets
-            $0.scrollIndicatorInsets = edgeInsets
-        }
     }
 }

@@ -218,7 +218,6 @@
                                         <rect key="frame" x="0.0" y="40.5" width="343" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="2gI-Vq-YMK"/>
-                                            <constraint firstAttribute="width" constant="44" id="aKt-1M-ELI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="Sign Out"/>
@@ -283,19 +282,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fwp-ip-jr6">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AyW-MQ-jWI" customClass="AnimatingSeamlessTileView" customModule="CrystalClipboard" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="SeamlessAmethyst"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="always" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="P0B-9b-TwK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4WI-Tj-UUw">
+                                        <rect key="frame" x="20" y="20" width="335" height="78"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" keyboardDismissMode="interactive" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fwp-ip-jr6">
+                                                <rect key="frame" x="20" y="20" width="295" height="38"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="fwp-ip-jr6" firstAttribute="top" secondItem="4WI-Tj-UUw" secondAttribute="top" constant="20" id="4Eq-bh-vXl"/>
+                                            <constraint firstItem="fwp-ip-jr6" firstAttribute="leading" secondItem="4WI-Tj-UUw" secondAttribute="leading" constant="20" id="e3P-ha-YbO"/>
+                                            <constraint firstAttribute="trailing" secondItem="fwp-ip-jr6" secondAttribute="trailing" constant="20" id="gcd-cT-XeM"/>
+                                            <constraint firstAttribute="bottom" secondItem="fwp-ip-jr6" secondAttribute="bottom" constant="20" id="jEF-yX-H7u"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="0.0" height="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="0.29999999999999999"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="4WI-Tj-UUw" firstAttribute="leading" secondItem="P0B-9b-TwK" secondAttribute="leading" constant="20" id="0hX-i9-0A1"/>
+                                    <constraint firstItem="4WI-Tj-UUw" firstAttribute="width" secondItem="P0B-9b-TwK" secondAttribute="width" constant="-40" id="HOk-EB-uJs"/>
+                                    <constraint firstItem="4WI-Tj-UUw" firstAttribute="top" secondItem="P0B-9b-TwK" secondAttribute="top" constant="20" id="Sl0-7Y-axu"/>
+                                    <constraint firstAttribute="bottom" secondItem="4WI-Tj-UUw" secondAttribute="bottom" constant="20" id="b0o-33-apM"/>
+                                    <constraint firstAttribute="trailing" secondItem="4WI-Tj-UUw" secondAttribute="trailing" constant="20" id="i9Z-A5-ehM"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fwp-ip-jr6" firstAttribute="top" secondItem="rol-DX-DwV" secondAttribute="top" id="7QQ-7B-XCT"/>
-                            <constraint firstItem="fwp-ip-jr6" firstAttribute="trailing" secondItem="3Zs-uz-8we" secondAttribute="trailing" id="j86-wp-SOs"/>
-                            <constraint firstItem="3Zs-uz-8we" firstAttribute="bottom" secondItem="fwp-ip-jr6" secondAttribute="bottom" id="ozB-sx-RbD"/>
-                            <constraint firstItem="fwp-ip-jr6" firstAttribute="leading" secondItem="3Zs-uz-8we" secondAttribute="leading" id="pM6-ZX-BDk"/>
+                            <constraint firstItem="AyW-MQ-jWI" firstAttribute="bottom" secondItem="rol-DX-DwV" secondAttribute="bottom" id="BGI-f4-qHS"/>
+                            <constraint firstItem="P0B-9b-TwK" firstAttribute="leading" secondItem="3Zs-uz-8we" secondAttribute="leading" id="JdL-dC-wOZ"/>
+                            <constraint firstItem="P0B-9b-TwK" firstAttribute="bottom" secondItem="3Zs-uz-8we" secondAttribute="bottom" id="QHf-6I-Fix"/>
+                            <constraint firstItem="P0B-9b-TwK" firstAttribute="trailing" secondItem="3Zs-uz-8we" secondAttribute="trailing" id="Udk-gD-atU"/>
+                            <constraint firstItem="AyW-MQ-jWI" firstAttribute="trailing" secondItem="rol-DX-DwV" secondAttribute="trailing" id="fst-zi-NFP"/>
+                            <constraint firstItem="AyW-MQ-jWI" firstAttribute="top" secondItem="rol-DX-DwV" secondAttribute="top" id="maJ-lP-If8"/>
+                            <constraint firstItem="P0B-9b-TwK" firstAttribute="top" secondItem="rol-DX-DwV" secondAttribute="top" id="rNU-Fe-qiD"/>
+                            <constraint firstItem="AyW-MQ-jWI" firstAttribute="leading" secondItem="rol-DX-DwV" secondAttribute="leading" id="zB2-SC-WZH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3Zs-uz-8we"/>
                     </view>
@@ -310,6 +358,7 @@
                     <connections>
                         <outlet property="cancelBarButtonItem" destination="WU4-J2-WRg" id="Hx0-R1-kQ6"/>
                         <outlet property="doneBarButtonItem" destination="QiO-bn-Mls" id="QzB-gH-jB9"/>
+                        <outlet property="scrollView" destination="P0B-9b-TwK" id="FZm-Dk-fYs"/>
                         <outlet property="textView" destination="fwp-ip-jr6" id="b15-uA-5kl"/>
                     </connections>
                 </viewController>

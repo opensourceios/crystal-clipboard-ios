@@ -10,7 +10,7 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 
-class AuthenticatingViewController: ModeledViewController<AuthenticatingViewModel>, UITextFieldDelegate {
+class AuthenticatingViewController: KeyboardAwareModeledViewController<AuthenticatingViewModel>, UITextFieldDelegate {
     
     // MARK: IBOutlet private stored properties
     

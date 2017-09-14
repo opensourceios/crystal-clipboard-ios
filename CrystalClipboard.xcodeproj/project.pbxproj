@@ -92,6 +92,7 @@
 		D0C1F65A1F592DD600E49B77 /* ClipCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F6591F592DD600E49B77 /* ClipCellViewModel.swift */; };
 		D0C1F65C1F592EFB00E49B77 /* ClipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1F65B1F592EFB00E49B77 /* ClipType.swift */; };
 		D0D59B701F4A0A0100200ABD /* Cable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D59B6F1F4A0A0100200ABD /* Cable.swift */; };
+		D0E41D861F6A404C009506A5 /* KeyboardAwareModeledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E41D851F6A404C009506A5 /* KeyboardAwareModeledViewController.swift */; };
 		D0FD1CFE1F5B5A590061535C /* Response+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD1CFD1F5B5A590061535C /* Response+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -212,6 +213,7 @@
 		D0C1F6591F592DD600E49B77 /* ClipCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipCellViewModel.swift; path = "View Models/ClipCellViewModel.swift"; sourceTree = "<group>"; };
 		D0C1F65B1F592EFB00E49B77 /* ClipType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipType.swift; path = Protocols/ClipType.swift; sourceTree = "<group>"; };
 		D0D59B6F1F4A0A0100200ABD /* Cable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cable.swift; path = Networking/Cable.swift; sourceTree = "<group>"; };
+		D0E41D851F6A404C009506A5 /* KeyboardAwareModeledViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAwareModeledViewController.swift; sourceTree = "<group>"; };
 		D0FD1CFD1F5B5A590061535C /* Response+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Response+Extensions.swift"; path = "Extensions/Response+Extensions.swift"; sourceTree = "<group>"; };
 		D22B5B8698FE83A31D24280D /* Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardTests/Pods-CrystalClipboard-CrystalClipboardTests.staging.xcconfig"; sourceTree = "<group>"; };
 		DD3162C9717AFAFB194112F5 /* Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CrystalClipboard-CrystalClipboardUITests/Pods-CrystalClipboard-CrystalClipboardUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				D00D68571F575AB80029BC79 /* AuthenticatingViewController.swift */,
 				D00D68471F55E8260029BC79 /* ClipsViewController.swift */,
 				D055ECC11F67149A00D9C49B /* CreateClipViewController.swift */,
+				D0E41D851F6A404C009506A5 /* KeyboardAwareModeledViewController.swift */,
 				D0979B6A1F4B33F300B8407F /* LandingViewController.swift */,
 				D08263FB1F66E43900091E9A /* ModeledViewController.swift */,
 				D00D68591F5761330029BC79 /* ResetPasswordViewController.swift */,
@@ -934,6 +937,7 @@
 				D021CD951F671BC000F0C05E /* ISO8601JSONEncoder.swift in Sources */,
 				D00D685C1F5762EE0029BC79 /* ResetPasswordViewModel.swift in Sources */,
 				D0334CCF1F64A9280004CB14 /* APIProvider.swift in Sources */,
+				D0E41D861F6A404C009506A5 /* KeyboardAwareModeledViewController.swift in Sources */,
 				D00D68501F5733BF0029BC79 /* SignInViewModel.swift in Sources */,
 				D08263FA1F66E23800091E9A /* ViewModelSettable.swift in Sources */,
 				D00D684C1F5712F40029BC79 /* UIViewController+Extensions.swift in Sources */,

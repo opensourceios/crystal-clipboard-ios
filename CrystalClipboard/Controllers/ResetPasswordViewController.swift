@@ -10,7 +10,7 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 
-class ResetPasswordViewController: ModeledViewController<ResetPasswordViewModel>, UITextFieldDelegate {
+class ResetPasswordViewController: KeyboardAwareModeledViewController<ResetPasswordViewModel>, UITextFieldDelegate {
     
     // MARK: IBOutlet private stored properties
     
