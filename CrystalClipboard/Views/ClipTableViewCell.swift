@@ -78,11 +78,6 @@ class ClipTableViewCell: UITableViewCell, ViewModelSettable {
         expansionIndicationGradientLayer.frame = textView.bounds
         expansionIndicationGradientLayer.isHidden = !(expandable && textViewHeightConstraint.isActive)
     }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-    }
 }
 
 fileprivate extension Reactive where Base: ClipTableViewCell {

@@ -46,7 +46,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EC0-FK-H9q">
                                                     <rect key="frame" x="20" y="10" width="335" height="110"/>
                                                     <subviews>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Text" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T9C-t2-tY8">
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" text="Text" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T9C-t2-tY8">
                                                             <rect key="frame" x="16" y="16" width="303" height="32"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <gestureRecognizers/>
@@ -99,7 +99,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="bLw-jP-62e" secondAttribute="bottom" constant="16" id="frG-nv-qvE"/>
                                                         <constraint firstAttribute="bottom" secondItem="Okj-y5-hx6" secondAttribute="bottom" constant="10" id="kar-fN-ftw"/>
                                                         <constraint firstAttribute="trailing" secondItem="T9C-t2-tY8" secondAttribute="trailing" constant="16" id="trl-jq-vsY"/>
-                                                        <constraint firstItem="Okj-y5-hx6" firstAttribute="top" secondItem="T9C-t2-tY8" secondAttribute="bottom" constant="8" id="y3o-Jg-bpT"/>
+                                                        <constraint firstItem="Okj-y5-hx6" firstAttribute="top" secondItem="T9C-t2-tY8" secondAttribute="bottom" priority="999" constant="8" id="y3o-Jg-bpT"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
