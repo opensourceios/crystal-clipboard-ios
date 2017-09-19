@@ -27,7 +27,9 @@ class ClipsDataProviderTests: CoreDataTestCase {
         }
         
         func fetchedResultsChangeSetProducer(_ fetchedResultsChangeSetProducer: FetchedResultsChangeSetProducer, didProduceChangeSet changeSet: ChangeSet) {
-            tableView.performUpdates(fromChangeSet: changeSet)
+            tableView.beginUpdates()
+            tableView.performChangeSet(changeSet)
+            tableView.endUpdates()
         }
     }
     
