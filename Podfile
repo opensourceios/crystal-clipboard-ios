@@ -15,9 +15,9 @@ plugin 'cocoapods-keys', {
 
 target 'CrystalClipboard' do
   pod 'CellHelpers', '~> 0.5'
-  pod 'KeychainAccess', '~> 3.0'
+  pod 'KeychainAccess', '~> 3.1'
   pod 'Moya/ReactiveSwift', '~> 9.0'
-  pod 'PKHUD'
+  pod 'PKHUD', git: 'https://github.com/pkluz/PKHUD.git', branch: 'release/swift4'
   pod 'ReactiveCocoa', '~> 6.0'
   pod 'Starscream', '~> 2.1'
   target 'CrystalClipboardTests'
