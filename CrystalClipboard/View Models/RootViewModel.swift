@@ -65,6 +65,7 @@ struct RootViewModel: ViewModelType {
     // MARK: Private stored properties
     
     private let (lifetime, token) = Lifetime.make()
+    private let analytics = Analytics()
     
     // MARK: Internal initializers
     
@@ -89,6 +90,8 @@ struct RootViewModel: ViewModelType {
             initial = .signOut
         }
         transitionTo = Property<TransitionType>(initial: initial, then: then)
+        
+        analytics.visit()
     }
 }
 

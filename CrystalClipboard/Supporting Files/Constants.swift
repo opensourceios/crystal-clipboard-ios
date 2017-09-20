@@ -35,6 +35,10 @@ extension Environment {
         return baseURL.appendingPathComponent("/api/v1")
     }
     
+    var analyticsURL: URL {
+        return baseURL.appendingPathComponent("/ahoy")
+    }
+    
     var cableURL: URL {
         return URL(string: "wss://\(host)/cable")!
     }
