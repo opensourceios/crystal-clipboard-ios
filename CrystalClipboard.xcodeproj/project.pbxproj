@@ -53,6 +53,7 @@
 		D0340BC91F6038A50030CD82 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0340BC81F6038A50030CD82 /* ResponseError.swift */; };
 		D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3F1F4E8FF600A7D473 /* Clip.swift */; };
 		D03ABD421F4E902400A7D473 /* ClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD411F4E902400A7D473 /* ClipTests.swift */; };
+		D03B32271F75635400F23E98 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B32261F75635400F23E98 /* SnapshotHelper.swift */; };
 		D03DDD031F6ACCD200CCEB4D /* UITextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DDD021F6ACCD200CCEB4D /* UITextView+Extensions.swift */; };
 		D04460BD1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */; };
 		D0474D361F697D4D00003EAC /* SubmissionError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0474D351F697D4D00003EAC /* SubmissionError+Equatable.swift */; };
@@ -172,6 +173,7 @@
 		D0340BC81F6038A50030CD82 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResponseError.swift; path = Errors/ResponseError.swift; sourceTree = "<group>"; };
 		D03ABD3F1F4E8FF600A7D473 /* Clip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clip.swift; path = Model/Clip.swift; sourceTree = "<group>"; };
 		D03ABD411F4E902400A7D473 /* ClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTests.swift; path = Model/ClipTests.swift; sourceTree = "<group>"; };
+		D03B32261F75635400F23E98 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		D03DDD021F6ACCD200CCEB4D /* UITextView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+Extensions.swift"; path = "Extensions/UITextView+Extensions.swift"; sourceTree = "<group>"; };
 		D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SignalProducer+ExtensionsTests.swift"; path = "Extensions/SignalProducer+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		D0474D351F697D4D00003EAC /* SubmissionError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SubmissionError+Equatable.swift"; path = "Utilities/SubmissionError+Equatable.swift"; sourceTree = "<group>"; };
@@ -548,8 +550,9 @@
 		D0B0CE091F4671E8006201CE /* CrystalClipboardUITests */ = {
 			isa = PBXGroup;
 			children = (
-				D035A2C61F46929A00B6887B /* Supporting Files */,
 				D0B0CE0A1F4671E8006201CE /* CrystalClipboardUITests.swift */,
+				D03B32261F75635400F23E98 /* SnapshotHelper.swift */,
+				D035A2C61F46929A00B6887B /* Supporting Files */,
 			);
 			path = CrystalClipboardUITests;
 			sourceTree = "<group>";
@@ -1022,6 +1025,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0B0CE0B1F4671E8006201CE /* CrystalClipboardUITests.swift in Sources */,
+				D03B32271F75635400F23E98 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
