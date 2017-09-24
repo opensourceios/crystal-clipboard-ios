@@ -2,7 +2,13 @@
 
 # A list of devices you want to take the screenshots from
 devices([
-  'iPhone 7'
+  'iPad Pro (9.7 inch)',
+  'iPad Pro (10.5-inch)',
+  'iPad Pro (12.9 inch)',
+  'iPhone 8',
+  'iPhone 8 Plus',
+  'iPhone SE',
+  'iPhone X'
 ])
 
 languages([
@@ -11,6 +17,8 @@ languages([
 
 # The name of the scheme which contains the UI Tests
 scheme 'CrystalClipboard'
+
+erase_simulator true
 
 # Where should the resulting screenshots be stored?
 # output_directory "./screenshots"

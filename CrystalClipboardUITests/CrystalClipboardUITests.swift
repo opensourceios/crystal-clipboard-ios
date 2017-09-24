@@ -30,8 +30,27 @@ class CrystalClipboardUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testSnapshot() {
-        snapshot("test")
+    // enable when running `fastlane snapshot`
+    func DISABLED_testSnapshot() {
+        let app = XCUIApplication()
+        snapshot("landing")
+        app.buttons["Sign In"].tap()
+        
+        let scrollViewsQuery = app.scrollViews
+        let element = scrollViewsQuery.children(matching: .other).element.children(matching: .other).element
+        element.children(matching: .other).element(boundBy: 0).children(matching: .textField).element.typeText("screenshots@crystalclipboard.com")
+        
+        let secureTextField = element.children(matching: .other).element(boundBy: 1).children(matching: .secureTextField).element
+        secureTextField.tap()
+        secureTextField.tap()
+        secureTextField.typeText("screenshots")
+        
+        let elementsQuery = scrollViewsQuery.otherElements
+        elementsQuery.buttons["Sign In"].tap()
+        snapshot("clips")
+        app.navigationBars["Crystal Clipboard"].buttons["Add"].tap()
+        elementsQuery.children(matching: .textView).element.typeText("Bird bath radius: 50cm")
+        snapshot("add")
     }
     
 }
