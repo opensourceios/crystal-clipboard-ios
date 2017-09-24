@@ -10,7 +10,7 @@ PODS:
     - Moya/Core
     - ReactiveSwift (~> 2.0)
   - PKHUD (4.2.3)
-  - ReactiveCocoa (6.0.1):
+  - ReactiveCocoa (6.0.2):
     - ReactiveSwift (~> 2.0)
   - ReactiveSwift (2.0.1):
     - Result (~> 3.2)
@@ -45,7 +45,7 @@ SPEC CHECKSUMS:
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
   Moya: cf5e6ee93af526532f92614004b8ad2ea60fd845
   PKHUD: 351011b853e6b942e7ee8ad335864cc84c787241
-  ReactiveCocoa: cf6595131c832c468fe3f84a2d7f74ed68eb3058
+  ReactiveCocoa: 9dcbd8275374f35a6e5fcce01a93b860a7b92c44
   ReactiveSwift: 60a29ff35988a964fd2bb759755cb6594de523fc
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   Starscream: 142bd8ef24592d985daee9fa48c936070b85b15f
