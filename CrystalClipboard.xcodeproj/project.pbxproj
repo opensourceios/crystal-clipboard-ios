@@ -54,6 +54,8 @@
 		D03ABD401F4E8FF600A7D473 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD3F1F4E8FF600A7D473 /* Clip.swift */; };
 		D03ABD421F4E902400A7D473 /* ClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03ABD411F4E902400A7D473 /* ClipTests.swift */; };
 		D03B32271F75635400F23E98 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B32261F75635400F23E98 /* SnapshotHelper.swift */; };
+		D03B322F1F7958AF00F23E98 /* Certificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D03B322E1F7958AE00F23E98 /* Certificate.cer */; };
+		D03B32311F79598D00F23E98 /* PinningManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B32301F79598D00F23E98 /* PinningManager.swift */; };
 		D03DDD031F6ACCD200CCEB4D /* UITextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DDD021F6ACCD200CCEB4D /* UITextView+Extensions.swift */; };
 		D04460BD1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */; };
 		D0474D361F697D4D00003EAC /* SubmissionError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0474D351F697D4D00003EAC /* SubmissionError+Equatable.swift */; };
@@ -174,6 +176,8 @@
 		D03ABD3F1F4E8FF600A7D473 /* Clip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clip.swift; path = Model/Clip.swift; sourceTree = "<group>"; };
 		D03ABD411F4E902400A7D473 /* ClipTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipTests.swift; path = Model/ClipTests.swift; sourceTree = "<group>"; };
 		D03B32261F75635400F23E98 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		D03B322E1F7958AE00F23E98 /* Certificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = Certificate.cer; sourceTree = "<group>"; };
+		D03B32301F79598D00F23E98 /* PinningManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PinningManager.swift; path = Networking/PinningManager.swift; sourceTree = "<group>"; };
 		D03DDD021F6ACCD200CCEB4D /* UITextView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+Extensions.swift"; path = "Extensions/UITextView+Extensions.swift"; sourceTree = "<group>"; };
 		D04460BC1F5B82F5000464B8 /* SignalProducer+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SignalProducer+ExtensionsTests.swift"; path = "Extensions/SignalProducer+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		D0474D351F697D4D00003EAC /* SubmissionError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SubmissionError+Equatable.swift"; path = "Utilities/SubmissionError+Equatable.swift"; sourceTree = "<group>"; };
@@ -339,6 +343,7 @@
 		D035A2C31F46921000B6887B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D03B322E1F7958AE00F23E98 /* Certificate.cer */,
 				D0116B381F6997C000ED6DE7 /* Constants.swift */,
 				D0B0CDF61F4671E8006201CE /* Info.plist */,
 				D0909B6C1F4D2513000F584B /* Localizable.strings */,
@@ -404,6 +409,7 @@
 				D04C144D1F4697A20068AEA0 /* CrystalClipboardAPI.swift */,
 				D0253F8E1F5A83B60066B444 /* ISO8601JSONDecoder.swift */,
 				D021CD941F671BC000F0C05E /* ISO8601JSONEncoder.swift */,
+				D03B32301F79598D00F23E98 /* PinningManager.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -692,6 +698,7 @@
 				D0B0CDF51F4671E8006201CE /* LaunchScreen.storyboard in Resources */,
 				D0909B6D1F4D2513000F584B /* Localizable.strings in Resources */,
 				D01A12D81F5E0B9000197ECA /* LoadingFooterView.xib in Resources */,
+				D03B322F1F7958AF00F23E98 /* Certificate.cer in Resources */,
 				D01A12E01F5E1D1600197ECA /* NoClipsView.xib in Resources */,
 				D0B0CDF21F4671E8006201CE /* Assets.xcassets in Resources */,
 				D0B0CDF01F4671E8006201CE /* Main.storyboard in Resources */,
@@ -962,6 +969,7 @@
 				D00D68581F575AB80029BC79 /* AuthenticatingViewController.swift in Sources */,
 				D0B37EC51F66281F00CA8B1A /* ClipChannelMessage.swift in Sources */,
 				D00D68421F55DA210029BC79 /* UIStoryboard+Extensions.swift in Sources */,
+				D03B32311F79598D00F23E98 /* PinningManager.swift in Sources */,
 				D0C1F6111F578FC100E49B77 /* ClipsViewModel.swift in Sources */,
 				D08263F61F66E14A00091E9A /* ViewModelType.swift in Sources */,
 				D00D684E1F5733660029BC79 /* SignInViewController.swift in Sources */,

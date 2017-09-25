@@ -118,6 +118,7 @@ class Cable {
         socket.origin = origin
         socket.delegate = self
         socket.callbackQueue = Cable.queue
+        socket.security = SSLSecurity(usePublicKeys: true)
     }
 }
 

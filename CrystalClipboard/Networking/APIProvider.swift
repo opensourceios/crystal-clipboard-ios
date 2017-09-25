@@ -7,6 +7,7 @@
 //
 
 import Moya
+import Alamofire
 
 class APIProvider: MoyaProvider<CrystalClipboardAPI> {
     
@@ -16,7 +17,7 @@ class APIProvider: MoyaProvider<CrystalClipboardAPI> {
          requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping,
          stubClosure: @escaping StubClosure = MoyaProvider.neverStub,
          callbackQueue: DispatchQueue? = nil,
-         manager: Manager = MoyaProvider<Target>.defaultAlamofireManager(),
+         manager: Manager? = nil,
          plugins: [PluginType] = [],
          trackInflights: Bool = false) {
         
@@ -24,7 +25,7 @@ class APIProvider: MoyaProvider<CrystalClipboardAPI> {
                    requestClosure: requestClosure,
                    stubClosure: stubClosure,
                    callbackQueue: callbackQueue ?? APIProvider.responseProcessingQueue,
-                   manager: manager,
+                   manager: manager ?? PinningManager(),
                    plugins: plugins,
                    trackInflights: trackInflights)
     }

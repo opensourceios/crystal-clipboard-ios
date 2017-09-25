@@ -20,3 +20,6 @@ Pods
 
 # Ignore RVM config
 .ruby-*
+
+# Ignore certificates
+*.cer
